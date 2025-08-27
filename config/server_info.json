@@ -27,9 +27,9 @@
     "Product_name": "dony",
     "Sost_Ver": "1.1.0",
     "Bios_ver": "T2DMEP04.00",
-    "zLast_Time": "2025-08-27 16:26:13",
-    "mem_usage": "2.70",
-    "cpu_usage": "0.0",
+    "zLast_Time": "2025-08-27 16:26:39",
+    "mem_usage": "2.69",
+    "cpu_usage": "0.08",
     "fail_info": "==============================\nSummaryInfo \n==============================\nrestartTimeToolLong : 1\nRunningTimefortoolong : 1\n==============================\n< sost > BMC_IP    : 192.168.60.223\n< sost > osIP      : 192.168.60.143\n< sost > osVer     : \"Red Hat Enterprise Linux 9.5 Plow\"\n< sost > TestType  : reboot\n< sost > ErrType   : restart TimeTool Long\n< sost > Count     : 3\n< sost > Time      : 2025-08-27-16-22-47\n< sost > File1     : /root/reboot/debug/start_time.txt\n< sost > File2     : cat /root/reboot/debug/end_time.txt\n< sost > -------------------------------------------------------\n< sost > System shutdown time   : 1756281918\n< sost > System on time         : 1756282950\n< sost > Phase difference time  : 1032s\n< sost > -------------------------------------------------------\n< sost > BMC_IP    : 192.168.60.223\n< sost > osIP      : 192.168.60.143\n< sost > osVer     : \"Red Hat Enterprise Linux 9.5 Plow\"\n< sost > TestType  : reboot\n< sost > ErrType   : Running Time for too long\n< sost > Count     : 3\n< sost > Time      : 2025-08-27-16-22-50\n< sost > File1     : /root/reboot/debug/start_time.txt\n< sost > File2     : cat /root/reboot/debug/end_time.txt\n< sost > -------------------------------------------------------\n< sost > System last Running Time   : 42\n< sost > System now Running Time    : 134\n< sost > Max Phase difference time  : 60s\n< sost > Phase difference time  : 92s\n< sost > -------------------------------------------------------",
     "hw_uuid": "83a59b18f13e01e8ef11030e9231358c",
     "swc_service_connectivity": ""

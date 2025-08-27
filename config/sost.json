@@ -15,7 +15,7 @@
         "simple_test_flags": "",
         "result_html": "0",
         "ipmi_sensdr_retry_count": "0",
-        "running_time_max": "61"
+        "running_time_max": "60"
     },
     "power_on_off": {
         "server_ip": "192.168.60.138",
