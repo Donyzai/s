@@ -1,0 +1,5 @@
+< sost_20250827-160107_run_com  > : CompletedProcess(args="sed -i '1s/x//' /etc/passwd", returncode=0) 
+< sost_20250827-160107_run_com  > : CompletedProcess(args="sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/g' /etc/ssh/sshd_config", returncode=0) 
+< sost_20250827-160107_run_com  > : CompletedProcess(args='systemctl restart sshd', returncode=0) 
+< sost_20250827-160207_run_com  > : CompletedProcess(args='ipmitool fru > /tmp/sost_tmp/sost_tmp', returncode=0) 
+< sost_20250827-160207_run_com  > : CompletedProcess(args='cat /tmp/sost_tmp/sost_tmp', returncode=0) 

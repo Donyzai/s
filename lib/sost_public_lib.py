@@ -1526,6 +1526,10 @@ def runTime(flags):
             os.fsync(f.fileno())
     # Power off -> Os Run Time
     elif flags == "3":
+        if count >= "2":
+            log.json_set("Test_tmp","running_time_last",log.json_get("Test_tmp","running_time_now"))
+            log.json_set("Test_tmp","running_time_now","")
+
         running_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/running_time.txt"
         start_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/start_time.txt"
         end_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/end_time.txt"
@@ -1538,6 +1542,9 @@ def runTime(flags):
             f.write("=" * 40 + "\n")
             f.flush()
             os.fsync(f.fileno())
+        
+        log.json_set("Test_tmp","running_time_now",str(restart_time))
+
         log._dp(f"Last restart time : {restart_time} s")
     # sost running time
     elif flags == "4":

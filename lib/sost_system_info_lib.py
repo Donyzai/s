@@ -541,7 +541,9 @@ def test_config(flags, count, path):
         fwinfo(flags, path, count)
         check_ipmitool(flags, path, count)
         echo_dev_info_sleep(flags,count)
-        if str(count)!='0':check_rebooting_time(flags, path, count)
+        if str(count)!='0':
+            check_rebooting_time(flags, path, count)
+            check_running_time(flags, path, count)
         if flags != '2':
             # other command runks
             tmp = log.json_get("Test_Config", "collect_cmd").strip().split(",")
@@ -578,6 +580,7 @@ def test_config(flags, count, path):
 
 # check RuningTime
 def check_running_time(flags, path, count):
+    if int(count) < 2:return 0
     running_time_last =  log.json_get('Test_tmp','running_time_last')
     running_time_now =  log.json_get('Test_tmp','running_time_now')
     running_time_max = log.json_get('Test_Config','running_time_max')
@@ -585,11 +588,11 @@ def check_running_time(flags, path, count):
     Phase_time = abs(int(running_time_now) - int(running_time_last))
 
     if running_time_max == '' or '0':running_time_max = '60' 
+
     if Phase_time > int(running_time_max):
         log._pr("Running Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
-        error_tmp = f'System last Running Time   : {str(running_time_last)}\n< sost > System now Running Time         : {str(running_time_now)}\n< sost > Phase difference time  : {str(Phase_time)}s'
-        
-        fail_info('Running for too long',error_tmp,f'{path}/debug/start_time.txt',f"cat {path}/debug/end_time.txt")
+        error_tmp = f'System last Running Time   : {str(running_time_last)}\n< sost > System now Running Time    : {str(running_time_now)}\n< sost > Max Phase difference time  : {str(running_time_max)}s\n< sost > Phase difference time  : {str(Phase_time)}s'
+        fail_info('Running Time for too long',error_tmp,f'{path}/debug/start_time.txt',f"cat {path}/debug/end_time.txt")
     else:
         log._pr("Running Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
 
