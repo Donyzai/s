@@ -3,7 +3,7 @@
         "Result_path": "/root",
         "Dedicated_lan_num": "1",
         "Share_lan_num": "8",
-        "fail_exit_flags": "1",
+        "fail_exit_flags": "0",
         "fail_exit_blacklist": "",
         "start_wait_time": "25",
         "aclost_wait_time": "120",
@@ -15,7 +15,7 @@
         "simple_test_flags": "",
         "result_html": "0",
         "ipmi_sensdr_retry_count": "0",
-        "running_time_max": "2"
+        "running_time_max": "60"
     },
     "power_on_off": {
         "server_ip": "192.168.60.138",
@@ -44,17 +44,17 @@
     },
     "Test_tmp": {
         "test_type": "reboot",
-        "test_count": "0",
+        "test_count": "3",
         "test_folder_path": "/root/reboot",
         "run_command": "reboot",
-        "test_status": "NA",
+        "test_status": "FAILc",
         "startT_time": "2025-08-27-16-01-06",
-        "endT_time": "",
+        "endT_time": "2025-08-27-16-23-09",
         "StartWaitTimeCountdown": "00",
         "EndWaitTimeCountdown": "00",
-        "Running_flag": "2",
-        "running_time_last": "42",
-        "running_time_now": "257"
+        "Running_flag": "4",
+        "running_time_last": "134",
+        "running_time_now": "1032"
     },
     "sost": {
         "Version": "1.1.0",

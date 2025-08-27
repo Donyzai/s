@@ -580,6 +580,9 @@ def test_config(flags, count, path):
 
 # check RuningTime
 def check_running_time(flags, path, count):
+
+    if log.json_get('collect_array',"running_time",web='no-log',filename='collect').strip() !='1':return 0
+
     if int(count) < 2:return 0
     running_time_last =  log.json_get('Test_tmp','running_time_last')
     running_time_now =  log.json_get('Test_tmp','running_time_now')
