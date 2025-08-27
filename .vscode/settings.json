@@ -1,0 +1,5 @@
+{
+    "files.exclude": {
+        "^b*[^:b#/]+.*$": true
+    }
+}

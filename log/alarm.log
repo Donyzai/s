@@ -1,0 +1,4 @@
+[31m< sost_20250827-103934_error    > : json file EXIT! error_info : Expecting ':' delimiter: line 19 column 5 (char 523) 
+ <! sost !>json_get obj : Test_tmp key : test_status[0m
+[31m< sost_20250827-103940_error    > : json file EXIT! error_info : Expecting ':' delimiter: line 19 column 5 (char 523) 
+ <! sost !>json_get obj : Test_tmp key : test_status[0m

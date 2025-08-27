@@ -1,0 +1,332 @@
+----------------------------------------------------------------------------------
+sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
+----------------------------------------------------------------------------------
+一、基础逻辑与配置优化
+优化 sost_system_info 逻辑。
+增加 collect_array.json 配置文件，用于精确控制采集信息模块开启/关闭情况。
+优化因 ibmc 无法登录导致的 session 没有 close 问题。
+修复多模型创建文件夹逻辑。
+增加开始等待时间 / 结束等待时间 / 设置开始等待时间 / 检测中 flag 位。
+修复 print_save_text 读值为空导致的 log._error 退出问题（text = log._error -> strings, save to file）。
+swc_web 增加 GUIConfig 配置方法 -> 同步优化 sost 看板：
+　　7.1 swc_web 增加 set_value route 方法：/set?obj=xxx&key=xxx&new_value=xxx -> sost.json
+swc 看板增加使用人及项目选择（预设计：通过 swc 主程序开放 API -> http://{ip}:{port}/xxxx?userid={osip}，return {'username':'dony','product_name','T1HSE'}）。
+优化 osip 因为 docker mac 导致的报错问题。
+优化 fail 内容太长导致的无法使用 > 写入文件问题。
+增加 sost power_on_off 测试模块：
+　　11.1 自定义远端服务器 IP 地址，同步输出 Windows 接口软件
+　　11.2 调用 bmc_ip() 函数返回用户所需设置的 BMC 网口
+修复 start_waitTime / AClostWaitTime 等于空值时出现的报错问题（修复方法：Except return 默认值）。
+优化 ibmcpcie 仅对比卡的数量不进行数据对比（评估不做优化）。
+关闭 iBMC 页面对 iBMA 的检查。
+优化 RHEL 因启动顺序问题导致的 stopping 问题（思路：Config 增加 test_alive 标识，swc_cinfo 检查 test_alive 标识）。
+chassis status 中移除 Last Power Event 信息（命令：ipmitool chassis status | grep -vi 'last power event'）。
+修复 Ubuntu 24.04.02 LTS 解决安装 pyinstaller 出现 Tips 不安装问题。
+修复 Ubuntu 24.04.02 LTS 解决修改 .bash_profile 文件清空问题。
+已适配 Oracle 9.5。
+sost disk 数量过滤 loop。
+sost osip / netinfo 过滤 docker / lo 网口。
+Ubuntu apt 安装修改为 apt-get。
+Ubuntu 修复 sost_install。
+优化 auto_test 导致的 sost -z is running ! 问题（解决方法：增加 os 判断，如果判断到 ubuntu or rhel 10.0 则 return False 绕过检测）：
+　　24.1 适配系统 Ubuntu 22.04.05
+　　24.2 适配系统 RHEL 10.0
+IPMITOOL 获取 BMC 任何信息失败后，增加 retry 次数：
+　　25.1 所有 ipmitool 获取信息前提前执行一遍命令
+　　25.2 logging 中 popen 增加 ipmibak 记录数据
+
+二、管理接口与外部工具适配
+swc-manager 增加 Clear Test_tmp 信息接口（http://ip:13250/clearinfo）。
+增加对 lds_shell / xmx_shell 的进程检测，同步反馈给 swc。
+sost 增加 json 数据传输开始测试命令。
+优化部分系统出现 smtplib 导致的报错问题（调整 smtplib 导入位置）。
+dpkg-divert --rename --add /usr/lib/$(py3versions -d)/EXTERNALLY-MANAGED（Ubuntu pip3 报错）优化命令。
+IPMI mc watchdog get 查看。
+
+三、修复与特殊场景适配
+修复国防版 sost 无法执行 /usr/bin/sost 命令的问题（解决思路：可以将 sost 创建移动到 /usr/local/bin 中）。
+自启动路径增加预先检查功能。
+修复稳定性看板“稳定性”问题。
+修复 dmesg 不检查问题。
+优化 dmesg_check 无返回值问题。
+优化 Ubuntu minicom 配置文件位置不同导致的配置失效问题。
+
+----------------------------------------------------------------------------------
+sost-v1.0.9 ChangeList DevlopTime : 2025/05/07-2025/05/26  ReleaseTime:2025/05/26
+----------------------------------------------------------------------------------
+1. ctrl + c 后增加结果打印测试结果logo
+2. 优化带内更新逻辑。
+3. iBMC mem信息做length对比
+4. 增加admin debug json配置文件。
+5. 优化fail/failc信息显示错行问题。
+6. netinfo增加LinkSta信息,增加信息显示优化。
+7. 优化strocli64 Info信息显示缺少Pass标记。
+8. HDDInfo获取异常(print_save_file函数由a改为w导致的文件内容覆盖写入)
+9. 设置BMC/OS/Simple模式后，Ctrl_C后不做sost -m default处理动作。
+10. 优化因Mode OS后再次恢复到default模式后出现大量Python3语法报错问题。
+11. osip打印pdf和所在Node信息 
+12. 增加sost -i sost查看sost详细信息，sost -i test查看SOST详细Config信息。
+13. 优化sensor采集后HandleData出现匹配模糊导致的最终csv表格异常问题。
+14. 删除结束测试后记录22和w信息。
+15. 适配RHEL10.0系统。(仅支持Text模式跑，脚本自动把GUI切换到Text)
+    17.1 优化RHEL10.0系统 Python3.12版本invalid escape sequence报错。
+    17.2 修复RHEL10.0系统GUI无法自启动问题。(优化RHEL Autologin函数 Config_autologin函数放在判断TextGui之前。)
+16. 优化swc页面下载日志的文件名称，修改为 : sost_{bmcip}_{测试类型}_{圈数}_{下载时间}.tar
+17. 优化swc看板增加日志备份功能，增加可直接查看fail / failc文件信息
+18. 记录ipmitool bmcsensor list采集的原始数据至popen.log
+19. 报错分类，最终统计不同报错类型出现次数
+    19.1 在稳定性文件夹中创建failc_result文件夹。
+    19.2 failc_result文件夹中通过区分不同的ErrType记录不同的测试文件
+    19.3 failc_result文件夹中每次创建不同的ErrType记录后，统一对报错数量及类型进行汇总记录到summary.log中。
+20. 删除dmiSlot中Handle信息(T1HSE/T1HDE Handle值在设计规范中易出现变化因此删除)
+
+----------------------------------------------------------------------------------
+sost-v1.0.8 ChangeList DevlopTime : 2025/04/16-2025/05/07  ReleaseTime:2025/05/07
+----------------------------------------------------------------------------------
+1. 收集对比结构优化，收集后直接进行对比
+2. 初始化文件夹逻辑优化嵌入信息收集首圈
+3. 增加全局命令，一键恢复系统默认状态。
+4. 优化sensor获取方式，支持任意阶段ctrl + c ，优化最终处理结果。
+5. 优化sost每次运行删除日志文件。
+6. result_html 默认关闭。
+7. 增加ibmc cpu信息获取对比。
+8. 增加ibmc mem信息获取对比。
+9. iBMC抓取IBMA版本状态信息。
+10. 增加Chassis status信息获取对比。ls /openeuler系统增加安装时替换源。
+11. 解决bmc/cold/warm无法运行问题。
+12. 增加du检测报错文件debug信息。
+13. sdr elist状态检查，检查ok项数量是否一致
+14. checkInfo合并systemInfo,优化采集对比代码结构，采集信息后直接进行信息对比。
+15. 重新定义报错不退出文件名为：failc.txt
+16. 重新定义看板报错不退出名为：
+17. 在线更新等待时间调整为180s
+18. 调整ibmcfw检查length信息不做详细信息对比
+19. 关闭用户自定义圈数检查BMC存活性功能。
+20. 优化lspci获取设备信息过滤的关键词信息。(过滤Huawei Technologies)
+21. 优化看板获取BMC IP地址闪动问题。
+22. 优化看板BMC版本获取异常问题。
+23. 优化sost带内更新方法。
+24. 增加sost update快捷更新命令
+----------------------------------------------------------------------------------
+sost-v1.0.7 ChangeList DevlopTime : 2025/03/14-2025/04/16  ReleaseTime:2025/04/16
+----------------------------------------------------------------------------------
+1. sel list 修改为sel elist。
+2. 优化Ubuntu系统（22.03）报错问题。
+3. 优化安装脚本。
+4. 增加lsusb信息检查对比。
+5. openeuler系统增加安装时替换源。
+6. 优化空diff_continue_fail/fail文件的产生。
+7. 优化swc-manager服务，将信息收集与调用数据接口分开。
+8. 增加iBMC适配，增加模拟登陆后收集iBMC Web页面中PSU/FAN／FW信息。
+9. 优化自启动方法。
+10. sel日志对比优化（同步20条）。
+11. sost初始化时删除对sel日志的备份。
+12. sost日志记录精细化调整，区分不同操作记录到不同文件。
+13. sost支持任意阶段停止稳定性测试。
+14. 优化较早的项目ipmitool sel clear后不产生日志导致的报错问题。
+15. sost优化重启后logo显示，增加当前测试状态显示。
+16. sost直接ssh登陆后不运行脚本，可以查看稳定性测试情况。
+17. 增加sost -a选项，用户可直接开启自登录模式。
+18. 优化信息获取方式，加快看板获取信息速度。
+19. 优化sost_logging日志库,增加swc/serverinfo配置读写方法。
+20. ipmitool检查报错是否退出放在diff_continue_fail中。
+21. sost-v1.0.7-Release bmc状态不在位时，ctrl + c 不记录结果文件
+22. simple模式关闭auto_test中restart_check_info函数中的ipmitool
+23. bmc_ver版本实时变化收集
+24. 优化因关机过慢导致的脚本在看板中出现stopping问题
+25. 优化bash_profile文件清理后每次会多生成一行内容，导致bash_profile文件出现大量空行的问题。
+26. 增加报错不退出，设置黑名单功能，如果设置报错不退出报错类型存在与黑名单则退出测试。
+    举例(设置全局报错不退出，但osip和bmcip报错后退出)："diff_exit_blacklist":"osip,bmcip",
+bmcip
+bmclog
+bmcsensor
+bmcsensor_data
+cpuinfo
+dmesg
+fwinfo
+hddinfo
+meminfo
+pcieinfo
+psuinfo
+osip
+pcieslot
+bmcsd
+backboar
+storinfo
+netinfo
+bmcinfo
+usbinfo
+ibmcfw
+ibmcfan
+ibmcpsu
+ibmcpcie
+ipmitool
+Restart_time_too_long
+----------------------------------------------------------------------------------
+sost-v1.0.6 ChangeList DevlopTime : 2025/02/25-2025/03/12  ReleaseTime:2025/03-12
+----------------------------------------------------------------------------------
+1. ipmitool 检查报错
+2. bmc检查 / os信息检查 / 其他检查分开
+3. 仅重启稳定性测试模型（不检查任何内容）
+4. 关闭新年烟花函数
+5. 删掉stor是否确认
+6. 增加stress压力判断
+7. 增加香山项目dmesg报错检查项
+    （7.1）init ae_dev error
+    （7.2）alloc failed
+    （7.3）edma_host_send_msg
+    （7.4）EEPROM memory
+    （7.5）mac speed/duplex config cmd failed
+    （7.6）Mac init error
+    （7.7）failed with error
+    （7.8）Firmware Bug
+    （7.9）get link status cmd failed
+8. sost -i disk1增加详细硬盘信息打印
+9. IPMItool 适配 iBMC -C 17
+10. 优化定时跑稳定性
+11. 定时跑多模型测试 评估：目前整体设置框架暂不支持此测试需优化结构。 [!] 
+12. 多模型测试在主页交互
+    （12.1）多模型测试打开新的终端开始新的模型测试
+    （12.2）Command : sh -c 'ps -aux | grep -i sost_main | grep -v grep | awk "{{print $2}}" | xargs kill -9 && sost -s'
+14. 解决fail后双重打印问题
+15. 增加iBMC芯片处理后续动作（BMC模拟登录登出）（iBMC暂不进行开发）[!]
+16. 增加power off/power on 测试模型。评估：需要远程服务器，限制脚本使用场景（当前版本暂不开发）[!]
+17. 优化sost_web_console数据获取逻辑减少等待时间 [!]
+    （17.1）修改为tcp请求，需要考虑swc看板接口 [2.0版本发布]
+18. 解决Suse无法进行稳定性测试问题  [v1.0.7版本进行开发]
+19. 修改history位置
+20. 修改swc中关于ping测试检查与增加stress压力测试检查
+21. BMC类测试适配香山项目。
+22. 修复swc-zLastTime变量显示异常问题。
+23. 优化部分显示页面。
+24. 用户ctrlC后，增加等待用语
+25. 增加系统详细信息收集功能  -o
+26. ipmitool sel清理不掉    原因：sel save 进行backup,放在后端运行,下面执行clear动作会冲突。
+    修复方法：华为鲲鹏920 iBMC 不进行备份。
+27. 报错退出设置快捷方法。
+28. 华为鲲鹏出现lan8未识别出现报错问题。
+29. 增加关闭报错退出功能快捷方式。
+30. 修改指定圈数删除cmd.log从3修改为5。
+31. osip增加驱动信息打印。
+32. 设置报错不退出时增加看板flag位
+    （32.1）ENAL(Exit Not All fail)	 	：已设置出现任何报错不退出
+    （32.2）ENDI(Exit Not Diff fail)	：设置除了DMESG报错以外的所有报错不退出
+    （32.3）ENDM(Exit Not Dmesg fail)	：设置DMESG报错不退出
+33. 优化swc_manager产生的cmd日志。
+34. 多模型测试结果放在一个文件夹中 [v1.0.7版本进行开发]
+35. 结束测试后ssh关闭PermitEmptyPasswords设置。
+36. 增加本地ipmitool bmc reset warm/cold/0x06 0x02测试 [v1.0.7版本进行开发]
+37. 优化BMC Sensor检查，增加0x0信息数量对比。
+38. 增加选择BMC稳定性测试后，对BMC状态进行检查。
+----------------------------------------------------------------------------------
+sost-v1.0.5 ChangeList DevlopTime : 2024/12/31-2025/01/15  ReleaseTime:2025/01/15
+----------------------------------------------------------------------------------
+1. 优化HDD硬盘获取方法。
+2. 优化PCIE_SLOT获取方法。
+3. 优化PCIE_INFO获取方法。
+4. 优化Backplane获取方法。
+5. 优化BP_Ver信息显示。
+6. 增加HTML结果文件，便于查看稳定性测试结果信息。
+7. 增加重启时间FAIL判断,超过规定时间即为FAIL(默认最大值900s一圈,超过则报错退出.)
+8. 增加每3圈清理一次cmd.log日志功能。
+9. 新增RHEL图形化稳定性测试.
+10. 修复首次配置ACLost_minicom软件产生的cat报错问题。
+11. 修复RHEL9.4无法登录问题-> getty@tty1异常。
+12. 修复sost -z逻辑判断异常导致的无法继续测试问题。
+13. 优化安装时出现的报错问题及部分系统缺少依赖导致的swc服务安装失败问题。
+14. 优化swc服务安装逻辑，不受是否在线影响。
+15. 增加BMC_Restart前检查是否有系统IP，或选择的BMCIP是否存活。
+16. 优化BMC稳定性测试BMC芯片显示信息过多的问题。
+17. 修改ACLost开机等待时间默认值130->60。
+18. 优化Backplane获取逻辑。
+19. 优化安装时查看服务卡住的问题
+20. 优化bmc测试无法远程中断的问题。
+21. 增加稳定性历史功能，可登录SWC页面查看历史稳定性测试结果。
+22. 优化sost主界面显示过大的问题。
+23. Swc-manager服务修复。
+24. 新年特定版本[Happy New Year]，增加开启sost后烟花打印。
+----------------------------------------------------------------------------------
+sost-v1.0.4 ChangeList DevlopTime : 2024/11/28-2024/12/16  ReleaseTime:2024/12/27
+----------------------------------------------------------------------------------
+1.增加ipmitool lan 1/8 原始数据记录。
+2.优化osip控制点获取方法。
+3.增加debug信息打印快捷命令。
+4.优化首次测试开始web_console功能逻辑。
+5.优化带内更新代码。
+6.优化new_sost_logging日志系统no-log。
+7.增加web_console检测关键词数量。
+8.增加swc-manager服务至Linux系统。
+9.优化swc服务日志过大问题。
+10.修复diff对比BMCSEL日志时产生的sh报错。
+11.修复ib网口address每次重启会变化导致报错的问题。
+12.增加swc_flags SWC远程控制flag位。
+13.修复sost_tmp缓存文件夹丢失问题。
+14.增加sensor_data报错具体位置信息。
+15.增加sost -k清理sost进程并且清理启动项。
+16.增加深圳测试部带内更新通道。
+17.增加自定义稳定性测试用例。
+18.增加双IP,BMC状态检查。
+19.修复多模型测试异常问题。
+20.增加pcieslot中node信息的显示。
+21.增加pcieinfo中node信息的显示。
+22.增加Intel BMC报错提示检测。
+23.预留flag位。
+24.增加定时跑功能
+25.增加判断进程结束后开始测试功能。
+--------------------------------------------------------------------------------
+sost-v1.0.3 ChangeList DevlopTime : 2024/10/18-2024/11/25  ReleaseTime:2024/11/25
+--------------------------------------------------------------------------------
+1.增加BMC Sensor收集功能。
+2.增加BMC日志检查关键词。
+3.修复BMC_SEL报错后无法保留FAIL文件问题。
+4.修复RHEL7.X安装时备份源动作。
+5.修复NVMe硬盘获取失败问题。
+6.修复HDDINFO对比行数错误问题。
+7.优化sost_logging日志库。
+8.增加sost日志写入dmesg方法。
+9.优化sost全局命令及调用方法。
+10.优化storcli获取bbu充电状态时数据不一致导致的报错问题。
+11.优化多模型测试，模型先后顺序。
+12.优化ctrl+c显示多一个s字符情况。
+13.优化sost_web_console自启动功能。
+14.增加检测BMC芯片功能，便于后续自动配置config信息。
+15.新增BMCTool :
+    (1) 快速sel日志生成（已完成）
+    (2) 快速审计日志生成（已完成）
+    (3) BMC IDLE测试 + Ping测试（已完成）
+16.新增两种稳定性测试 : 
+    (1) 系统下BMC远程热重启测试（已完成）
+    (2) 系统下BMC远程冷重启测试（已完成）
+17.增加IPMI_Sensor对比控制点。
+18.增加ssh->PermitEmptyPasswords设置。
+19.优化resetBmc检查FAN报错问题。
+20.适配RHEL9.5系统。
+21.适配Ubuntu系统。
+22.适配OpenEuler系统。
+23.增加压力测试下传递信息至看板服务器。
+24.增加开始测试时系统测试环境信息。
+25.同步优化sost看板。
+26.优化BMC日志检查逻辑。
+27.增加Server13250显示信息
+28.解决ACLost开机等待时间与正常模型之间一致的问题。
+   -增加aclost开机等待时间控制点
+29.增加sostTmp文件夹用于存放所有tmp缓存数据
+30.修复PSU信息读取异常问题。
+31.优化sensoe信息获取方法。
+-------------------------------------------------
+sost-v1.0.2 ChangeList Release-Time : 2024-10-18
+-------------------------------------------------
+1.修复Kylin系统图形化与文本启动项冲突问题。
+2.修复因修改文本启动项导致的.bash_profile文件清空问题。
+3.修复PCIESLOT信息中标题错误问题。
+4.修复因bashProfile中遗留xmx_shell导致的异常问题。
+5.增加首圈打印设备信息间隔等待时间。
+6.增加dmidecode获取psu信息的方法。
+7.增加自动化配置aclost测试所需配置。
+8.增加dmesg报错类型出现后是否退出的功能。
+9.针对近期psuinfo获取异常问题，增加psu_get_type控制点。
+10.优化bmc与dmesg检测顺序。
+11.优化sost全局命令参数。
+12.优化sost日志大小。
+13.重建sost-osip获取代码。
+14.增加BMC存活性判断。
