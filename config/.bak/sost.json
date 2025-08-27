@@ -1,0 +1,64 @@
+{
+    "Test_Config": {
+        "Result_path": "/root",
+        "Dedicated_lan_num": "1",
+        "Share_lan_num": "8",
+        "fail_exit_flags": "0",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
+        "aclost_wait_time": "120",
+        "end_wait_time": "15",
+        "frist_sdi_time": "5",
+        "max_count": "",
+        "collect_cmd": "",
+        "Maximum_restart_time": "900",
+        "simple_test_flags": "",
+        "result_html": "0",
+        "ipmi_sensdr_retry_count": "0"
+    },
+    "power_on_off": {
+        "server_ip": "192.168.60.138",
+        "server_port": "13251"
+    },
+    "Multimodal_stability": {
+        "switch": "0",
+        "count_aclost": "",
+        "count_reboot": "",
+        "count_powercycle": "",
+        "count_powerreset": ""
+    },
+    "BMC_Survival_Config": {
+        "bmc_chip": "",
+        "switch": "0",
+        "BMC_Username": "",
+        "BMC_Password": ""
+    },
+    "smtp": {
+        "Fail_send_email": "",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "pop3_password": ""
+    },
+    "Test_tmp": {
+        "test_type": "",
+        "test_count": "",
+        "test_folder_path": "",
+        "run_command": "",
+        "test_status": "",
+        "startT_time": "",
+        "endT_time": "",
+        "StartWaitTimeCountdown": "0",
+        "EndWaitTimeCountdown": "0",
+        "Running_flag": "0"
+    },
+    "sost": {
+        "Version": "1.1.0",
+        "Release_Time": "2025-08-11",
+        "update_Web_server_ip": "192.168.60.138",
+        "Web_Console": "1",
+        "swc_flags": "0",
+        "debug_flags": "0"
+    }
+}

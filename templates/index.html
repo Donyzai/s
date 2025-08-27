@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOST系统控制台</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 750px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: block;
+            padding: 18px;
+            font-size: 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .input-group {
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        select, input, button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 18px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            max-height: 250px;
+            overflow-y: auto;
+            font-size: 18px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SOST系统控制台</h1>
+        <div class="button-group">
+            <a href="{{ url_for('stability_status') }}" class="button">测试状态</a>
+            <a href="{{ url_for('stability_download_log') }}" class="button">下载日志</a>
+            <a href="{{ url_for('return_history') }}" class="button">测试历史</a>
+            <a href="{{ url_for('return_sost_tmp') }}" class="button">SOST缓存</a>
+            <a href="{{ url_for('return_get_data') }}" class="button">JSON数据</a>
+        </div>
+        
+        <div class="input-group">
+            <label for="test-type">选择测试类型：</label>
+            <select id="test-type">
+                <option value="reboot">Reboot</option>
+                <option value="powercycle">PowerCycle</option>
+                <option value="powerreset">PowerReset</option>
+                <option value="aclost">Aclost</option>
+            </select>
+            <button onclick="startTest()">开始测试</button>
+        </div>
+
+        <div class="input-group">
+            <label for="command-input">输入命令：</label>
+            <input type="text" id="command-input" placeholder="请输入命令" required>
+            <button onclick="executeCommand()">执行</button>
+        </div>
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        function startTest() {
+            const testType = document.getElementById('test-type').value;
+            const url = `/run?type=${testType}`;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`SOST正在进行稳定性测试!`);
+                    }
+                    return response.text(); // 改为接收文本
+                })
+                .then(text => alert("SOST开始进行稳定性测试!"))
+                .catch(error => alert("SOST正在进行稳定性测试!"));
+        }
+        function executeCommand() {
+            const command = document.getElementById('command-input').value;
+            fetch('/execute_command', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ command })
+            })
+            .then(response => response.json())
+            .then(data => document.getElementById('output').textContent = data.output)
+            .catch(error => document.getElementById('output').textContent = '执行命令时出错');
+        }
+    </script>
+</body>
+</html>
