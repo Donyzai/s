@@ -1526,10 +1526,6 @@ def runTime(flags):
             os.fsync(f.fileno())
     # Power off -> Os Run Time
     elif flags == "3":
-        if int(count) >= 2:
-            last_time = log.json_get("Test_tmp","running_time_now")
-            log.json_set("Test_tmp","running_time_last",last_time)
-
         running_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/running_time.txt"
         start_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/start_time.txt"
         end_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/end_time.txt"
@@ -1545,8 +1541,6 @@ def runTime(flags):
             os.fsync(f.fileno())
         
         log._dp(f"Last restart time : {restart_time} s")
-
-
     # sost running time
     elif flags == "4":
         start_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/start_time.txt"
@@ -1555,10 +1549,9 @@ def runTime(flags):
         save_file = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/sost_running_time.log"
         with open(save_file, "a") as f:
             f.write("=" * 40 + "\n")
-            f.write(f"< sost > sost Running time : {str(sost_running_time)} s\n< sost > sost NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n")
+            f.write(f"< sost > sost Running time : {str(sost_running_time)} s\n< sost > sost NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n"+f"sost Running time : {str(sost_running_time)} s"+"\n")
             f.write("=" * 40 + "\n")
             os.fsync(f.fileno())
-        # log._pr(f"sost Running time : {str(sost_running_time)} s")
     else:
         log._error("runTime.Exit.flags")
 

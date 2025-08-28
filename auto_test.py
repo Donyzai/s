@@ -45,7 +45,6 @@ wait_time_ctrl_C(wait_time,flags='start')
 log.json_set("Test_tmp","test_count",next_count)
 # write start_time
 runTime("0")
-
 # save count to count
 log.os_popen(f"echo {next_count} > {path}/count.txt")
 # show Now Test logo
@@ -54,13 +53,19 @@ test_config("1",next_count,path)
 #0 start_time 1 end_time 2 last_time 3 Power off -> Os Run Time  4 sost running timerunTime("1")
 runTime("3")
 runTime("4")
+if int(next_count) >= 2:
+    last_time = log.json_get("Test_tmp","running_time_now")
+    log.json_set("Test_tmp","running_time_last",last_time)
+    from lib.sost_system_info_lib import check_running_time
+    check_running_time(path=path, count=next_count)
+
 runTime("1")
 end_test_logo()
 log.json_set('Test_tmp','Running_flag','3')
 wait_time_ctrl_C(int(log.json_get("Test_Config","end_wait_time")),flags='end')
 debug_mode()
 swc_EndTest()
-# Force Sync Data , solve Power Off Not Sync Data
+# Force Sync Data , solve Power Off Not Sync DatarunTime
 log.os_run("sync -f && sync",flags='no-log')
 log.os_run(log.json_get("Test_tmp","run_command").strip())
 time.sleep(int(log.json_get("Test_Config","end_wait_time")))

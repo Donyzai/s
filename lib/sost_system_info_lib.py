@@ -543,7 +543,7 @@ def test_config(flags, count, path):
         echo_dev_info_sleep(flags,count)
         if str(count)!='0':
             check_rebooting_time(flags, path, count)
-            check_running_time(flags, path, count)
+            check_running_time(path, count)
         if flags != '2':
             # other command runks
             tmp = log.json_get("Test_Config", "collect_cmd").strip().split(",")
@@ -579,7 +579,7 @@ def test_config(flags, count, path):
         public_check(flags, path, count)
 
 # check RuningTime
-def check_running_time(flags, path, count):
+def check_running_time(path, count):
 
     if log.json_get('collect_array',"running_time",web='no-log',filename='collect').strip() !='1':return 0
 
