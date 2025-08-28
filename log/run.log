@@ -1,0 +1,2 @@
+< sost_20250828-181908_run_com  > : CompletedProcess(args='mkdir -p /tmp/sost_tmp', returncode=0) 
+< sost_20250828-181911_run_com  > : CompletedProcess(args='mkdir -p /tmp/sost_tmp', returncode=0) 

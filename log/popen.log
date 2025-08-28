@@ -1,0 +1,44 @@
+< sost_20250828-181908_popen_com> : cat /etc/os-release | grep -vi ubuntu | wc -l -> Result
+18
+
+< sost_20250828-181908_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
+PRETTY_NAME="Red Hat Enterprise Linux 9.5 (Plow)"
+
+< sost_20250828-181908_popen_com> : cat /etc/passwd | grep -i 'root::0:0' | wc -l -> Result
+1
+
+< sost_20250828-181908_popen_com> : cat /etc/os-release | grep -w VERSION= | tr -d ' ' -> Result
+VERSION="9.5(Plow)"
+
+< sost_20250828-181908_popen_com> : systemctl get-default -> Result
+multi-user.target
+
+< sost_20250828-181908_popen_com> : cat /etc/ssh/sshd_config | grep -i '#PermitEmptyPasswords' -> Result
+
+< sost_20250828-181908_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
+PRETTY_NAME="Red Hat Enterprise Linux 9.5 (Plow)"
+
+< sost_20250828-181908_popen_com> : cat /root/reboot/debug/end_time.txt -> Result
+
+< sost_20250828-181911_popen_com> : cat /etc/os-release | grep -vi ubuntu | wc -l -> Result
+18
+
+< sost_20250828-181911_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
+PRETTY_NAME="Red Hat Enterprise Linux 9.5 (Plow)"
+
+< sost_20250828-181911_popen_com> : cat /etc/passwd | grep -i 'root::0:0' | wc -l -> Result
+1
+
+< sost_20250828-181911_popen_com> : cat /etc/os-release | grep -w VERSION= | tr -d ' ' -> Result
+VERSION="9.5(Plow)"
+
+< sost_20250828-181911_popen_com> : systemctl get-default -> Result
+multi-user.target
+
+< sost_20250828-181911_popen_com> : cat /etc/ssh/sshd_config | grep -i '#PermitEmptyPasswords' -> Result
+
+< sost_20250828-181911_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
+PRETTY_NAME="Red Hat Enterprise Linux 9.5 (Plow)"
+
+< sost_20250828-181911_popen_com> : cat /root/reboot/debug/end_time.txt -> Result
+

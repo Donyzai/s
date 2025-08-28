@@ -14,6 +14,16 @@ from datetime import datetime, timedelta
 log = dong_log()
 log.debug_flags = str(log.json_get("sost","debug_flags",web='no-log'))
 
+def update_check():
+    try:
+        if os.system('ping 127.0.0.1 -c 1 >/dev/null 2>&1') == 0:
+            print("alive")
+        else:
+            print("not alive")
+    except:
+        print("Network is unreachable, please check the network connection!")
+        
+
 def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
     bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
     sost_poweronoff_serverIP = log.json_get('power_on_off','server_ip').strip()
