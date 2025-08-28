@@ -593,11 +593,10 @@ def check_running_time(count):
 
     if Phase_time > int(running_time_max):
         log._pr("Running Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
-        error_tmp = f'`System last Running Time`   : {str(running_time_last)}\n< sost > System now Running Time    : {str(running_time_now)}\n< sost > Max Phase difference time  : {str(running_time_max)}s\n< sost > Phase difference time  : {str(Phase_time)}s'
+        error_tmp = f'System last Running Time   : {str(running_time_last)}\n< sost > System now Running Time    : {str(running_time_now)}\n< sost > Max Phase difference time  : {str(running_time_max)}s\n< sost > Phase difference time       : {str(Phase_time)}s'
         fail_info('Running Time for too long',error_tmp,f'running_time.txt',f"running_time.txt")
     else:
         log._pr("Running Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
-
 
 # check IPMItool
 def check_ipmitool(flags, path, count):

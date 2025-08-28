@@ -217,6 +217,7 @@ class dong_log():
             if self.debug_flags == "1" or "3":
                 exit()
             print(text)
+            self.json_set("Test_tmp","Running_flag","6",flags='no-log')
             exit()
         return
     
