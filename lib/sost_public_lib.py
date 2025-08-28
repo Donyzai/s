@@ -1999,3 +1999,4 @@ def smtp_send_result(text):
         print(f'Error occurred: {e}')
     finally:
         server_stmp.quit()
+
