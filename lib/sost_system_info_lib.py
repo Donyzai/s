@@ -543,7 +543,6 @@ def test_config(flags, count, path):
         echo_dev_info_sleep(flags,count)
         if str(count)!='0':
             check_rebooting_time(flags, path, count)
-            check_running_time(path, count)
         if flags != '2':
             # other command runks
             tmp = log.json_get("Test_Config", "collect_cmd").strip().split(",")
@@ -579,7 +578,7 @@ def test_config(flags, count, path):
         public_check(flags, path, count)
 
 # check RuningTime
-def check_running_time(path, count):
+def check_running_time(count):
 
     if log.json_get('collect_array',"running_time",web='no-log',filename='collect').strip() !='1':return 0
 
@@ -594,10 +593,11 @@ def check_running_time(path, count):
 
     if Phase_time > int(running_time_max):
         log._pr("Running Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
-        error_tmp = f'System last Running Time   : {str(running_time_last)}\n< sost > System now Running Time    : {str(running_time_now)}\n< sost > Max Phase difference time  : {str(running_time_max)}s\n< sost > Phase difference time  : {str(Phase_time)}s'
-        fail_info('Running Time for too long',error_tmp,f'{path}/debug/start_time.txt',f"cat {path}/debug/end_time.txt")
+        error_tmp = f'`System last Running Time`   : {str(running_time_last)}\n< sost > System now Running Time    : {str(running_time_now)}\n< sost > Max Phase difference time  : {str(running_time_max)}s\n< sost > Phase difference time  : {str(Phase_time)}s'
+        fail_info('Running Time for too long',error_tmp,f'running_time.txt',f"running_time.txt")
     else:
         log._pr("Running Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+
 
 # check IPMItool
 def check_ipmitool(flags, path, count):

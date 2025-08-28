@@ -1,5 +1,5 @@
 from lib.sost_public_lib import test_type_logo,dong_log,runTime,end_test_logo,wait_time_ctrl_C,max_count_logo,Judging_autologin,time,autologin,defalt_path,result_html,swc_EndTest,return_wait_time,debug_mode
-from lib.sost_system_info_lib import test_config
+from lib.sost_system_info_lib import test_config,check_running_time
 # init logging
 log = dong_log()
 log.debug_flags = str(log.json_get("sost","debug_flags"))
@@ -53,13 +53,8 @@ test_config("1",next_count,path)
 #0 start_time 1 end_time 2 last_time 3 Power off -> Os Run Time  4 sost running timerunTime("1")
 runTime("3")
 runTime("4")
-if int(next_count) >= 2:
-    last_time = log.json_get("Test_tmp","running_time_now")
-    log.json_set("Test_tmp","running_time_last",last_time)
-    from lib.sost_system_info_lib import check_running_time
-    check_running_time(path=path, count=next_count)
-
 runTime("1")
+check_running_time(next_count)
 end_test_logo()
 log.json_set('Test_tmp','Running_flag','3')
 wait_time_ctrl_C(int(log.json_get("Test_Config","end_wait_time")),flags='end')

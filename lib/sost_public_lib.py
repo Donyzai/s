@@ -1530,9 +1530,11 @@ def runTime(flags):
         start_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/start_time.txt"
         end_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/end_time.txt"
         restart_time = str(int(log.os_popen(f"cat {start_time_file_path}")) - int(log.os_popen(f"cat {end_time_file_path}")))
-        
+        last_running_time = log.json_get("Test_tmp","running_time_now")
+        log._dp(f"Last running time : {last_running_time} s")
+        log._dp(f"Now running time  : {restart_time} s")
+        log.json_set("Test_tmp","running_time_last",str(last_running_time))
         log.json_set("Test_tmp","running_time_now",str(restart_time))
-
         with open(running_time_file_path, "a") as f:
             if str(count)=="0":
                 restart_time="FirstRun!"
