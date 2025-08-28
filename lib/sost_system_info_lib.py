@@ -732,7 +732,7 @@ def bmcip(flags, folder_path, count):
     
 def fwinfo(flags, folder_path, count):
     if log.json_get('collect_array',"fwinfo",web='no-log',filename='collect').strip() !='1':return 0
-    cpld_version = "NA"
+    cpld_version = ""
     try:
         # 32
         device_id = log.os_popen("ipmitool mc info 2>/dev/null | grep -i 'device id' | awk '{{print $4}}'").strip()
@@ -765,6 +765,9 @@ def fwinfo(flags, folder_path, count):
             bp_fw = result
     except:
         bp_fw = "GetFail!"
+
+
+    if cpld_version == "": cpld_version = "NA"
 
     print_save_text(flags=flags, folder_path=folder_path, type="fwinfo", count=count,text=f"CPLD.ver : {cpld_version}\nBMC.ver  : {BMC_Ver}\nBIOS.ver : {Bios_Ver}\nBios-ReleaseTime: {Bios_relea_time}\nBios-Revisione: {Bios_revision_time}\nBP_fw    :{bp_fw}")
     

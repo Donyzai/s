@@ -46,18 +46,13 @@ log.json_set("Test_tmp","test_count",next_count)
 # write start_time
 runTime("0")
 
-
-
-
 # save count to count
 log.os_popen(f"echo {next_count} > {path}/count.txt")
 # show Now Test logo
 #------------------------------------------------------------------------
 test_config("1",next_count,path)
 #0 start_time 1 end_time 2 last_time 3 Power off -> Os Run Time  4 sost running timerunTime("1")
-
 runTime("3")
-
 runTime("4")
 runTime("1")
 end_test_logo()

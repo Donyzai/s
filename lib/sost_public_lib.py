@@ -1526,26 +1526,27 @@ def runTime(flags):
             os.fsync(f.fileno())
     # Power off -> Os Run Time
     elif flags == "3":
-        if count >= "2":
-            log.json_set("Test_tmp","running_time_last",log.json_get("Test_tmp","running_time_now"))
-            log.json_set("Test_tmp","running_time_now","")
+        if int(count) >= 2:
+            last_time = log.json_get("Test_tmp","running_time_now")
+            log.json_set("Test_tmp","running_time_last",last_time)
 
         running_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/running_time.txt"
         start_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/start_time.txt"
         end_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/end_time.txt"
         restart_time = str(int(log.os_popen(f"cat {start_time_file_path}")) - int(log.os_popen(f"cat {end_time_file_path}")))
-        with open(running_time_file_path, "a") as f:
-            f.write("=" * 40 + "\n")
-            if str(count)=="0":restart_time="FirstRun!"
-            stringss = f"< sost > Last restart time : {restart_time} s\n< sost >  Nowcount\t\t : {count} times\n< sost >  NowTime \t\t : {now_time()}\n< sost >  TestType\t\t : {log.json_get('Test_tmp','test_type')}\n"
-            f.write(stringss)
-            f.write("=" * 40 + "\n")
-            f.flush()
-            os.fsync(f.fileno())
         
         log.json_set("Test_tmp","running_time_now",str(restart_time))
 
+        with open(running_time_file_path, "a") as f:
+            if str(count)=="0":
+                restart_time="FirstRun!"
+            f.write("=" * 40 + "\n" + f"< sost > Last restart time : {restart_time} s\n< sost >  Nowcount\t\t : {count} times\n< sost >  NowTime \t\t : {now_time()}\n< sost >  TestType\t\t : {log.json_get('Test_tmp','test_type')}\n" + "=" * 40 + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+        
         log._dp(f"Last restart time : {restart_time} s")
+
+
     # sost running time
     elif flags == "4":
         start_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/start_time.txt"
@@ -1590,10 +1591,6 @@ def change_json(count, test_type, path, run_command):
         log.json_set('Test_tmp','run_command',run_command)    
     else:
         log.json_set('Test_tmp','test_count',str(int(log.json_get("Test_tmp", "test_count")) + 1))
-    
-# CreateFolder
-def create_Folder(path, folder_name):
-    if not os.path.exists(path + folder_name): os.makedirs(path + folder_name)
 
 # User.input.TestTYpe.Init.Folder
 def init_stability_path(test_type):
