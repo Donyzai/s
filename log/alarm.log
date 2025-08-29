@@ -1,2 +1,19 @@
 < sost_20250828-181908_exit     > : Unable to Continue Test!
 < sost_20250828-181911_exit     > : Unable to Continue Test!
+< sost_20250829-102913_exit     > : Unable to Continue Test!
+< sost_20250829-102915_exit     > : Unable to Continue Test!
+[31m< sost_20250829-104944_error    > : User.Input.Error[0m
+[31m< sost_20250829-105006_error    > : User.Exit()[0m
+[31m< sost_20250829-105117_error    > : User.Input.Error[0m
+[31m< sost_20250829-105128_error    > : User.Input.Error[0m
+[31m< sost_20250829-105600_error    > : json file EXIT! error_info : 'sost_server_ip' 
+ <! sost !>json_get obj : sost key : sost_server_ip[0m
+[31m< sost_20250829-105617_error    > : User.Input.Error[0m
+[31m< sost_20250829-105632_error    > : User.Input.Error[0m
+[31m< sost_20250829-105633_error    > : User.Input.Error[0m
+[31m< sost_20250829-105644_error    > : User.Input.Error[0m
+[31m< sost_20250829-105658_error    > : User.Input.Error[0m
+[31m< sost_20250829-105700_error    > : User.Input.Error[0m
+[31m< sost_20250829-105724_error    > : User.Input.Error[0m
+[31m< sost_20250829-110321_error    > : User.Input.Error[0m
+[31m< sost_20250829-110332_error    > : User.Input.Not.Update[0m

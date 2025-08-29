@@ -14,15 +14,61 @@ from datetime import datetime, timedelta
 log = dong_log()
 log.debug_flags = str(log.json_get("sost","debug_flags",web='no-log'))
 
+def update_show(update_flag,tips):
+    clp()
+    print(f'''
+══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+>> {tips}''')
+
+    if update_flag == '1':
+        update_sost()
+    elif update_flag == '2':
+        update_sost(update_flag='1')
+    elif update_flag == '3':
+        update_sost()
+    elif update_flag == '4':
+        update_sost(update_flag='1')
+    else:
+        return
+
 def update_check():
+
+    sost_server_ip = log.json_get("sost","update_Web_server_ip").strip()
+
     try:
-        if os.system('ping 127.0.0.1 -c 1 >/dev/null 2>&1') == 0:
-            print("alive")
-        else:
-            print("not alive")
+        if os.system(f'ping {sost_server_ip} -c 1 >/dev/null 2>&1') != 0:
+            return False
     except:
-        print("Network is unreachable, please check the network connection!")
-        
+        return False
+
+    update_flag = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/update_flag.txt 2>/dev/null").replace("\n","").strip()
+    if update_flag == '0':
+        log._dp("SOST最新版本")
+        return 0
+    elif update_flag == '1':
+        log._dp("SOST建议更新")
+        tips = 'Your SOST is not the latest version. It is recommended to update it'
+    elif update_flag == '2':    
+        log._dp("SOST强制更新")
+        tips = 'Your SOST is not the latest version and must be updated'
+    elif update_flag == '3':
+        log._dp("SOST建议降级")
+        tips = 'Your SOST is not the latest version. It is recommended to downgrade'
+    elif update_flag == '4':
+        log._dp("SOST强制降级")
+        tips = 'Your SOST is not the latest version and must be downgraded'
+    else:
+        return 0
+    update_show(update_flag,tips)
 
 def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
     bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
@@ -1043,8 +1089,9 @@ def return_alive_server_ip():
         if "100% packet loss" not in result:
             return ip
 
-def update_sost():
-    if log._in("Do you want to Update ? [ y / n] ").lower() == 'n':log._error("User.Input.Not.Update")
+def update_sost(update_flag=''):
+    if update_flag != '1':
+        if log._in("Do you want to Update ? [ y / n] ").lower() == 'n':log._error("User.Input.Not.Update")
     # sost Release server ip 
     server_ip = str(return_alive_server_ip()).strip()
     # 1.0.8
@@ -1576,6 +1623,7 @@ def dmesg_show():
 
 # clear terminal print
 def clp(): 
+    return 0
     if log.json_get("sost","debug_flags") == "0":
         os.system("clear")
     return
