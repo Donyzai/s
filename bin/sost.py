@@ -291,7 +291,7 @@ def parser_test():
             elif sys.argv[2] == "fw":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import fwinfo;fwinfo('0','',' ')" ''')
             elif sys.argv[2] == "bmcip":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import bmcip;bmcip('0','',' ')" ''')
             elif sys.argv[2] == "bp":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import backboard_info;backboard_info('0','',' ')" ''')
-            elif sys.argv[2] == "sha256":os.popen('cat /opt/sost/sostsha256.txt').read().strip().replace('\n','')  
+            elif sys.argv[2] == "sha256":print(os.popen("sha256sum  /opt/sost/config/sost.json  | cut -d ' ' -f 1 | tr -d ' '").read().strip().replace('\n',''))
             elif sys.argv[2] == "bmchip":
                 print('='*60)
                 bmc_chip = os.popen("cd /opt/sost && python3 -c 'from lib.sost_public_lib import bmc_Chip;print(str(bmc_Chip()[0]))'").read().strip()

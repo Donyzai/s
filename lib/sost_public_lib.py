@@ -30,11 +30,11 @@ def update_show(update_flag,tips):
 >> {tips}''')
 
     if update_flag == '1':
-        update_sost()
+        update_sost(noexit_flag='1')
     elif update_flag == '2':
         update_sost(update_flag='1')
     elif update_flag == '3':
-        update_sost()
+        update_sost(noexit_flag='1')
     elif update_flag == '4':
         update_sost(update_flag='1')
     else:
@@ -45,36 +45,41 @@ def update_check():
     sost_server_ip = log.json_get("sost","update_Web_server_ip").strip()
 
     try:
-        if os.system(f'ping {sost_server_ip} -c 1 >/dev/null 2>&1') != 0:
+        if os.system(f'ping {sost_server_ip} -c 1 -i 0.5 -W 0.5 >/dev/null 2>&1') != 0:
             return False
     except:
         return False
 
     update_flag = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/update_flag.txt 2>/dev/null").replace("\n","").strip()
-    sha256 = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/new_version_sha256.txt 2>/dev/null").replace("\n","").strip()
-    local_sha256 = log.os_popen('sost -i sha256 2>/dev/null').replace("\n","").strip()
+    remote_sha256 = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/new_version_sha256.txt 2>/dev/null").replace("\n","").strip()
+    local_sha256 = log.os_popen('sost -i sha256').replace("\n","").strip()
 
-    if update_flag == '' or sha256 == '' or local_sha256 == '':
-        return False
+    log._dp(f"update_flag    : {update_flag}")
+    log._dp(f"remote_sha256  : {remote_sha256}")
+    log._dp(f"local_sha256   : {local_sha256}")
     
+    if update_flag == '' or remote_sha256 == '' or local_sha256 == '':
+        log._dp("SOST update_server_ip Error!")
+        return 0
+        
+    if remote_sha256 == local_sha256:
+        log._dp("The sha256 remote value is consistent with the local value, so no update is needed")
+        return 0
     
-
-
-
     if update_flag == '0':
-        log._dp("SOST最新版本")
+        log._dp("SOST is the latest version")
         return 0
     elif update_flag == '1':
-        log._dp("SOST建议更新")
+        log._dp("SOST is recommended to update")
         tips = 'Your SOST is not the latest version. It is recommended to update it'
     elif update_flag == '2':    
-        log._dp("SOST强制更新")
+        log._dp("SOST must be updated")
         tips = 'Your SOST is not the latest version and must be updated'
     elif update_flag == '3':
-        log._dp("SOST建议降级")
+        log._dp("SOST is recommended to downgrade")
         tips = 'Your SOST is not the latest version. It is recommended to downgrade'
     elif update_flag == '4':
-        log._dp("SOST强制降级")
+        log._dp("SOST must be downgraded")
         tips = 'Your SOST is not the latest version and must be downgraded'
     else:
         return 0
@@ -1099,9 +1104,13 @@ def return_alive_server_ip():
         if "100% packet loss" not in result:
             return ip
 
-def update_sost(update_flag=''):
+def update_sost(update_flag='',noexit_flag=''):
     if update_flag != '1':
-        if log._in("Do you want to Update ? [ y / n] ").lower() == 'n':log._error("User.Input.Not.Update")
+        if log._in("Do you want to Update ? [ y / n] ").lower() == 'n':
+            if noexit_flag == '':
+                log._error("User.Input.Not.Update")
+            else:
+                return
     # sost Release server ip 
     server_ip = str(return_alive_server_ip()).strip()
     # 1.0.8
@@ -1633,7 +1642,6 @@ def dmesg_show():
 
 # clear terminal print
 def clp(): 
-    return 0
     if log.json_get("sost","debug_flags") == "0":
         os.system("clear")
     return
