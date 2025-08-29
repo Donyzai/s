@@ -125,6 +125,8 @@ def return_get_data():
 
         'Product_name': 'NA',
         'Sost_Ver': str(os.popen("cat /opt/sost/config/sost.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
+        'Sost_Build_Time': str(os.popen("cat /opt/sost/config/sost.json | grep -i Release_Time | cut -d ':' -f 2 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
+        'Sost_ver_sha256': str(os.popen("sost -i sha256",).read().strip().replace('"', "").replace(",", "")),
         'Bios_ver': os.popen("dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null").read().strip(),
         'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'mem_usage': os.popen(''' free | awk '/Mem/{printf("%.2f"), $3/$2*100}' 2>/dev/null ''').read().strip(),

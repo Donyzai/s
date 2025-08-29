@@ -1,0 +1,6 @@
+< sost_20250829-144425_print    > : swc_web is Running! Running-Time -> 20250829 14:44:25 (swc_web.py)
+< sost_20250829-144425_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20250829-144428_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20250829-145716_print    > : swc_web is Running! Running-Time -> 20250829 14:57:16 (swc_web.py)
+< sost_20250829-145716_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20250829-145717_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
