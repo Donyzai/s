@@ -51,6 +51,16 @@ def update_check():
         return False
 
     update_flag = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/update_flag.txt 2>/dev/null").replace("\n","").strip()
+    sha256 = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/new_version_sha256.txt 2>/dev/null").replace("\n","").strip()
+    local_sha256 = log.os_popen('sost -i sha256 2>/dev/null').replace("\n","").strip()
+
+    if update_flag == '' or sha256 == '' or local_sha256 == '':
+        return False
+    
+    
+
+
+
     if update_flag == '0':
         log._dp("SOST最新版本")
         return 0
