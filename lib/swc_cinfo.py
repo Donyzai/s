@@ -293,7 +293,7 @@ def log_system_status(data):
 Services          : sost-webconsole-service
 ServicesStatus    : {status}
 NowTime           : {now_time}
-sost-version      : {data['Sost_Ver']}
+sost-version      : {data['sost_version']}
 sost-cmdflags     : {cmd_log_flags}
 product-name      : {data['Product_name']}
 JsonData          :
