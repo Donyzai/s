@@ -10,3 +10,6 @@
 < sost_20250829-141125_json_get > : type[sost] obj[Test_tmp] key[test_type] value[]
 < sost_20250829-141128_json_get > : type[sost] obj[sost] key[debug_flags] value[0]
 < sost_20250829-141128_json_get > : type[sost] obj[Test_tmp] key[test_type] value[]
+< sost_20250902-141147_json_get > : type[sost] obj[Test_Config] key[Result_path] value[/root]
+< sost_20250902-141150_json_get > : type[sost] obj[sost] key[debug_flags] value[0]
+< sost_20250902-141222_json_get > : type[sost] obj[sost] key[debug_flags] value[0]

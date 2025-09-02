@@ -792,19 +792,17 @@ def def_Handling_sensors():
             log._error("Not Found File!")
         if not os.path.exists(result_folder):
             os.mkdir(result_folder)
-        if "sensor" in sensors_type:
-            sensor_title_arry = log.os_popen("ipmitool sensor 2>/dev/null | awk '{print $1}'").strip()
-        elif "sdr" in sensors_type:
-            sensor_title_arry = log.os_popen("ipmitool sdr 2>/dev/null | awk '{print $1}'").strip()
+        if "sdr" in sensors_type:
+            sensor_command = 'ipmitool sdr'
         else:
-            # Auto sensor title
-            sensor_title_arry = log.os_popen("ipmitool sensor 2>/dev/null | awk '{print $1}'").strip()
-        for sensor_title in sensor_title_arry.split():
+            sensor_command = 'ipmitool sensor list'
+        sensor_title_arry = log.os_popen(fr"{sensor_command} 2>/dev/null | cut -d '|' -f 1 ").split('\n')
+        for sensor_title in sensor_title_arry:
+            sensor_log_filename = sensor_title.replace(' ','')
             if filter_type != "":
-                if filter_type.lower() not in sensor_title.lower():
-                    continue
-            log.os_run(f"echo {sensor_title} >> {result_folder}/sensor_data/{sensor_title}.log")
-            log.os_run(f"cat {file_path} | grep -w '{sensor_title} ' | awk '{{print $3}}' >> {result_folder}/sensor_data/{sensor_title}.log")
+                if filter_type.lower() not in sensor_title.lower():continue
+            log.os_run(f"echo '{sensor_title}' >> {result_folder}/sensor_data/{sensor_log_filename}.log")
+            log.os_run(f"cat {file_path} | grep -w '{sensor_title}' | cut -d '|' -f 2 >> {result_folder}/sensor_data/{sensor_log_filename}.log")
         log.os_run(f"paste -d ',' {result_folder}/sensor_data/*.log > {result_folder}/sost_sensors_list.csv")
         log.os_run(f"rm -rf {result_folder}/sensor_data")
         log._pr(f"Result File Path : {result_folder}/sost_sensors_list.csv")
