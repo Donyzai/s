@@ -29,9 +29,9 @@
     "sost_ReTime": "2025-08-28",
     "sost_ver_sha256": "987f6e7961a6cae849a6aae369334a080d272dcc3dd3bdd338b57e0d1a93444b",
     "Bios_ver": "T2DMEP04.00",
-    "zLast_Time": "2025-09-03 09:40:57",
-    "mem_usage": "1.92",
-    "cpu_usage": "0.0",
+    "zLast_Time": "2025-09-03 10:29:09",
+    "mem_usage": "1.93",
+    "cpu_usage": "0.08",
     "fail_info": "Pass",
     "hw_uuid": "83a59b18f13e01e8ef11030e9231358c",
     "swc_service_connectivity": ""
