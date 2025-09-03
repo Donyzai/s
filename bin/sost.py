@@ -118,66 +118,80 @@ def debug_info():
     except:
         return 0
     
-class HiddenHelpFormatter(argparse.HelpFormatter):
-    def _add_argument(self, action):
-        if getattr(action, 'help', None) == "HIDDEN":
-            return
-        super()._add_argument(action)
+import argparse
+import sys
+import os
 
 def parser_test():
-    
+    # Create argument parser with basic configuration
     parser = argparse.ArgumentParser(
-        prog="sost", 
-        epilog=">> Thanks for using sost ! Auther:Fanxiaodong <<",
-        formatter_class=HiddenHelpFormatter
+        prog="sost",
+        epilog=">> Thanks for using sost ! Author: Fanxiaodong <<",
+        add_help=True,
+        formatter_class=argparse.RawTextHelpFormatter
     )
 
+    # Register visible parameters
     parser.add_argument("sost [args]", nargs='?', help="Command to execute")
-    parser.add_argument("-a", "--autologin", help="sost set autologing", action="store_true")
-    parser.add_argument("-b", "--bmclog_check", help="bmclog_check_Error", action="store_true")
-    parser.add_argument("-c", "--config", help="Modify sost configuration", action="store_true")
-    parser.add_argument("-d", "--dmesg_check", help="dmesg_check_Error", action="store_true")
-    parser.add_argument("-e", "--exittest", help="exittest", action="store_true")
-    parser.add_argument("-f", "--fix", help="Sost repair environment", action="store_true")
-    parser.add_argument("-k", "--killall",help="Killall sost process", action="store_true")
-    parser.add_argument("-m", "--testmode",help="SetTestMode", action="store_true")
-    parser.add_argument("-o", "--output",help="Output stability test report", action="store_true")
-    parser.add_argument("-s", "--start", help="Start running the sost tool", action="store_true")
-    parser.add_argument("-u", "--uninstall", help="Uninstall sost Tools", action="store_true")
-    parser.add_argument("-v", "--version", help="sost version", action="store_true")
-    parser.add_argument("-w", "--webconsole", help="sost web console", action="store_true")
-    parser.add_argument("-z", "--continuee", help="Continue Test", action="store_true")
-    parser.add_argument("-i", "--info",help="Query server specified information", action="store_true")
-    parser.add_argument("-sensor","--sensor",help="Collect IPMI Sensor data", action="store_true")
-    parser.add_argument("-D", "--debug", help="Enable debug mode (output detailed logs)", action="store_true")
-    
-    for i in range(1, 9):
+    parser.add_argument("-a", "--autologin", action="store_true", 
+                       help="Enable auto-login for sost")
+    parser.add_argument("-b", "--bmclog_check", action="store_true", 
+                       help="Check BMC log errors")
+    parser.add_argument("-c", "--config", action="store_true", 
+                       help="Modify sost configuration")
+    parser.add_argument("-d", "--dmesg_check", action="store_true", 
+                       help="Check dmesg errors")
+    parser.add_argument("-e", "--exittest", action="store_true", 
+                       help="Run exit test")
+    parser.add_argument("-f", "--fix", action="store_true", 
+                       help="Repair sost environment")
+    parser.add_argument("-k", "--killall", action="store_true", 
+                       help="Kill all sost processes")
+    parser.add_argument("-m", "--testmode", action="store_true", 
+                       help="Enable test mode")
+    parser.add_argument("-o", "--output", action="store_true", 
+                       help="Generate stability test report")
+    parser.add_argument("-s", "--start", action="store_true", 
+                       help="Start sost tool execution")
+    parser.add_argument("-u", "--uninstall", action="store_true", 
+                       help="Uninstall sost tools")
+    parser.add_argument("-v", "--version", action="store_true", 
+                       help="Show sost version")
+    parser.add_argument("-w", "--webconsole", action="store_true", 
+                       help="Launch sost web console")
+    parser.add_argument("-z", "--continuee", action="store_true", 
+                       help="Continue test execution")
+    parser.add_argument("-i", "--info", action="store_true", 
+                       help="Query server specific information")
+    parser.add_argument("-sensor", "--sensor", action="store_true", 
+                       help="Collect IPMI sensor data")
+    parser.add_argument("-D", "--debug", action="store_true", 
+                       help="Enable debug mode (detailed logs)")
+
+    BATCH_PARAM_COUNT = 10
+    for i in range(1, BATCH_PARAM_COUNT + 1):
         parser.add_argument(
-            f"-i{i}", f"--input{i}", 
-            type=str, 
-            help="HIDDEN"
+            f"-i{i}", f"--in{i}",
+            action="store",
+            help=argparse.SUPPRESS  # Hide from help output
         )
 
     args = parser.parse_args()
 
     if args.debug:
-        print("<sost> Debug mode enabled, detailed logs will be output!")
-        print('===========================================')
-        print("parser.i1  : Type(str)" )
-        print("parser.i2  : Type(str)" )
-        print("parser.i3  : Type(str)" )
-        print('===========================================')
-        print("parser.i1 : " + str(args.input1))
-        print("parser.i2 : " + str(args.input2))
-        print("parser.i3 : " + str(args.input3))
+        print("<sost> Debug mode enabled - detailed logs will be output")
+        print('===========================================================')
+        print("Entered debug mode, displaying all input parameters:")
+
+        print('===========================================================')
+        print(f"in1 value: {args.in1 if hasattr(args, 'in1') else 'Not provided'}")
+        print(f"in2 value: {args.in2 if hasattr(args, 'in2') else 'Not provided'}")
+        print(f"in3 value: {args.in3 if hasattr(args, 'in3') else 'Not provided'}")
 
     if args.config:
-        print("=========================================")
-        print("<sost> Open sost.json file !")
-        print("=========================================")
-        print("[option]     [obj]       [key]       [value]     [new_value]")
-        print(" config      open sost.json file")
-        print("")
+        print("\n" + "=" * 40)
+        print("<sost> Opening sost.json configuration file")
+        print("=" * 40)
         os.system("vim /opt/sost/config/sost.json")
 
     if args.bmclog_check:
