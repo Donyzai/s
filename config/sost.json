@@ -43,18 +43,19 @@
         "pop3_password": ""
     },
     "Test_tmp": {
-        "test_type": "",
-        "test_count": "",
-        "test_folder_path": "",
-        "run_command": "",
-        "test_status": "",
-        "startT_time": "",
-        "endT_time": "",
-        "StartWaitTimeCountdown": "0",
-        "EndWaitTimeCountdown": "10",
-        "Running_flag": "0",
+        "test_type": "bmc_power_on_off",
+        "test_count": "0",
+        "test_folder_path": "/root/bmc_power_on_off",
+        "run_command": "power_on_off",
+        "test_status": "Pass",
+        "startT_time": "2025-09-02-21-37-41",
+        "endT_time": "2025-09-03-09-26-13",
+        "StartWaitTimeCountdown": "00",
+        "EndWaitTimeCountdown": "00",
+        "Running_flag": "4",
         "running_time_last": "54",
-        "running_time_now": "42"
+        "running_time_now": "42",
+        "running_time_first": ""
     },
     "sost": {
         "Version": "1.1.1",
