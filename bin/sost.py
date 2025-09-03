@@ -107,8 +107,9 @@ def debug_info():
                     print("<sost> Debug flags setting : 0")
             except:
                 return 0
-        if sys.argv[1] == "debug":
+        if sys.argv[1] == "update":
             try:
+                print("<sost> Update sost tool !")
                 os.system("cd /opt/sost && python3 -c 'from lib.sost_public_lib import update_sost;update_sost()'")
             except:
                 return 0
@@ -116,9 +117,21 @@ def debug_info():
             print('dony')
     except:
         return 0
+    
+class HiddenHelpFormatter(argparse.HelpFormatter):
+    def _add_argument(self, action):
+        if getattr(action, 'help', None) == "HIDDEN":
+            return
+        super()._add_argument(action)
 
 def parser_test():
-    parser = argparse.ArgumentParser(prog="sost", epilog=">> Thanks for using sost ! Auther:Fanxiaodong <<")
+    
+    parser = argparse.ArgumentParser(
+        prog="sost", 
+        epilog=">> Thanks for using sost ! Auther:Fanxiaodong <<",
+        formatter_class=HiddenHelpFormatter
+    )
+
     parser.add_argument("sost [args]", nargs='?', help="Command to execute")
     parser.add_argument("-a", "--autologin", help="sost set autologing", action="store_true")
     parser.add_argument("-b", "--bmclog_check", help="bmclog_check_Error", action="store_true")
@@ -136,8 +149,36 @@ def parser_test():
     parser.add_argument("-z", "--continuee", help="Continue Test", action="store_true")
     parser.add_argument("-i", "--info",help="Query server specified information", action="store_true")
     parser.add_argument("-sensor","--sensor",help="Collect IPMI Sensor data", action="store_true")
+    parser.add_argument("-D", "--debug", help="Enable debug mode (output detailed logs)", action="store_true")
     
+    for i in range(1, 9):
+        parser.add_argument(
+            f"-i{i}", f"--input{i}", 
+            type=str, 
+            help="HIDDEN"
+        )
+
     args = parser.parse_args()
+
+    if args.debug:
+        print("<sost> Debug mode enabled, detailed logs will be output!")
+        print('===========================================')
+        print("parser.i1  : Type(str)" )
+        print("parser.i2  : Type(str)" )
+        print("parser.i3  : Type(str)" )
+        print('===========================================')
+        print("parser.i1 : " + str(args.input1))
+        print("parser.i2 : " + str(args.input2))
+        print("parser.i3 : " + str(args.input3))
+
+    if args.config:
+        print("=========================================")
+        print("<sost> Open sost.json file !")
+        print("=========================================")
+        print("[option]     [obj]       [key]       [value]     [new_value]")
+        print(" config      open sost.json file")
+        print("")
+        os.system("vim /opt/sost/config/sost.json")
 
     if args.bmclog_check:
         os.system('''cd /opt/sost && python3 -c "from lib.sost_system_info_lib import bmclog_check;bmclog_check('','')"''')
@@ -451,8 +492,7 @@ export PATH
                 with open('/root/.bash_profile','a') as f:
                     f.write('sost -z')
         os.system("cd /opt/sost && python3 auto_test.py")
-    if args.config:
-        os.system("vim /opt/sost/config/sost.json")
+    
 
     if args.uninstall:
         if input("<sost> Do you want to uninstall sost? (y/n) ").lower() == "y":

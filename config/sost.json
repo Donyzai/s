@@ -55,7 +55,8 @@
         "Running_flag": "4",
         "running_time_last": "54",
         "running_time_now": "42",
-        "running_time_first": ""
+        "running_time_first": "",
+        "": ""
     },
     "sost": {
         "Version": "1.1.1",

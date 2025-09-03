@@ -39,3 +39,75 @@
 < sost_20250903-092613_print    > : Test Start Time  : 2025-09-02-21-37-41
 < sost_20250903-092613_print    > : Test End   Time  : 2025-09-03-09-26-13
 < sost_20250903-092613_print    > : ===============================================================
+< sost_20250903-143638_print    > : {
+    "Test_Config": {
+        "Result_path": "/root",
+        "Dedicated_lan_num": "1",
+        "Share_lan_num": "8",
+        "fail_exit_flags": "0",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
+        "aclost_wait_time": "120",
+        "end_wait_time": "15",
+        "frist_sdi_time": "5",
+        "max_count": "",
+        "collect_cmd": "",
+        "Maximum_restart_time": "900",
+        "simple_test_flags": "",
+        "result_html": "0",
+        "ipmi_sensdr_retry_count": "0",
+        "running_time_max": "60"
+    },
+    "power_on_off": {
+        "server_ip": "192.168.60.138",
+        "server_port": "13251"
+    },
+    "Multimodal_stability": {
+        "switch": "0",
+        "count_aclost": "",
+        "count_reboot": "",
+        "count_powercycle": "",
+        "count_powerreset": ""
+    },
+    "BMC_Survival_Config": {
+        "bmc_chip": "ASPEED-2600",
+        "switch": "0",
+        "BMC_Username": "",
+        "BMC_Password": ""
+    },
+    "smtp": {
+        "Fail_send_email": "",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "pop3_password": ""
+    },
+    "Test_tmp": {
+        "test_type": "bmc_power_on_off",
+        "test_count": "0",
+        "test_folder_path": "/root/bmc_power_on_off",
+        "run_command": "power_on_off",
+        "test_status": "Pass",
+        "startT_time": "2025-09-02-21-37-41",
+        "endT_time": "2025-09-03-09-26-13",
+        "StartWaitTimeCountdown": "00",
+        "EndWaitTimeCountdown": "00",
+        "Running_flag": "4",
+        "running_time_last": "54",
+        "running_time_now": "42",
+        "running_time_first": "",
+        "",""
+
+    },
+    "sost": {
+        "Version": "1.1.1",
+        "Release_Time": "2025-08-28",
+        "update_Web_server_ip": "192.168.60.138",
+        "Web_Console": "1",
+        "swc_flags": "0",
+        "debug_flags": "0"
+    }
+}
+< sost_20250903-143644_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20250903-145941_input    > : n
