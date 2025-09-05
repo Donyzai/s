@@ -28,14 +28,15 @@ def after_request(response):
     logging.getLogger('werkzeug').setLevel(logging.ERROR)
     return response
 
-import subprocess
-from flask import request, jsonify
+@app.route('/getrunningTime')
+def get_running_time():
+    runTime = log.os_popen(f"cat {log.json_get('Test_tmp','test_folder_path',web=cmd_log_flags)}/running_time.txt",flags=cmd_log_flags).strip()
+    return runTime.replace('\n','<br>')
 
 @app.route('/clearinfo')
 def clear_info():
     log.json_set('Test_tmp','Running_flag','0')
     return 'success',200
-
 
 @app.route('/set', methods=['GET'])  # 或者 methods=['POST']，取决于你的调用方式
 def set_value():

@@ -1,3 +1,2 @@
-[31m< sost_20250903-143638_error    > : json file EXIT! error_info : Expecting ':' delimiter: line 59 column 11 (char 1685) 
- <! sost !>json_get obj : Test_tmp key : test_status[0m
-[31m< sost_20250903-145941_error    > : User.Input.Not.Update[0m
+[31m< sost_20250905-131250_error    > : os_popen command : lspci -vvvs 0001:e2:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' error![0m
+[31m< sost_20250905-131251_error    > : User.Exit.Test![0m

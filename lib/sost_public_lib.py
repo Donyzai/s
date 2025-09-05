@@ -9,10 +9,16 @@ from .sost_logging import dong_log
 from .sost_system_info_lib import test_config
 import time
 import os
+import hashlib
 from datetime import datetime, timedelta
 
 log = dong_log()
 log.debug_flags = str(log.json_get("sost","debug_flags",web='no-log'))
+
+def testsha256():
+    sha256_str = log.json_get("Test_tmp","test_type").strip() + log.json_get("Test_tmp","startT_time").strip()
+    # uuid encode = test_type + start_time
+    log.json_set("Test_tmp","test_sha256",str(hashlib.sha256(sha256_str.encode(encoding='UTF-8')).hexdigest()))
 
 def update_show(update_flag,tips):
     clp()

@@ -22,48 +22,6 @@ def json_set(class_name, key, new_value):
 
 def debug_info():
     try:
-        if sys.argv[1] == "args":
-            try:
-                print("args 0 : " + sys.argv[0])
-            except:
-                print("args 0 : None")
-            try:
-                print("args 1 : " + sys.argv[1])
-            except:
-                print("args 1 : None")
-            try:
-                print("args 2 : " + sys.argv[2])
-            except:
-                print("args 2 : None")
-            try:
-                print("args 3 : " + sys.argv[3])
-            except:
-                print("args 3 : None")
-            try:
-                print("args 4 : " + sys.argv[4])
-            except:
-                print("args 4 : None")
-            try:
-                print("args 5 : " + sys.argv[5])
-            except:
-                print("args 6 : None")
-            try:
-                print("args 6 : " + sys.argv[6])
-            except:
-                print("args 6 : None")
-            try:
-                print("args 7 : " + sys.argv[7])
-            except:
-                print("args 7 : None")
-            try:
-                print("args 8 : " + sys.argv[8])
-            except:
-                print("args 8 : None")
-            try:
-                print("args 9 : " + sys.argv[9])
-            except:
-                print("args 9 : None")
-
         if sys.argv[1] == "debug":
             try:
                 if sys.argv[2] == "help":
@@ -117,10 +75,6 @@ def debug_info():
             print('dony')
     except:
         return 0
-    
-import argparse
-import sys
-import os
 
 def parser_test():
     # Create argument parser with basic configuration
@@ -132,49 +86,35 @@ def parser_test():
     )
 
     # Register visible parameters
+    # >> help=argparse.SUPPRESS Hide parameters from help documentation
     parser.add_argument("sost [args]", nargs='?', help="Command to execute")
-    parser.add_argument("-a", "--autologin", action="store_true", 
-                       help="Enable auto-login for sost")
-    parser.add_argument("-b", "--bmclog_check", action="store_true", 
-                       help="Check BMC log errors")
-    parser.add_argument("-c", "--config", action="store_true", 
-                       help="Modify sost configuration")
-    parser.add_argument("-d", "--dmesg_check", action="store_true", 
-                       help="Check dmesg errors")
-    parser.add_argument("-e", "--exittest", action="store_true", 
-                       help="Run exit test")
-    parser.add_argument("-f", "--fix", action="store_true", 
-                       help="Repair sost environment")
-    parser.add_argument("-k", "--killall", action="store_true", 
-                       help="Kill all sost processes")
-    parser.add_argument("-m", "--testmode", action="store_true", 
-                       help="Enable test mode")
-    parser.add_argument("-o", "--output", action="store_true", 
-                       help="Generate stability test report")
-    parser.add_argument("-s", "--start", action="store_true", 
-                       help="Start sost tool execution")
-    parser.add_argument("-u", "--uninstall", action="store_true", 
-                       help="Uninstall sost tools")
-    parser.add_argument("-v", "--version", action="store_true", 
-                       help="Show sost version")
-    parser.add_argument("-w", "--webconsole", action="store_true", 
-                       help="Launch sost web console")
-    parser.add_argument("-z", "--continuee", action="store_true", 
-                       help="Continue test execution")
-    parser.add_argument("-i", "--info", action="store_true", 
-                       help="Query server specific information")
-    parser.add_argument("-sensor", "--sensor", action="store_true", 
-                       help="Collect IPMI sensor data")
-    parser.add_argument("-D", "--debug", action="store_true", 
-                       help="Enable debug mode (detailed logs)")
+    parser.add_argument("-a", "--autologin", action="store_true", help="Enable auto-login for sost")
+    parser.add_argument("-b", "--bmclog_check", action="store_true", help="Check BMC log errors")
+    parser.add_argument("-c", "--config", nargs='*',
+                       help="Modify sost configuration.\n"
+                            "Usage:\n"
+                            "  sost -c open              # Directly open configuration file\n"
+                            "  sost -c get <OBJECT>      # Get configuration (e.g., 'sost -c get 2')\n"
+                            "  sost -c set <OBJECT> <KEY> <VALUE>  # Set configuration")
+    parser.add_argument("-d", "--dmesg_check", action="store_true", help="Check dmesg errors")
+    parser.add_argument("-e", "--exittest", action="store_true", help="Run exit test")
+    parser.add_argument("-f", "--fix", action="store_true", help="Repair sost environment")
+    parser.add_argument("-k", "--killall", action="store_true", help="Kill all sost processes")
+    parser.add_argument("-m", "--testmode", action="store_true", help="Enable test mode")
+    parser.add_argument("-o", "--output", action="store_true", help="Generate stability test report")
+    parser.add_argument("-s", "--start", action="store_true", help="Start sost tool execution")
+    parser.add_argument("-u", "--uninstall", action="store_true", help="Uninstall sost tools")
+    parser.add_argument("-v", "--version", action="store_true", help="Show sost version")
+    parser.add_argument("-w", "--webconsole", action="store_true",help="Launch sost web console")
+    parser.add_argument("-z", "--continuee", action="store_true", help="Continue test execution")
+    parser.add_argument("-i", "--info", action="store_true", help="Query server specific information")
+    parser.add_argument("-sensor", "--sensor", action="store_true", help="Collect IPMI sensor data")
 
-    BATCH_PARAM_COUNT = 10
-    for i in range(1, BATCH_PARAM_COUNT + 1):
-        parser.add_argument(
-            f"-i{i}", f"--in{i}",
-            action="store",
-            help=argparse.SUPPRESS  # Hide from help output
-        )
+    # Hidden parameters for advanced users or debugging
+    parser.add_argument("-D", "--debug", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument(f"-i1", f"--in1",action="store",help=argparse.SUPPRESS)
+    parser.add_argument(f"-i2", f"--in2",action="store",help=argparse.SUPPRESS)
+    parser.add_argument(f"-i3", f"--in3",action="store",help=argparse.SUPPRESS)
 
     args = parser.parse_args()
 
@@ -182,17 +122,65 @@ def parser_test():
         print("<sost> Debug mode enabled - detailed logs will be output")
         print('===========================================================')
         print("Entered debug mode, displaying all input parameters:")
-
         print('===========================================================')
-        print(f"in1 value: {args.in1 if hasattr(args, 'in1') else 'Not provided'}")
-        print(f"in2 value: {args.in2 if hasattr(args, 'in2') else 'Not provided'}")
-        print(f"in3 value: {args.in3 if hasattr(args, 'in3') else 'Not provided'}")
+        for i in range(1,11):
+            param_value = getattr(args, f'in{i}', 'Not provided')
+            print(f"in{i} value: {param_value if param_value is not None else 'Not provided'}")
+
+    def config_help_d():
+            print('-----------------------------------------------------')
+            print("sost -c get -in1 [Config_Object] -in2 [Config_Key]")
+            print("sost -c set -in1 [Config_Object] -in2 [Config_Key] -in3 [New_Value]")
+            print("sost -c open  Open sost.json configuration file")
+            print('-----------------------------------------------------')
+    
+    if sys.argv[1] == '-c':
+        os.system("vim /opt/sost/config/sost.json")
+        exit()
 
     if args.config:
-        print("\n" + "=" * 40)
-        print("<sost> Opening sost.json configuration file")
-        print("=" * 40)
-        os.system("vim /opt/sost/config/sost.json")
+        try:
+            if sys.argv[2] == "open":
+                os.system("vim /opt/sost/config/sost.json")
+                exit()
+            # parms1 = get / set 
+            parms1 = args.in1
+            # parms2 = config object
+            parms2 = args.in2
+            # parms3 = config key
+            parms3 = args.in3
+            # parms4 = config new_value
+            parms4 = args.in4
+            # command 
+            # sost --config -i1 get -i2 Test_Config -i3 Result_path
+            print('-'*70)
+            print(f"<sost> parms1 Configuration operation type : {parms1}")
+            print(f"<sost> parms2 Configuration object         : {parms2}")
+            print(f"<sost> parms3 Configuration key            : {parms3}")
+            print(f"<sost> parms4 New configuration value      : {parms4}")
+            print('-'*70)
+            if parms1 == 'get':
+                print("sost -c get")
+                if parms2 == None and parms3 == None:
+                    print("<sost> parms2 and parms3 are required for 'get' operation")
+                elif parms2 != None and parms3 == None:
+                    print("<sost> parms3 is required for 'get' operation")
+                else:
+                    print(json_load(parms2, parms3))
+            elif parms1 == 'set':
+                print("sost -c set")
+                if parms2 == None or parms3 == None or parms4 == None:
+                    print("<sost> parms2, parms3, and parms4 are required for 'set' operation")
+                else:
+                    json_set(parms2, parms3, parms4)
+                    print(f"<sost> Set {parms2} {parms3} to {parms4} Success!")
+            elif parms1 == "open":
+                print("sost -c open")
+                os.system("vim /opt/sost/config/sost.json")
+            else:
+                config_help_d()
+        except:
+            config_help_d()
 
     if args.bmclog_check:
         os.system('''cd /opt/sost && python3 -c "from lib.sost_system_info_lib import bmclog_check;bmclog_check('','')"''')
