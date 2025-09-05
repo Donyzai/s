@@ -98,6 +98,7 @@ def return_get_data():
         'Test-count': 'NA',
         'Test-result': 'NA',
         'Test-uuid':'',
+        'Test-sha256': simple_json_get("Test_tmp","test_sha256") or "NA",
         
         'Test-Start-Time':get_value('startT_time'),
         'Test-End-Time':get_value('endT_time'),
