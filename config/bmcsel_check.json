@@ -18,6 +18,8 @@
         "CMOS":"1",
         "FAN":"1",
         "ac":"1",
-        "dc":"1"
+        "dc":"1",
+        "Power Supply PSU1 Status":"1",
+        "Power Supply PSU2 Status":"1"
     }
 }

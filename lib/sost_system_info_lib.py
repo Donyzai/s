@@ -155,7 +155,7 @@ done''')
 
 def bmclog_check(path,count):
 
-    black_list = ["FAN","CMOS","ac","dc"]
+    black_list = ["FAN","CMOS","ac","dc","Power Supply PSU2 Status","Power Supply PSU1 Status"]
 
     json_data = json.loads(open("/opt/sost/config/bmcsel_check.json","r").read())
     error_arry = list(json_data["bmcsel_check_items"].keys())
