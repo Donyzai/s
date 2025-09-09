@@ -1,13 +1,20 @@
-< sost_20250905-131243_print    > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20250905-131251_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20250905-131251_print    > : ===============================================================
-< sost_20250905-131251_print    > : Test type        : reboot
-< sost_20250905-131251_print    > : Test Count       : 0
-< sost_20250905-131251_print    > : Test Folder      : /root/reboot
-< sost_20250905-131251_print    > : Test Status      : NA
-< sost_20250905-131251_print    > : Test Start Time  : 2025-09-05-13-12-41
-< sost_20250905-131251_print    > : Test End   Time  : 2025-09-05-13-12-50
-< sost_20250905-131251_print    > : ===============================================================
-< sost_20250905-132936_print    > : swc_web is Running! Running-Time -> 20250905 13:29:36 (swc_web.py)
-< sost_20250905-132936_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20250905-132938_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20250908-170933_print    > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20250908-170937_print    > : swc_web is Running! Running-Time -> 20250908 17:09:37 (swc_web.py)
+< sost_20250908-170937_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20250908-170944_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20250909-094328_input    > : 9
+< sost_20250909-094330_input    > : 2
+< sost_20250909-094333_input    > : 1
+< sost_20250909-094334_input    > : 
+< sost_20250909-094334_input    > : 
+< sost_20250909-094411_input    > : 9
+< sost_20250909-094411_input    > : 2
+< sost_20250909-094413_input    > : 
+< sost_20250909-094413_input    > : 
+< sost_20250909-094413_input    > : 
+< sost_20250909-094420_input    > : 9
+< sost_20250909-094420_input    > : 2
+< sost_20250909-094422_input    > : 
+< sost_20250909-094423_input    > : 
+< sost_20250909-094425_input    > : ttytty`12
+< sost_20250909-094436_input    > : 10001

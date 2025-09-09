@@ -656,7 +656,7 @@ def bmc_Create_sel_log(bmc_ip,bmc_user,bmc_pass):
         log._tips("Success!\n")      
 
         clear_sel_num = log.os_popen(f"sh -c 'ipmitool -C 17 -I lanplus -U {bmc_user.strip()} -P {bmc_pass.strip()} -H {bmc_ip.strip()} sel elist | wc -l'").strip().replace("\n","")
-        
+        time.sleep(3)
         if clear_sel_num == "0":
             log._error("Bmc sel log num : 0")
         elif clear_sel_num == "1":
@@ -664,8 +664,17 @@ def bmc_Create_sel_log(bmc_ip,bmc_user,bmc_pass):
         else:
             return
         
-        user_input = log._in("Input the number of generated items Enter-> 4000 : ").strip()
+        user_input = log._in("Input the number of generated items Enter-> 4000 [Max 10000]: ").strip()
         if user_input == "":user_input = "4000"
+        # Validate user input is a number and within range (1-10000)
+        if user_input.isdigit():
+            if int(user_input) > 10000:
+                log._error("User.Input.Error! Max 10000")
+        else:
+            log._error("User.Input.Error! Not a number!")
+        
+
+
         log._tips("Now start collecting the first log information!")
         try:
             log.os_run(f"ipmitool -C 17 -I lanplus -U {bmc_user.strip()} -P {bmc_pass.strip()} -H {bmc_ip.strip()} sel save /tmp/sost_tmp/sost_sel_log_bak")
@@ -1720,6 +1729,9 @@ def init_stability_path(test_type):
     log.os_run(f"ls /dev >> {result_folder_path}/debug/sost_devices.log",flags='no-log')
     #save systeminfo -> ssh_users
     log.os_run(f"netstat -anlt  | grep -i :22 >> {result_folder_path}/debug/sost_ssh_user.log",flags='no-log')
+
+    # Init Json File
+    log.json_set("Test_tmp", "test_status","NA")
 
     # Return result_Folder_path
     return result_folder_path

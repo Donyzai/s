@@ -155,22 +155,17 @@ done''')
 
 def bmclog_check(path,count):
 
-    black_list = ["FAN","CMOS","ac","dc","Power Supply PSU2 Status","Power Supply PSU1 Status"]
+    black_list = ["FAN","CMOS","ac","dc"]
+    if log.json_get("BMC_Survival_Config","bmc_chip") == 'Hisilicon-Hi1711':
+        black_list.append("Power Supply PSU1 Status","Power Supply PSU2 Status")
 
     json_data = json.loads(open("/opt/sost/config/bmcsel_check.json","r").read())
     error_arry = list(json_data["bmcsel_check_items"].keys())
-
-    for item in black_list:
-        if item in error_arry:
-            error_arry.remove(item)
-
+            
     if path == '':
         path = "/tmp/sost_tmp/bmclog.log"
         log.os_run(f"ipmitool sel list > {path}")
-        error_arry.append("FAN")
-        error_arry.append("CMOS")
-        error_arry.append("ac")
-        error_arry.append("dc")
+
         with open(path, "r") as f:
             lines = f.readlines()
         for error_type in error_arry:
@@ -185,6 +180,10 @@ def bmclog_check(path,count):
                 log._pr(f"bmclog error type : {error_type.ljust(50)} \033[32m[Pass]\033[0m")
         log.os_run(f"rm -rf {path}",flags='no-log')
         exit()
+    
+    for item in black_list:
+        if item in error_arry:
+            error_arry.remove(item)
 
     # Check if the BMC sel log contains FAN logs to determine if there is a restart action in BMC
     if "aclost" in str(path).lower():
