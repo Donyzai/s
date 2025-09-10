@@ -473,7 +473,7 @@ export PATH
                     f.write('sost -z')
         else:
             def autostart(tmp):
-                os.system("yes | sost -f bash")
+                os.system("yes | sost -f bash >/dev/null ")
                 if not os.path.exists("/root/.config/autostart/sost.desktop"):
                     if not os.path.exists("/root/.config/autostart"): os.mkdir("/root/.config/autostart")
                     os.system("rm -rf /root/.config/autostart/*")

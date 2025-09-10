@@ -672,8 +672,6 @@ def bmc_Create_sel_log(bmc_ip,bmc_user,bmc_pass):
                 log._error("User.Input.Error! Max 10000")
         else:
             log._error("User.Input.Error! Not a number!")
-        
-
 
         log._tips("Now start collecting the first log information!")
         try:
@@ -1496,12 +1494,12 @@ def RHEL_Gui_Run():
 
     if '10.0' in log.os_popen("cat /etc/os-release | grep -w VERSION= | tr -d ' '"):
         log.os_run('systemctl set-default multi-user.target')
-        log._pr("RHEL 10.0 Only Text Mode Running Test!")
+        log._dp("RHEL 10.0 Only Text Mode Running Test!")
 
     if "multi-user.target" in log.os_popen("systemctl get-default").strip():
-        log._pr("RHEL Currently mode : text , Set Autologing Success!")
+        log._dp("RHEL Currently mode : text , Set Autologing Success!")
     else:
-        log._pr("RHEL Currently mode :  GUI , Set Autologing Success!")
+        log._dp("RHEL Currently mode :  GUI , Set Autologing Success!")
         log.os_run("yes | sost -f bash")
         if not os.path.exists("/root/.config/autostart"):os.mkdir("/root/.config/autostart")
         log.os_run("rm -rf /root/.config/autostart/*")

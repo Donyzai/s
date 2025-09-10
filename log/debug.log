@@ -1,12 +1,7 @@
-< sost_20250909-094326_dlev_0   > : update_flag    : 0
-< sost_20250909-094326_dlev_0   > : remote_sha256  : 1
-< sost_20250909-094326_dlev_0   > : local_sha256   : d43a7919fa91d270045758f5a4434e44746556980e7cc120dbcf9a86dd051e24
-< sost_20250909-094326_dlev_0   > : SOST is the latest version
-< sost_20250909-094409_dlev_0   > : update_flag    : 0
-< sost_20250909-094409_dlev_0   > : remote_sha256  : 1
-< sost_20250909-094409_dlev_0   > : local_sha256   : d43a7919fa91d270045758f5a4434e44746556980e7cc120dbcf9a86dd051e24
-< sost_20250909-094409_dlev_0   > : SOST is the latest version
-< sost_20250909-094419_dlev_0   > : update_flag    : 0
-< sost_20250909-094419_dlev_0   > : remote_sha256  : 1
-< sost_20250909-094419_dlev_0   > : local_sha256   : d43a7919fa91d270045758f5a4434e44746556980e7cc120dbcf9a86dd051e24
-< sost_20250909-094419_dlev_0   > : SOST is the latest version
+< sost_20250909-143718_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20250909-143849_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
+< sost_20250910-093951_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094028_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094041_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094042_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094042_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m

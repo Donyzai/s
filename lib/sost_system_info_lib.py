@@ -493,7 +493,7 @@ def system_info_check(flags, path, count):
         usb_info_check(flags, path, count)
         dmesg(flags, path, count)
         storinfo(flags, path, count)
-
+        check_rtc_time(flags, path, count)
     except Exception as e:
         from .sost_public_lib import defalt_path,result_html
         defalt_path()
@@ -575,6 +575,53 @@ def test_config(flags, count, path):
         system_info_check(flags ,path, count)
         bmc_info_check(flags, path, count)
         public_check(flags, path, count)
+
+#check rtc_time
+def check_rtc_time(flags, path, count):
+
+    if log.json_get('collect_array',"rtctime",web='no-log',filename='collect').strip() !='1':return 0
+
+    print_save_text(flags=flags, folder_path=path, type="rtctime", count=count,text=log.os_popen('timedatectl').strip())
+    filepath = path + f"/system_info/rtctime/rtctime_{count}.txt"
+
+    rtc_date_time = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $4}}' ").split()
+    rtc_hours_time = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $5}}' | cut -d ':' -f 1 ").split()
+    rtc_minimumtime = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $5}}' | cut -d ':' -f 2 ").split()
+    rtc_seconds_time = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $5}}' | cut -d ':' -f 3 ").split()
+
+    if len(rtc_date_time)!=2:
+        log._pr("RTC Time date check".ljust(40) + "\033[31m[FAIL]\033[0m   \033[31m[FAIL]\033[0m")
+        error_tmp = f'RTC Time date check Fail   : {str(rtc_date_time)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time date check',error_tmp,f'timedatectl',f"timedatectl")
+    elif len(rtc_hours_time)!=2:
+        log._pr("RTC Time h check".ljust(40) + "\033[31m[FAIL]\033[0m   \033[31m[FAIL]\033[0m")
+        error_tmp = f'RTC Time hours check Fail   : {str(rtc_hours_time)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time hours check',error_tmp,f'timedatectl',f"timedatectl")
+    elif len(rtc_minimumtime)!=2:
+        log._pr("RTC Time m check".ljust(40) + "\033[31m[FAIL]\033[0m   \033[31m[FAIL]\033[0m")
+        error_tmp = f'RTC Time minimum check Fail   : {str(rtc_minimumtime)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time minimum check',error_tmp,f'timedatectl',f"timedatectl")
+    elif len(rtc_seconds_time)!=2:
+        log._pr("RTC Time s check".ljust(40) + "\033[31m[FAIL]\033[0m   \033[31m[FAIL]\033[0m")
+        error_tmp = f'RTC Time seconds check Fail   : {str(rtc_seconds_time)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time seconds check',error_tmp,f'timedatectl',f"timedatectl")
+    else:
+        log._pr("RTC Time date/h/m/s check".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+
+    if rtc_date_time[0] != rtc_date_time[1]:
+        error_tmp = f'RTC Time date check Fail   : {str(rtc_date_time)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time date check',error_tmp,f'timedatectl',f"timedatectl")
+    elif abs(int(rtc_hours_time[0]) - int(rtc_hours_time[1]) != 8):
+        error_tmp = f'RTC Time hours check Fail   : {str(rtc_hours_time)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time hours check',error_tmp,f'timedatectl',f"timedatectl")
+    elif rtc_minimumtime[0] != rtc_minimumtime[1]:
+        error_tmp = f'RTC Time minimum check Fail   : {str(rtc_minimumtime)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time minimum check',error_tmp,f'timedatectl',f"timedatectl")
+    elif rtc_seconds_time[0] != rtc_seconds_time[1]:
+        error_tmp = f'RTC Time seconds check Fail   : {str(rtc_seconds_time)}\n< sost > {log.os_popen("timedatectl")}'
+        fail_info('RTC Time seconds check',error_tmp,f'timedatectl',f"timedatectl")
+    else:
+        log._pr("RTC Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
 
 # check RuningTime
 def check_running_time(count):

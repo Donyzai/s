@@ -1,20 +1,139 @@
-< sost_20250908-170933_print    > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20250908-170937_print    > : swc_web is Running! Running-Time -> 20250908 17:09:37 (swc_web.py)
-< sost_20250908-170937_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20250908-170944_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20250909-094328_input    > : 9
-< sost_20250909-094330_input    > : 2
-< sost_20250909-094333_input    > : 1
-< sost_20250909-094334_input    > : 
-< sost_20250909-094334_input    > : 
-< sost_20250909-094411_input    > : 9
-< sost_20250909-094411_input    > : 2
-< sost_20250909-094413_input    > : 
-< sost_20250909-094413_input    > : 
-< sost_20250909-094413_input    > : 
-< sost_20250909-094420_input    > : 9
-< sost_20250909-094420_input    > : 2
-< sost_20250909-094422_input    > : 
-< sost_20250909-094423_input    > : 
-< sost_20250909-094425_input    > : ttytty`12
-< sost_20250909-094436_input    > : 10001
+< sost_20250909-143843_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143843_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143843_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143844_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20250909-143845_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143849_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143849_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143850_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143853_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143856_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143859_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143859_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143859_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143859_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143859_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20250909-143859_print    > : Test_Type         : reboot
+< sost_20250909-143859_print    > : Test_Count        : 0
+< sost_20250909-143859_print    > : Test_Status       : Pass
+< sost_20250909-143859_print    > : Waiting for restart........
+< sost_20250909-143914_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20250909-143914_print    > : ===============================================================
+< sost_20250909-143914_print    > : Test type        : reboot
+< sost_20250909-143914_print    > : Test Count       : 0
+< sost_20250909-143914_print    > : Test Folder      : /root/reboot
+< sost_20250909-143914_print    > : Test Status      : Pass
+< sost_20250909-143914_print    > : Test Start Time  : 2025-09-09-14-37-17
+< sost_20250909-143914_print    > : Test End   Time  : 2025-09-09-14-39-14
+< sost_20250909-143914_print    > : ===============================================================
+< sost_20250909-171338_print    > : swc_web is Running! Running-Time -> 20250909 17:13:38 (swc_web.py)
+< sost_20250909-171338_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20250909-171341_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20250910-091610_print    > : RTC Time check                          [32m[Pass][0m   [31m[FAIL][0m
+< sost_20250910-091626_print    > : RTC Time check                          [32m[Pass][0m   [31m[FAIL][0m
+< sost_20250910-091626_print    > : RTC Time check                          [32m[Pass][0m   [31m[FAIL][0m
+< sost_20250910-091627_print    > : RTC Time check                          [32m[Pass][0m   [31m[FAIL][0m
+< sost_20250910-091636_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-091637_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-091637_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-091638_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092120_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092120_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092121_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092133_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092134_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092222_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092223_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092223_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092224_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092224_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092225_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092226_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092249_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092250_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092251_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092257_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092257_print    > : RTC Time clock check                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092258_print    > : RTC Time date check                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-092258_print    > : RTC Time clock check                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093304_print    > : RTC Time date check                     [31m[FAIL][0m   [31m[FAIL][0m
+< sost_20250910-093305_print    > : RTC Time date check                     [31m[FAIL][0m   [31m[FAIL][0m
+< sost_20250910-093350_print    > : RTC Time date check                     [31m[FAIL][0m   [31m[FAIL][0m
+< sost_20250910-093351_print    > : RTC Time date check                     [31m[FAIL][0m   [31m[FAIL][0m
+< sost_20250910-093352_print    > : RTC Time date check                     [31m[FAIL][0m   [31m[FAIL][0m
+< sost_20250910-093403_print    > : RTC Time date check                     [31m[FAIL][0m   [31m[FAIL][0m
+< sost_20250910-093422_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093422_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093423_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093510_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093510_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093511_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093512_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093512_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-093951_print    > : BMC_IP    : 192.168.60.223
+< sost_20250910-093951_print    > : osIP      : 192.168.60.143
+< sost_20250910-093951_print    > : osVer     : "Red Hat Enterprise Linux 9.5 (Plow)"
+< sost_20250910-093951_print    > : TestType  : reboot
+< sost_20250910-093951_print    > : ErrType   : RTC Time hours check
+< sost_20250910-093951_print    > : Count     : 0
+< sost_20250910-093951_print    > : Time      : 2025-09-10-09-39-51
+< sost_20250910-093951_print    > : File1     : timedatectl
+< sost_20250910-093951_print    > : File2     : timedatectl
+< sost_20250910-093951_print    > : -------------------------------------------------------
+< sost_20250910-093951_print    > : RTC Time hours check Fail   : ['09', '01']
+< sost >                Local time: Wed 2025-09-10 09:39:51 CST
+           Universal time: Wed 2025-09-10 01:39:51 UTC
+                 RTC time: Wed 2025-09-10 01:39:51
+                Time zone: Asia/Shanghai (CST, +0800)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+
+< sost_20250910-093951_print    > : -------------------------------------------------------
+< sost_20250910-094028_print    > : BMC_IP    : 192.168.60.223
+< sost_20250910-094028_print    > : osIP      : 192.168.60.143
+< sost_20250910-094028_print    > : osVer     : "Red Hat Enterprise Linux 9.5 (Plow)"
+< sost_20250910-094028_print    > : TestType  : reboot
+< sost_20250910-094028_print    > : ErrType   : RTC Time seconds check
+< sost_20250910-094028_print    > : Count     : 0
+< sost_20250910-094028_print    > : Time      : 2025-09-10-09-40-28
+< sost_20250910-094028_print    > : File1     : timedatectl
+< sost_20250910-094028_print    > : File2     : timedatectl
+< sost_20250910-094028_print    > : -------------------------------------------------------
+< sost_20250910-094028_print    > : RTC Time seconds check Fail   : ['28', '28']
+< sost >                Local time: Wed 2025-09-10 09:40:28 CST
+           Universal time: Wed 2025-09-10 01:40:28 UTC
+                 RTC time: Wed 2025-09-10 01:40:28
+                Time zone: Asia/Shanghai (CST, +0800)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+
+< sost_20250910-094028_print    > : -------------------------------------------------------
+< sost_20250910-094041_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094042_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094042_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094103_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094103_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094137_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094137_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094137_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094138_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094138_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094138_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094139_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094139_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094139_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094139_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094140_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094140_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094141_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-094141_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
