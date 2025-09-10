@@ -560,7 +560,6 @@ def test_config(flags, count, path):
 
     simple_flags = log.json_get("Test_Config","simple_test_flags").strip()
     
-
     if simple_flags == "bmc":
         log._pr(" TestMode         : bmc")
         bmc_info_check(flags, path, count)
@@ -578,10 +577,12 @@ def test_config(flags, count, path):
 
 #check rtc_time
 def check_rtc_time(flags, path, count):
-
     if log.json_get('collect_array',"rtctime",web='no-log',filename='collect').strip() !='1':return 0
 
     print_save_text(flags=flags, folder_path=path, type="rtctime", count=count,text=log.os_popen('timedatectl').strip())
+    
+    if str(count) == "0":return 0
+
     filepath = path + f"/system_info/rtctime/rtctime_{count}.txt"
 
     rtc_date_time = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $4}}' ").split()

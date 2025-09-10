@@ -1,7 +1,34 @@
-< sost_20250909-143718_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20250909-143849_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
-< sost_20250910-093951_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
-< sost_20250910-094028_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
-< sost_20250910-094041_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
-< sost_20250910-094042_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
-< sost_20250910-094042_dlev_0   > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20250910-100108_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20250910-100240_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
+< sost_20250910-100555_dlev_0   > : OS is Ubuntu, so ignore stability test!
+< sost_20250910-100555_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20250910-100622_dlev_0   > : []
+< sost_20250910-100628_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
+< sost_20250910-100630_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'FAN', 'CMOS', 'ac', 'dc']
+< sost_20250910-100641_dlev_0   > : Last running time : 42 s
+< sost_20250910-100641_dlev_0   > : Now running time  : 208 s
+< sost_20250910-100641_dlev_0   > : Last restart time : 208 s
+< sost_20250910-100939_dlev_0   > : OS is Ubuntu, so ignore stability test!
+< sost_20250910-100939_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20250910-101006_dlev_0   > : []
+< sost_20250910-101011_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
+< sost_20250910-101013_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'FAN', 'CMOS', 'ac', 'dc']
+< sost_20250910-101023_dlev_0   > : Last running time : 208 s
+< sost_20250910-101023_dlev_0   > : Now running time  : 203 s
+< sost_20250910-101023_dlev_0   > : Last restart time : 203 s
+< sost_20250910-101324_dlev_0   > : OS is Ubuntu, so ignore stability test!
+< sost_20250910-101324_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20250910-101351_dlev_0   > : []
+< sost_20250910-101356_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
+< sost_20250910-101359_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'FAN', 'CMOS', 'ac', 'dc']
+< sost_20250910-101410_dlev_0   > : Last running time : 203 s
+< sost_20250910-101410_dlev_0   > : Now running time  : 206 s
+< sost_20250910-101410_dlev_0   > : Last restart time : 206 s
+< sost_20250910-101710_dlev_0   > : OS is Ubuntu, so ignore stability test!
+< sost_20250910-101710_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20250910-101737_dlev_0   > : []
+< sost_20250910-101742_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
+< sost_20250910-101744_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'FAN', 'CMOS', 'ac', 'dc']
+< sost_20250910-101755_dlev_0   > : Last running time : 206 s
+< sost_20250910-101755_dlev_0   > : Now running time  : 205 s
+< sost_20250910-101755_dlev_0   > : Last restart time : 205 s
