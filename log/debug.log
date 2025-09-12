@@ -32,3 +32,40 @@
 < sost_20250910-101755_dlev_0   > : Last running time : 206 s
 < sost_20250910-101755_dlev_0   > : Now running time  : 205 s
 < sost_20250910-101755_dlev_0   > : Last restart time : 205 s
+< sost_20250911-101145_dlev_3   > : Bmc IP Ping is Alive!
+< sost_20250911-101145_dlev_3   > : Bmc IPMI is UnAlive!
+< sost_20250911-101204_dlev_3   > : Bmc IP Ping is Alive!
+< sost_20250911-101204_dlev_3   > : Bmc IPMI is UnAlive!
+< sost_20250911-101216_dlev_3   > : Bmc IP Ping is Alive!
+< sost_20250911-101231_dlev_3   > : Bmc IP Ping is Alive!
+< sost_20250911-101232_dlev_3   > : Bmc IP Ping is Alive!
+< sost_20250911-101239_dlev_3   > : Bmc IP Ping is Alive!
+< sost_20250911-101245_dlev_0   > : Bmc IP Ping is Alive!
+< sost_20250912-145612_dlev_0   > : update_flag    : 0
+< sost_20250912-145612_dlev_0   > : remote_sha256  : 1
+< sost_20250912-145612_dlev_0   > : local_sha256   : 6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+< sost_20250912-145612_dlev_0   > : SOST is the latest version
+< sost_20250912-145629_dlev_0   > : update_flag    : 0
+< sost_20250912-145629_dlev_0   > : remote_sha256  : 1
+< sost_20250912-145629_dlev_0   > : local_sha256   : 6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+< sost_20250912-145629_dlev_0   > : SOST is the latest version
+< sost_20250912-145634_dlev_0   > : update_flag    : 0
+< sost_20250912-145634_dlev_0   > : remote_sha256  : 1
+< sost_20250912-145634_dlev_0   > : local_sha256   : 6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+< sost_20250912-145634_dlev_0   > : SOST is the latest version
+< sost_20250912-145636_dlev_0   > : update_flag    : 0
+< sost_20250912-145636_dlev_0   > : remote_sha256  : 1
+< sost_20250912-145636_dlev_0   > : local_sha256   : 6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+< sost_20250912-145636_dlev_0   > : SOST is the latest version
+< sost_20250912-150019_dlev_0   > : update_flag    : 0
+< sost_20250912-150019_dlev_0   > : remote_sha256  : 1
+< sost_20250912-150019_dlev_0   > : local_sha256   : 6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+< sost_20250912-150019_dlev_0   > : SOST is the latest version
+< sost_20250912-150024_dlev_0   > : update_flag    : 0
+< sost_20250912-150024_dlev_0   > : remote_sha256  : 1
+< sost_20250912-150024_dlev_0   > : local_sha256   : 6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+< sost_20250912-150024_dlev_0   > : SOST is the latest version
+< sost_20250912-150629_dlev_0   > : update_flag    : 0
+< sost_20250912-150629_dlev_0   > : remote_sha256  : 1
+< sost_20250912-150629_dlev_0   > : local_sha256   : 6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+< sost_20250912-150629_dlev_0   > : SOST is the latest version

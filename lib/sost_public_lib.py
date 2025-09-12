@@ -538,16 +538,18 @@ def count_down(seconds=0,text=''):
 
 # 对BMC进行存活性检查
 def bmc_alive(bmc_ip,bmc_user,bmc_pass):
+    max_try_time = 1800
     while True:
-        a = False
-        ping_result = log.os_popen(f"ping -c 1 {bmc_ip} | grep -i '0% packet loss' | wc -l").strip()
-        if ping_result == "1":
-            ipmitool_result_str = log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} mc info | grep -i 'Device ID' | wc -l 2>/dev/null").strip()
-            if ipmitool_result_str == "1":
+        if log.os_popen(f"ping -c 1 {bmc_ip} | grep -i ttl").strip() != "":
+            log._dp("Bmc IP Ping is Alive!")
+            if log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} mc info 2>/dev/null").strip() != "":
                 return True
-            a = True
+            else:
+                log._dp("Bmc IPMI is UnAlive!")
+        else:
+            log._dp("Bmc IP Ping is UnAlive!")
+        max_try_time+=10
         count_down(10,"Wait for 10 seconds to retrieve BMC status again")
-        if a:break
 
 # Bmc Remote 稳定性测试
 def bmc_stability(type='',folder_path=''):
@@ -650,10 +652,9 @@ def bmc_Create_sel_log(bmc_ip,bmc_user,bmc_pass):
         log.os_run(f"ipmitool -C 17 -I lanplus -U {bmc_user.strip()} -P {bmc_pass.strip()} -H {bmc_ip.strip()} sel save /tmp/sost_tmp/sost_tmp")
         log._tips("Success!\n")
 
-        
         log._tips("\n"+"="*120+"\nFrist Clear sel log\n"+"="*120)
         log.os_run(f"ipmitool -C 17 -I lanplus -U {bmc_user.strip()} -P {bmc_pass.strip()} -H {bmc_ip.strip()} sel clear")
-        log._tips("Success!\n")      
+        log._tips("Success!\n")
 
         clear_sel_num = log.os_popen(f"sh -c 'ipmitool -C 17 -I lanplus -U {bmc_user.strip()} -P {bmc_pass.strip()} -H {bmc_ip.strip()} sel elist | wc -l'").strip().replace("\n","")
         time.sleep(3)
@@ -707,24 +708,22 @@ def bmc_tools_main(release_time, version):
     clp()
     bmc_chip = bmc_Chip()[0]
     print(f'''
-══════════════════════════════════════════════════════════════════════════════════════════
-||                                                                                      ||
-||    ██████   ████     ████   ██████        ██████████                    ██           ||
-||   ░█░░░░██ ░██░██   ██░██  ██░░░░██      ░░░░░██░░░                    ░██           ||
-||   ░█   ░██ ░██░░██ ██ ░██ ██    ░░           ░██      ██████   ██████  ░██  ██████   ||
-||   ░██████  ░██ ░░███  ░██░██        █████    ░██     ██░░░░██ ██░░░░██ ░██ ██░░░░    ||
-||   ░█░░░░ ██░██  ░░█   ░██░██       ░░░░░     ░██    ░██   ░██░██   ░██ ░██░░█████    ||
-||   ░█    ░██░██   ░    ░██░░██    ██          ░██    ░██   ░██░██   ░██ ░██ ░░░░░██   ||
-||   ░███████ ░██        ░██ ░░██████           ░██    ░░██████ ░░██████  ███ ██████    ||
-||   ░░░░░░░  ░░         ░░   ░░░░░░            ░░      ░░░░░░   ░░░░░░  ░░░ ░░░░░░     ||
-||                                                                                      ||
-||══════════════════════════════════════════════════════════════════════════════════════||
-||  Auther:Xiaodong Fan  ReTime:{release_time.ljust(11)}  Ver.{version}   BMC_Chip:{bmc_chip.ljust(14)}   ||
-||══════════════════════════════════════════════════════════════════════════════════════||
-||            1 . BMC sensor / sdr Collect to Log    <BMC收集sensor或sdr日志>           ||
-||            2 . BMC Quickly Create Sel   log       <BMC快速生成sel日志>               ||
-||            3 . BMC Quickly Create Audit log       <BMC快速生成审计日志>         	|| 
-||══════════════════════════════════════════════════════════════════════════════════════||''')
+══════════════════════════════════════════════════
+||                                              ||
+||   ██████████                    ██           ||
+||  ░░░░░██░░░                    ░██           ||
+||      ░██      ██████   ██████  ░██  ██████   ||
+||      ░██     ██░░░░██ ██░░░░██ ░██ ██░░░░    ||
+||      ░██    ░██   ░██░██   ░██ ░██░░█████    ||
+||      ░██    ░██   ░██░██   ░██ ░██ ░░░░░██   ||
+||      ░██    ░░██████ ░░██████  ███ ██████    ||
+||      ░░      ░░░░░░   ░░░░░░  ░░░ ░░░░░░     ||
+||                                              ||
+||══════════════════════════════════════════════||
+||  1 . BMC sensor / sdr Collect to Log         ||
+||  2 . Quick generation of BMC sel logs        ||
+||  3 . Quick generation of BMC audit logs      || 
+||══════════════════════════════════════════════||''')
     chose = log._in("You Chose : ")
     # chose = "2"
     if chose == '1':
@@ -2052,7 +2051,7 @@ def logo(release_time, version):
 |═══════════════════════════════════════════════════════════════════════════''')
     print(f"|    ReTime:{release_time.ljust(11)}     Ver.{version} "+f"BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|")
     print('''|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . systemctl reboot   |   9. BMC Test Tools   |
+|   1 . reboot         |    5 . systemctl reboot   |   9. Test Tools       |
 |   2 . power cycle    |    6 . init 6             |  10. other  Test      |
 |   3 . power reset    |    7 . poweroff -r        |  11. Timed operation  |
 |   4 . AClost         |    8 . shutdown -r        |  12. Mulit Test       |

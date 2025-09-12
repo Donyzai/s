@@ -18054,3 +18054,541 @@ drwxr-xr-x. 23 root root  4096 Sep 10 10:02 system_info
 < sost_20250910-101757_popen_com> : cat /root/reboot/system_info/fwinfo/fwinfo_0.txt  | grep -i bmc.ver | cut -d ':' -f 2 -> Result
  1.04.00.01.00.00
 
+< sost_20250911-101057_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.230 ms
+
+< sost_20250911-101057_popen_com> : ipmitool -C 17 -I lanplus -U Administrator -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+
+< sost_20250911-101114_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.263 ms
+
+< sost_20250911-101114_popen_com> : ipmitool -C 17 -I lanplus -U Administrator -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+
+< sost_20250911-101145_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.246 ms
+
+< sost_20250911-101145_popen_com> : ipmitool -C 17 -I lanplus -U Administrator -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+
+< sost_20250911-101204_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.307 ms
+
+< sost_20250911-101204_popen_com> : ipmitool -C 17 -I lanplus -U admin -P 'admin' -H 192.168.60.113 mc info 2>/dev/null -> Result
+
+< sost_20250911-101216_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.277 ms
+
+< sost_20250911-101216_popen_com> : ipmitool -C 17 -I lanplus -U admin -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+< sost_20250911-101231_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.195 ms
+
+< sost_20250911-101231_popen_com> : ipmitool -C 17 -I lanplus -U admin -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+< sost_20250911-101232_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.198 ms
+
+< sost_20250911-101232_popen_com> : ipmitool -C 17 -I lanplus -U admin -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+< sost_20250911-101239_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.215 ms
+
+< sost_20250911-101239_popen_com> : ipmitool -C 17 -I lanplus -U admin -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+< sost_20250911-101245_popen_com> : ping -c 1 192.168.60.113 | grep -i ttl -> Result
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.240 ms
+
+< sost_20250911-101245_popen_com> : ipmitool -C 17 -I lanplus -U admin -P 'ttytty`12' -H 192.168.60.113 mc info 2>/dev/null -> Result
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+< sost_20250912-145612_popen_com> : curl -X GET http://192.168.60.138/sost/update_flag.txt 2>/dev/null -> Result
+0
+
+< sost_20250912-145612_popen_com> : curl -X GET http://192.168.60.138/sost/new_version_sha256.txt 2>/dev/null -> Result
+1
+
+< sost_20250912-145612_popen_com> : sost -i sha256 -> Result
+6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+
+< sost_20250912-145612_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-145612_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145612_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145612_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-145612_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-145612_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-145629_popen_com> : curl -X GET http://192.168.60.138/sost/update_flag.txt 2>/dev/null -> Result
+0
+
+< sost_20250912-145629_popen_com> : curl -X GET http://192.168.60.138/sost/new_version_sha256.txt 2>/dev/null -> Result
+1
+
+< sost_20250912-145629_popen_com> : sost -i sha256 -> Result
+6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+
+< sost_20250912-145629_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-145629_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145629_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145629_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-145629_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-145629_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-145634_popen_com> : curl -X GET http://192.168.60.138/sost/update_flag.txt 2>/dev/null -> Result
+0
+
+< sost_20250912-145634_popen_com> : curl -X GET http://192.168.60.138/sost/new_version_sha256.txt 2>/dev/null -> Result
+1
+
+< sost_20250912-145634_popen_com> : sost -i sha256 -> Result
+6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+
+< sost_20250912-145634_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-145634_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145634_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145634_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-145634_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-145634_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-145636_popen_com> : curl -X GET http://192.168.60.138/sost/update_flag.txt 2>/dev/null -> Result
+0
+
+< sost_20250912-145636_popen_com> : curl -X GET http://192.168.60.138/sost/new_version_sha256.txt 2>/dev/null -> Result
+1
+
+< sost_20250912-145636_popen_com> : sost -i sha256 -> Result
+6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+
+< sost_20250912-145636_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-145636_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145636_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145636_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-145636_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-145636_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-145637_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-145637_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145637_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-145637_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-145637_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-145637_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-150019_popen_com> : curl -X GET http://192.168.60.138/sost/update_flag.txt 2>/dev/null -> Result
+0
+
+< sost_20250912-150019_popen_com> : curl -X GET http://192.168.60.138/sost/new_version_sha256.txt 2>/dev/null -> Result
+1
+
+< sost_20250912-150019_popen_com> : sost -i sha256 -> Result
+6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+
+< sost_20250912-150019_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-150019_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150019_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150019_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-150019_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-150019_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-150024_popen_com> : curl -X GET http://192.168.60.138/sost/update_flag.txt 2>/dev/null -> Result
+0
+
+< sost_20250912-150024_popen_com> : curl -X GET http://192.168.60.138/sost/new_version_sha256.txt 2>/dev/null -> Result
+1
+
+< sost_20250912-150024_popen_com> : sost -i sha256 -> Result
+6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+
+< sost_20250912-150024_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-150024_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150024_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150024_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-150024_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-150024_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-150025_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-150025_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150025_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150025_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-150025_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-150025_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20250912-150629_popen_com> : curl -X GET http://192.168.60.138/sost/update_flag.txt 2>/dev/null -> Result
+0
+
+< sost_20250912-150629_popen_com> : curl -X GET http://192.168.60.138/sost/new_version_sha256.txt 2>/dev/null -> Result
+1
+
+< sost_20250912-150629_popen_com> : sost -i sha256 -> Result
+6282f180708e880dda583c3f1e307e1bc126fbc0b045615b89d0e3aba1635e69
+
+< sost_20250912-150629_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20250912-150629_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150629_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20250912-150629_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20250912-150629_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20250912-150629_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
