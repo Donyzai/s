@@ -2,7 +2,7 @@ from lib.sost_public_lib import test_type_logo,dong_log,runTime,end_test_logo,wa
 from lib.sost_system_info_lib import test_config,check_running_time
 # init logging
 log = dong_log()
-log.debug_flags = str(log.json_get("sost","debug_flags"))
+log.debug_flags = str(log.json_get("debug","debug_flags",filename="debug"))
 log.os_run("mkdir -p /tmp/sost_tmp")
 
 #check stability status

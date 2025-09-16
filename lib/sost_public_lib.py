@@ -13,7 +13,7 @@ import hashlib
 from datetime import datetime, timedelta
 
 log = dong_log()
-log.debug_flags = str(log.json_get("sost","debug_flags",web='no-log'))
+log.debug_flags = str(log.json_get("debug","debug_flags",web='no-log',filename="debug"))
 
 def testsha256():
     sha256_str = log.json_get("Test_tmp","test_type").strip() + log.json_get("Test_tmp","startT_time").strip()
@@ -48,7 +48,7 @@ def update_show(update_flag,tips):
 
 def update_check():
 
-    sost_server_ip = log.json_get("sost","update_Web_server_ip").strip()
+    sost_server_ip = log.json_get("sost","update_Web_server_ip",filename='version').strip()
 
     try:
         if os.system(f'ping {sost_server_ip} -c 1 -i 0.5 -W 0.5 >/dev/null 2>&1') != 0:
@@ -138,7 +138,7 @@ def swc_EndTest():
         print("\033[33m [ >> WebConsole_Stop_Test_flags << ] \033[0m")
         print("\033[33m <swc-flags> WebMesole remotely sends a test interrupt flag, and the current test is paused. \033[0m")
         print("\033[33m <swc-flags> WebConsole远程发送测试中断flag，当前测试暂停。\033[0m")
-        log.json_set("sost","swc_flags","0")
+        log.json_set("Test_tmp","swc_flags","0")
         defalt_path()
         result_html()
         exit()
@@ -242,13 +242,13 @@ def mulit_main():
 def startup_check():
     #backup cmd.log and clear cmd.log
     log._dmesg("The main program of Sost has started running.")
-    if log.json_get("sost","debug_flags").strip()=="0":
+    if log.json_get("debug","debug_flags",filename="debug").strip()=="0":
         log.os_run('rm -rf /tmp/sost_tmp/old_cmd.log')
         log.os_run('mv /opt/sost/log/cmd.log /tmp/sost_tmp/old_cmd.log')
         log._dmesg('Sost Clear cmd.log Success!')
         
-    logo(log.json_get("sost","Release_Time"),log.json_get("sost","Version"))
-    log.json_set("sost","swc_flags","0")
+    logo(log.json_get("sost","Release_Time",filename='version'),log.json_get("sost","Version",filename='version'))
+    log.json_set("Test_tmp","swc_flags","0")
     log.os_run("mkdir -p /tmp/sost_tmp")
 
     test_mode = log.json_get("Test_Config","simple_test_flags").strip()
@@ -285,7 +285,7 @@ def result_html(return_path=False):
         bmcip = log.os_popen('''cat /opt/sost/config/server_info.json | grep -iE 'bmc_lan_' | cut -d ':' -f 2 | tr -d ' ",' ''').strip().replace("\n",",")
         start_time = datetime.strptime(log.os_popen(f"cat {folder_path}/sost_start_time.txt 2>/dev/null").strip(), "%Y-%m-%d-%H-%M-%S").strftime("%Y-%m-%d %H:%M:%S")
         end_time = datetime.strptime(str(now_time()), "%Y-%m-%d-%H-%M-%S").strftime("%Y-%m-%d %H:%M:%S")
-        sost_ver = log.json_get("sost","Version").strip()
+        sost_ver = log.json_get("sost","Version",filename='version').strip()
         bmc_ver  = log.os_popen(''' cat /opt/sost/config/server_info.json  | grep -i bmc_ver | cut -d ':' -f 2 | tr -d ' ,"' ''').strip() 
         bios_ver = log.os_popen(''' cat /opt/sost/config/server_info.json  | grep -i bios_ver | cut -d ':' -f 2 | tr -d ' ,"' ''').strip() 
         cpld_ver = log.os_popen("cat /tmp/sost_tmp/fwtmp 2>/dev/null| grep -i cpld.ver | cut -d ':' -f 2").strip() 
@@ -1106,7 +1106,7 @@ def updating_sost(update_ver,server_ip):
     os.system(f"ps aux | grep -i sost_main | grep -iv grep | awk '{{print $2}}' | xargs kill -9")
     
 def return_alive_server_ip():
-    server_ip = log.json_get("sost", "update_Web_server_ip").strip().split(',')
+    server_ip = log.json_get("sost", "update_Web_server_ip",filename='version').strip().split(',')
     for ip in server_ip:
         result = log.os_popen(f"ping -c 1 {ip} | tail -n 2 | head -n 2")
         if "100% packet loss" not in result:
@@ -1333,7 +1333,7 @@ def defalt_path(show_flags=True):
     log.os_run("rm -rf /root/.config/autostart/*")
     log.os_run("yes | sost -f bash")
     # Set Default swc config
-    log.json_set("sost","swc_flags","0")
+    log.json_set("Test_tmp","swc_flags","0")
     log.json_set("Test_Config","max_count","")
     # Restore key information from/etc/passwd
     # Autologin root password flags set null
@@ -1650,7 +1650,7 @@ def dmesg_show():
 
 # clear terminal print
 def clp(): 
-    if log.json_get("sost","debug_flags") == "0":
+    if log.json_get("debug","debug_flags",filename="debug") == "0":
         os.system("clear")
     return
 
@@ -1803,7 +1803,7 @@ def max_count_logo():
             return False,"mulit"
 
 def test_type_logo(test_type, count):
-    version = log.json_get("sost","Version")
+    version = log.json_get("sost","Version",filename='version')
     test_status = log.json_get("Test_tmp","test_status").strip()
     if test_status == "FAILc":
         test_status = "\033[33mFAILc\033[0m".ljust(23)
@@ -2032,11 +2032,11 @@ def logo(release_time, version):
     #except:pass
     clp()
     bmc_chip = bmc_Chip()[0]
-    version = version.ljust(15)
+    version = version.ljust(7)
     if "d" in version.lower() or "debug" in version.lower():
-        version = "\033[31m"+version.ljust(15)+"\033[0m"
+        version = "\033[31m"+version.ljust(7)+"\033[0m"
     else:
-        version = "\033[32m"+version.ljust(15)+"\033[0m"
+        version = "\033[32m"+version.ljust(7)+"\033[0m"
     # 原始代码部分，保持不变
     print(f'''════════════════════════════════════════════════════════════════════════════
 |                                             ░██                          |

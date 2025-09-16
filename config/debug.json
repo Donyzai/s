@@ -1,6 +1,7 @@
 {
-  "debug": {
-    "noSendComand": "0",
-    "Failc_Waiting_Time": "3"
-  }
+    "debug": {
+        "noSendComand": "1",
+        "Failc_Waiting_Time": "3",
+        "debug_flags": "3"
+    }
 }

@@ -1,1 +1,5 @@
 {time: xxxx-xx-xx-xx-xx-xx, type: reboot, count: 10000, result: Pass , bios.ver : xxxxx.xxxx.xx.xx.xxx.xx , bmc.ver : xxxx.xx.x.x.x.x.x...xxx}{time: 2025-09-10-10-01-06, type: reboot, count: 4, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
+{time: 2025-09-16-17-19-24, type: reboot, count: 1, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
+{time: 2025-09-16-17-19-24, type: reboot, count: 2, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
+{time: 2025-09-16-17-19-24, type: reboot, count: 3, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
+{time: 2025-09-16-17-24-42, type: reboot, count: 1, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}

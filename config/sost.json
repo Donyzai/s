@@ -5,10 +5,10 @@
         "Share_lan_num": "8",
         "fail_exit_flags": "0",
         "fail_exit_blacklist": "",
-        "start_wait_time": "25",
+        "start_wait_time": "1",
         "aclost_wait_time": "120",
-        "end_wait_time": "15",
-        "frist_sdi_time": "5",
+        "end_wait_time": "1",
+        "frist_sdi_time": "0",
         "max_count": "",
         "collect_cmd": "",
         "Maximum_restart_time": "900",
@@ -44,27 +44,19 @@
     },
     "Test_tmp": {
         "test_type": "reboot",
-        "test_count": "4",
+        "test_count": "1",
         "test_folder_path": "/root/reboot",
-        "test_sha256": "8262afac979379340d8e5ebf4c89ac3d3cabbfa1ee73a9051a3acb718c7418d9",
+        "test_sha256": "d897bf5c9623cb528e62df09e3d17a90ff10a64d7f1b46c1fc34185e62e3f254",
         "run_command": "reboot",
         "test_status": "Pass",
-        "startT_time": "2025-09-10-10-01-06",
-        "endT_time": "2025-09-10-10-17-57",
+        "startT_time": "2025-09-16-17-24-42",
+        "endT_time": "2025-09-16-17-28-09",
         "StartWaitTimeCountdown": "00",
         "EndWaitTimeCountdown": "00",
         "Running_flag": "4",
-        "running_time_last": "206",
-        "running_time_now": "205",
+        "running_time_last": "36",
+        "running_time_now": "143",
         "running_time_first": "",
-        "": ""
-    },
-    "sost": {
-        "Version": "1.1.1",
-        "Release_Time": "2025-08-28",
-        "update_Web_server_ip": "192.168.60.138",
-        "Web_Console": "1",
-        "swc_flags": "0",
-        "debug_flags": "0"
+        "swc_flags": "0"
     }
 }

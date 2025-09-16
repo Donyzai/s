@@ -10,7 +10,7 @@ import re
 
 log = dong_log()
 log.popen_save_file_flags = True
-log.debug_flags = str(log.json_get("sost","debug_flags",web='no-log'))
+log.debug_flags = str(log.json_get("debug","debug_flags",web='no-log',filename="debug"))
 
 def retry_get_ipmi_info(command='',text=''):
 

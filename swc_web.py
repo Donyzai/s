@@ -4,7 +4,7 @@ log = dong_log()
 # no-log -> not save cmd.log
 # ''     -> save cmd.log
 cmd_log_flags = 'no-log'
-log.debug_flags = str(log.json_get("sost", "debug_flags",web='no-log'))
+log.debug_flags = str(log.json_get("debug", "debug_flags",web='no-log',filename="debug"))
 
 import os
 import subprocess

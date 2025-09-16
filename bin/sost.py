@@ -13,6 +13,8 @@ def json_load(key, value):
 
 def json_set(class_name, key, new_value):
     json_filename = '/opt/sost/config/sost.json'
+    if class_name == 'debug':
+        json_filename = '/opt/sost/config/debug.json'
     with open(json_filename, 'r') as file:
         data = json.load(file)
     data[class_name][key] = new_value
@@ -34,19 +36,19 @@ def debug_info():
 
                 elif sys.argv[2] == "0x00":
                     print("<sost> Debug flags setting : 0")
-                    json_set("sost","debug_flags","0")
+                    json_set("debug","debug_flags","0")
                     exit()
                 elif sys.argv[2] == "0x01":
                     print("<sost> Debug flags setting : 1")
-                    json_set("sost","debug_flags","1")
+                    json_set("debug","debug_flags","1")
                     exit()
                 elif sys.argv[2] == "0x02":
                     print("<sost> Debug flags setting : 2")
-                    json_set("sost", "debug_flags", "2")
+                    json_set("debug", "debug_flags", "2")
                     exit()
                 elif sys.argv[2] == "0x03":
                     print("<sost> Debug flags setting : 3")
-                    json_set("sost", "debug_flags", "3")
+                    json_set("debug", "debug_flags", "3")
                     exit()
                 else:
                     return 0
@@ -319,9 +321,6 @@ def parser_test():
                 print('='*40+'\n'+os.popen('''cat /opt/sost/config/sost.json | grep -A 5 BMC_Survival_Config | grep -v BMC_Survival_Config | tr -d ' "{},' ''').read().replace(":","  \t:  ").strip()+'\n'+'='*40)
                 print(os.popen('''cat /opt/sost/config/sost.json | grep -A 6 Multimodal_stability | grep -v Multimodal_stability | tr -d ' "{},' ''').read().replace(":","       \t:  ").strip()+'\n'+'='*40)
                 print(os.popen('''cat /opt/sost/config/sost.json | grep -A7 Test_tmp | grep -v Test_tmp | tr -d ' "{},' ''').read().replace(":","       \t:  ").strip()+'\n'+'='*40)
-            elif sys.argv[2] == "sost":
-                print('='*40+'\n'+os.popen('''cat /opt/sost/config/sost.json | grep -A 10 'sost"' | grep -v 'sost":' | tr -d ' "{},' ''').read().replace(":","\t:  ").strip()+'\n'+'='*40)
-
             elif sys.argv[2] == "pcieslot":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import pcieslot;pcieslot('0','',' ')" ''')
             elif sys.argv[2] == "osip":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import osip;osip('0','',' ')" ''')
             elif sys.argv[2] == "mem":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import meminfo;meminfo('0','',' ')" ''')

@@ -335,8 +335,10 @@ class dong_log():
             typee = 'debug'
             filename = self.__private_dong_debug_file_path
         elif filename == "collect":
+            typee = 'collect'
             filename = self.__private_collect_array_file_path
-        elif filename == "ver":
+        elif filename == "version":
+            typee = 'version'
             filename = self.__sost_ver_file_path
         else: 
             filename = self.__private_user_config_file_path
@@ -353,7 +355,11 @@ class dong_log():
             self.os_run("sync -f && sync",flags='no-log')
             return str(data)
         except Exception as e:
-                self._pr(self.os_popen("cat /opt/sost/config/sost.json"))
+                print(filename)
+                print(typee)
+                print(obj)
+                print(key)
+                # self._pr(self.os_popen("cat /opt/sost/config/sost.json"))
                 self._error(f"json file EXIT! error_info : {e} \n <! sost !>json_get obj : {obj} key : {key}")
 
     # Software.Set.JsonFile.Value
@@ -367,6 +373,8 @@ class dong_log():
         elif filename == "server_info":
             typee = 'server_info'
             filename = self.__private_serinfo_config_file_path
+        elif filename == "version":
+            filename = self.__sost_ver_file_path
         else: 
             filename = self.__private_user_config_file_path
             typee = 'sost'
@@ -385,5 +393,9 @@ class dong_log():
             self.os_run("sync -f && sync",flags='no-log')
             return
         except Exception as e:
+            print(obj)
+            print(key)
+            print(new_value)
+            print(filename)
             print(self.os_popen("cat /opt/sost/config/sost.json"))
             self._error(f"json file EXIT! error_info : {e}")

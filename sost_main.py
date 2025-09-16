@@ -4,7 +4,7 @@ from lib.sost_logging import dong_log,json
 from lib.sost_system_info_lib import test_config
 import sys
 log = dong_log()
-log.debug_flags = str(log.json_get("sost","debug_flags"))
+log.debug_flags = str(log.json_get("debug","debug_flags",filename="debug"))
 #================================================
 def runstart(test_arry):
     log.json_set('Test_tmp','Running_flag','1')
@@ -111,7 +111,7 @@ else:
     elif chose == "7":test_type = "poweroff_r";run_command = "poweroff --reboot"
     elif chose == "8":test_type = "shutdown_r_now";run_command = "shutdown -r now"
     elif chose == "9":
-        bmc_tools_main(log.json_get("sost","Version"),log.json_get("sost","Release_Time"))
+        bmc_tools_main(log.json_get("sost","Version",filename='version'),log.json_get("sost","Release_Time",filename='version'))
         exit()
     elif chose == "10":
         test_type = log._in("TestType   : ")
