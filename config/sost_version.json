@@ -1,8 +1,8 @@
 {
     "sost": {
         "Version": "1.0.9",
-        "Release_Time": "2025-05-27",
-        "update_Web_server_ip": "192.168.60.138,172.19.1.24",
+        "Release_Time": "2025-05-27 12:16:03",
+        "update_Web_server_ip": "192.168.60.138",
         "Web_Console": "1",
         "swc_flags": "0",
         "debug_flags": "0"

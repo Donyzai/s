@@ -95,7 +95,7 @@ class dong_log():
 
      # sost_ver配置文件路径
     # __private_swc_config_file_path = '< Input swc Json / Yaml File Path >'
-    __sost_ver_file_path = '/opt/sost/config/sost_ver.json'
+    __sost_ver_file_path = '/opt/sost/config/sost_version.json'
 
     # ----------------------------------------------------------------------------------
 

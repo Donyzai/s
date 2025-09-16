@@ -309,7 +309,6 @@ def parser_test():
             print("| bmchip   |  Query server BMC chip information         | 查询服务器BMC芯片信息\t|")
             print('|----------|--------------------------------------------|-----------------------|')
             print("| test     |  Query SOST Test info                      | 查询当前测试信息\t|")
-            print("| test     |  Query SOST      info                      | 查询当前SOST信息\t|")
             print('|----------|--------------------------------------------|-----------------------|')
             print('='*80)
             print("Command : sost -i [Value] ")
@@ -334,7 +333,15 @@ def parser_test():
             elif sys.argv[2] == "fw":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import fwinfo;fwinfo('0','',' ')" ''')
             elif sys.argv[2] == "bmcip":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import bmcip;bmcip('0','',' ')" ''')
             elif sys.argv[2] == "bp":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import backboard_info;backboard_info('0','',' ')" ''')
-            elif sys.argv[2] == "sha256":print(os.popen("sha256sum  /opt/sost/config/sost.json  | cut -d ' ' -f 1 | tr -d ' '").read().strip().replace('\n',''))
+            elif sys.argv[2] == "sha256":
+                try:
+                    import hmac;import base64
+                    strings = os.popen(''' cat /opt/sost/config/sost_version.json | tr -d '",'| grep -i Release_time | awk '{{print $2}}' ''').read().strip()
+                    hmac_digest = hmac.new(key=base64.b64decode("c29zdGZhbnhpYW9kb25n").decode('utf-8').encode('utf-8'),msg=strings.encode('utf-8'),digestmod='sha256')
+                    print(str(hmac_digest.hexdigest()))
+                except:
+                    print("0000000000000000000000000000000000000000000000000000000000000000")
+                    
             elif sys.argv[2] == "bmchip":
                 print('='*60)
                 bmc_chip = os.popen("cd /opt/sost && python3 -c 'from lib.sost_public_lib import bmc_Chip;print(str(bmc_Chip()[0]))'").read().strip()
@@ -494,7 +501,6 @@ export PATH
                 with open('/root/.bash_profile','a') as f:
                     f.write('sost -z')
         os.system("cd /opt/sost && python3 auto_test.py")
-    
 
     if args.uninstall:
         if input("<sost> Do you want to uninstall sost? (y/n) ").lower() == "y":

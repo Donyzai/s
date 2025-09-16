@@ -177,3 +177,10 @@
 < sost_20250912-150022_input    > : [5~
 < sost_20250912-150025_input    > : 9
 < sost_20250912-150027_input    > : q
+< sost_20250912-150635_input    > : q
+< sost_20250916-151452_print    > : swc_web is Running! Running-Time -> 20250916 15:14:52 (swc_web.py)
+< sost_20250916-151452_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20250916-151500_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20250916-153638_print    > : swc_web is Running! Running-Time -> 20250916 15:36:38 (swc_web.py)
+< sost_20250916-153638_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20250916-153640_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
