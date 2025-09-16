@@ -11,10 +11,9 @@ import json
 import time
 
 def simple_json_get(obj,key):
-    aNUM = '10'
+    aNUM = '11'
     if obj == "Multimodal_stability":aNUM = '2'
-    
-    return log.os_popen(f"cat /opt/sost/config/sost.json  | grep -A10 {obj} | grep -i {key} | cut -d ':' -f 2",flags=cmd_log_flags).replace('"',"").replace(",","").strip()
+    return log.os_popen(f''' cat /opt/sost/config/sost.json  | grep -{aNUM} {obj} | grep -i {key}| tr -d ' ,"' | cut -d ':' -f 2 ''',flags=cmd_log_flags).replace('"',"").replace(",","").strip()
 
 def bmc_ver():
     os.system("touch /tmp/sost_tmp/swc_bmc_ver.log")
@@ -102,8 +101,6 @@ def return_get_data():
         
         'Test-Start-Time':get_value('startT_time'),
         'Test-End-Time':get_value('endT_time'),
-        'StartWaitTimeCountdown':get_value('StartWaitTimeCountdown'),
-        'EndWaitTimeCountdown':get_value('EndWaitTimeCountdown'),
         "start_wait_time": get_value('start_wait_time'),
         "aclost_wait_time": get_value('aclost_wait_time'),
         "max_count":get_value('max_count'),

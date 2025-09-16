@@ -335,7 +335,7 @@ def parser_test():
             elif sys.argv[2] == "sha256":
                 try:
                     import hmac;import base64
-                    strings = os.popen(''' cat /opt/sost/config/sost_version.json | tr -d '",'| grep -i Release_time | awk '{{print $2}}' ''').read().strip()
+                    strings = os.popen(''' cat /opt/sost/config/sost_version.json | tr -d '",'| grep -i Release_time | awk '{{print $2,$3}}' ''').read().strip()
                     hmac_digest = hmac.new(key=base64.b64decode("c29zdGZhbnhpYW9kb25n").decode('utf-8').encode('utf-8'),msg=strings.encode('utf-8'),digestmod='sha256')
                     print(str(hmac_digest.hexdigest()))
                 except:

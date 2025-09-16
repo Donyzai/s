@@ -1282,8 +1282,6 @@ def defalt_path(show_flags=True):
     # Set multi mode Close
     log.json_set("Multimodal_stability","switch","0")
     # Set start/end wait time
-    log.json_set("Test_tmp","StartWaitTimeCountdown","00")
-    log.json_set("Test_tmp","EndWaitTimeCountdown","00")
     
     log.json_set("Test_Config","simple_test_flags","")
 
@@ -1351,17 +1349,11 @@ def defalt_path(show_flags=True):
         log.os_run(f' touch /opt/sost/history && echo "{json_data}" >> /opt/sost/history')
 
 
-def wait_time(runtime,flags):
+def wait_time(runtime,flags=''):
     for i in reversed(range(int(runtime))):
         time.sleep(1)
         if len(str(i))==1:i=str('0'+str(i))
         print("\r< sost > Please Wait Times `Ctrl + c` exit() : {}s".format(str(i).strip()), end="", flush=True)
-        if flags=='start':
-            log.json_set('Test_tmp','StartWaitTimeCountdown',str(int(i)))
-        elif flags=='end':
-            log.json_set('Test_tmp','EndWaitTimeCountdown',str(int(i)))
-        else:
-            return
     print("", end="")
 
 def wait_time_ctrl_C(wait,flags):
