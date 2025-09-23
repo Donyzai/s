@@ -1,0 +1,26 @@
+
+{
+    "dmesg_check_items":{
+        "I/O error":"1",
+        "couldn't allocate usb_device":"1",
+        "Call Trace":"1",
+        "hardware error":"1",
+        "PCIe Bus Error":"1",
+        "Mac init error":"0",
+        "alloc failed":"0",
+        "init ae_dev error":"0",
+        "edma_host_send_msg":"1",
+        "EEPROM memory":"1",
+        "mac speed/duplex config cmd failed":"0",
+        "failed with error":"1",
+        "Firmware Bug":"0",
+        "get link status cmd failed":"1",
+        "Failed to suspend device":"1",
+        "Maybe the USB cable is bad":"1",
+        "SWESMBI Software EEPROM semaphore not granted":"1",
+        "dev error handler":"0",
+        "Exit sas_scsi_recover_host":"0",
+        "disparity error cnt":"1",
+        "spe-v1 failed with error":"0"
+    }
+}

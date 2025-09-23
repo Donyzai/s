@@ -375,6 +375,7 @@ def parser_test():
             print("|  sost -f auto      -> fix autotest       清理GUI_autostart文件\t|")
             print("|  sost -f config    -> fix sost.json      重建sost.json文件\t\t|")
             print("|  sost -f ssh       -> fix RemoteSSH      修复SSH无法远程登录问题\t|")
+            print("|  sost -f net       -> Rebuild NetPort    nmcli重建网口名称\t\t|")
             print("=========================================================================")
         try:
             if sys.argv[2] == "auto":
@@ -383,6 +384,17 @@ def parser_test():
                 print("<sost> Clear /root/.config/autostart/* Successful!")
             if sys.argv[2] == "help":
                 help_d()
+            elif sys.argv[2] == "net":
+                netport_list = os.popen(''' nmcli -t -f NAME connection show | grep -viE "lo|vi|do" ''').read().strip().split("\n")
+                print(netport_list)
+                if input("<sost> Sost performs/net rebuild! All existing network connections will be deleted, Do you want to continue? [y / n ] : ").lower() != "y": exit()
+                for net_name in netport_list:
+                    os.system(f"nmcli connection delete '{net_name}' >/dev/null 2>&1")
+                    os.system(f'nmcli connection add con-name {net_name} type ethernet ifname {net_name} autoconnect yes')
+                    print(f"<sost> Rebuild {net_name} Success!")
+                    time.sleep(1)
+                print("<sost> Rebuild NetPort Success!")
+
             if sys.argv[2] == "bash":
                 file_text = f'''# .bash_profile
 # Get the aliases and functions

@@ -1121,9 +1121,7 @@ def update_sost(update_flag='',noexit_flag=''):
                 return
     # sost Release server ip 
     server_ip = str(return_alive_server_ip()).strip()
-    # 1.0.8
-    now_ver = log.json_get('sost','Version').strip() 
-    # 1.0.8
+    # 1.0.8 add update_Web_server_ip
     update_ver = log.os_popen(f"curl -s http://{server_ip}/sost/new_version.txt").strip() 
     # StartUpdateing Sost
     updating_sost(update_ver,server_ip)
