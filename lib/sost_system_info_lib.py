@@ -584,11 +584,13 @@ def check_rtc_time(flags, path, count):
     if str(count) == "0":return 0
 
     filepath = path + f"/system_info/rtctime/rtctime_{count}.txt"
+    # last_filepath = path + f"/system_info/rtctime/rtctime_{str(int(count)-1)}.txt"
 
     rtc_date_time = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $4}}' ").split()
     rtc_hours_time = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $5}}' | cut -d ':' -f 1 ").split()
     rtc_minimumtime = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $5}}' | cut -d ':' -f 2 ").split()
     rtc_seconds_time = log.os_popen(f"cat {filepath} | head -n 2 | awk '{{print $5}}' | cut -d ':' -f 3 ").split()
+    # rtc_time_zone = log.os_popen(f"cat {filepath} | head -n 5 | grep -i 'Time zone' | cut -d ':' -f 2 ").split()
 
     if len(rtc_date_time)!=2:
         log._pr("RTC Time date check".ljust(40) + "\033[31m[FAIL]\033[0m   \033[31m[FAIL]\033[0m")

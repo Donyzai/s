@@ -578,7 +578,7 @@ def bmc_stability(type='',folder_path=''):
         if type == "1":
             log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset warm")
         elif type == "2":
-            log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset cold")
+            log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset ")
         else:
             log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} raw 0x06 0x02")
         #save count -> folder_path>count.txt
@@ -587,7 +587,8 @@ def bmc_stability(type='',folder_path=''):
         if count!="0":runTime("3")
         runTime("4")
         runTime("1")
-        count_down(240,'Waiting BMC Restart! Not Close Sost!')
+        # v1.1.1 -> wait bmc restart 240s -> 300s  
+        count_down(300,'Waiting BMC Restart! Not Close Sost!')
 
 # BMC quickly Create Audit Log
 def bmc_Create_audit_log(bmc_ip,bmc_user,bmc_pass):
@@ -987,6 +988,8 @@ def def_Handling_sensors():
 def Judging_autologin():
     if "kylin" in log.os_popen("cat /etc/os-release |grep 'PRETTY_NAME'").lower().strip():
         # False or True
+        log.os_run("mkdir -p /root/.config/autostart")
+
         autostart_ = os.path.exists("/root/.config/autostart/sost.desktop")
         # 0 or !0
         bashprofile = int(log.os_popen("cat /root/.bash_profile | grep -i 'sost -z' | wc -l"))
