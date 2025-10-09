@@ -10,6 +10,8 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 7. sost_version/sost_debug文件创建对接
 8. bmc_stability_logo函数中test_status默认Pass修改为变量        [x]
 9. 解决Judging_autologin函数Kylin系统.config文件没有创建导致报错问题
+10. 多模型测试sost -z后检查文件夹中是否有mulit字样，如果存在mulit_switch设置1       [x]
+11. 
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------

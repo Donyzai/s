@@ -34,3 +34,6 @@
 < sost_20250925-140350_print    > : Test Start Time  : 2025-09-25-14-02-23
 < sost_20250925-140350_print    > : Test End   Time  : 2025-09-25-14-03-50
 < sost_20250925-140350_print    > : ===============================================================
+< sost_20251009-094355_print    > : swc_web is Running! Running-Time -> 20251009 09:43:55 (swc_web.py)
+< sost_20251009-094355_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251009-100544_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)

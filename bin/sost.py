@@ -136,10 +136,6 @@ def parser_test():
             print("sost -c open  Open sost.json configuration file")
             print('-----------------------------------------------------')
     
-    if sys.argv[1] == '-c':
-        os.system("vim /opt/sost/config/sost.json")
-        exit()
-
     if args.config:
         try:
             if sys.argv[2] == "open":
@@ -511,6 +507,10 @@ export PATH
             else:
                 with open('/root/.bash_profile','a') as f:
                     f.write('sost -z')
+        
+        if 'sost_mulit_result' in os.popen("sost -i test | grep -i test_folder_path | cut -d ':' -f 2 | tr -d ' '").read().strip():
+            json_set('Multimodal_stability','switch','1')
+
         os.system("cd /opt/sost && python3 auto_test.py")
 
     if args.uninstall:
