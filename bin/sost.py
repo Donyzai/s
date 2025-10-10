@@ -130,13 +130,16 @@ def parser_test():
             print(f"in{i} value: {param_value if param_value is not None else 'Not provided'}")
 
     def config_help_d():
-            print('-----------------------------------------------------')
-            print("sost -c get -in1 [Config_Object] -in2 [Config_Key]")
-            print("sost -c set -in1 [Config_Object] -in2 [Config_Key] -in3 [New_Value]")
-            print("sost -c open  Open sost.json configuration file")
-            print('-----------------------------------------------------')
-    
+        print('-----------------------------------------------------')
+        print("sost -c get -in1 [Config_Object] -in2 [Config_Key]")
+        print("sost -c set -in1 [Config_Object] -in2 [Config_Key] -in3 [New_Value]")
+        print("sost -c open  Open sost.json configuration file")
+        print('-----------------------------------------------------')
+
     if args.config:
+        try:sys.argv[3]
+        except:os.system("vim /opt/sost/config/sost.json")
+
         try:
             if sys.argv[2] == "open":
                 os.system("vim /opt/sost/config/sost.json")
@@ -179,6 +182,8 @@ def parser_test():
                 config_help_d()
         except:
             config_help_d()
+
+
 
     if args.bmclog_check:
         os.system('''cd /opt/sost && python3 -c "from lib.sost_system_info_lib import bmclog_check;bmclog_check('','')"''')
@@ -517,6 +522,7 @@ export PATH
         if input("<sost> Do you want to uninstall sost? (y/n) ").lower() == "y":
             print("<sost> Waiting 10s before uninstalling... Ctrl + C kill uninstall Process!")
             time.sleep(10)
+            os.system('systemctl stop swc-manager.service >/dev/null 2>&1')
             os.system("rm -rf /usr/bin/sost")
             os.system("rm -rf /usr/local/bin/sost")
             if input("<sost> Do you want to keep the old tool information? (y/n) ").lower() == "y":
