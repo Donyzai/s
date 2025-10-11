@@ -54,19 +54,7 @@ def debug_info():
                     return 0
             except:
                 return 0
-        if sys.argv[1] == "debug":
-            try:
-                if sys.argv[2] == "help":
-                    print('-'*40)
-                    print('sost debug 0x00 -> debug flags = 0')
-                    print('sost debug 0x01 -> debug flags = 1')
-                    print('sost debug 0x02 -> debug flags = 2')
-                    print('sost debug 0x03 -> debug flags = 3')
-                    print('-' * 40)
-                elif sys.argv[2] == "0x00":
-                    print("<sost> Debug flags setting : 0")
-            except:
-                return 0
+
         if sys.argv[1] == "update":
             try:
                 print("<sost> Update sost tool !")
