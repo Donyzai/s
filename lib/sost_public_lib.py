@@ -1574,7 +1574,7 @@ def end_test_logo():
     log._pr("Waiting for restart........")
 
 # save time
-def runTime(flags):
+def runTime(flags,se_flag=''):
     count = log.json_get("Test_tmp", "test_count")
     if flags == "0":
         start_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/start_time.txt"
@@ -1631,6 +1631,28 @@ def runTime(flags):
             f.write(f"< sost > sost Running time : {str(sost_running_time)} s\n< sost > sost NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n"+f"sost Running time : {str(sost_running_time)} s"+"\n")
             f.write("=" * 40 + "\n")
             os.fsync(f.fileno())
+    # sost test_config func running time
+    elif flags == "5":
+        debug_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/functestconfigRunningTime.log"
+        tmp_file_path = "/tmp/sost_tmp/functestconfigRunningTime.log"
+        if se_flag == '' : log._error("runTime.Exit.no.se_flag")
+        if se_flag == 'start':
+            func_testconfig_start_time = str(int(time.time()))
+            with open(tmp_file_path,"w") as f:
+                f.write(func_testconfig_start_time)
+                f.flush()
+                os.fsync(f.fileno())
+            log._dp(f"functestconfig Running time : {str(func_testconfig_start_time)} s")
+
+        elif se_flag == 'end':
+            func_testconfig_end_time = int(time.time())
+            func_testconfig_start_time = int(open(tmp_file_path,"r").read().strip())
+            func_testconfig_running_time = func_testconfig_end_time - func_testconfig_start_time
+            with open(debug_file_path,"a") as f:
+                f.write("=" * 40 + "\n")
+                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n"+f"functestconfig Running time : {str(func_testconfig_running_time)} s"+"\n")
+                f.write("=" * 40 + "\n")
+                os.fsync(f.fileno())
     else:
         log._error("runTime.Exit.flags")
 

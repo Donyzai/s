@@ -141,7 +141,11 @@ done''')
     if log.json_get("smtp","Fail_send_email").strip() == "1":
         from .sost_public_lib import smtp_send_result
         smtp_send_result(open(f'{test_folder}/fail.txt',"r").read())
-        
+    
+    # running Time fail , save 'systemd-analyze' plot to file
+    if error_type == 'Running Time for too long':
+        log.os_run(f'systemd-analyze plot > {test_folder}/runningTime_Fail_{test_count}_systemd-analyze_plot.html &',flags='no-log')
+
     if fail_exit_flags == '1':
         from .sost_public_lib import defalt_path,result_html
         defalt_path()
@@ -463,7 +467,6 @@ def print_save_text(flags, folder_path, type, count, text):
                 os.fsync(f.fileno())
             # Retry text save to file
             if "0" in log.os_popen(f"du {folder_path}/system_info/{type}/{type}_{count}.txt | awk '{{print $1}}'"):
-                log._dp('Retry text save to file position : sost_system_info_lib.py 397 line.')
                 with open(f"{folder_path}/system_info/{type}/{type}_{count}.txt", "w") as f:
                     f.write(text + "\n")
                     f.flush()

@@ -1,1 +1,1 @@
-{time: xxxx-xx-xx-xx-xx-xx, type: reboot, count: 10000, result: Pass , bios.ver : xxxxx.xxxx.xx.xx.xxx.xx , bmc.ver : xxxx.xx.x.x.x.x.x...xxx}
+{time: xxxx-xx-xx-xx-xx-xx, type: reboot, count: 10000, result: Pass , bios.ver : xxxxx.xxxx.xx.xx.xxx.xx , bmc.ver : xxxx.xx.x.x.x.x.x...xxx}{time: 2025-10-13-10-10-38, type: reboot, count: 2, result: FAILc , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}

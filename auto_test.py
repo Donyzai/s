@@ -6,7 +6,7 @@ log.debug_flags = str(log.json_get("debug","debug_flags",filename="debug"))
 log.os_run("mkdir -p /tmp/sost_tmp")
 
 #check stability status
-if str(log.os_popen("cat /etc/os-release | grep -vi ubuntu | wc -l").strip())=="0":
+if str(log.os_popen("cat /etc/os-release | grep -i ubuntu | wc -l").strip())=="0":
     if log.os_popen("ps aux | grep -i auto_test | grep -v grep | grep -v sd | wc -l").strip()!="1":
         log._error("sost is running!")
 else:
@@ -49,7 +49,9 @@ runTime("0")
 log.os_popen(f"echo {next_count} > {path}/count.txt")
 # show Now Test logo
 #------------------------------------------------------------------------
+runTime("5","start")
 test_config("1",next_count,path)
+runTime("5","end")
 #0 start_time 1 end_time 2 last_time 3 Power off -> Os Run Time  4 sost running timerunTime("1")
 runTime("3")
 runTime("4")

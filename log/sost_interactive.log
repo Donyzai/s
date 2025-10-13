@@ -1,39 +1,91 @@
-< sost_20250925-140245_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140245_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140245_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140246_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
-< sost_20250925-140248_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140258_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140258_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140304_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140318_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140327_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140334_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140335_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140335_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140335_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140335_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20250925-140335_print    > : Test_Type         : reboot
-< sost_20250925-140335_print    > : Test_Count        : 0
-< sost_20250925-140335_print    > : Test_Status       : Pass
-< sost_20250925-140335_print    > : Waiting for restart........
-< sost_20250925-140350_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20250925-140350_print    > : ===============================================================
-< sost_20250925-140350_print    > : Test type        : reboot
-< sost_20250925-140350_print    > : Test Count       : 0
-< sost_20250925-140350_print    > : Test Folder      : /root/reboot
-< sost_20250925-140350_print    > : Test Status      : Pass
-< sost_20250925-140350_print    > : Test Start Time  : 2025-09-25-14-02-23
-< sost_20250925-140350_print    > : Test End   Time  : 2025-09-25-14-03-50
-< sost_20250925-140350_print    > : ===============================================================
-< sost_20251009-094355_print    > : swc_web is Running! Running-Time -> 20251009 09:43:55 (swc_web.py)
-< sost_20251009-094355_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251009-100544_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251013-101048_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101048_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101048_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101049_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101050_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251013-101050_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101054_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101054_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101055_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101058_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101101_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101103_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101103_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101103_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101104_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101104_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101104_print    > : Test_Type         : reboot
+< sost_20251013-101104_print    > : Test_Count        : 0
+< sost_20251013-101104_print    > : Test_Status       : Pass
+< sost_20251013-101104_print    > : Waiting for restart........
+< sost_20251013-101119_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251013-101119_print    > : ===============================================================
+< sost_20251013-101119_print    > : Test type        : reboot
+< sost_20251013-101119_print    > : Test Count       : 0
+< sost_20251013-101119_print    > : Test Folder      : /root/reboot
+< sost_20251013-101119_print    > : Test Status      : Pass
+< sost_20251013-101119_print    > : Test Start Time  : 2025-10-13-10-10-38
+< sost_20251013-101119_print    > : Test End   Time  : 2025-10-13-10-11-19
+< sost_20251013-101119_print    > : ===============================================================
+< sost_20251013-101252_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101252_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101252_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251013-101253_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101253_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101254_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101258_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101259_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101259_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101303_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101306_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101308_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101308_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101308_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101308_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101308_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101308_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20251013-101308_print    > : Running Time check                      [32m[Pass][0m   [31m[FAIL][0m
+< sost_20251013-101308_print    > : BMC_IP    : 192.168.60.223
+< sost_20251013-101308_print    > : osIP      : 192.168.60.143
+< sost_20251013-101308_print    > : osVer     : "Red Hat Enterprise Linux 9.5 (Plow)"
+< sost_20251013-101308_print    > : TestType  : reboot
+< sost_20251013-101308_print    > : ErrType   : Running Time for too long
+< sost_20251013-101308_print    > : Count     : 2
+< sost_20251013-101308_print    > : Time      : 2025-10-13-10-13-08
+< sost_20251013-101308_print    > : File1     : running_time.txt
+< sost_20251013-101308_print    > : File2     : running_time.txt
+< sost_20251013-101308_print    > : -------------------------------------------------------
+< sost_20251013-101308_print    > : System last Running Time   : 7
+< sost > System now Running Time    : 108
+< sost > Max Phase difference time  : 60s
+< sost > Phase difference time       : 101s
+< sost_20251013-101308_print    > : -------------------------------------------------------
+< sost_20251013-101311_print    > : Test_Type         : reboot
+< sost_20251013-101311_print    > : Test_Count        : 2
+< sost_20251013-101311_print    > : Test_Status       : FAILc
+< sost_20251013-101311_print    > : Waiting for restart........
+< sost_20251013-101326_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251013-101326_print    > : ===============================================================
+< sost_20251013-101326_print    > : Test type        : reboot
+< sost_20251013-101326_print    > : Test Count       : 2
+< sost_20251013-101326_print    > : Test Folder      : /root/reboot
+< sost_20251013-101326_print    > : Test Status      : FAILc
+< sost_20251013-101326_print    > : Test Start Time  : 2025-10-13-10-10-38
+< sost_20251013-101326_print    > : Test End   Time  : 2025-10-13-10-13-26
+< sost_20251013-101326_print    > : ===============================================================

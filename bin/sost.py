@@ -80,12 +80,13 @@ def parser_test():
     parser.add_argument("sost [args]", nargs='?', help="Command to execute")
     parser.add_argument("-a", "--autologin", action="store_true", help="Enable auto-login for sost")
     parser.add_argument("-b", "--bmclog_check", action="store_true", help="Check BMC log errors")
-    parser.add_argument("-c", "--config", nargs='*',
-                       help="Modify sost configuration.\n"
-                            "Usage:\n"
-                            "  sost -c open              # Directly open configuration file\n"
-                            "  sost -c get <OBJECT>      # Get configuration (e.g., 'sost -c get 2')\n"
-                            "  sost -c set <OBJECT> <KEY> <VALUE>  # Set configuration")
+    parser.add_argument("-c", "--config", action="store_true", help="Modify sost configuration.")
+    # parser.add_argument("-c", "--config", nargs='*',
+    #                    help="Modify sost configuration.\n"
+    #                         "Usage:\n"
+    #                         "  sost -c open              # Directly open configuration file\n"
+    #                         "  sost -c get <OBJECT>      # Get configuration (e.g., 'sost -c get 2')\n"
+    #                         "  sost -c set <OBJECT> <KEY> <VALUE>  # Set configuration")
     parser.add_argument("-d", "--dmesg_check", action="store_true", help="Check dmesg errors")
     parser.add_argument("-e", "--exittest", action="store_true", help="Run exit test")
     parser.add_argument("-f", "--fix", action="store_true", help="Repair sost environment")
@@ -125,53 +126,52 @@ def parser_test():
         print('-----------------------------------------------------')
 
     if args.config:
-        try:sys.argv[3]
-        except:os.system("vim /opt/sost/config/sost.json")
+        os.system("vim /opt/sost/config/sost.json")
+        # try:sys.argv[3]
+        # except:os.system("vim /opt/sost/config/sost.json")
 
-        try:
-            if sys.argv[2] == "open":
-                os.system("vim /opt/sost/config/sost.json")
-                exit()
-            # parms1 = get / set 
-            parms1 = args.in1
-            # parms2 = config object
-            parms2 = args.in2
-            # parms3 = config key
-            parms3 = args.in3
-            # parms4 = config new_value
-            parms4 = args.in4
-            # command 
-            # sost --config -i1 get -i2 Test_Config -i3 Result_path
-            print('-'*70)
-            print(f"<sost> parms1 Configuration operation type : {parms1}")
-            print(f"<sost> parms2 Configuration object         : {parms2}")
-            print(f"<sost> parms3 Configuration key            : {parms3}")
-            print(f"<sost> parms4 New configuration value      : {parms4}")
-            print('-'*70)
-            if parms1 == 'get':
-                print("sost -c get")
-                if parms2 == None and parms3 == None:
-                    print("<sost> parms2 and parms3 are required for 'get' operation")
-                elif parms2 != None and parms3 == None:
-                    print("<sost> parms3 is required for 'get' operation")
-                else:
-                    print(json_load(parms2, parms3))
-            elif parms1 == 'set':
-                print("sost -c set")
-                if parms2 == None or parms3 == None or parms4 == None:
-                    print("<sost> parms2, parms3, and parms4 are required for 'set' operation")
-                else:
-                    json_set(parms2, parms3, parms4)
-                    print(f"<sost> Set {parms2} {parms3} to {parms4} Success!")
-            elif parms1 == "open":
-                print("sost -c open")
-                os.system("vim /opt/sost/config/sost.json")
-            else:
-                config_help_d()
-        except:
-            config_help_d()
-
-
+        # try:
+        #     if sys.argv[2] == "open":
+        #         os.system("vim /opt/sost/config/sost.json")
+        #         exit()
+        #     # parms1 = get / set 
+        #     parms1 = args.in1
+        #     # parms2 = config object
+        #     parms2 = args.in2
+        #     # parms3 = config key
+        #     parms3 = args.in3
+        #     # parms4 = config new_value
+        #     parms4 = args.in4
+        #     # command 
+        #     # sost --config -i1 get -i2 Test_Config -i3 Result_path
+        #     print('-'*70)
+        #     print(f"<sost> parms1 Configuration operation type : {parms1}")
+        #     print(f"<sost> parms2 Configuration object         : {parms2}")
+        #     print(f"<sost> parms3 Configuration key            : {parms3}")
+        #     print(f"<sost> parms4 New configuration value      : {parms4}")
+        #     print('-'*70)
+        #     if parms1 == 'get':
+        #         print("sost -c get")
+        #         if parms2 == None and parms3 == None:
+        #             print("<sost> parms2 and parms3 are required for 'get' operation")
+        #         elif parms2 != None and parms3 == None:
+        #             print("<sost> parms3 is required for 'get' operation")
+        #         else:
+        #             print(json_load(parms2, parms3))
+        #     elif parms1 == 'set':
+        #         print("sost -c set")
+        #         if parms2 == None or parms3 == None or parms4 == None:
+        #             print("<sost> parms2, parms3, and parms4 are required for 'set' operation")
+        #         else:
+        #             json_set(parms2, parms3, parms4)
+        #             print(f"<sost> Set {parms2} {parms3} to {parms4} Success!")
+        #     elif parms1 == "open":
+        #         print("sost -c open")
+        #         os.system("vim /opt/sost/config/sost.json")
+        #     else:
+        #         config_help_d()
+        # except:
+        #     config_help_d()
 
     if args.bmclog_check:
         os.system('''cd /opt/sost && python3 -c "from lib.sost_system_info_lib import bmclog_check;bmclog_check('','')"''')
