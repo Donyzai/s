@@ -75,7 +75,7 @@ Core(s) per socket:                   32
 Socket(s):                            2
 Stepping:                             1
 Frequency boost:                      enabled
-CPU(s) scaling MHz:                   84%
+CPU(s) scaling MHz:                   82%
 CPU max MHz:                          4413.2319
 CPU min MHz:                          1500.0000
 BogoMIPS:                             7089.01
@@ -136,9 +136,9 @@ Bus 003 Device 004: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
 Bus 003 Device 005: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
 Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Storcli64 not Found!
-Local time: Tue 2025-10-14 11:26:56 CST
-           Universal time: Tue 2025-10-14 03:26:56 UTC
-                 RTC time: Tue 2025-10-14 03:26:56
+Local time: Tue 2025-10-14 13:54:21 CST
+           Universal time: Tue 2025-10-14 05:54:21 UTC
+                 RTC time: Tue 2025-10-14 05:54:21
                 Time zone: Asia/Shanghai (CST, +0800)
 System clock synchronized: yes
               NTP service: active
@@ -198,39 +198,54 @@ Bios-ReleaseTime: 02/06/2025
 Bios-Revisione: 5.35
 BP_fw    :BP1 Version: REV 1.01(03-29-2024)
 BP2 Version: REV 1.01(11-18-2022)
-< sost_20251014-112704_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112704_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112704_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112705_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
-< sost_20251014-112706_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112710_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112710_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112711_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112714_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112718_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112720_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112720_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112720_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112720_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112720_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251014-112720_print    > : Test_Type         : reboot
-< sost_20251014-112720_print    > : Test_Count        : 0
-< sost_20251014-112720_print    > : Test_Status       : Pass
-< sost_20251014-112720_print    > : Waiting for restart........
-< sost_20251014-112735_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251014-112735_print    > : ===============================================================
-< sost_20251014-112735_print    > : Test type        : reboot
-< sost_20251014-112735_print    > : Test Count       : 0
-< sost_20251014-112735_print    > : Test Folder      : /root/reboot
-< sost_20251014-112735_print    > : Test Status      : Pass
-< sost_20251014-112735_print    > : Test Start Time  : 2025-10-14-11-26-54
-< sost_20251014-112735_print    > : Test End   Time  : 2025-10-14-11-27-35
-< sost_20251014-112735_print    > : ===============================================================
+< sost_20251014-135429_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135429_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135429_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135430_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251014-135431_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135435_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135436_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135437_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135439_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135443_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135445_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135445_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135445_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135445_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135445_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251014-135445_print    > : Test_Type         : bmc_power_on_off
+< sost_20251014-135445_print    > : Test_Count        : 0
+< sost_20251014-135445_print    > : Test_Status       : Pass
+< sost_20251014-135445_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251014-135500_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251014-135500_print    > : ===============================================================
+< sost_20251014-135500_print    > : Test type        : bmc_power_on_off
+< sost_20251014-135500_print    > : Test Count       : 0
+< sost_20251014-135500_print    > : Test Folder      : /root/bmc_power_on_off
+< sost_20251014-135500_print    > : Test Status      : Pass
+< sost_20251014-135500_print    > : Test Start Time  : 2025-10-14-13-54-18
+< sost_20251014-135500_print    > : Test End   Time  : 2025-10-14-13-55-00
+< sost_20251014-135500_print    > : ===============================================================

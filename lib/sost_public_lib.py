@@ -1354,6 +1354,7 @@ def wait_time(runtime,flags=''):
     for i in reversed(range(int(runtime))):
         time.sleep(1)
         if len(str(i))==1:i=str('0'+str(i))
+        log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text="\r< sost > Please Wait Times `Ctrl + c` exit() : {}s".format(str(i).strip()))
         print("\r< sost > Please Wait Times `Ctrl + c` exit() : {}s".format(str(i).strip()), end="", flush=True)
     print("", end="")
 

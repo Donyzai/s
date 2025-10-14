@@ -54,7 +54,7 @@ else:
             strings ='{"'+sys.argv[1].replace(':','":"').replace(',','","')+'"}'
             data = json.loads(strings)
             chose = data["chose"]
-            if chose == '13' or '14':
+            if chose == '13' or '14' or '18':
                 try:bmclan = data['bmclan']
                 except:bmclan = '1'
                 try:BMC_User = data['bmcuser']
@@ -73,6 +73,8 @@ else:
             chose = "5"
         elif sys.argv[1] == "bmcresetcold":
             chose = "6"
+        elif sys.argv[1] == "powroffon":
+            chose = "18"
         else:
             log._pr("==============================================")
             log._pr("|    sost -s reboot      -> rebootTest       |")
