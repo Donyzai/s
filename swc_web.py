@@ -28,6 +28,61 @@ def after_request(response):
     logging.getLogger('werkzeug').setLevel(logging.ERROR)
     return response
 
+def failinfo():
+        result = log.json_get("Test_tmp","test_status",web=cmd_log_flags)
+        path_folder = log.json_get("Test_tmp","test_folder_path",web=cmd_log_flags)
+        if result == 'FAILc':
+            failc_info = os.popen(f"cat {path_folder}/failc.txt").read().strip()
+            data = '==============================\nSummaryInfo \n==============================\n'+ log.os_popen(f"cat {path_folder}/failc_result/summary.log 2>/dev/null",flags=cmd_log_flags).strip()+ '\n==============================\n'+str(failc_info)
+            return str(data).replace('(','').replace(')','').replace('{','').replace('}','').strip().replace('\n','<br>')
+        elif result == 'FAIL':
+            fail_info = os.popen(f"cat {path_folder}/fail.txt").read()
+            if fail_info.strip()=='':
+                fail_info = os.popen(f"cat /opt/sost/log/sost_interactive.log").read()
+            return fail_info.replace('\n','<br>')
+        else:
+            return ''
+        
+@app.route('/slog', methods=['GET'])
+def slog():
+
+    # Type
+    # alarm -> /opt/sost/log/alarm.log
+    # debug -> /opt/sost/log/debug.log
+    # interactive -> /opt/sost/log/sost_interactive.log
+    # json -> /opt/sost/log/json.log
+    # popen -> /opt/sost/log/popen.log
+    # run -> /opt/sost/log/run.log
+
+    slog_type = request.args.get('type')
+    
+    if slog_type not in ['alarm', 'debug', 'interactive', 'fail' ,'json', 'popen', 'run','showconfig']:
+        return "Invalid type parameter", 400
+    
+    if slog_type == 'alarm':
+        alarm_log = log.os_popen("cat /opt/sost/log/alarm.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if alarm_log != '':return alarm_log
+    elif slog_type == 'debug':
+        debug_log = log.os_popen("cat /opt/sost/log/debug.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if debug_log != '':return debug_log
+    elif slog_type == 'interactive':
+        interactive_log = log.os_popen("cat /opt/sost/log/sost_interactive.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if interactive_log != '':return interactive_log
+    elif slog_type == 'fail':
+        faillog = failinfo()
+        if faillog != '':return faillog
+    elif slog_type == 'json':
+        json_log = log.os_popen("cat /opt/sost/log/json.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if json_log != '':return json_log
+    elif slog_type == 'popen':
+        popen_log = log.os_popen("cat /opt/sost/log/popen.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if popen_log != '':return popen_log
+    elif slog_type == 'run':
+        run_log = log.os_popen("cat /opt/sost/log/run.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if run_log != '':return run_log
+
+    return "No log information" , 200
+
 @app.route('/getrunningTime')
 def get_running_time():
     runTime = log.os_popen(f"cat {log.json_get('Test_tmp','test_folder_path',web=cmd_log_flags)}/running_time.txt",flags=cmd_log_flags).strip()
@@ -38,25 +93,87 @@ def clear_info():
     log.json_set('Test_tmp','Running_flag','0')
     return 'success',200
 
-@app.route('/set', methods=['GET'])  # 或者 methods=['POST']，取决于你的调用方式
-def set_value():
-    # 从请求参数中获取 obj, key, new_value
+#@app.route('/sjson_set', methods=['POST'])
+@app.route('/sjson', methods=['GET'])
+def sjson():
+    # bmcsel_check -> /opt/sost/config/bmcsel_check.json
+    # collect_array -> /opt/sost/config/collect_array.json
+    # debug -> /opt/sost/config/debug.json
+    # dmesg_check -> /opt/sost/config/dmesg_check.json
+    # server_info -> /opt/sost/config/server_info.json
+    # sost -> /opt/sost/config/sost.json
+    # sost_version -> /opt/sost/config/sost_version.json
+    # swc -> /opt/sost/config/swc.json
+
+    # HTTP Post JSON Example:
+    # data = request.get_json()
+    # obj = data.get('obj')
+    # key = data.get('key')
+    # new_value = data.get('new_value')
+    # filename = data.get('filename')
+
+    # HTTP GET Example:
+    typee = request.args.get('type')
     obj = request.args.get('obj')
     key = request.args.get('key')
     new_value = request.args.get('new_value')
+    filename = request.args.get('filename')
 
-    try:
-        filename = '/opt/sost/config/sost.json'
-        with open(filename, 'r') as file:
-                data = json.load(file)
-                os.fsync(file)
-        data[obj][key] = new_value
-        with open(filename, 'w') as file1:
-            json.dump(data, file1, indent=4)
-            os.fsync(file1)
+    if filename not in ['bmcsel_check', 'collect_array', 'debug', 'dmesg_check', 'server_info', 'sost', 'sost_version', 'swc',"showconfig"]:
+        return jsonify({"error": "Invalid filename parameter"}), 400
+    
+    if not obj or not key or filename is None:
+        if filename != 'showconfig':
+            return jsonify({"error": "Missing required parameters"}), 400
+    
+    if filename == 'showconfig':
+        # fail_exit_flags
+        fail_exit_flags = log.json_get("Test_Config","fail_exit_flags",web=cmd_log_flags)
+        # fail_exit_blacklist
+        fail_exit_blacklist = log.json_get("Test_Config","fail_exit_blacklist",web=cmd_log_flags)
+        # start_wait_time
+        start_wait_time = log.json_get("Test_Config","start_wait_time",web=cmd_log_flags)
+        # aclost_wait_time
+        aclost_wait_time = log.json_get("Test_Config","aclost_wait_time",web=cmd_log_flags)
+        data = '{"fail_exit_flags": "'+str(fail_exit_flags)+'", "fail_exit_blacklist": "'+str(fail_exit_blacklist)+'", "start_wait_time": "'+str(start_wait_time)+'", "aclost_wait_time": "'+str(aclost_wait_time)+'"}'
+        return data
+
+    if filename == 'bmcsel_check':
+        if typee == 'get':
+            value = log.json_get(obj, key, filename='bmcsel_check')
+            return jsonify({key: value}), 200
+        else:
+            log.json_set(obj, key, new_value, filename='bmcsel_check')
+            return 'success',200
+    elif filename == 'collect_array':
+        log.json_set(obj, key, new_value, filename='collect_array')
         return 'success',200
-    except:
-        return 'unsuccess',400
+    elif filename == 'debug':
+        log.json_set(obj, key, new_value, filename='debug')
+        return 'success',200
+    elif filename == 'dmesg_check':
+        log.json_set(obj, key, new_value, filename='dmesg_check')
+        return 'success',200
+    elif filename == 'server_info':
+        log.json_set(obj, key, new_value, filename='server_info')
+        return 'success',200
+    elif filename == 'sost':
+        if typee == 'get':
+            value = log.json_get(obj, key, filename='sost')
+            return jsonify({key: value}), 200
+        elif typee == 'set':
+            log.json_set(obj, key, new_value, filename='sost')
+            return 'success',200
+    elif filename == 'sost_version':
+        log.json_set(obj, key, new_value, filename='version')
+        return 'success',200
+    elif filename == 'swc':
+        log.json_set(obj, key, new_value, filename='swc')
+        return 'success',200
+    else:
+        return jsonify({"error": "File not found"}), 404
+
+    return "File not found", 404
 
 @app.route('/run', methods=['GET'])
 def run_stability():

@@ -105,9 +105,9 @@ def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
     return
 
 def debug_mode():
-    if log.json_get("debug","noSendComand",filename='debug').strip() == '1': 
+    if log.json_get("debug","noSendCommand",filename='debug').strip() == '1': 
         defalt_path()
-        log._error("DebugMode Enabled noSendComand = 1")
+        log._error("DebugMode Enabled noSendCommand = 1")
 
 def return_wait_time():
     
@@ -1650,7 +1650,7 @@ def runTime(flags,se_flag=''):
             func_testconfig_running_time = func_testconfig_end_time - func_testconfig_start_time
             with open(debug_file_path,"a") as f:
                 f.write("=" * 40 + "\n")
-                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n"+f"functestconfig Running time : {str(func_testconfig_running_time)} s"+"\n")
+                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n"+f"\n< sost > functestconfig Running time : {str(func_testconfig_running_time)} s"+"\n")
                 f.write("=" * 40 + "\n")
                 os.fsync(f.fileno())
     else:
@@ -2064,10 +2064,10 @@ def logo(release_time, version):
 |═══════════════════════════════════════════════════════════════════════════''')
     print(f"|    ReTime:{release_time.ljust(11)}     Ver.{version} "+f"BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|")
     print('''|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . systemctl reboot   |   9. Test Tools       |
-|   2 . power cycle    |    6 . init 6             |  10. other  Test      |
-|   3 . power reset    |    7 . poweroff -r        |  11. Timed operation  |
-|   4 . AClost         |    8 . shutdown -r        |  12. Mulit Test       |
+|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
+|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
+|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
+|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
 |══════════════════════════════════════════════════════════════════════════|
 |  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
 |  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 

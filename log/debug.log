@@ -1,13 +1,1 @@
-< sost_20251013-101039_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251013-101049_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
-< sost_20251013-101054_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
-< sost_20251013-101121_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251013-101227_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251013-101252_dlev_0   > : functestconfig Running time : 1760321572 s
-< sost_20251013-101253_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
-< sost_20251013-101253_dlev_0   > : []
-< sost_20251013-101258_dlev_0   > : Retry text save to file position : sost_system_info_lib.py 397 line.
-< sost_20251013-101259_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device', 'FAN', 'CMOS', 'ac', 'dc']
-< sost_20251013-101308_dlev_0   > : Last running time : 7 s
-< sost_20251013-101308_dlev_0   > : Now running time  : 108 s
-< sost_20251013-101308_dlev_0   > : Last restart time : 108 s
+< sost_20251014-112655_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!

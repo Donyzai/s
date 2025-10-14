@@ -455,6 +455,7 @@ def print_save_text(flags, folder_path, type, count, text):
         log.os_run(f"mkdir -p {type_folder}",flags='no-log')
     if flags == "0":
         print(text)
+        log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text=text)
     elif flags == "1":
         try:
             if text == "": 
@@ -628,6 +629,7 @@ def check_rtc_time(flags, path, count):
         fail_info('RTC Time seconds check',error_tmp,f'timedatectl',f"timedatectl")
     else:
         log._pr("RTC Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+
 
 # check RuningTime
 def check_running_time(count):
@@ -1403,6 +1405,7 @@ def backboard_info(flags, folder_path, count):
 # Mega storcli collect raid info
 def storinfo(flags, folder_path, count):
     if log.json_get('collect_array',"storinfo",web='no-log',filename='collect').strip() !='1':return 0
+    if log.os_popen("lspci | grep -i sas | grep -v usb").strip() == "":return 0
     if not os.path.exists("/opt/MegaRAID/storcli/storcli64"):
         print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count, text="Storcli64 not Found!")
         if flags == "1" :

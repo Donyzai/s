@@ -69,63 +69,51 @@ class dong_log():
     # Class fxd_log Private List==============================================================
 
     # 日志标题名称
-    #__private_title_name = '< Input Software Title Name >'
     __private_title_name = 'sost'
     # ----------------------------------------------------------------------------------
 
     # 用户配置文件路径
-    # __private_user_config_file_path = '< Input Software Json / Yaml File Path >'
     __private_user_config_file_path = '/opt/sost/config/sost.json'
 
     # SWC配置文件路径
-    # __private_swc_config_file_path = '< Input swc Json / Yaml File Path >'
     __private_swc_config_file_path = '/opt/sost/config/swc.json'
 
     # server_info配置文件路径
-    # __private_swc_config_file_path = '< Input swc Json / Yaml File Path >'
     __private_serinfo_config_file_path = '/opt/sost/config/server_info.json'
 
-    # dong_debug配置文件路径
-    # __private_swc_config_file_path = '< Input swc Json / Yaml File Path >'
-    __private_dong_debug_file_path = '/opt/sost/config/debug.json'
-
     # collect_array配置文件路径
-    # __private_swc_config_file_path = '< Input swc Json / Yaml File Path >'
     __private_collect_array_file_path = '/opt/sost/config/collect_array.json'
 
-     # sost_ver配置文件路径
-    # __private_swc_config_file_path = '< Input swc Json / Yaml File Path >'
-    __sost_ver_file_path = '/opt/sost/config/sost_version.json'
-
-    # ----------------------------------------------------------------------------------
+    # sost_ver配置文件路径
+    __private_sost_ver_file_path = '/opt/sost/config/sost_version.json'
+    
+    # sost debug文件路径
+    __private_sost_debug_file_path = '/opt/sost/config/debug.json'
+    
+    # sost dmesg_check文件路径
+    __private_sost_dmesg_check_file_path = '/opt/sost/config/dmesg_check.json'
 
     # sost_interactive.log 日志文件路径
-    # __private_cmdlog_file_path = '< Input Software cmd.log File Path >'
     __private_sost_interactive_file_path = '/opt/sost/log/sost_interactive.log'
     # ----------------------------------------------------------------------------------
 
     # popen.log 日志文件路径
-    # __private_popen_log_file_path = '< Input Software popen.log File Path >'
     __private_popen_log_file_path = '/opt/sost/log/popen.log'
     # ----------------------------------------------------------------------------------
 
     # run.log 日志文件路径
-    # __private_run_log_file_path = '< Input Software run.log File Path >'
     __private_run_log_file_path = '/opt/sost/log/run.log'
     # ----------------------------------------------------------------------------------
 
     # json.log 日志文件路径
-    # __private_json_log_file_path = '< Input Software json.log File Path >'
     __private_json_log_file_path = '/opt/sost/log/json.log'
     # ------------------------------------------------------------------------------
 
     # debug.log 日志文件路径
-    # __private_debug_log_file_path = '< Input Software debug.log File Path >'
     __private_debug_log_file_path = '/opt/sost/log/debug.log'
     # ------------------------------------------------------------------------------
 
     # alarm.log 日志文件路径
-    # __private_alarm_file_path = '< Input Software debug.log File Path >'
     __private_alarm_file_path = '/opt/sost/log/alarm.log'
     # ------------------------------------------------------------------------------
   
@@ -158,9 +146,9 @@ class dong_log():
     # False  记录
     popen_save_file_flags = False
 
-    # echo info to dmesg
+    # write log to dmesg
     def _dmesg(self,text):
-        self.os_run(f'echo "{self.__private_title_name} : {text}" | sudo tee /dev/kmsg >> /dev/null')
+        self.os_run(f'echo "{self.__private_title_name} : {text}" | sudo tee /dev/kmsg >> /dev/null & ')
 
     # fxd_log init 
     def __init__(self):
@@ -333,13 +321,13 @@ class dong_log():
             filename = self.__private_serinfo_config_file_path
         elif filename == "debug":
             typee = 'debug'
-            filename = self.__private_dong_debug_file_path
+            filename = self.__private_sost_debug_file_path
         elif filename == "collect":
             typee = 'collect'
             filename = self.__private_collect_array_file_path
         elif filename == "version":
             typee = 'version'
-            filename = self.__sost_ver_file_path
+            filename = self.__private_sost_ver_file_path
         else: 
             filename = self.__private_user_config_file_path
         try:
@@ -374,25 +362,38 @@ class dong_log():
             typee = 'server_info'
             filename = self.__private_serinfo_config_file_path
         elif filename == "version":
-            filename = self.__sost_ver_file_path
+            filename = self.__private_sost_ver_file_path
+        elif filename == "debug":
+            typee = 'debug'
+            filename = self.__private_sost_debug_file_path
+        elif filename == "dmesg_check":
+            typee = 'dmesg_check'
+            filename = self.__private_sost_dmesg_check_file_path
         else: 
             filename = self.__private_user_config_file_path
             typee = 'sost'
         try:
+            
             with open(filename, 'r') as file:
                 data = json.load(file)
                 os.fsync(file)
+
+            old_value = data[obj][key]
             data[obj][key] = new_value
+
             with open(filename, 'w') as file1:
                 json.dump(data, file1, indent=4)
                 os.fsync(file1)
-            text = f"< {self.__private_title_name}_{now_time('6')}_json_set > : type[{typee}] obj[{obj}] key[{key}] old[{self.json_get(obj,key,web=flags)}] new[{new_value}]"
+            text = f"< {self.__private_title_name}_{now_time('6')}_json_set > : type[{typee}] obj[{obj}] key[{key}] old[{old_value}] new[{new_value}]"
+            
             if flags.strip() !='no-log':self.save_to_file(filename=self.__private_json_log_file_path,text=text)
             if self.debug_flags == "1" or self.debug_flags == "3" :print(text)
             # os.system("echo 3 > /proc/sys/vm/drop_caches")
             self.os_run("sync -f && sync",flags='no-log')
             return
         except Exception as e:
+            print('dopny')
+            print(typee)
             print(obj)
             print(key)
             print(new_value)

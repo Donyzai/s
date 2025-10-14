@@ -69,6 +69,10 @@ else:
             chose = "3"
         elif sys.argv[1] == "aclost":
             chose = "4"
+        elif sys.argv[1] == "bmcresetwarm":
+            chose = "5"
+        elif sys.argv[1] == "bmcresetcold":
+            chose = "6"
         else:
             log._pr("==============================================")
             log._pr("|    sost -s reboot      -> rebootTest       |")
@@ -106,10 +110,14 @@ else:
         test_type = "AClost"
         run_command = "sh -c `sync ; sleep 3 ; sh -c 'minicom &' ; sleep 5 ; echo a > /dev/ttyUSB0` &"
         aclost_init_env()
-    elif chose == "5":test_type = "systemctl_reboot";run_command = "systemctl reboot"
-    elif chose == "6":test_type = "init_6";run_command = "init 6"
-    elif chose == "7":test_type = "poweroff_r";run_command = "poweroff --reboot"
-    elif chose == "8":test_type = "shutdown_r_now";run_command = "shutdown -r now"
+    elif chose == "5":
+        exit()
+    elif chose == "6":
+        exit()
+    elif chose == "7":
+        exit()
+    elif chose == "8":
+        exit()
     elif chose == "9":
         bmc_tools_main(log.json_get("sost","Version",filename='version'),log.json_get("sost","Release_Time",filename='version'))
         exit()
@@ -119,8 +127,10 @@ else:
         run_command = log._in("RunCommand : ")
         if run_command == "":log._error("User.Input.Error!")
         log._pr(f"test_type = {test_type}\nRunCommand = {run_command}")
-        if log._in("Are you sure ? [y / n] : ") == "n":
+        
+        if log._in("Are you sure ? [y / n] : ") != "y":
             log._error("User.Input.N -> exit()")
+
     elif chose == "12":
         mulit_main()
     elif chose == "13":

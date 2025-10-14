@@ -280,6 +280,7 @@ def parser_test():
         except Exception as e:
             print(f"<sost> Collect Fail ! fail info : {str(e)}")
 
+    # Query server specific information
     if args.info:
         def help_d():
             print('='*80)
@@ -341,20 +342,25 @@ def parser_test():
         except:
             help_d()
 
+    # Start test execution function
     if args.sensor:
         os.system("cd /opt/sost && python3 -c 'from lib.sost_public_lib import def_Handling_sensors;def_Handling_sensors()'")
 
+    # Continue test execution function
     if args.dmesg_check:
         os.system('''cd /opt/sost && python3 -c "from lib.sost_system_info_lib import dmesg_check;dmesg_check('')"''')
 
+    # Start test execution function
     if args.killall:
         os.system("ps -aux | grep -i swc | grep -v grep | awk '{print $2}' | xargs kill -9")
         os.system("ps -aux | grep -i auto_test | grep -v grep | awk '{print $2}' | xargs kill -9")
+        json_set("Test_tmp","Running_flag","6")
         os.system("yes | sost -f bash")
         os.system("rm -rf /root/.config/autostart/*")
         print("<sost> All processes of sost have been cleaned up and bash-profile has been reset!")
         os.system("ps -aux | grep -i sost | grep -v grep | awk '{print $2}' | xargs kill -9")
 
+    # Start test execution function
     if args.fix:
         def help_d():
             print("=========================================================================")
@@ -411,6 +417,7 @@ export PATH
         except:
             help_d()
 
+    # Start test execution function
     if args.webconsole:
         try:
             if sys.argv[2] == "help":
@@ -473,6 +480,7 @@ export PATH
             print("|  sost -w status     -> SostWebConsole Status  |")
             print("=================================================")
 
+    # Continue test execution function
     if args.continuee:
         if "multi-user.target" in os.popen("systemctl get-default").read():
             if "sost -z" not in os.popen("cat /root/.bash_profile").read():
@@ -501,11 +509,14 @@ export PATH
                 with open('/root/.bash_profile','a') as f:
                     f.write('sost -z')
         
+        # Check if multimodal stability test is enabled
         if 'sost_mulit_result' in os.popen("sost -i test | grep -i test_folder_path | cut -d ':' -f 2 | tr -d ' '").read().strip():
             json_set('Multimodal_stability','switch','1')
 
+        # Start the auto_test.py script
         os.system("cd /opt/sost && python3 auto_test.py")
 
+    # sost uninstall function
     if args.uninstall:
         if input("<sost> Do you want to uninstall sost? (y/n) ").lower() == "y":
             print("<sost> Waiting 10s before uninstalling... Ctrl + C kill uninstall Process!")
@@ -519,6 +530,7 @@ export PATH
                 os.system("rm -rf /opt/sost")
             print("<sost> Uninstalling sost Success! Luck to you!")
 
+    # sost help display
     if len(sys.argv) == 1: parser.print_help()
 
     if args.start:

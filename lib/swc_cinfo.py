@@ -39,21 +39,6 @@ def cpld_ver():
     
     return str(cpld_version)
 
-def fail_info():
-    result = log.json_get("Test_tmp","test_status",web=cmd_log_flags)
-    path_folder = log.json_get("Test_tmp","test_folder_path",web=cmd_log_flags)
-    if result == 'FAILc':
-        failc_info = os.popen(f"cat {path_folder}/failc.txt").read().strip()
-        data = '==============================\nSummaryInfo \n==============================\n'+ log.os_popen(f"cat {path_folder}/failc_result/summary.log 2>/dev/null",flags=cmd_log_flags).strip()+ '\n==============================\n'+str(failc_info)
-        return str(data).replace('(','').replace(')','').replace('{','').replace('}','').strip()
-    elif result == 'FAIL':
-        fail_info = os.popen(f"cat {path_folder}/fail.txt").read()
-        if fail_info.strip()=='':
-            fail_info = os.popen(f"cat /opt/sost/log/sost_interactive.log").read()
-        return fail_info
-    else:
-        return "Pass"
-  
 def cpu_usage():
     """获取当前 CPU 使用率（百分比，0-100）"""
     with open('/proc/stat', 'r') as f:
@@ -131,7 +116,6 @@ def return_get_data():
         'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'mem_usage': os.popen(''' free | awk '/Mem/{printf("%.2f"), $3/$2*100}' 2>/dev/null ''').read().strip(),
         'cpu_usage': str(cpu_usage()).strip(),
-        'fail_info': fail_info(),
         'hw_uuid':os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip(),
         'swc_service_connectivity':""
     }
