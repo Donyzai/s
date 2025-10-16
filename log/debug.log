@@ -50,3 +50,49 @@
 < sost_20251016-134652_dlev_0   > : remote_sha256  : 1
 < sost_20251016-134652_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
 < sost_20251016-134652_dlev_0   > : SOST is recommended to update
+< sost_20251016-134725_dlev_0   > : update_flag    : 1
+< sost_20251016-134725_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134725_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134725_dlev_0   > : SOST is recommended to update
+< sost_20251016-134727_dlev_0   > : Storcli64 Not install!
+< sost_20251016-134727_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-135152_dlev_0   > : update_flag    : 0
+< sost_20251016-135152_dlev_0   > : remote_sha256  : 1
+< sost_20251016-135152_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135152_dlev_0   > : SOST is the latest version
+< sost_20251016-135152_dlev_0   > : Storcli64 Not install!
+< sost_20251016-135152_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-135301_dlev_0   > : The sha256 remote value is consistent with the local value, so no update is needed
+< sost_20251016-135301_dlev_0   > : Storcli64 Not install!
+< sost_20251016-135301_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-135318_dlev_0   > : SOST is the latest version
+< sost_20251016-135318_dlev_0   > : Storcli64 Not install!
+< sost_20251016-135318_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-135321_dlev_0   > : SOST is the latest version
+< sost_20251016-135321_dlev_0   > : Storcli64 Not install!
+< sost_20251016-135321_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-135330_dlev_0   > : SOST is recommended to update
+< sost_20251016-135332_dlev_0   > : Storcli64 Not install!
+< sost_20251016-135332_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-135340_dlev_0   > : SOST must be updated
+< sost_20251016-135530_dlev_0   > : SOST must be updated
+< sost_20251016-135534_dlev_0   > : SOST must be updated
+< sost_20251016-135715_dlev_0   > : SOST must be updated
+< sost_20251016-135718_dlev_0   > : SOST must be updated
+< sost_20251016-135721_dlev_0   > : SOST must be updated
+< sost_20251016-135842_dlev_0   > : The sha256 remote value is consistent with the local value, so no update is needed
+< sost_20251016-135842_dlev_0   > : Storcli64 Not install!
+< sost_20251016-135842_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-135855_dlev_0   > : SOST must be updated
+< sost_20251016-140016_dlev_0   > : SOST must be updated
+< sost_20251016-140027_dlev_0   > : SOST must be updated
+< sost_20251016-140027_dlev_0   > : update_flag    : 2
+< sost_20251016-140321_dlev_0   > : SOST must be updated
+< sost_20251016-140321_dlev_0   > : update_flag    : 2
+< sost_20251016-140343_dlev_0   > : Storcli64 Not install!
+< sost_20251016-140343_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-140818_dlev_0   > : SOST must be updated
+< sost_20251016-140818_dlev_0   > : update_flag    : 2
+< sost_20251016-140833_dlev_0   > : SOST is the latest version
+< sost_20251016-140837_dlev_0   > : Storcli64 Not install!
+< sost_20251016-140837_dlev_0   > : Sost Stability Tools check Success!

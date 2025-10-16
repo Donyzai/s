@@ -1,8 +1,8 @@
 {
-    "Test-status": "Ending",
+    "Test-status": "sostErrStop",
     "Test-type": "bmc_cold_lan",
     "Test-count": "0",
-    "Test-result": "NA",
+    "Test-result": "FAIL",
     "Test-uuid": "",
     "Test-sha256": "61e03bbe42b122bef846c79b07ff2ad2fff0750a4fc59e5aa8551b1ed60a43b7",
     "Test-Start-Time": "2025-10-16-13-41-10",
@@ -28,8 +28,8 @@
     "sost_ReTime": "2025-05-27 12",
     "sost_ver_sha256": "0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f",
     "Bios_ver": "T2DMEP04.00",
-    "zLast_Time": "2025-10-16 13:46:51",
-    "mem_usage": "3.70",
+    "zLast_Time": "2025-10-16 14:14:51",
+    "mem_usage": "3.74",
     "cpu_usage": "0.08",
     "hw_uuid": "83a59b18f13e01e8ef11030e9231358c",
     "swc_service_connectivity": ""

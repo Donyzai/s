@@ -20,7 +20,7 @@ def testsha256():
     # uuid encode = test_type + start_time
     log.json_set("Test_tmp","test_sha256",str(hashlib.sha256(sha256_str.encode(encoding='UTF-8')).hexdigest()))
 
-def update_show(update_flag,tips):
+def update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256):
     clp()
     print(f'''
 ══════════════════════════════════════════════════════
@@ -34,6 +34,10 @@ def update_show(update_flag,tips):
 ||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
 ══════════════════════════════════════════════════════
 >> {tips}''')
+
+    log._dp(f"update_flag    : {update_flag}")
+    log._pr(f"remote_sha256  : {remote_sha256}")
+    log._pr(f"local_sha256   : {local_sha256}")
 
     if update_flag == '1':
         update_sost(noexit_flag='1')
@@ -56,14 +60,12 @@ def update_check():
     except:
         return False
 
-    update_flag = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/update_flag.txt 2>/dev/null").replace("\n","").strip()
-    remote_sha256 = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/new_version_sha256.txt 2>/dev/null").replace("\n","").strip()
+    update_flag = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/uflag 2>/dev/null").replace("\n","").strip()
+    remote_sha256 = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/sostsha256 2>/dev/null").replace("\n","").strip()
     local_sha256 = log.os_popen('sost -i sha256').replace("\n","").strip()
+    if local_sha256 == '0000000000000000000000000000000000000000000000000000000000000000':
+        return False
 
-    log._dp(f"update_flag    : {update_flag}")
-    log._dp(f"remote_sha256  : {remote_sha256}")
-    log._dp(f"local_sha256   : {local_sha256}")
-    
     if update_flag == '' or remote_sha256 == '' or local_sha256 == '':
         log._dp("SOST update_server_ip Error!")
         return 0
@@ -89,7 +91,7 @@ def update_check():
         tips = 'Your SOST is not the latest version and must be downgraded'
     else:
         return 0
-    update_show(update_flag,tips)
+    update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256)
 
 def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
     bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
@@ -1129,11 +1131,15 @@ def return_alive_server_ip():
 
 def update_sost(update_flag='',noexit_flag=''):
     if update_flag != '1':
-        if log._in("Do you want to Update ? [ y / n] ").lower() == 'n':
+        if log._in("Do you want to Update ? [y/n] ").lower() == 'n':
             if noexit_flag == '':
                 log._error("User.Input.Not.Update")
             else:
                 return
+    else:
+        if log._in("A new version is available, you must update now ! [y/n] ").lower() == 'n':
+            log._error("User.Input.Not.Update")
+            
     # sost Release server ip 
     server_ip = str(return_alive_server_ip()).strip()
     # 1.0.8 add update_Web_server_ip
@@ -1225,6 +1231,8 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 
     if u_chos != "1" and u_chos !="2":log._error("User.Input.Err")
     
+    log.json_set("Test_tmp","BMC_LAN",u_chos)
+
     if BMC_User == '' and BMC_Pass =='':
         try:
             if 'Phy-E2000S' in bmc_Chip()[0]:
@@ -2056,8 +2064,8 @@ def print_firework():
 # print logo
 def logo(release_time, version):
     # 烟花
-    #try:print_firework()
-    #except:pass
+    # try:print_firework()
+    # except:pass
     clp()
     bmc_chip = bmc_Chip()[0]
     version = version.ljust(7)

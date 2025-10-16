@@ -208,7 +208,7 @@ def process_test_type(test_type):
         test_type += "-M"
     fail_exit_flags = simple_json_get("Test_Config", "fail_exit_flags").strip()
     if fail_exit_flags == "0":
-        return test_type + "-NOET"
+        return test_type + "-E"
     return test_type
 
 def get_running_test_type():

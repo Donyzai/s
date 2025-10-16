@@ -8,12 +8,12 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 5. SEL快速生成日志限制最大生成数量10000条
 6. 新增系统timedatectl日志/时/分/秒检查功能
 7. sost_version/sost_debug文件创建对接
-8. bmc_stability_logo函数中test_status默认Pass修改为变量        [x]
+8. bmc_stability_logo函数中test_status默认Pass修改为变量
 9. 解决Judging_autologin函数Kylin系统.config文件没有创建导致报错问题
 10. 多模型测试sost -z后检查文件夹中是否有mulit字样，如果存在mulit_switch设置1
 11. 增加debug信息用于记录test_config函数运行时间
 12. 增加runningTime报错后，记录systemd-analyze plot信息至稳定性文件
-13. 优化所有in/pr位置提示语 [x]
+13. 优化所有in/pr位置提示语
 14. sost增加快捷命令选择项目替换dmesg_check内容 [x]
 15. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp [x]
 16. 增加bmc reset warm / cold KCS通道测试

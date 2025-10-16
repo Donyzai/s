@@ -206,3 +206,75 @@ Sys_disk_arry : nvme0n1sdasdbsdcsdd
 < sost_20251016-134653_print    > : [32mUntar /tmp/sost-v1.1.0-Release.tar[0m
 < sost_20251016-134653_print    > : [32mDelete /tmp/sost-v1.1.0-Release.tar[0m
 < sost_20251016-134653_print    > : [32mRuning Install File /tmp/sost-v1.1.0-Release/sost_install.py[0m
+< sost_20251016-134727_input    > : n
+< sost_20251016-134728_input    > : n
+< sost_20251016-135153_input    > : 20
+< sost_20251016-135156_input    > : n
+< sost_20251016-135301_print    > : update_flag    : 0
+< sost_20251016-135301_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135301_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135318_print    > : update_flag    : 0
+< sost_20251016-135318_print    > : remote_sha256  : 1
+< sost_20251016-135318_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135321_print    > : update_flag    : 0
+< sost_20251016-135321_print    > : remote_sha256  : 1
+< sost_20251016-135321_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135330_print    > : update_flag    : 1
+< sost_20251016-135330_print    > : remote_sha256  : 1
+< sost_20251016-135330_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135332_input    > : n
+< sost_20251016-135340_print    > : update_flag    : 2
+< sost_20251016-135340_print    > : remote_sha256  : 1
+< sost_20251016-135340_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135340_print    > : [32mStop swc-manager.service Success![0m
+< sost_20251016-135340_print    > : [32mGet New sost release version to /tmp/sost-v1.1.0-Release.tar success![0m
+< sost_20251016-135340_print    > : [34mDownload sost md5sum : 2f65049d4e341e5f84c4076edcfe614c[0m
+< sost_20251016-135340_print    > : [32mUntar /tmp/sost-v1.1.0-Release.tar[0m
+< sost_20251016-135340_print    > : [32mDelete /tmp/sost-v1.1.0-Release.tar[0m
+< sost_20251016-135340_print    > : [32mRuning Install File /tmp/sost-v1.1.0-Release/sost_install.py[0m
+< sost_20251016-135530_print    > : update_flag    : 2
+< sost_20251016-135530_print    > : remote_sha256  : 1
+< sost_20251016-135530_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135533_input    > : n
+< sost_20251016-135534_print    > : update_flag    : 2
+< sost_20251016-135534_print    > : remote_sha256  : 1
+< sost_20251016-135534_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135535_input    > : n
+< sost_20251016-135715_print    > : update_flag    : 2
+< sost_20251016-135715_print    > : remote_sha256  : 1
+< sost_20251016-135715_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135717_input    > : n
+< sost_20251016-135717_print    > : update_flag    : 2
+< sost_20251016-135717_print    > : remote_sha256  : 1
+< sost_20251016-135718_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135720_input    > : n
+< sost_20251016-135721_print    > : update_flag    : 2
+< sost_20251016-135721_print    > : remote_sha256  : 1
+< sost_20251016-135721_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135722_input    > : n
+< sost_20251016-135842_print    > : update_flag    : 2
+< sost_20251016-135842_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135842_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135843_input    > : q
+< sost_20251016-135855_print    > : update_flag    : 2
+< sost_20251016-135855_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
+< sost_20251016-135855_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-135856_input    > : n
+< sost_20251016-140016_print    > : update_flag    : 2
+< sost_20251016-140016_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
+< sost_20251016-140016_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-140018_input    > : n
+< sost_20251016-140027_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
+< sost_20251016-140027_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-140036_input    > : n
+< sost_20251016-140321_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
+< sost_20251016-140321_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-140323_input    > : n
+< sost_20251016-140343_input    > : q
+< sost_20251016-140818_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
+< sost_20251016-140818_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-140820_input    > : n
+< sost_20251016-140838_input    > : q
+< sost_20251016-141344_print    > : swc_web is Running! Running-Time -> 20251016 14:13:44 (swc_web.py)
+< sost_20251016-141344_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-141348_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
