@@ -72,6 +72,21 @@ def cpu_usage():
 def get_value(text):
     return os.popen(f''' cat /opt/sost/config/sost.json  | grep -i '{text}' | cut -d ':' -f 2 | tr -d ' ,"' ''').read().strip()
 
+def fail_info():
+    result = log.json_get("Test_tmp","test_status",web=cmd_log_flags)
+    path_folder = log.json_get("Test_tmp","test_folder_path",web=cmd_log_flags)
+    if result == 'FAILc':
+        failc_info = os.popen(f"cat {path_folder}/failc.txt").read().strip()
+        data = '==============================\nSummaryInfo \n==============================\n'+ log.os_popen(f"cat {path_folder}/failc_result/summary.log 2>/dev/null",flags=cmd_log_flags).strip()+ '\n==============================\n'+str(failc_info)
+        return str(data).replace('(','').replace(')','').replace('{','').replace('}','').strip()
+    elif result == 'FAIL':
+        fail_info = os.popen(f"cat {path_folder}/fail.txt").read()
+        if fail_info.strip()=='':
+            fail_info = os.popen(f"cat /opt/sost/log/sost_interactive.log").read()
+        return fail_info
+    else:
+        return "Pass"
+
 def return_get_data():
 
     """获取系统测试数据和状态信息"""
@@ -117,7 +132,8 @@ def return_get_data():
         'mem_usage': os.popen(''' free | awk '/Mem/{printf("%.2f"), $3/$2*100}' 2>/dev/null ''').read().strip(),
         'cpu_usage': str(cpu_usage()).strip(),
         'hw_uuid':os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip(),
-        'swc_service_connectivity':""
+        'swc_service_connectivity':"",
+        'fail_info': fail_info(),
     }
 
     count = simple_json_get("Test_tmp","test_count") or "NA"

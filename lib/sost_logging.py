@@ -78,6 +78,9 @@ class dong_log():
     # SWC配置文件路径
     __private_swc_config_file_path = '/opt/sost/config/swc.json'
 
+    # SWC日志文件路径
+    __private_swc_log_file_path = '/opt/sost/log/swc.log'
+
     # server_info配置文件路径
     __private_serinfo_config_file_path = '/opt/sost/config/server_info.json'
 

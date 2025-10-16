@@ -211,11 +211,14 @@ def run_stability():
     
     if process_count > 0:
         return jsonify({"error": "SOST is already running a stability test!"}), 400
+    
     commands = {
         'reboot': 'sost -s reboot &',
         'powercycle': 'sost -s powercycle &',
         'powerreset': 'sost -s powerreset &',
         'aclost': 'sost -s aclost &',
+        'continue'  : 'sost -z &',
+        'stop'      : 'sost -k &',
         'other': f'''  sost -s 'json_test':'dongzai','chose':'{testOrder}','bmclan':'{bmclan}','bmcuser':'{bmcuser}','bmcpass':'{bmcpass}' & '''
     }
     if data not in commands:

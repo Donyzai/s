@@ -75,7 +75,7 @@ Core(s) per socket:                   32
 Socket(s):                            2
 Stepping:                             1
 Frequency boost:                      enabled
-CPU(s) scaling MHz:                   85%
+CPU(s) scaling MHz:                   84%
 CPU max MHz:                          4413.2319
 CPU min MHz:                          1500.0000
 BogoMIPS:                             7089.01
@@ -120,161 +120,304 @@ Sys_disk_arry : nvme0n1sdasdbsdcsdd
 2              sdc           disk ST12000NM000J-2TY103 ZV7045DY       SC02 10.9T sas
 3              sdd           disk ST12000NM000J-2TY103 ZRT0988B       SC02 10.9T sata
 [Order]  [Nic_Name]          [BDF]          [Nic_Lnk]                          [Module]       [DD_Version]                       [FW_Version]
-< sost_20251016-132959_input    > : 5
-< sost_20251016-132959_print    > : BMC Status Checking Status......
-< sost_20251016-132959_print    > : Sost Stability Tools check Success!
-< sost_20251016-134035_print    > : Sost Stability Tools check Success!
-< sost_20251016-134042_input    > : 5
-< sost_20251016-134042_print    > : BMC Status Checking Status......
-< sost_20251016-134045_input    > : 1
-< sost_20251016-134046_input    > : 
-< sost_20251016-134046_input    > : 
+   0     enp129s0f0          0000:81:00.0   Speed5GT/s(ok),Widthx4(ok)         igb            5.14.0-503.11.1.el9_5.x86_64       1.63,_0x800009fa
+   1     enp129s0f1          0000:81:00.1   Speed5GT/s(ok),Widthx4(ok)         igb            5.14.0-503.11.1.el9_5.x86_64       1.63,_0x800009fa
+   2     enp129s0f2          0000:81:00.2   Speed5GT/s(ok),Widthx4(ok)         igb            5.14.0-503.11.1.el9_5.x86_64       1.63,_0x800009fa
+   3     enp129s0f3          0000:81:00.3   Speed5GT/s(ok),Widthx4(ok)         igb            5.14.0-503.11.1.el9_5.x86_64       1.63,_0x800009fa
+USB Device num : 10
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 174c:2074 ASMedia Technology Inc. ASM1074 High-Speed hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 002: ID 174c:3074 ASMedia Technology Inc. ASM1074 SuperSpeed hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 046b:ff01 American Megatrends, Inc. Virtual Hub
+Bus 003 Device 003: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 003 Device 004: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
+Bus 003 Device 005: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Storcli64 not Found!
+Local time: Thu 2025-10-16 14:16:06 CST
+           Universal time: Thu 2025-10-16 06:16:06 UTC
+                 RTC time: Thu 2025-10-16 06:16:06
+                Time zone: Asia/Shanghai (CST, +0800)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+InterfaceType      BMC_IP            BMC_MAC
+DedicatedDHCP	192.168.60.223	18:9b:a5:83:3e:f1
+ShareDHCP	192.168.60.113	18:9b:a5:83:3e:f0
+[BP_NAME]                     [BP_Mfg_Date]                 [BP_Mfg]                      [BP_Product]                  [BP_Serial]                   [BP_Part_Number]              [BP_Extra]
+BP1_FRU                        Wed Nov 22 04                 dong                          dong                          N/A                           N/A                           N/A
+System Power         : on
+Power Overload       : false
+Power Interlock      : inactive
+Main Power Fault     : false
+Power Control Fault  : false
+Power Restore Policy : always-off
+Chassis Intrusion    : inactive
+Front-Panel Lockout  : inactive
+Drive Fault          : false
+Cooling/Fan Fault    : false
+Sleep Button Disable : allowed
+Diag Button Disable  : allowed
+Reset Button Disable : allowed
+Power Button Disable : allowed
+Sleep Button Disabled: false
+Diag Button Disabled : false
+Reset Button Disabled: false
+Power Button Disabled: false
+
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+CPLD.ver : REV 1.04
+BMC.ver  : 1.04.00.01.00.00
+BIOS.ver : T2DMEP04.00
+Bios-ReleaseTime: 02/06/2025
+Bios-Revisione: 5.35
+BP_fw    :BP1 Version: REV 1.01(03-29-2024)
+BP2 Version: REV 1.01(11-18-2022)
+< sost_20251016-141613_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141614_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141614_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141614_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141615_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251016-141616_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141619_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141620_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141621_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141624_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141627_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141629_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141629_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141629_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141630_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141630_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141630_print    > : Test_Type         : reboot
+< sost_20251016-141630_print    > : Test_Count        : 0
+< sost_20251016-141630_print    > : Test_Status       : Pass
+< sost_20251016-141630_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251016-141645_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251016-141645_print    > : ===============================================================
+< sost_20251016-141645_print    > : Test type        : reboot
+< sost_20251016-141645_print    > : Test Count       : 0
+< sost_20251016-141645_print    > : Test Folder      : /root/reboot
+< sost_20251016-141645_print    > : Test Status      : Pass
+< sost_20251016-141645_print    > : Test Start Time  : 2025-10-16-14-16-03
+< sost_20251016-141645_print    > : Test End   Time  : 2025-10-16-14-16-45
+< sost_20251016-141645_print    > : ===============================================================
 < sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost_20251016-134048_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251016-134048_print    > : ===============================================================
-< sost_20251016-134048_print    > : Test type        : bmc_warm_kcs
-< sost_20251016-134048_print    > : Test Count       : 0
-< sost_20251016-134048_print    > : Test Folder      : /root/bmc_warm_kcs
-< sost_20251016-134048_print    > : Test Status      : NA
-< sost_20251016-134048_print    > : Test Start Time  : 2025-10-16-13-40-42
-< sost_20251016-134048_print    > : Test End   Time  : 2025-10-16-13-40-48
-< sost_20251016-134048_print    > : ===============================================================
-< sost_20251016-134048_print    > : Stability test report(稳定性测试报告生成成功) : /root/bmc_warm_kcs/sost-Result-Pass-0.html
-< sost_20251016-134050_print    > : Sost Stability Tools check Success!
-< sost_20251016-134051_input    > : 5
-< sost_20251016-134051_print    > : BMC Status Checking Status......
-< sost_20251016-134055_input    > : 2
-< sost_20251016-134056_input    > : 
-< sost_20251016-134056_input    > : 
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost_20251016-134058_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251016-134058_print    > : ===============================================================
-< sost_20251016-134058_print    > : Test type        : bmc_warm_kcs
-< sost_20251016-134058_print    > : Test Count       : 0
-< sost_20251016-134058_print    > : Test Folder      : /root/bmc_warm_kcs
-< sost_20251016-134058_print    > : Test Status      : NA
-< sost_20251016-134058_print    > : Test Start Time  : 2025-10-16-13-40-51
-< sost_20251016-134058_print    > : Test End   Time  : 2025-10-16-13-40-58
-< sost_20251016-134058_print    > : ===============================================================
-< sost_20251016-134058_print    > : Stability test report(稳定性测试报告生成成功) : /root/bmc_warm_kcs/sost-Result-Pass-0.html
-< sost_20251016-134059_print    > : Sost Stability Tools check Success!
-< sost_20251016-134101_input    > : 15
-< sost_20251016-134101_print    > : BMC Status Checking Status......
-< sost_20251016-134104_input    > : 
-< sost_20251016-134104_input    > : 
-< sost_20251016-134104_input    > : 
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost_20251016-134106_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251016-134106_print    > : ===============================================================
-< sost_20251016-134106_print    > : Test type        : bmc_warm_lan
-< sost_20251016-134106_print    > : Test Count       : 0
-< sost_20251016-134106_print    > : Test Folder      : /root/bmc_warm_lan
-< sost_20251016-134106_print    > : Test Status      : NA
-< sost_20251016-134106_print    > : Test Start Time  : 2025-10-16-13-41-01
-< sost_20251016-134106_print    > : Test End   Time  : 2025-10-16-13-41-05
-< sost_20251016-134106_print    > : ===============================================================
-< sost_20251016-134106_print    > : Stability test report(稳定性测试报告生成成功) : /root/bmc_warm_lan/sost-Result-Pass-0.html
-< sost_20251016-134107_print    > : Sost Stability Tools check Success!
-< sost_20251016-134110_input    > : 16
-< sost_20251016-134110_print    > : BMC Status Checking Status......
-< sost_20251016-134113_input    > : 
-< sost_20251016-134113_input    > : 
-< sost_20251016-134114_input    > : 
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost_20251016-134115_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251016-134115_print    > : ===============================================================
-< sost_20251016-134115_print    > : Test type        : bmc_cold_lan
-< sost_20251016-134115_print    > : Test Count       : 0
-< sost_20251016-134115_print    > : Test Folder      : /root/bmc_cold_lan
-< sost_20251016-134115_print    > : Test Status      : NA
-< sost_20251016-134115_print    > : Test Start Time  : 2025-10-16-13-41-10
-< sost_20251016-134115_print    > : Test End   Time  : 2025-10-16-13-41-15
-< sost_20251016-134115_print    > : ===============================================================
-< sost_20251016-134115_print    > : Stability test report(稳定性测试报告生成成功) : /root/bmc_cold_lan/sost-Result-Pass-0.html
-< sost_20251016-134313_print    > : Sost Stability Tools check Success!
-< sost_20251016-134335_input    > : q
-< sost_20251016-134336_input    > : q
-< sost_20251016-134437_input    > : q
-< sost_20251016-134440_input    > : q
-< sost_20251016-134444_input    > : n
-< sost_20251016-134540_input    > : n
-< sost_20251016-134541_input    > : q
-< sost_20251016-134653_input    > : q
-< sost_20251016-134653_print    > : [32mStop swc-manager.service Success![0m
-< sost_20251016-134653_print    > : [32mGet New sost release version to /tmp/sost-v1.1.0-Release.tar success![0m
-< sost_20251016-134653_print    > : [34mDownload sost md5sum : 2f65049d4e341e5f84c4076edcfe614c[0m
-< sost_20251016-134653_print    > : [32mUntar /tmp/sost-v1.1.0-Release.tar[0m
-< sost_20251016-134653_print    > : [32mDelete /tmp/sost-v1.1.0-Release.tar[0m
-< sost_20251016-134653_print    > : [32mRuning Install File /tmp/sost-v1.1.0-Release/sost_install.py[0m
-< sost_20251016-134727_input    > : n
-< sost_20251016-134728_input    > : n
-< sost_20251016-135153_input    > : 20
-< sost_20251016-135156_input    > : n
-< sost_20251016-135301_print    > : update_flag    : 0
-< sost_20251016-135301_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135301_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135318_print    > : update_flag    : 0
-< sost_20251016-135318_print    > : remote_sha256  : 1
-< sost_20251016-135318_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135321_print    > : update_flag    : 0
-< sost_20251016-135321_print    > : remote_sha256  : 1
-< sost_20251016-135321_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135330_print    > : update_flag    : 1
-< sost_20251016-135330_print    > : remote_sha256  : 1
-< sost_20251016-135330_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135332_input    > : n
-< sost_20251016-135340_print    > : update_flag    : 2
-< sost_20251016-135340_print    > : remote_sha256  : 1
-< sost_20251016-135340_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135340_print    > : [32mStop swc-manager.service Success![0m
-< sost_20251016-135340_print    > : [32mGet New sost release version to /tmp/sost-v1.1.0-Release.tar success![0m
-< sost_20251016-135340_print    > : [34mDownload sost md5sum : 2f65049d4e341e5f84c4076edcfe614c[0m
-< sost_20251016-135340_print    > : [32mUntar /tmp/sost-v1.1.0-Release.tar[0m
-< sost_20251016-135340_print    > : [32mDelete /tmp/sost-v1.1.0-Release.tar[0m
-< sost_20251016-135340_print    > : [32mRuning Install File /tmp/sost-v1.1.0-Release/sost_install.py[0m
-< sost_20251016-135530_print    > : update_flag    : 2
-< sost_20251016-135530_print    > : remote_sha256  : 1
-< sost_20251016-135530_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135533_input    > : n
-< sost_20251016-135534_print    > : update_flag    : 2
-< sost_20251016-135534_print    > : remote_sha256  : 1
-< sost_20251016-135534_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135535_input    > : n
-< sost_20251016-135715_print    > : update_flag    : 2
-< sost_20251016-135715_print    > : remote_sha256  : 1
-< sost_20251016-135715_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135717_input    > : n
-< sost_20251016-135717_print    > : update_flag    : 2
-< sost_20251016-135717_print    > : remote_sha256  : 1
-< sost_20251016-135718_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135720_input    > : n
-< sost_20251016-135721_print    > : update_flag    : 2
-< sost_20251016-135721_print    > : remote_sha256  : 1
-< sost_20251016-135721_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135722_input    > : n
-< sost_20251016-135842_print    > : update_flag    : 2
-< sost_20251016-135842_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135842_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135843_input    > : q
-< sost_20251016-135855_print    > : update_flag    : 2
-< sost_20251016-135855_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
-< sost_20251016-135855_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-135856_input    > : n
-< sost_20251016-140016_print    > : update_flag    : 2
-< sost_20251016-140016_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
-< sost_20251016-140016_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-140018_input    > : n
-< sost_20251016-140027_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
-< sost_20251016-140027_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-140036_input    > : n
-< sost_20251016-140321_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
-< sost_20251016-140321_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-140323_input    > : n
-< sost_20251016-140343_input    > : q
-< sost_20251016-140818_print    > : remote_sha256  : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f1
-< sost_20251016-140818_print    > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
-< sost_20251016-140820_input    > : n
-< sost_20251016-140838_input    > : q
-< sost_20251016-141344_print    > : swc_web is Running! Running-Time -> 20251016 14:13:44 (swc_web.py)
-< sost_20251016-141344_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251016-141348_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost > Please Wait Times `Ctrl + c` exit() : 24s
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost > Please Wait Times `Ctrl + c` exit() : 22s
+< sost > Please Wait Times `Ctrl + c` exit() : 21s
+< sost > Please Wait Times `Ctrl + c` exit() : 20s
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251016-141715_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141715_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141715_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251016-141716_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141716_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141717_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141720_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141721_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141722_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141725_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141728_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141730_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141730_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141730_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141730_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141730_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141730_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-141730_print    > : Test_Type         : reboot
+< sost_20251016-141730_print    > : Test_Count        : 1
+< sost_20251016-141730_print    > : Test_Status       : Pass
+< sost_20251016-141730_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251016-141746_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251016-141746_print    > : ===============================================================
+< sost_20251016-141746_print    > : Test type        : reboot
+< sost_20251016-141746_print    > : Test Count       : 1
+< sost_20251016-141746_print    > : Test Folder      : /root/reboot
+< sost_20251016-141746_print    > : Test Status      : Pass
+< sost_20251016-141746_print    > : Test Start Time  : 2025-10-16-14-16-03
+< sost_20251016-141746_print    > : Test End   Time  : 2025-10-16-14-17-45
+< sost_20251016-141746_print    > : ===============================================================
+< sost_20251016-142014_print    > : swc_web is Running! Running-Time -> 20251016 14:20:14 (swc_web.py)
+< sost_20251016-142014_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-142016_print    > : swc_web is Running! Running-Time -> 20251016 14:20:16 (swc_web.py)
+< sost_20251016-142016_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-142018_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251016-142046_print    > : swc_web is Running! Running-Time -> 20251016 14:20:46 (swc_web.py)
+< sost_20251016-142046_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-142047_print    > : swc_web is Running! Running-Time -> 20251016 14:20:47 (swc_web.py)
+< sost_20251016-142047_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-142048_print    > : swc_web is Running! Running-Time -> 20251016 14:20:48 (swc_web.py)
+< sost_20251016-142048_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-142049_print    > : swc_web is Running! Running-Time -> 20251016 14:20:49 (swc_web.py)
+< sost_20251016-142049_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-142050_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost > Please Wait Times `Ctrl + c` exit() : 24s
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost > Please Wait Times `Ctrl + c` exit() : 22s
+< sost > Please Wait Times `Ctrl + c` exit() : 21s
+< sost > Please Wait Times `Ctrl + c` exit() : 20s
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251016-143811_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143811_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143811_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143812_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251016-143813_print    > : RTC Time date/h/m/s check               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143813_print    > : RTC Time check                          [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143813_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143817_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143817_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143818_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143821_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143824_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143826_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143826_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143826_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143827_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143827_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251016-143827_print    > : Restart TimeTooLong                     [32m[Pass][0m   [31m[FAIL][0m
+< sost_20251016-143827_print    > : BMC_IP    : 192.168.60.223
+< sost_20251016-143827_print    > : osIP      : 192.168.60.143|192.168.60.17
+< sost_20251016-143827_print    > : osVer     : "Red Hat Enterprise Linux 9.5 (Plow)"
+< sost_20251016-143827_print    > : TestType  : reboot
+< sost_20251016-143827_print    > : ErrType   : restart TimeTool Long
+< sost_20251016-143827_print    > : Count     : 2
+< sost_20251016-143827_print    > : Time      : 2025-10-16-14-38-27
+< sost_20251016-143827_print    > : File1     : /root/reboot/debug/start_time.txt
+< sost_20251016-143827_print    > : File2     : cat /root/reboot/debug/end_time.txt
+< sost_20251016-143827_print    > : -------------------------------------------------------
+< sost_20251016-143827_print    > : System shutdown time   : 1760595450
+< sost > System on time         : 1760596691
+< sost > Phase difference time  : 1241s
+< sost_20251016-143827_print    > : -------------------------------------------------------
+< sost_20251016-143830_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251016-143830_print    > : ===============================================================
+< sost_20251016-143830_print    > : Test type        : reboot
+< sost_20251016-143830_print    > : Test Count       : 2
+< sost_20251016-143830_print    > : Test Folder      : /root/reboot
+< sost_20251016-143830_print    > : Test Status      : FAIL
+< sost_20251016-143830_print    > : Test Start Time  : 2025-10-16-14-16-03
+< sost_20251016-143830_print    > : Test End   Time  : 2025-10-16-14-38-30
+< sost_20251016-143830_print    > : ===============================================================
+< sost_20251016-143830_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Fail-2.html
+< sost_20251016-144137_print    > : swc_web is Running! Running-Time -> 20251016 14:41:37 (swc_web.py)
+< sost_20251016-144137_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251016-144139_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
