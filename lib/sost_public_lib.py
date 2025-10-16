@@ -508,8 +508,12 @@ def aclost_init_env(flags=True):
 def bmc_stability_logo(bmc_ip):
     clp()
     bmc_chip_type = bmc_Chip()[0]
-    stability_type = log.json_get("Test_tmp","test_type")
-    stability_count = log.json_get("Test_tmp","test_count")
+    typee = log.json_get("Test_tmp","test_type")
+    count = log.json_get("Test_tmp","test_count")
+    if count == '0':
+        result = 'NA'
+    else:
+        result = log.json_get("Test_tmp","test_status")
     print(f'''
 ════════════════════════════════════════════
 ||   ██                            ██     ||
@@ -523,9 +527,9 @@ def bmc_stability_logo(bmc_ip):
 ════════════════════════════════════════════
 [+]  bmc IP   : {bmc_ip}
 [+]  bmc_Chip : {bmc_chip_type}
-[+]  Type     : {stability_type.ljust(30)}
-[+]  Count    : {stability_count.ljust(30)}
-[+]  Result   : Pass
+[+]  Type     : {typee.ljust(30)}
+[+]  Count    : {count.ljust(30)}
+[+]  Result   : {result.ljust(30)}
 ════════════════════════════════════════════''')
 
 #count_down(seconds=10,text="IPMI Log Collecting!")
@@ -552,7 +556,7 @@ def bmc_alive(bmc_ip,bmc_user,bmc_pass):
         count_down(10,"Wait for 10 seconds to retrieve BMC status again")
 
 # Bmc Remote 稳定性测试
-def bmc_stability(type='',folder_path=''):
+def bmc_stability(typee='',folder_path=''):
     # type 1 -> warm
     #      2 -> cold
     #      3 -> raw
@@ -569,18 +573,26 @@ def bmc_stability(type='',folder_path=''):
         runTime("0")
         print("\n")
         # check bmc state
-        if bmc_alive(bmc_ip,bmc_user,bmc_pass):
-            log._pr("Bmc is Alive!")
+        if not bmc_alive(bmc_ip,bmc_user,bmc_pass):log._error('BMC UnAlive! Please Check BMC Status!')
         # Collect SystemInformation
         test_config("1",count,folder_path)
         log.json_set("Test_tmp","test_count",str(int(count)+1))
         time.sleep(3)
-        if type == "1":
+        # warm
+        if typee == "bmc_warm_lan":
             log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset warm")
-        elif type == "2":
-            log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset ")
-        else:
+        elif typee == "bmc_warm_kcs":
+            log.os_popen("ipmitool bmc reset warm")
+        # cold
+        elif typee == "bmc_cold_lan":
+            log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset cold")
+        elif typee == "bmc_cold_kcs":
+            log.os_popen("ipmitool bmc reset cold")
+        # raw
+        elif typee == "bmc_raw_lan":
             log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} raw 0x06 0x02")
+        else:
+            log._error(f"bmc_stability() -> typee : {typee}")
         #save count -> folder_path>count.txt
         log.os_popen(f"echo {str(int(count)+1)} > {folder_path}/count.txt")
         #waiting for
@@ -1398,9 +1410,9 @@ def check_stability_tools():
         log._error("Sost Tools Check Fail!")
 
     if not os.path.exists("/opt/MegaRAID/storcli"):
-        log._warning("Storcli64 Not install!")
+        log._dp("Storcli64 Not install!")
 
-    log._pr("Sost Stability Tools check Success!")
+    log._dp("Sost Stability Tools check Success!")
 
 def config_autologging():
 

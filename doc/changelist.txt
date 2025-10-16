@@ -15,6 +15,9 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 12. 增加runningTime报错后，记录systemd-analyze plot信息至稳定性文件
 13. 优化所有in/pr位置提示语 [x]
 14. sost增加快捷命令选择项目替换dmesg_check内容 [x]
+15. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp [x]
+16. 增加bmc reset warm / cold KCS通道测试
+17. 
 
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12

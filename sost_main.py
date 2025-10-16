@@ -38,6 +38,7 @@ def runstart(test_arry):
 bmclan = ""
 update_check()
 startup_check()
+check_stability_tools()
 
 if str(log.json_get("Multimodal_stability","switch"))=="1":
     test_type,run_command,test_count = Multimodal_stability()
@@ -112,10 +113,56 @@ else:
         test_type = "AClost"
         run_command = "sh -c `sync ; sleep 3 ; sh -c 'minicom &' ; sleep 5 ; echo a > /dev/ttyUSB0` &"
         aclost_init_env()
-    elif chose == "5":
+    elif chose == "5" or chose == "15":
+        # KCS Warm Reset / LAN Warm Reset
+        test_type = 'bmc_warm_lan'
+        if chose == "5":test_type = 'bmc_warm_kcs'
+        # Check BMC Status
+        check_bmc_status()
+        # Init Folder
+        folder_path = init_stability_path(test_type)
+        # Select Backup Clear 
+        sel_bak_clear(folder_path)
+        # Change Json
+        change_json("0",test_type,folder_path,test_type)
+        # Run BMC Stability Test
+        bmc_stability(test_type,folder_path)
+        # Exit
         exit()
-    elif chose == "6":
+
+    elif chose == "6" or chose == "16":
+        # KCS Warm Reset / LAN Warm Reset
+        test_type = 'bmc_cold_lan'
+        if chose == "6":test_type = 'bmc_cold_kcs'
+        # Check BMC Status
+        check_bmc_status()
+        # Init Folder
+        folder_path = init_stability_path(test_type)
+        # Select Backup Clear 
+        sel_bak_clear(folder_path)
+        # Change Json
+        change_json("0",test_type,folder_path,test_type)
+        # Run BMC Stability Test
+        bmc_stability(test_type,folder_path)
+        # Exit
         exit()
+    
+    elif chose == "17":
+        # KCS Warm Reset / LAN Warm Reset
+        test_type = 'bmc_raw_lan'
+        # Check BMC Status
+        check_bmc_status()
+        # Init Folder
+        folder_path = init_stability_path(test_type)
+        # Select Backup Clear 
+        sel_bak_clear(folder_path)
+        # Change Json
+        change_json("0",test_type,folder_path,test_type)
+        # Run BMC Stability Test
+        bmc_stability(test_type,folder_path)
+        # Exit
+        exit()
+
     elif chose == "7":
         exit()
     elif chose == "8":
@@ -129,7 +176,6 @@ else:
         run_command = log._in("RunCommand : ")
         if run_command == "":log._error("User.Input.Error!")
         log._pr(f"test_type = {test_type}\nRunCommand = {run_command}")
-        
         if log._in("Are you sure ? [y / n] : ") != "y":
             log._error("User.Input.N -> exit()")
 
@@ -145,44 +191,7 @@ else:
         check_bmc_status()
         bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
         run_command = f"ipmitool -C 17 -I lanplus -H {bmc_information[0]} -U {bmc_information[1]} -P '{bmc_information[2]}' power cycle"
-    elif chose == "15":
-        test_type = 'Remote bmc reset warm'
-        check_bmc_status()
-        folder_path = init_stability_path('sost_bmcwarm')
-        check_stability_tools()
-        sel_bak_clear(folder_path)
-
-        run_command = "bmc reset warm"
-        change_json("0",test_type,folder_path,run_command)
-        
-        bmc_stability('warm',folder_path)
-        exit()
-    elif chose == "16":
-        test_type = 'Remote bmc reset cold'
-        check_bmc_status()
-
-        folder_path = init_stability_path('sost_bmccold')
-        check_stability_tools()
-        sel_bak_clear(folder_path)
-
-        run_command = "bmc reset cold"
-        change_json("0",test_type,folder_path,run_command)
-
-        bmc_stability('cold',folder_path)
-        exit()
-    elif chose == "17":
-        test_type = 'Remote raw 0x06 0x02'
-        check_bmc_status()
-
-        folder_path = init_stability_path('sost_raw0602')
-        check_stability_tools()
-        sel_bak_clear(folder_path)
-
-        run_command = "raw 0x06 0x02"
-        change_json("0",test_type,folder_path,run_command)
-
-        bmc_stability('raw',folder_path)
-        exit()
+    
     # ------------------------------------------------------------------------------------------
     elif chose == '18':
         test_type = "bmc_power_on_off"
@@ -197,8 +206,8 @@ else:
         exit()
     else:
         log._error("User.Input.Error")
+
 folder_path = init_stability_path(test_type)
-check_stability_tools()
 sel_bak_clear(folder_path)
 change_json("0",test_type,folder_path,run_command)
 #RunStart

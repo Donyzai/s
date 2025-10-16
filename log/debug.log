@@ -1,1 +1,52 @@
-< sost_20251014-135420_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251016-132955_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251016-132958_dlev_0   > : update_flag    : 0
+< sost_20251016-132958_dlev_0   > : remote_sha256  : 1
+< sost_20251016-132958_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-132958_dlev_0   > : SOST is the latest version
+< sost_20251016-134035_dlev_0   > : update_flag    : 0
+< sost_20251016-134035_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134035_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134035_dlev_0   > : SOST is the latest version
+< sost_20251016-134050_dlev_0   > : update_flag    : 0
+< sost_20251016-134050_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134050_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134050_dlev_0   > : SOST is the latest version
+< sost_20251016-134059_dlev_0   > : update_flag    : 0
+< sost_20251016-134059_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134059_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134059_dlev_0   > : SOST is the latest version
+< sost_20251016-134107_dlev_0   > : update_flag    : 0
+< sost_20251016-134107_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134107_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134107_dlev_0   > : SOST is the latest version
+< sost_20251016-134313_dlev_0   > : update_flag    : 0
+< sost_20251016-134313_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134313_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134313_dlev_0   > : SOST is the latest version
+< sost_20251016-134335_dlev_0   > : update_flag    : 0
+< sost_20251016-134335_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134335_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134335_dlev_0   > : SOST is the latest version
+< sost_20251016-134335_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-134344_dlev_0   > : update_flag    : 0
+< sost_20251016-134344_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134344_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134344_dlev_0   > : SOST is the latest version
+< sost_20251016-134345_dlev_0   > : Storcli64 Not install!
+< sost_20251016-134345_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-134439_dlev_0   > : update_flag    : 0
+< sost_20251016-134439_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134439_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134439_dlev_0   > : SOST is the latest version
+< sost_20251016-134439_dlev_0   > : Storcli64 Not install!
+< sost_20251016-134439_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-134538_dlev_0   > : update_flag    : 1
+< sost_20251016-134538_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134538_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134538_dlev_0   > : SOST is recommended to update
+< sost_20251016-134540_dlev_0   > : Storcli64 Not install!
+< sost_20251016-134540_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251016-134652_dlev_0   > : update_flag    : 1
+< sost_20251016-134652_dlev_0   > : remote_sha256  : 1
+< sost_20251016-134652_dlev_0   > : local_sha256   : 0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+< sost_20251016-134652_dlev_0   > : SOST is recommended to update

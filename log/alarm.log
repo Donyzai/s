@@ -1,1 +1,30 @@
-[31m< sost_20251014-135500_error    > : DebugMode Enabled noSendCommand = 1[0m
+[33m< sost_20251016-132959_warning  > : Storcli64 Not install![0m
+< sost_20251016-133001_tips     > : <------ BMC status check ----->
+< sost_20251016-133001_tips     > : [+] Bmc Status check Success!
+< sost_20251016-133002_tips     > : Checking whether bmcip can ping, Waiting.......
+[31m< sost_20251016-133122_error    > : User.Exit()[0m
+[33m< sost_20251016-134035_warning  > : Storcli64 Not install![0m
+< sost_20251016-134043_tips     > : <------ BMC status check ----->
+< sost_20251016-134044_tips     > : [+] Bmc Status check Success!
+< sost_20251016-134045_tips     > : Checking whether bmcip can ping, Waiting.......
+[33m< sost_20251016-134050_warning  > : Storcli64 Not install![0m
+< sost_20251016-134052_tips     > : <------ BMC status check ----->
+< sost_20251016-134053_tips     > : [+] Bmc Status check Success!
+< sost_20251016-134053_tips     > : Checking whether bmcip can ping, Waiting.......
+[33m< sost_20251016-134059_warning  > : Storcli64 Not install![0m
+< sost_20251016-134102_tips     > : <------ BMC status check ----->
+< sost_20251016-134102_tips     > : [+] Bmc Status check Success!
+< sost_20251016-134103_tips     > : Checking whether bmcip can ping, Waiting.......
+[33m< sost_20251016-134107_warning  > : Storcli64 Not install![0m
+< sost_20251016-134111_tips     > : <------ BMC status check ----->
+< sost_20251016-134112_tips     > : [+] Bmc Status check Success!
+< sost_20251016-134112_tips     > : Checking whether bmcip can ping, Waiting.......
+[33m< sost_20251016-134313_warning  > : Storcli64 Not install![0m
+[31m< sost_20251016-134335_error    > : User.Input.Error[0m
+[33m< sost_20251016-134335_warning  > : Storcli64 Not install![0m
+[31m< sost_20251016-134336_error    > : User.Input.Error[0m
+[31m< sost_20251016-134437_error    > : User.Input.Error[0m
+[31m< sost_20251016-134440_error    > : User.Input.Error[0m
+[31m< sost_20251016-134444_error    > : User.Input.Not.Update[0m
+[31m< sost_20251016-134536_error    > : User.Exit()[0m
+[31m< sost_20251016-134541_error    > : User.Input.Error[0m
