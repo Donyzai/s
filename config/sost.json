@@ -31,8 +31,8 @@
     "BMC_Survival_Config": {
         "bmc_chip": "ASPEED-2600",
         "switch": "0",
-        "BMC_Username": "",
-        "BMC_Password": ""
+        "BMC_Username": "admin",
+        "BMC_Password": "ttytty`12"
     },
     "smtp": {
         "Fail_send_email": "",
@@ -43,17 +43,18 @@
         "pop3_password": ""
     },
     "Test_tmp": {
-        "test_type": "reboot",
-        "test_count": "2",
-        "test_status": "FAIL",
-        "test_folder_path": "/root/reboot",
+        "test_type": "bmc_warm_kcs",
+        "test_count": "5",
+        "test_status": "NA",
+        "test_bmc_lan": "1",
+        "test_folder_path": "/root/bmc_warm_kcs",
         "test_sha256": "cee204c122c4bd7a5df86c74d50c6a9d7cb594c504cc2befb678050e3b1b2d89",
-        "run_command": "reboot",
-        "startT_time": "2025-10-16-14-16-03",
-        "endT_time": "2025-10-16-14-38-30",
+        "run_command": "bmc_warm_kcs",
+        "startT_time": "2025-10-17-10-07-59",
+        "endT_time": "2025-10-17-10-34-09",
         "Running_flag": "4",
-        "running_time_last": "108",
-        "running_time_now": "45",
+        "running_time_last": "325",
+        "running_time_now": "325",
         "running_time_first": "",
         "swc_flags": "0"
     }

@@ -1,12 +1,12 @@
 {
     "Test-status": "Ending",
-    "Test-type": "reboot",
-    "Test-count": "2",
-    "Test-result": "FAIL",
+    "Test-type": "bmc_warm_kcs",
+    "Test-count": "5",
+    "Test-result": "NA",
     "Test-uuid": "",
     "Test-sha256": "cee204c122c4bd7a5df86c74d50c6a9d7cb594c504cc2befb678050e3b1b2d89",
-    "Test-Start-Time": "2025-10-16-14-16-03",
-    "Test-End-Time": "2025-10-16-14-38-30",
+    "Test-Start-Time": "2025-10-17-10-07-59",
+    "Test-End-Time": "2025-10-17-10-34-09",
     "start_wait_time": "25",
     "aclost_wait_time": "120",
     "max_count": "",
@@ -28,10 +28,10 @@
     "sost_ReTime": "2025-05-27 12",
     "sost_ver_sha256": "0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f",
     "Bios_ver": "T2DMEP04.00",
-    "zLast_Time": "2025-10-16 14:46:25",
-    "mem_usage": "3.81",
+    "zLast_Time": "2025-10-17 16:17:00",
+    "mem_usage": "2.19",
     "cpu_usage": "0.0",
     "hw_uuid": "83a59b18f13e01e8ef11030e9231358c",
     "swc_service_connectivity": "",
-    "fail_info": "< sost > BMC_IP    : 192.168.60.223\n< sost > osIP      : 192.168.60.143|192.168.60.17\n< sost > osVer     : \"Red Hat Enterprise Linux 9.5 (Plow)\"\n< sost > TestType  : reboot\n< sost > ErrType   : restart TimeTool Long\n< sost > Count     : 2\n< sost > Time      : 2025-10-16-14-38-27\n< sost > File1     : /root/reboot/debug/start_time.txt\n< sost > File2     : cat /root/reboot/debug/end_time.txt\n< sost > -------------------------------------------------------\n< sost > System shutdown time   : 1760595450\n< sost > System on time         : 1760596691\n< sost > Phase difference time  : 1241s\n< sost > -------------------------------------------------------\n"
+    "fail_info": "Pass"
 }

@@ -105,7 +105,6 @@ else:
     # reboot -> kernel
     test_type,run_command= "",""
     if chose == "11":chose = Timed_operation_mode()
-    
     if chose == "1":test_type = "reboot";run_command = "reboot"
     elif chose == "2":test_type = "powercycle";run_command = "ipmitool power cycle"
     elif chose == "3":test_type = "powerreset";run_command = "ipmitool power reset"

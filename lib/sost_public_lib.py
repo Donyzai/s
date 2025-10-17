@@ -601,8 +601,8 @@ def bmc_stability(typee='',folder_path=''):
         if count!="0":runTime("3")
         runTime("4")
         runTime("1")
-        # v1.1.1 -> wait bmc restart 240s -> 300s  
-        count_down(300,'Waiting BMC Restart! Not Close Sost!')
+        # v1.1.1 -> wait bmc restart 240s -> 300s
+        wait_time_ctrl_C(300,'\033[33m!Waiting for BMC restart, prohibit closing SOST process!\033[0m')
 
 # BMC quickly Create Audit Log
 def bmc_Create_audit_log(bmc_ip,bmc_user,bmc_pass):
@@ -1231,56 +1231,63 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 
     if u_chos != "1" and u_chos !="2":log._error("User.Input.Err")
     
-    log.json_set("Test_tmp","BMC_LAN",u_chos)
+    # Save BMC Lan Info To test_tmp.json File
+    log.json_set("Test_tmp","test_bmc_lan",u_chos)
 
-    if BMC_User == '' and BMC_Pass =='':
-        try:
-            if 'Phy-E2000S' in bmc_Chip()[0]:
-                BMC_User = log._in("Bmc_Username Enter -> root : ").strip()
-                if BMC_User == "q" or BMC_User == "exit":log._error("User.Input.Exit()")
-                if BMC_User == "":
-                    BMC_User = "root"
-                BMC_Pass = log._in("Bmc_Password Enter -> 0penBmc  : ").strip()
-                if BMC_Pass == "q" or BMC_Pass == "exit":log._error("User.Input.Exit()")
-                if BMC_Pass == "":
-                    BMC_Pass = "0penBmc"
-            elif 'Hisilicon' in bmc_Chip()[0]:
-                BMC_User = log._in("Bmc_Username Enter -> Administrator : ").strip()
-                if BMC_User == "q" or BMC_User == "exit":log._error("User.Input.Exit()")
-                if BMC_User == "":
-                    BMC_User = "Administrator"
-                BMC_Pass = log._in("Bmc_Password Enter -> ttytty`12  : ").strip()
-                if BMC_Pass == "q" or BMC_Pass == "exit":log._error("User.Input.Exit()")
-                if BMC_Pass == "":
-                    BMC_Pass = "ttytty`12"
-            else:
-                #---------------------------------------------------------------
-                BMC_User = log._in("Bmc_Username Enter -> admin : ").strip()
-                if BMC_User == "q" or BMC_User == "exit":log._error("User.Input.Exit()")
-                # BMC_User = ""
-                if BMC_User == "":
-                    BMC_User = "admin"
-                #---------------------------------------------------------------
-                BMC_Pass = log._in("Bmc_Password Enter -> admin  : ").strip()
-                if BMC_Pass == "q" or BMC_Pass == "exit":log._error("User.Input.Exit()")
-                # BMC_Pass = ""
-                if BMC_Pass == "":
-                    BMC_Pass = "admin"
-                #---------------------------------------------------------------
-        except:
-            #---------------------------------------------------------------
-                BMC_User = log._in("Bmc_Username Enter -> admin : ").strip()
-                if BMC_User == "q" or BMC_User == "exit":log._error("User.Input.Exit()")
-                # BMC_User = ""
-                if BMC_User == "":
-                    BMC_User = "admin"
-                #---------------------------------------------------------------
-                BMC_Pass = log._in("Bmc_Password Enter -> admin  : ").strip()
-                if BMC_Pass == "q" or BMC_Pass == "exit":log._error("User.Input.Exit()")
-                # BMC_Pass = ""
-                if BMC_Pass == "":
-                    BMC_Pass = "admin"
-                #---------------------------------------------------------------
+    # Get sost.json BMC User/Passwd
+    sjson_user = log.json_get("BMC_Survival_Config","BMC_Username").strip()
+    sjson_pass = log.json_get("BMC_Survival_Config","BMC_Password").strip()
+
+    # BMC chip 
+    bmc_chip = bmc_Chip()[0]
+    
+    # Input BMC User/Passwd
+    if BMC_User == '' or BMC_Pass == '':
+        if bmc_chip == 'ASPEED-2500' or bmc_chip == 'ASPEED-2600':
+           if sjson_user!="" and sjson_pass !="":
+               iuser = sjson_user
+               ipass = sjson_pass
+           else:
+               iuser = 'admin'
+               ipass = 'admin'
+        elif bmc_chip == 'Hisilicon-Hi1711':
+           if sjson_user!="" and sjson_pass !="":
+               iuser = sjson_user
+               ipass = sjson_pass
+           else:
+               iuser = 'Administrator'
+               ipass = 'ttytty`12'
+        elif 'Phy-E2000S' in bmc_chip:
+           if sjson_user!="" and sjson_pass !="":
+               iuser = sjson_user
+               ipass = sjson_pass
+           else:
+               iuser = '0penBmc'
+               ipass = 'ttytty`12'
+        else:
+            iuser = 'None'
+            ipass = 'None'
+                  
+        input_text_user =  log._in(f'Input Bmc_Username [ Enter -> {iuser.ljust(20)}]: ').strip()
+        if input_text_user == 'q':log._error("User.Input.Quit")
+        input_text_pass =  log._in(f'Input Bmc_Password [ Enter -> {ipass.ljust(20)}]: ').strip()
+        if input_text_pass == 'q':log._error("User.Input.Quit")
+        if input_text_user == '':
+            BMC_User = iuser
+            BMC_Pass = ipass
+        else:
+            BMC_User = input_text_user
+            BMC_Pass = input_text_pass
+
+    # check iBMC User/Passwd
+    log._tips("Checking BMC User/Passwd, Waiting.......")
+    test_info = log.os_popen(f"ipmitool -I lanplus -C 17 -H {Dedicated_ip} -U {BMC_User} -P '{BMC_Pass}' chassis status 2>/dev/null").strip()
+    if test_info == "":
+        log._error("[-] Bmc User or Passwd Error!")
+    # Save BMC Info To sost.json File
+    log._tips("[+] Bmc User/Passwd check Success!")
+    log.json_set("BMC_Survival_Config","BMC_Username",BMC_User)
+    log.json_set("BMC_Survival_Config","BMC_Password",BMC_Pass)
 
     if u_chos == "1":
         Dedicated_arry.append(BMC_User)
@@ -1308,6 +1315,9 @@ def defalt_path(show_flags=True):
 
     # Set bash_profile Default
     log.os_run("yes | sost -f bash")
+
+    # set default simple_test_flags
+    log.json_set("Test_Config","simple_test_flags","")
 
     # Get Now Test Status
     test_status = log.json_get("Test_tmp","test_status")

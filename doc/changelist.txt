@@ -17,8 +17,9 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 14. sost增加快捷命令选择项目替换dmesg_check内容 [x]
 15. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp [x]
 16. 增加bmc reset warm / cold KCS通道测试
-17. 
-
+17. 修复看板无法实现aclost运行测试  [x]
+    修复方法 看板执行时修改command执行方式，看板收到信息后，创建aclost.sh文件，command修改为sh aclost.sh
+18. 增加RTC_check检查。
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------

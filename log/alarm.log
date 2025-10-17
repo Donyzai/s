@@ -1,2 +1,41 @@
 [31m< sost_20251016-141645_error    > : DebugMode Enabled noSendCommand = 1[0m
 [31m< sost_20251016-141746_error    > : DebugMode Enabled noSendCommand = 1[0m
+[31m< sost_20251016-164752_error    > : No /dev/ttyUSB0 found! -> Please check the software and hardware environment![0m
+< sost_20251016-171021_tips     > : <------ BMC status check ----->
+< sost_20251016-171021_tips     > : [+] Bmc Status check Success!
+< sost_20251016-171022_tips     > : Checking whether bmcip can ping, Waiting.......
+[31m< sost_20251016-171022_error    > : json file EXIT! error_info : 'BMC_LAN'[0m
+< sost_20251017-092552_tips     > : <------ BMC status check ----->
+< sost_20251017-092552_tips     > : [+] Bmc Status check Success!
+< sost_20251017-092553_tips     > : Checking whether bmcip can ping, Waiting.......
+[31m< sost_20251017-094159_error    > : User.Input.Exit![0m
+[31m< sost_20251017-094219_error    > : User.Input.Exit![0m
+[31m< sost_20251017-094234_error    > : User.Exit()[0m
+< sost_20251017-095018_tips     > : <------ BMC status check ----->
+< sost_20251017-095018_tips     > : [+] Bmc Status check Success!
+< sost_20251017-095019_tips     > : Checking whether bmcip can ping, Waiting.......
+< sost_20251017-095022_tips     > : Checking BMC User/Passwd, Waiting.......
+[31m< sost_20251017-095022_error    > : [-] Bmc User or Passwd Error![0m
+[31m< sost_20251017-100315_error    > : User.Input.Error[0m
+[31m< sost_20251017-100318_error    > : User.Input.Error -> sost -s [value][0m
+< sost_20251017-100322_tips     > : <------ BMC status check ----->
+< sost_20251017-100322_tips     > : [+] Bmc Status check Success!
+< sost_20251017-100323_tips     > : Checking whether bmcip can ping, Waiting.......
+< sost_20251017-100327_tips     > : Checking BMC User/Passwd, Waiting.......
+[31m< sost_20251017-100327_error    > : [-] Bmc User or Passwd Error![0m
+[31m< sost_20251017-100331_error    > : User.Input.Error[0m
+< sost_20251017-100343_tips     > : <------ BMC status check ----->
+< sost_20251017-100343_tips     > : [+] Bmc Status check Success!
+< sost_20251017-100344_tips     > : Checking whether bmcip can ping, Waiting.......
+[31m< sost_20251017-100347_error    > : User.Exit()[0m
+< sost_20251017-100421_tips     > : <------ BMC status check ----->
+< sost_20251017-100421_tips     > : [+] Bmc Status check Success!
+< sost_20251017-100422_tips     > : Checking whether bmcip can ping, Waiting.......
+< sost_20251017-100425_tips     > : Checking BMC User/Passwd, Waiting.......
+< sost_20251017-100425_tips     > : [+] Bmc User/Passwd check Success!
+[31m< sost_20251017-100754_error    > : User.Input.Exit![0m
+< sost_20251017-100800_tips     > : <------ BMC status check ----->
+< sost_20251017-100800_tips     > : [+] Bmc Status check Success!
+< sost_20251017-100801_tips     > : Checking whether bmcip can ping, Waiting.......
+< sost_20251017-100802_tips     > : Checking BMC User/Passwd, Waiting.......
+< sost_20251017-100802_tips     > : [+] Bmc User/Passwd check Success!

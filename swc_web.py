@@ -243,10 +243,14 @@ def home():
 def stability_status():
     return log.os_popen("sost -i test",flags=cmd_log_flags).strip().replace('\n','<br>')
 
-def compress_and_return_file(source_dir,typee,countt):
+def compress_and_return_file(source_dir,file_type=''):
 
     lan1 = log.os_popen("cat /tmp/sost_tmp/swc_ipmi_lan1.txt | tr -d ' *\n'",flags=cmd_log_flags).strip()
     lan2 = log.os_popen("cat /tmp/sost_tmp/swc_ipmi_lan8.txt | tr -d ' *\n'",flags=cmd_log_flags).strip()
+
+    typee = log.json_get("Test_tmp", "test_type", web=cmd_log_flags)
+    countt = log.json_get("Test_tmp", "test_count", web=cmd_log_flags)
+
     if lan1 !='':
         bmcip = lan1
     elif lan2 !='':
@@ -255,22 +259,48 @@ def compress_and_return_file(source_dir,typee,countt):
         bmcip = 'NA'
 
     now_time = datetime.now().strftime('%Y%m%d%H%M')
-    tmp_dir = f"/tmp/sost_tmp/sost_{bmcip}_{typee}_{countt}_{now_time}"
-    log.os_popen(f"cp -rf {source_dir} {tmp_dir}", flags=cmd_log_flags)
-    log.os_popen(f"tar -cvf {tmp_dir}.tar {tmp_dir}", flags=cmd_log_flags)
-    log.os_popen(f"rm -rf {tmp_dir}", flags=cmd_log_flags)
-
+    if file_type == '':
+        tmp_dir = f"/tmp/sost_tmp/sost_{bmcip}_{typee}_{countt}_{now_time}"
+        log.os_popen(f"cp -rf {source_dir} {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"tar -cvf {tmp_dir}.tar {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"rm -rf {tmp_dir}", flags=cmd_log_flags)
+    elif file_type == 'slog':
+        tmp_dir = f"/tmp/sost_tmp/sost_{bmcip}_slog_{now_time}"
+        log.os_popen(f"mkdir -p {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"cp -rf /opt/sost/log/* {tmp_dir}/", flags=cmd_log_flags)
+        log.os_popen(f"tar -cvf {tmp_dir}.tar {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"rm -rf {tmp_dir}", flags=cmd_log_flags)
+    elif file_type == 'sfolder':
+        tmp_dir = f"/tmp/sost_tmp/sost_{bmcip}_sfolder_{now_time}"
+        log.os_popen(f"mkdir -p {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"cp -rf /opt/sost {tmp_dir}/", flags=cmd_log_flags)
+        log.os_popen(f"tar -cvf {tmp_dir}.tar {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"rm -rf {tmp_dir}", flags=cmd_log_flags)
+    elif file_type == 'scache':
+        tmp_dir = f"/tmp/sost_tmp/sost_{bmcip}_scache_{now_time}"
+        log.os_popen(f"mkdir -p {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"cp -rf /tmp/sost_tmp/* {tmp_dir}/", flags=cmd_log_flags)
+        log.os_popen(f"tar -cvf {tmp_dir}.tar {tmp_dir}", flags=cmd_log_flags)
+        log.os_popen(f"rm -rf {tmp_dir}", flags=cmd_log_flags)
+    else:
+        return None
+    
     return f"{tmp_dir}.tar"
 
-@app.route('/stability_download_log')
+@app.route('/stability_download_log', methods=['GET'])
 def stability_download_log():
+
+    file_type = request.args.get('file_type','')
+
+    if file_type not in ['', 'slog', 'sfolder']:
+        return "Invalid file_type parameter", 400
+
     path = log.json_get("Test_tmp", "test_folder_path", web=cmd_log_flags)
-    typee = log.json_get("Test_tmp", "test_type", web=cmd_log_flags)
-    countt = log.json_get("Test_tmp", "test_count", web=cmd_log_flags)
+
     if not path:
         return "路径未找到", 404
     
-    compressed_file_path = compress_and_return_file(path,typee,countt)
+    compressed_file_path = compress_and_return_file(path,file_type=file_type)
     try:
         return send_file(compressed_file_path, as_attachment=True)
     finally:

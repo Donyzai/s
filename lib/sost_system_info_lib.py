@@ -155,17 +155,19 @@ done''')
         if error_type in fail_exit_blacklist:
             log._pr(f"error_type : {error_type}")
             log._pr(f"blacklist  : {str(fail_exit_blacklist)}")
+            
             log._error("Set error not to exit, trigger blacklist, exit test!")
 
 def bmclog_check(path,count):
 
     black_list = ["FAN","CMOS","ac","dc"]
     if log.json_get("BMC_Survival_Config","bmc_chip") == 'Hisilicon-Hi1711':
-        black_list.append("Power Supply PSU1 Status","Power Supply PSU2 Status")
+        black_list.append("Power Supply PSU1 Status")
+        black_list.append("Power Supply PSU2 Status")
 
     json_data = json.loads(open("/opt/sost/config/bmcsel_check.json","r").read())
     error_arry = list(json_data["bmcsel_check_items"].keys())
-            
+
     if path == '':
         path = "/tmp/sost_tmp/bmclog.log"
         log.os_run(f"ipmitool sel list > {path}")
@@ -565,15 +567,15 @@ def test_config(flags, count, path):
     simple_flags = log.json_get("Test_Config","simple_test_flags").strip()
     
     if simple_flags == "bmc":
-        log._pr(" TestMode         : bmc")
+        log._dp(" TestMode         : bmc")
         bmc_info_check(flags, path, count)
         public_check(flags, path, count)
     elif simple_flags == "os":
-        log._pr(" TestMode         : os")
+        log._dp(" TestMode         : os")
         system_info_check(flags ,path, count)
         public_check(flags, path, count)
     elif simple_flags == "simple":
-        log._pr(" TestMode         : simple")
+        log._dp(" TestMode         : simple")
     else:
         system_info_check(flags ,path, count)
         bmc_info_check(flags, path, count)
@@ -618,7 +620,7 @@ def check_rtc_time(flags, path, count):
     if rtc_date_time[0] != rtc_date_time[1]:
         error_tmp = f'RTC Time date check Fail   : {str(rtc_date_time)}\n< sost > {log.os_popen("timedatectl")}'
         fail_info('RTC Time date check',error_tmp,f'timedatectl',f"timedatectl")
-    elif abs(int(rtc_hours_time[0]) - int(rtc_hours_time[1]) != 8):
+    elif abs(int(rtc_hours_time[0]) - int(rtc_hours_time[1]) ) != 8 or abs(int(rtc_hours_time[0]) - int(rtc_hours_time[1])) != 16:
         error_tmp = f'RTC Time hours check Fail   : {str(rtc_hours_time)}\n< sost > {log.os_popen("timedatectl")}'
         fail_info('RTC Time hours check',error_tmp,f'timedatectl',f"timedatectl")
     elif rtc_minimumtime[0] != rtc_minimumtime[1]:
@@ -629,7 +631,6 @@ def check_rtc_time(flags, path, count):
         fail_info('RTC Time seconds check',error_tmp,f'timedatectl',f"timedatectl")
     else:
         log._pr("RTC Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
-
 
 # check RuningTime
 def check_running_time(count):
