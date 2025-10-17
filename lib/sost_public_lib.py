@@ -1301,6 +1301,10 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
         log._error("User.Input.Err")
 
 def defalt_path(show_flags=True):
+    nowRunning_flag = log.json_get("Test_tmp","Running_flag").strip()
+    if nowRunning_flag == "0" or nowRunning_flag == "4" or nowRunning_flag == "5" or nowRunning_flag == "6":
+        log._dp("default_path : No Test is running now!")
+        exit()
     log.json_set('Test_tmp','Running_flag','4')
     # Set EndTime To sost.json File
     log.json_set("Test_tmp","endT_time",now_time())
@@ -1874,7 +1878,11 @@ def test_type_logo(test_type, count):
 ||--------------------------------------------------||
 || Type : {str(test_type).ljust(16)} || Count : {str(count).ljust(5)}         ||
 ══════════════════════════════════════════════════════''')
-def Timed_operation_mode():
+def Timed_operation_mode(chose='',waiting_time=''):
+    if waiting_time !='' and chose !='':
+        log._dp("chose and waiting_time all not null!")
+        wait_time_ctrl_C(int(waiting_time),flags='')
+        return chose
     clp()
     # ----------------------------------------------------------------------------------------------
     print(f'''═══════════════════════════════════════════════════════════════════════════════════════
@@ -1889,10 +1897,10 @@ def Timed_operation_mode():
 ||   ░░░░░░░░   ░░░░░░  ░░░░░░     ░░        ░░░░░░░    ░░░░░░  ░░░   ░░  ░░░░░      ||
 ||                                                              Auther:Xiaodong Fan  ||
 ||═══════════════════════════════════════════════════════════════════════════════════||
-||    1 . reboot         |    5 . systemctl reboot    |                              ||
-||    2 . power cycle    |    6 . init 6              |                              ||
-||    3 . power reset    |    7 . poweroff -r         |                              ||
-||    4 . AClost         |    8 . shutdown -r         |                              ||
+||    1 . reboot         |    5 .                     |                              ||
+||    2 . power cycle    |    6 .                     |                              ||
+||    3 . power reset    |    7 .                     |                              ||
+||    4 . AClost         |    8 .                     |                              ||
 ||═══════════════════════════════════════════════════════════════════════════════════||''')
     test_chose = log._in("You Chose : ")
     clp()
@@ -2084,7 +2092,7 @@ def logo(release_time, version):
     else:
         version = "\033[32m"+version.ljust(7)+"\033[0m"
     # 原始代码部分，保持不变
-    print(f'''════════════════════════════════════════════════════════════════════════════
+    text1 = f'''════════════════════════════════════════════════════════════════════════════
 |                                             ░██                          |
 |                    ██████  ██████   ██████ ██████                        |
 |                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
@@ -2092,9 +2100,9 @@ def logo(release_time, version):
 |                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
 |                   ██████ ░░██████  ██████   ░░██                         |
 |                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════''')
-    print(f"|    ReTime:{release_time.ljust(11)}     Ver.{version} "+f"BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|")
-    print('''|══════════════════════════════════════════════════════════════════════════|
+|═══════════════════════════════════════════════════════════════════════════'''
+    text2 = f"|    ReTime:{release_time.ljust(11)}     Ver.{version} "+f"BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|"
+    text3 = '''|══════════════════════════════════════════════════════════════════════════|
 |   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
 |   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
 |   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
@@ -2104,7 +2112,14 @@ def logo(release_time, version):
 |  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
 |  15 . BMC Remote bmc reset warm  |  19 . NA                              |
 |  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════''')
+════════════════════════════════════════════════════════════════════════════'''
+    # save log and print      
+    print(text1)
+    log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text=text1)
+    print(text2)
+    log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text=text2)
+    print(text3)
+    log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text=text3)
 
 def smtp_send_result(text):
     from email.mime.text import MIMEText

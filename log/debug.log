@@ -1,265 +1,96 @@
-< sost_20251016-141605_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251016-141649_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251016-141715_dlev_0   > : functestconfig Running time : 1760595435 s
-< sost_20251016-141716_dlev_0   > : []
-< sost_20251016-141722_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device', 'FAN', 'CMOS', 'ac', 'dc']
-< sost_20251016-141730_dlev_0   > : Last running time : 108 s
-< sost_20251016-141730_dlev_0   > : Now running time  : 45 s
-< sost_20251016-141730_dlev_0   > : Last restart time : 45 s
-< sost_20251016-143746_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251016-143811_dlev_0   > : functestconfig Running time : 1760596691 s
-< sost_20251016-143812_dlev_0   > : []
-< sost_20251016-143818_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device', 'FAN', 'CMOS', 'ac', 'dc']
-< sost_20251016-164752_dlev_0   > : SOST is the latest version
-< sost_20251016-164752_dlev_0   > : Storcli64 Not install!
-< sost_20251016-164752_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251016-171018_dlev_0   > : SOST is the latest version
-< sost_20251016-171018_dlev_0   > : Storcli64 Not install!
-< sost_20251016-171018_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-092548_dlev_0   > : SOST is the latest version
-< sost_20251017-092548_dlev_0   > : Storcli64 Not install!
-< sost_20251017-092548_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-092620_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092620_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092630_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092630_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092640_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092640_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092650_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092650_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092700_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092700_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092710_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092710_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092720_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092720_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092730_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092730_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092740_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092740_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092750_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092750_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092800_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092800_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092810_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092810_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092820_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092820_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092830_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092830_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092840_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092840_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092850_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092850_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092900_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092900_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092910_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092910_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092920_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092920_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092930_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092930_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092940_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092940_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-092950_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-092950_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093000_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093000_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093010_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093010_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093020_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093020_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093030_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093030_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093040_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093040_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093051_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093051_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093101_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093101_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093111_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093111_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093121_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093121_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093131_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093131_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093141_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093141_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093151_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093151_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093201_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093201_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093211_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093211_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093221_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093221_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093231_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093231_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093241_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093241_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093251_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093251_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093301_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093301_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093311_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093311_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093321_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093321_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093331_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093331_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093341_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093341_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093351_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093351_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093401_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093401_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093411_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093411_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093421_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093421_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093431_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093431_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093441_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093441_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093451_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093451_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093501_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093501_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093511_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093511_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093521_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093521_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093531_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093531_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093541_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093541_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093551_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093551_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093601_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093601_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093611_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093611_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093621_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093621_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093631_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093631_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093641_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093641_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093651_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093651_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093701_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093701_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093711_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093711_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093721_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093721_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093731_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093731_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093741_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093741_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093751_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093752_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093802_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093802_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093812_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093812_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093822_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093822_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093832_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093832_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093842_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093842_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093852_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093852_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093902_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093902_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093912_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093912_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093922_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093922_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093932_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093932_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093942_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093942_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-093952_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-093952_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094002_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094002_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094012_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094012_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094022_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094022_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094032_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094032_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094042_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094042_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094052_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094052_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094102_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094102_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094112_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094112_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094122_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094122_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094132_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094132_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094142_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094142_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094152_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-094152_dlev_0   > : Bmc IPMI is UnAlive!
-< sost_20251017-094157_dlev_0   > : SOST is the latest version
-< sost_20251017-094217_dlev_0   > : SOST is the latest version
-< sost_20251017-094231_dlev_0   > : SOST is the latest version
-< sost_20251017-094231_dlev_0   > : Storcli64 Not install!
-< sost_20251017-094231_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-095016_dlev_0   > : SOST is the latest version
-< sost_20251017-095016_dlev_0   > : Storcli64 Not install!
-< sost_20251017-095016_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100314_dlev_0   > : SOST is the latest version
-< sost_20251017-100314_dlev_0   > : Storcli64 Not install!
-< sost_20251017-100314_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100318_dlev_0   > : SOST is the latest version
-< sost_20251017-100318_dlev_0   > : Storcli64 Not install!
-< sost_20251017-100318_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100320_dlev_0   > : SOST is the latest version
-< sost_20251017-100320_dlev_0   > : Storcli64 Not install!
-< sost_20251017-100320_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100330_dlev_0   > : SOST is the latest version
-< sost_20251017-100331_dlev_0   > : Storcli64 Not install!
-< sost_20251017-100331_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100339_dlev_0   > : SOST is the latest version
-< sost_20251017-100339_dlev_0   > : Storcli64 Not install!
-< sost_20251017-100339_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100419_dlev_0   > : SOST is the latest version
-< sost_20251017-100419_dlev_0   > : Storcli64 Not install!
-< sost_20251017-100419_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100450_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-100748_dlev_0   > : SOST is the latest version
-< sost_20251017-100758_dlev_0   > : SOST is the latest version
-< sost_20251017-100758_dlev_0   > : Storcli64 Not install!
-< sost_20251017-100758_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251017-100828_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-101401_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-101404_dlev_0   > : TestType : Bmcreset -> not add bmclog_strings to error_arry
-< sost_20251017-101404_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device']
-< sost_20251017-101411_dlev_0   > : Last running time : 45 s
-< sost_20251017-101411_dlev_0   > : Now running time  : 325 s
-< sost_20251017-101411_dlev_0   > : Last restart time : 325 s
-< sost_20251017-101936_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-101939_dlev_0   > : TestType : Bmcreset -> not add bmclog_strings to error_arry
-< sost_20251017-101939_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device']
-< sost_20251017-101946_dlev_0   > : Last running time : 325 s
-< sost_20251017-101946_dlev_0   > : Now running time  : 325 s
-< sost_20251017-101946_dlev_0   > : Last restart time : 325 s
-< sost_20251017-102511_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-102514_dlev_0   > : TestType : Bmcreset -> not add bmclog_strings to error_arry
-< sost_20251017-102514_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device']
-< sost_20251017-102521_dlev_0   > : Last running time : 325 s
-< sost_20251017-102521_dlev_0   > : Now running time  : 325 s
-< sost_20251017-102521_dlev_0   > : Last restart time : 325 s
-< sost_20251017-103046_dlev_0   > : Bmc IP Ping is Alive!
-< sost_20251017-103049_dlev_0   > : TestType : Bmcreset -> not add bmclog_strings to error_arry
-< sost_20251017-103049_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device']
-< sost_20251017-103055_dlev_0   > : Last running time : 325 s
-< sost_20251017-103055_dlev_0   > : Now running time  : 325 s
-< sost_20251017-103055_dlev_0   > : Last restart time : 325 s
+< sost_20251017-165412_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251017-165454_dlev_0   > : SOST is the latest version
+< sost_20251017-165454_dlev_0   > : Storcli64 Not install!
+< sost_20251017-165454_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-165541_dlev_0   > : SOST is the latest version
+< sost_20251017-165541_dlev_0   > : Storcli64 Not install!
+< sost_20251017-165541_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-165541_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '1'}
+< sost_20251017-165541_dlev_0   > : chose = 13
+< sost_20251017-165541_dlev_0   > : run_wait_time = 1
+< sost_20251017-165541_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-165655_dlev_0   > : SOST is the latest version
+< sost_20251017-165655_dlev_0   > : Storcli64 Not install!
+< sost_20251017-165655_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-165655_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-165655_dlev_0   > : chose = 13
+< sost_20251017-165655_dlev_0   > : run_wait_time = 3
+< sost_20251017-165655_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-165812_dlev_0   > : SOST is the latest version
+< sost_20251017-165812_dlev_0   > : Storcli64 Not install!
+< sost_20251017-165812_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-165812_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-165812_dlev_0   > : chose = 13
+< sost_20251017-165812_dlev_0   > : run_wait_time = 3
+< sost_20251017-165812_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170118_dlev_0   > : SOST is the latest version
+< sost_20251017-170118_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170118_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170118_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-170118_dlev_0   > : chose = 13
+< sost_20251017-170118_dlev_0   > : run_wait_time = 3
+< sost_20251017-170118_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170120_dlev_0   > : SOST is the latest version
+< sost_20251017-170120_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170120_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170120_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-170120_dlev_0   > : chose = 13
+< sost_20251017-170120_dlev_0   > : run_wait_time = 3
+< sost_20251017-170120_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170139_dlev_0   > : SOST is the latest version
+< sost_20251017-170139_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170139_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170139_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-170139_dlev_0   > : chose = 13
+< sost_20251017-170139_dlev_0   > : run_wait_time = 3
+< sost_20251017-170139_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170153_dlev_0   > : SOST is the latest version
+< sost_20251017-170153_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170153_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170153_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-170153_dlev_0   > : chose = 13
+< sost_20251017-170153_dlev_0   > : run_wait_time = 3
+< sost_20251017-170153_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170155_dlev_0   > : SOST is the latest version
+< sost_20251017-170155_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170155_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170155_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-170155_dlev_0   > : chose = 13
+< sost_20251017-170155_dlev_0   > : run_wait_time = 3
+< sost_20251017-170155_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170223_dlev_0   > : SOST is the latest version
+< sost_20251017-170223_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170223_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170223_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-170223_dlev_0   > : chose = 13
+< sost_20251017-170223_dlev_0   > : run_wait_time = 3
+< sost_20251017-170223_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170225_dlev_0   > : default_path : No Test is running now!
+< sost_20251017-170230_dlev_0   > : SOST is the latest version
+< sost_20251017-170230_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170230_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170230_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '3'}
+< sost_20251017-170230_dlev_0   > : chose = 13
+< sost_20251017-170230_dlev_0   > : run_wait_time = 3
+< sost_20251017-170230_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170310_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251017-170406_dlev_0   > : SOST is the latest version
+< sost_20251017-170407_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170407_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170414_dlev_0   > : SOST is the latest version
+< sost_20251017-170415_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170415_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170501_dlev_0   > : SOST is the latest version
+< sost_20251017-170501_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170501_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170501_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '20'}
+< sost_20251017-170501_dlev_0   > : chose = 13
+< sost_20251017-170501_dlev_0   > : run_wait_time = 20
+< sost_20251017-170501_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-170538_dlev_0   > : SOST is the latest version
+< sost_20251017-170538_dlev_0   > : Storcli64 Not install!
+< sost_20251017-170538_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-170538_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '13', 'run_wait_time': '20'}
+< sost_20251017-170538_dlev_0   > : chose = 13
+< sost_20251017-170538_dlev_0   > : run_wait_time = 20
+< sost_20251017-170538_dlev_0   > : chose and waiting_time all not null!

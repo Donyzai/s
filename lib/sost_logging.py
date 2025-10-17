@@ -165,6 +165,7 @@ class dong_log():
     def _exitt(self,text=""):
         text = f"< {self.__private_title_name}_{now_time('6')}_exit     > : "+text
         self.save_to_file(filename=self.__private_alarm_file_path,text=text)
+        self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
         print(text)
         exit()
     
@@ -172,6 +173,7 @@ class dong_log():
     def _tips(self,text=""):
         text = f"< {self.__private_title_name}_{now_time('6')}_tips     > : "+text
         self.save_to_file(filename=self.__private_alarm_file_path,text=text)
+        self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
         print(text)
         return
 
@@ -179,6 +181,7 @@ class dong_log():
     def _warning(self,text=""):
         text = f"\033[33m< {self.__private_title_name}_{now_time('6')}_warning  > : "+text+"\033[0m"
         self.save_to_file(filename=self.__private_alarm_file_path,text=text)
+        self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
         if self.debug_flags == "1" or self.debug_flags == "3" or self.debug_flags == '0':print(text)
         if self.warning_exit:
             if self.debug_flags == "1" or "3":
@@ -191,6 +194,7 @@ class dong_log():
     def _fail(self,text=""):
         text = f"\033[31m< {self.__private_title_name}_{now_time('6')}_fail     > : "+text+"\033[0m"
         self.save_to_file(filename=self.__private_alarm_file_path,text=text)
+        self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
         if self.debug_flags == "1" or self.debug_flags == "3" or self.debug_flags == '0':print(text)
         if self.fail_exit:
             if self.debug_flags == "1" or "3":
@@ -203,6 +207,7 @@ class dong_log():
     def _error(self,text=""):
         text = f"\033[31m< {self.__private_title_name}_{now_time('6')}_error    > : "+text+"\033[0m"
         self.save_to_file(filename=self.__private_alarm_file_path,text=text)
+        self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
         if self.debug_flags == "1" or self.debug_flags == "3" or self.debug_flags == '0':print(text)
         
         if self.error_exit:
@@ -217,6 +222,7 @@ class dong_log():
     def _critical(self,text=""):
         text = f"\033[31m< {self.__private_title_name}_{now_time('6')}_critical > : "+text+"\033[0m"
         print(text)
+        self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
         self.save_to_file(filename=self.__private_alarm_file_path,text=text)
         if self.critical_exit :
             exit()

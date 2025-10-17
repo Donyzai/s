@@ -183,12 +183,7 @@ def run_stability():
     bmclan = request.args.get('bmclan')
     bmcuser = request.args.get('bmcuser')
     bmcpass = request.args.get('bmcpass')
-
-    print(data)
-    print(testOrder)
-    print(bmclan)
-    print(bmcuser)
-    print(bmcpass)
+    run_wait_time = request.args.get('run_wait_time')
 
     if data == 'other' and testOrder == None:
         return jsonify({"error": "Missing required parameter 'testOrder'"}), 400

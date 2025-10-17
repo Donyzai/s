@@ -47,21 +47,34 @@ if str(log.json_get("Multimodal_stability","switch"))=="1":
     log.json_set("Test_tmp","test_type",test_type)
     log.json_set("Test_Config","max_count",test_count)
 else:
+    chose = ''
     u_chos = ''
     BMC_User = ''
     BMC_Pass = ''
+    run_wait_time = ''
     try:
         if 'json_test' in sys.argv[1]:
             strings ='{"'+sys.argv[1].replace(':','":"').replace(',','","')+'"}'
             data = json.loads(strings)
             chose = data["chose"]
+            run_wait_time = data['run_wait_time']
+            log._dp(f"data = {data}")
+            if run_wait_time != '':
+                log._dp(f"chose = {chose}")
+                log._dp(f"run_wait_time = {run_wait_time}")
+                log._tips(f"Timed_operation_mode chose = {chose} , run_wait_time = {run_wait_time} ")
+                chose = Timed_operation_mode(chose,run_wait_time)
+                
             if chose == '13' or '14' or '18':
                 try:bmclan = data['bmclan']
-                except:bmclan = '1'
+                except:bmclan = ''
                 try:BMC_User = data['bmcuser']
-                except:BMC_User = 'admin'
+                except:BMC_User = ''
                 try:BMC_Pass = data['bmcpass']
-                except:BMC_Pass = 'admin'
+                except:BMC_Pass = ''
+                if bmclan == '' or BMC_User == '' or BMC_Pass == '':
+                    log._error("BMC Info Missing!")
+
         elif sys.argv[1] == "reboot":
             chose = "1"
         elif sys.argv[1] == "powercycle":
@@ -87,9 +100,11 @@ else:
     except Exception as e :
         chose = ""
         pass
+
     if chose == "exit":log._error("User.Input.Error -> sost -s [value]")
     if chose == "":
         chose = log._in("Your choice : ")
+
     log._dmesg(f"User selected testing model : {chose}")
     #================================================
     #### systemctl reboot
