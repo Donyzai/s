@@ -185,6 +185,9 @@ def run_stability():
     bmcpass = request.args.get('bmcpass')
     run_wait_time = request.args.get('run_wait_time')
 
+    print(data,testOrder,bmclan,bmcuser,bmcpass,run_wait_time)
+
+
     if data == 'other' and testOrder == None:
         return jsonify({"error": "Missing required parameter 'testOrder'"}), 400
     if data == 'other' and bmclan == None:
@@ -206,20 +209,41 @@ def run_stability():
     
     if process_count > 0:
         return jsonify({"error": "SOST is already running a stability test!"}), 400
-    
+    if run_wait_time != None or run_wait_time != '':
+        if data == 'reboot':
+            testOrder = '1'
+            typee = 'reboot'
+        elif data == 'powercycle':
+            testOrder = '2'
+            typee = 'powercycle'
+        elif data == 'powerreset':
+            testOrder = '3'
+            typee = 'powerreset'
+        elif data == 'aclost':
+            testOrder = '4'
+            typee = 'aclost'
+        else:
+            testOrder = ''
+            typee = ''
+        addc = f"json_test:dongzai,chose:{testOrder},run_wait_time:{run_wait_time}"
+    else:
+        addc = ''
+        typee = ''
+
     commands = {
-        'reboot': 'sost -s reboot &',
-        'powercycle': 'sost -s powercycle &',
-        'powerreset': 'sost -s powerreset &',
-        'aclost': 'sost -s aclost &',
+        'reboot': f'sost -s {addc} &',
+        'powercycle': f'sost -s {addc} &',
+        'powerreset': f'sost -s {addc} &',
+        'aclost': f'sost -s {addc} &',
         'continue'  : 'sost -z &',
         'stop'      : 'sost -k &',
-        'other': f'''  sost -s 'json_test':'dongzai','chose':'{testOrder}','bmclan':'{bmclan}','bmcuser':'{bmcuser}','bmcpass':'{bmcpass}' & '''
+        'other': f'''  sost -s json_test:dongzai,chose:{testOrder},bmclan:{bmclan},bmcuser:{bmcuser},bmcpass:{bmcpass},run_wait_time:{run_wait_time} & '''
     }
     if data not in commands:
         return jsonify({"error": "Invalid command parameter"}), 400
     try:
-        subprocess.Popen(commands[data], shell=True, executable='/bin/bash')
+        run_command = commands[data]
+        subprocess.Popen(run_command, shell=True, executable='/bin/bash')
         return jsonify({"message": f"{data.capitalize()} command executed successfully."}), 200
     except Exception as e:
         return jsonify({"error": f"Failed to execute command: {str(e)}"}), 400

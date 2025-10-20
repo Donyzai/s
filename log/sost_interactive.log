@@ -413,3 +413,98 @@ BP2 Version: REV 1.01(11-18-2022)
 < sost > Please Wait Times `Ctrl + c` exit() : 01s
 < sost > Please Wait Times `Ctrl + c` exit() : 00s
 [31m< sost_20251017-170558_error    > : BMC Info Missing![0m
+< sost_20251017-174129_print    > : swc_web is Running! Running-Time -> 20251017 17:41:29 (swc_web.py)
+< sost_20251017-174129_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251017-174133_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-174141_print    > : swc_web is Running! Running-Time -> 20251017 17:41:41 (swc_web.py)
+< sost_20251017-174141_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251017-174143_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+[31m< sost_20251017-174151_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+< sost_20251017-174358_print    > : swc_web is Running! Running-Time -> 20251017 17:43:58 (swc_web.py)
+< sost_20251017-174358_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251017-174358_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-174405_print    > : swc_web is Running! Running-Time -> 20251017 17:44:05 (swc_web.py)
+< sost_20251017-174405_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251017-174408_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-174751_print    > : swc_web is Running! Running-Time -> 20251017 17:47:51 (swc_web.py)
+< sost_20251017-174751_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251017-174753_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+[31m< sost_20251017-175022_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+[31m< sost_20251017-175145_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+[31m< sost_20251017-175147_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+[31m< sost_20251017-175149_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+< sost_20251017-175536_print    > : swc_web is Running! Running-Time -> 20251017 17:55:36 (swc_web.py)
+< sost_20251017-175536_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251017-175537_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-175922_print    > : swc_web is Running! Running-Time -> 20251017 17:59:22 (swc_web.py)
+< sost_20251017-175922_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20251017-175923_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+════════════════════════════════════════════════════════════════════════════
+|                                             ░██                          |
+|                    ██████  ██████   ██████ ██████                        |
+|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
+|                  ░░█████ ░██   ░██░░█████   ░██                          |
+|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
+|                   ██████ ░░██████  ██████   ░░██                         |
+|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
+|═══════════════════════════════════════════════════════════════════════════
+|    ReTime:2025-05-27 12:16:44     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
+|══════════════════════════════════════════════════════════════════════════|
+|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
+|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
+|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
+|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
+|══════════════════════════════════════════════════════════════════════════|
+|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
+|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
+|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
+|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
+════════════════════════════════════════════════════════════════════════════
+< sost_20251017-175941_tips     > : Timed_operation_mode chose = 1 , run_wait_time = 20 
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost_20251017-180029_print    > : swc_web is Running! Running-Time -> 20251017 18:00:29 (swc_web.py)
+< sost_20251017-180029_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251017-180029_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-180030_print    > : swc_web is Running! Running-Time -> 20251017 18:00:30 (swc_web.py)
+< sost_20251017-180030_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251017-180030_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-180030_print    > : swc_web is Running! Running-Time -> 20251017 18:00:30 (swc_web.py)
+< sost_20251017-180030_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251017-180030_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-180031_print    > : swc_web is Running! Running-Time -> 20251017 18:00:31 (swc_web.py)
+< sost_20251017-180031_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251017-180031_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251017-180031_print    > : swc_web is Running! Running-Time -> 20251017 18:00:31 (swc_web.py)
+< sost_20251017-180031_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251017-180031_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251020-140113_print    > : swc_web is Running! Running-Time -> 20251020 14:01:13 (swc_web.py)
+< sost_20251020-140113_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251020-140113_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251020-140113_print    > : swc_web is Running! Running-Time -> 20251020 14:01:13 (swc_web.py)
+< sost_20251020-140113_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251020-140113_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251020-140114_print    > : swc_web is Running! Running-Time -> 20251020 14:01:14 (swc_web.py)
+< sost_20251020-140114_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251020-140114_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251020-140114_print    > : swc_web is Running! Running-Time -> 20251020 14:01:14 (swc_web.py)
+< sost_20251020-140114_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251020-140114_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251020-140115_print    > : swc_web is Running! Running-Time -> 20251020 14:01:15 (swc_web.py)
+< sost_20251020-140115_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
+< sost_20251020-140115_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)

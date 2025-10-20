@@ -5,7 +5,10 @@ import json
 import time
 
 def json_load(key, value):
-    json_filename = '/opt/sost/config/sost.json'
+    if value == 'Version' or 'Release_Time':
+        json_filename = '/opt/sost/config/sost_version.json'
+    else:
+        json_filename = '/opt/sost/config/sost.json'
     config = open(json_filename, "r")
     config = json.load(config)
     data = config[key][value]
@@ -301,6 +304,7 @@ def parser_test():
             print("| bmchip   |  Query server BMC chip information         | 查询服务器BMC芯片信息\t|")
             print('|----------|--------------------------------------------|-----------------------|')
             print("| test     |  Query SOST Test info                      | 查询当前测试信息\t|")
+            print("| uuid     |  Query server UUID information             | 查询服务器UUID信息\t|")
             print('|----------|--------------------------------------------|-----------------------|')
             print('='*80)
             print("Command : sost -i [Value] ")
@@ -322,6 +326,7 @@ def parser_test():
             elif sys.argv[2] == "fw":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import fwinfo;fwinfo('0','',' ')" ''')
             elif sys.argv[2] == "bmcip":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import bmcip;bmcip('0','',' ')" ''')
             elif sys.argv[2] == "bp":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import backboard_info;backboard_info('0','',' ')" ''')
+            elif sys.argv[2] == "uuid":print(os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip())
             elif sys.argv[2] == "sha256":
                 try:
                     import hmac;import base64

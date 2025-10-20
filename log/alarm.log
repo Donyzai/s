@@ -11,3 +11,9 @@
 [31m< sost_20251017-170521_error    > : BMC Info Missing![0m
 < sost_20251017-170538_tips     > : Timed_operation_mode chose = 13 , run_wait_time = 20 
 [31m< sost_20251017-170558_error    > : BMC Info Missing![0m
+[31m< sost_20251017-174151_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+[31m< sost_20251017-175022_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+[31m< sost_20251017-175145_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+[31m< sost_20251017-175147_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+[31m< sost_20251017-175149_error    > : json file EXIT! error_info : 'run_wait_time'[0m
+< sost_20251017-175941_tips     > : Timed_operation_mode chose = 1 , run_wait_time = 20 

@@ -7947,3 +7947,367 @@ f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 < sost_20251017-170538_popen_com> : whereis numactl | awk '{print $2}' -> Result
 /usr/bin/numactl
 
+< sost_20251017-174151_popen_com> : cat /opt/sost/config/sost.json -> Result
+{
+    "Test_Config": {
+        "Result_path": "/root",
+        "Dedicated_lan_num": "1",
+        "Share_lan_num": "8",
+        "fail_exit_flags": "1",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
+        "aclost_wait_time": "120",
+        "end_wait_time": "15",
+        "frist_sdi_time": "0",
+        "max_count": "",
+        "collect_cmd": "",
+        "Maximum_restart_time": "900",
+        "simple_test_flags": "",
+        "result_html": "1",
+        "ipmi_sensdr_retry_count": "0",
+        "running_time_max": "60"
+    },
+    "power_on_off": {
+        "server_ip": "192.168.60.138",
+        "server_port": "13251"
+    },
+    "Multimodal_stability": {
+        "switch": "0",
+        "count_aclost": "",
+        "count_reboot": "",
+        "count_powercycle": "",
+        "count_powerreset": ""
+    },
+    "BMC_Survival_Config": {
+        "bmc_chip": "ASPEED-2600",
+        "switch": "0",
+        "BMC_Username": "admin",
+        "BMC_Password": "ttytty`12"
+    },
+    "smtp": {
+        "Fail_send_email": "",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "pop3_password": ""
+    },
+    "Test_tmp": {
+        "test_type": "reboot",
+        "test_count": "0",
+        "test_status": "Pass",
+        "test_bmc_lan": "1",
+        "test_folder_path": "/root/reboot",
+        "test_sha256": "98726716dc0fb17e7cdc231c68b6240ef2c021ce36a9b84427ebdfb797bf0b15",
+        "run_command": "reboot",
+        "startT_time": "2025-10-17-16-54-11",
+        "endT_time": "2025-10-17-17-03-12",
+        "Running_flag": "4",
+        "running_time_last": "325",
+        "running_time_now": "325",
+        "running_time_first": "",
+        "swc_flags": "0"
+    }
+}
+< sost_20251017-175022_popen_com> : cat /opt/sost/config/sost.json -> Result
+{
+    "Test_Config": {
+        "Result_path": "/root",
+        "Dedicated_lan_num": "1",
+        "Share_lan_num": "8",
+        "fail_exit_flags": "1",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
+        "aclost_wait_time": "120",
+        "end_wait_time": "15",
+        "frist_sdi_time": "0",
+        "max_count": "",
+        "collect_cmd": "",
+        "Maximum_restart_time": "900",
+        "simple_test_flags": "",
+        "result_html": "1",
+        "ipmi_sensdr_retry_count": "0",
+        "running_time_max": "60"
+    },
+    "power_on_off": {
+        "server_ip": "192.168.60.138",
+        "server_port": "13251"
+    },
+    "Multimodal_stability": {
+        "switch": "0",
+        "count_aclost": "",
+        "count_reboot": "",
+        "count_powercycle": "",
+        "count_powerreset": ""
+    },
+    "BMC_Survival_Config": {
+        "bmc_chip": "ASPEED-2600",
+        "switch": "0",
+        "BMC_Username": "admin",
+        "BMC_Password": "ttytty`12"
+    },
+    "smtp": {
+        "Fail_send_email": "",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "pop3_password": ""
+    },
+    "Test_tmp": {
+        "test_type": "reboot",
+        "test_count": "0",
+        "test_status": "Pass",
+        "test_bmc_lan": "1",
+        "test_folder_path": "/root/reboot",
+        "test_sha256": "98726716dc0fb17e7cdc231c68b6240ef2c021ce36a9b84427ebdfb797bf0b15",
+        "run_command": "reboot",
+        "startT_time": "2025-10-17-16-54-11",
+        "endT_time": "2025-10-17-17-03-12",
+        "Running_flag": "4",
+        "running_time_last": "325",
+        "running_time_now": "325",
+        "running_time_first": "",
+        "swc_flags": "0"
+    }
+}
+< sost_20251017-175145_popen_com> : cat /opt/sost/config/sost.json -> Result
+{
+    "Test_Config": {
+        "Result_path": "/root",
+        "Dedicated_lan_num": "1",
+        "Share_lan_num": "8",
+        "fail_exit_flags": "1",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
+        "aclost_wait_time": "120",
+        "end_wait_time": "15",
+        "frist_sdi_time": "0",
+        "max_count": "",
+        "collect_cmd": "",
+        "Maximum_restart_time": "900",
+        "simple_test_flags": "",
+        "result_html": "1",
+        "ipmi_sensdr_retry_count": "0",
+        "running_time_max": "60"
+    },
+    "power_on_off": {
+        "server_ip": "192.168.60.138",
+        "server_port": "13251"
+    },
+    "Multimodal_stability": {
+        "switch": "0",
+        "count_aclost": "",
+        "count_reboot": "",
+        "count_powercycle": "",
+        "count_powerreset": ""
+    },
+    "BMC_Survival_Config": {
+        "bmc_chip": "ASPEED-2600",
+        "switch": "0",
+        "BMC_Username": "admin",
+        "BMC_Password": "ttytty`12"
+    },
+    "smtp": {
+        "Fail_send_email": "",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "pop3_password": ""
+    },
+    "Test_tmp": {
+        "test_type": "reboot",
+        "test_count": "0",
+        "test_status": "Pass",
+        "test_bmc_lan": "1",
+        "test_folder_path": "/root/reboot",
+        "test_sha256": "98726716dc0fb17e7cdc231c68b6240ef2c021ce36a9b84427ebdfb797bf0b15",
+        "run_command": "reboot",
+        "startT_time": "2025-10-17-16-54-11",
+        "endT_time": "2025-10-17-17-03-12",
+        "Running_flag": "4",
+        "running_time_last": "325",
+        "running_time_now": "325",
+        "running_time_first": "",
+        "swc_flags": "0"
+    }
+}
+< sost_20251017-175147_popen_com> : cat /opt/sost/config/sost.json -> Result
+{
+    "Test_Config": {
+        "Result_path": "/root",
+        "Dedicated_lan_num": "1",
+        "Share_lan_num": "8",
+        "fail_exit_flags": "1",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
+        "aclost_wait_time": "120",
+        "end_wait_time": "15",
+        "frist_sdi_time": "0",
+        "max_count": "",
+        "collect_cmd": "",
+        "Maximum_restart_time": "900",
+        "simple_test_flags": "",
+        "result_html": "1",
+        "ipmi_sensdr_retry_count": "0",
+        "running_time_max": "60"
+    },
+    "power_on_off": {
+        "server_ip": "192.168.60.138",
+        "server_port": "13251"
+    },
+    "Multimodal_stability": {
+        "switch": "0",
+        "count_aclost": "",
+        "count_reboot": "",
+        "count_powercycle": "",
+        "count_powerreset": ""
+    },
+    "BMC_Survival_Config": {
+        "bmc_chip": "ASPEED-2600",
+        "switch": "0",
+        "BMC_Username": "admin",
+        "BMC_Password": "ttytty`12"
+    },
+    "smtp": {
+        "Fail_send_email": "",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "pop3_password": ""
+    },
+    "Test_tmp": {
+        "test_type": "reboot",
+        "test_count": "0",
+        "test_status": "Pass",
+        "test_bmc_lan": "1",
+        "test_folder_path": "/root/reboot",
+        "test_sha256": "98726716dc0fb17e7cdc231c68b6240ef2c021ce36a9b84427ebdfb797bf0b15",
+        "run_command": "reboot",
+        "startT_time": "2025-10-17-16-54-11",
+        "endT_time": "2025-10-17-17-03-12",
+        "Running_flag": "4",
+        "running_time_last": "325",
+        "running_time_now": "325",
+        "running_time_first": "",
+        "swc_flags": "0"
+    }
+}
+< sost_20251017-175149_popen_com> : cat /opt/sost/config/sost.json -> Result
+{
+    "Test_Config": {
+        "Result_path": "/root",
+        "Dedicated_lan_num": "1",
+        "Share_lan_num": "8",
+        "fail_exit_flags": "1",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
+        "aclost_wait_time": "120",
+        "end_wait_time": "15",
+        "frist_sdi_time": "0",
+        "max_count": "",
+        "collect_cmd": "",
+        "Maximum_restart_time": "900",
+        "simple_test_flags": "",
+        "result_html": "1",
+        "ipmi_sensdr_retry_count": "0",
+        "running_time_max": "60"
+    },
+    "power_on_off": {
+        "server_ip": "192.168.60.138",
+        "server_port": "13251"
+    },
+    "Multimodal_stability": {
+        "switch": "0",
+        "count_aclost": "",
+        "count_reboot": "",
+        "count_powercycle": "",
+        "count_powerreset": ""
+    },
+    "BMC_Survival_Config": {
+        "bmc_chip": "ASPEED-2600",
+        "switch": "0",
+        "BMC_Username": "admin",
+        "BMC_Password": "ttytty`12"
+    },
+    "smtp": {
+        "Fail_send_email": "",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "pop3_password": ""
+    },
+    "Test_tmp": {
+        "test_type": "reboot",
+        "test_count": "0",
+        "test_status": "Pass",
+        "test_bmc_lan": "1",
+        "test_folder_path": "/root/reboot",
+        "test_sha256": "98726716dc0fb17e7cdc231c68b6240ef2c021ce36a9b84427ebdfb797bf0b15",
+        "run_command": "reboot",
+        "startT_time": "2025-10-17-16-54-11",
+        "endT_time": "2025-10-17-17-03-12",
+        "Running_flag": "4",
+        "running_time_last": "325",
+        "running_time_now": "325",
+        "running_time_first": "",
+        "swc_flags": "0"
+    }
+}
+< sost_20251017-175941_popen_com> : curl -X GET http://192.168.60.138/sost/uflag 2>/dev/null -> Result
+0
+
+< sost_20251017-175941_popen_com> : curl -X GET http://192.168.60.138/sost/sostsha256 2>/dev/null -> Result
+0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+1
+
+< sost_20251017-175941_popen_com> : sost -i sha256 -> Result
+0b7a22c1525a94969185ebd21af9d54aa18eaa3390f6dbc587afd347ef9f1e3f
+
+< sost_20251017-175941_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20251017-175941_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20251017-175941_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20251017-175941_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20251017-175941_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20251017-175941_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20251017-175941_popen_com> : whereis nvme | awk '{print $2}' -> Result
+/usr/sbin/nvme
+
+< sost_20251017-175941_popen_com> : whereis ipmitool | awk '{print $2}' -> Result
+/usr/bin/ipmitool
+
+< sost_20251017-175941_popen_com> : whereis numactl | awk '{print $2}' -> Result
+/usr/bin/numactl
+

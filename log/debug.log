@@ -94,3 +94,11 @@
 < sost_20251017-170538_dlev_0   > : chose = 13
 < sost_20251017-170538_dlev_0   > : run_wait_time = 20
 < sost_20251017-170538_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-175941_dlev_0   > : SOST is the latest version
+< sost_20251017-175941_dlev_0   > : Storcli64 Not install!
+< sost_20251017-175941_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251017-175941_dlev_0   > : data = {'json_test': 'dongzai', 'chose': '1', 'run_wait_time': '20'}
+< sost_20251017-175941_dlev_0   > : chose = 1
+< sost_20251017-175941_dlev_0   > : run_wait_time = 20
+< sost_20251017-175941_dlev_0   > : chose and waiting_time all not null!
+< sost_20251017-175959_dlev_0   > : default_path : No Test is running now!
