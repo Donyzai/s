@@ -6,7 +6,7 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 3. 优化sensor Handle处理
 4. 增加iBMC SEL日志检查PSU在位情况(与ac/dc/reset判断逻辑保持一致)
 5. SEL快速生成日志限制最大生成数量10000条
-6. 新增系统timedatectl日志/时/分/秒检查功能
+6. 新增系统timedatectl日志/时/分/  # 后续稳定性验证不稳定，关闭此功能。
 7. sost_version/sost_debug文件创建对接
 8. bmc_stability_logo函数中test_status默认Pass修改为变量
 9. 解决Judging_autologin函数Kylin系统.config文件没有创建导致报错问题

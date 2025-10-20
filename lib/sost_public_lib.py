@@ -516,6 +516,8 @@ def bmc_stability_logo(bmc_ip):
         result = 'NA'
     else:
         result = log.json_get("Test_tmp","test_status")
+    log.json_set("Test_tmp","Running_flag",'2')
+    log.json_set("Test_tmp","startT_time",now_time())
     print(f'''
 ════════════════════════════════════════════
 ||   ██                            ██     ||
@@ -1242,42 +1244,70 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     bmc_chip = bmc_Chip()[0]
     
     # Input BMC User/Passwd
-    if BMC_User == '' or BMC_Pass == '':
-        if bmc_chip == 'ASPEED-2500' or bmc_chip == 'ASPEED-2600':
-           if sjson_user!="" and sjson_pass !="":
-               iuser = sjson_user
-               ipass = sjson_pass
-           else:
-               iuser = 'admin'
-               ipass = 'admin'
-        elif bmc_chip == 'Hisilicon-Hi1711':
-           if sjson_user!="" and sjson_pass !="":
-               iuser = sjson_user
-               ipass = sjson_pass
-           else:
-               iuser = 'Administrator'
-               ipass = 'ttytty`12'
-        elif 'Phy-E2000S' in bmc_chip:
-           if sjson_user!="" and sjson_pass !="":
-               iuser = sjson_user
-               ipass = sjson_pass
-           else:
-               iuser = '0penBmc'
-               ipass = 'ttytty`12'
+    if bmc_chip == 'ASPEED-2500' or bmc_chip == 'ASPEED-2600':
+        if sjson_user!="" and sjson_pass !="":
+            iuser = sjson_user
+            ipass = sjson_pass
+            log._dp("Detected ASPEED BMC Chip, Default User/Passwd is admin/admin")
+        elif sjson_pass !="":
+            iuser = 'admin'
+            ipass = sjson_pass
+        elif sjson_user !="":
+            iuser = sjson_user
+            ipass = 'admin'
         else:
-            iuser = 'None'
-            ipass = 'None'
-                  
-        input_text_user =  log._in(f'Input Bmc_Username [ Enter -> {iuser.ljust(20)}]: ').strip()
-        if input_text_user == 'q':log._error("User.Input.Quit")
-        input_text_pass =  log._in(f'Input Bmc_Password [ Enter -> {ipass.ljust(20)}]: ').strip()
-        if input_text_pass == 'q':log._error("User.Input.Quit")
-        if input_text_user == '':
-            BMC_User = iuser
-            BMC_Pass = ipass
+            iuser = 'admin'
+            ipass = 'admin'
+    elif bmc_chip == 'Hisilicon-Hi1711':
+        if sjson_user!="" and sjson_pass !="":
+            iuser = sjson_user
+            ipass = sjson_pass
+        elif sjson_pass !="":
+            iuser = 'admin'
+            ipass = sjson_pass
+        elif sjson_user !="":
+            iuser = sjson_user
+            ipass = 'admin'
         else:
-            BMC_User = input_text_user
-            BMC_Pass = input_text_pass
+            iuser = 'Administrator'
+            ipass = 'ttytty`12'
+    elif 'Phy-E2000S' in bmc_chip:
+        if sjson_user!="" and sjson_pass !="":
+            iuser = sjson_user
+            ipass = sjson_pass
+        elif sjson_pass !="":
+            iuser = 'admin'
+            ipass = sjson_pass
+        elif sjson_user !="":
+            iuser = sjson_user
+            ipass = 'admin'
+        else:
+            iuser = '0penBmc'
+            ipass = 'ttytty`12'
+    else:
+        iuser = 'admin'
+        ipass = 'admin'
+                
+    input_text_user =  log._in(f'Input Bmc_Username [ Enter -> {iuser.ljust(20)}]: ').strip()
+    if input_text_user == 'q':log._error("User.Input.Quit")
+    input_text_pass =  log._in(f'Input Bmc_Password [ Enter -> {ipass.ljust(20)}]: ').strip()
+    if input_text_pass == 'q':log._error("User.Input.Quit")
+
+    log._dp("BMC_User : " + (input_text_user if input_text_user != '' else iuser))
+    log._dp("BMC_Pass : " + (input_text_pass if input_text_pass != '' else ipass))
+
+    if input_text_user == '' and input_text_pass != '':
+        BMC_User = iuser
+        BMC_Pass = input_text_pass
+    elif input_text_user != '' and input_text_pass == '':
+        BMC_User = input_text_user
+        BMC_Pass = ipass
+    elif input_text_user == '' and input_text_pass == '':
+        BMC_User = iuser
+        BMC_Pass = ipass
+    else:
+        BMC_User = input_text_user
+        BMC_Pass = input_text_pass
 
     # check iBMC User/Passwd
     log._tips("Checking BMC User/Passwd, Waiting.......")

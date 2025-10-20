@@ -1,19 +1,8 @@
-[31m< sost_20251017-165453_error    > : DebugMode Enabled noSendCommand = 1[0m
-[31m< sost_20251017-165537_error    > : User.Exit()[0m
-[31m< sost_20251017-165542_error    > : BMC Info Missing![0m
-[31m< sost_20251017-165658_error    > : BMC Info Missing![0m
-[31m< sost_20251017-170119_error    > : No Test is running now![0m
-[31m< sost_20251017-170122_error    > : No Test is running now![0m
-< sost_20251017-170140_exit     > : No Test is running now!
-[31m< sost_20251017-170233_error    > : BMC Info Missing![0m
-[31m< sost_20251017-170410_error    > : User.Input.Error[0m
-[31m< sost_20251017-170416_error    > : User.Input.Error[0m
-[31m< sost_20251017-170521_error    > : BMC Info Missing![0m
-< sost_20251017-170538_tips     > : Timed_operation_mode chose = 13 , run_wait_time = 20 
-[31m< sost_20251017-170558_error    > : BMC Info Missing![0m
-[31m< sost_20251017-174151_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-[31m< sost_20251017-175022_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-[31m< sost_20251017-175145_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-[31m< sost_20251017-175147_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-[31m< sost_20251017-175149_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-< sost_20251017-175941_tips     > : Timed_operation_mode chose = 1 , run_wait_time = 20 
+[31m< sost_20251020-173053_error    > : os_run command : sync -f && sync error![0m
+[31m< sost_20251020-173053_error    > : User.Exit.Test![0m
+[31m< sost_20251020-173056_error    > : os_popen command : ipmitool fru 2>/dev/null| grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2 | wc -l error![0m
+< sost_20251020-173100_tips     > : <------ BMC status check ----->
+< sost_20251020-173100_tips     > : [+] Bmc Status check Success!
+< sost_20251020-173101_tips     > : Checking whether bmcip can ping, Waiting.......
+< sost_20251020-173106_tips     > : Checking BMC User/Passwd, Waiting.......
+< sost_20251020-173106_tips     > : [+] Bmc User/Passwd check Success!

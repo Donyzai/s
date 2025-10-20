@@ -53,6 +53,18 @@ enp129s0f3               -                        18:9b:a5:82:e2:5f   1500      
 6         0001:60:01.1        Riser 2, Slot 1               PCI Express 5 x8                        Available           Long           -
 7         0001:00:01.1        Riser 2, Slot 3               PCI Express 5 x16                       Available           Long           -
 8         0000:00:00.0        Riser 3, Slot 1               <OUT OF SPEC>                           <OUT OF SPEC>       Long           0
+[31m< sost_20251020-173053_error    > : os_run command : sync -f && sync error![0m
+< sost_20251020-173053_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251020-173053_print    > : ===============================================================
+< sost_20251020-173053_print    > : Test type        : reboot
+< sost_20251020-173053_print    > : Test Count       : 0
+< sost_20251020-173053_print    > : Test Folder      : /root/reboot
+< sost_20251020-173053_print    > : Test Status      : NA
+< sost_20251020-173053_print    > : Test Start Time  : 2025-10-20-17-30-51
+< sost_20251020-173053_print    > : Test End   Time  : 2025-10-20-17-30-53
+< sost_20251020-173053_print    > : ===============================================================
+< sost_20251020-173053_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-0.html
+[31m< sost_20251020-173053_error    > : User.Exit.Test![0m
 [PSU_NUM] [PSU_Manufacturer]  [PSU_Serial_Number] [PSU_Model_Part_Number]  [PSU_Revision]  [PSU_Max_Power_Capacity] [PSU_Status]  [PSU_Type]  [PSU_Hot_Replaceable]
 PSU1       Great Wall          2N094033886           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
 PSU2       Great Wall          2M090059043           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
@@ -132,415 +144,50 @@ Bus 003 Device 004: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
 Bus 003 Device 005: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
 Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Storcli64 not Found!
-Local time: Fri 2025-10-17 16:54:13 CST
-           Universal time: Fri 2025-10-17 08:54:13 UTC
-                 RTC time: Fri 2025-10-17 08:54:14
-                Time zone: Asia/Shanghai (CST, +0800)
-System clock synchronized: yes
-              NTP service: active
-          RTC in local TZ: no
 InterfaceType      BMC_IP            BMC_MAC
 DedicatedDHCP	192.168.60.223	18:9b:a5:83:3e:f1
 ShareDHCP	192.168.60.113	18:9b:a5:83:3e:f0
-[BP_NAME]                     [BP_Mfg_Date]                 [BP_Mfg]                      [BP_Product]                  [BP_Serial]                   [BP_Part_Number]              [BP_Extra]
-BP1_FRU                        Wed Nov 22 04                 dong                          dong                          N/A                           N/A                           N/A
-System Power         : on
-Power Overload       : false
-Power Interlock      : inactive
-Main Power Fault     : false
-Power Control Fault  : false
-Power Restore Policy : always-off
-Chassis Intrusion    : inactive
-Front-Panel Lockout  : inactive
-Drive Fault          : false
-Cooling/Fan Fault    : false
-Sleep Button Disable : allowed
-Diag Button Disable  : allowed
-Reset Button Disable : allowed
-Power Button Disable : allowed
-Sleep Button Disabled: false
-Diag Button Disabled : false
-Reset Button Disabled: false
-Power Button Disabled: false
-
-Device ID                 : 32
-Device Revision           : 1
-Firmware Revision         : 1.04
-IPMI Version              : 2.0
-Manufacturer ID           : 0
-Manufacturer Name         : Unknown
-Product ID                : 514 (0x0202)
-Product Name              : Unknown (0x202)
-Device Available          : yes
-Provides Device SDRs      : yes
-Additional Device Support :
-    Sensor Device
-    SDR Repository Device
-    SEL Device
-    FRU Inventory Device
-    IPMB Event Receiver
-    IPMB Event Generator
-    Chassis Device
-Aux Firmware Rev Info     : 
-    0x00
-    0x01
-    0x00
-    0x00
-
-CPLD.ver : REV 1.04
-BMC.ver  : 1.04.00.01.00.00
-BIOS.ver : T2DMEP04.00
-Bios-ReleaseTime: 02/06/2025
-Bios-Revisione: 5.35
-BP_fw    :BP1 Version: REV 1.01(03-29-2024)
-BP2 Version: REV 1.01(11-18-2022)
-< sost_20251017-165421_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165422_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165422_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165422_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165423_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
-< sost_20251017-165424_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165428_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165428_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165429_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165432_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165435_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165437_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165437_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165437_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165438_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165438_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251017-165438_print    > : Test_Type         : reboot
-< sost_20251017-165438_print    > : Test_Count        : 0
-< sost_20251017-165438_print    > : Test_Status       : Pass
-< sost_20251017-165438_print    > : Waiting for restart........
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost_20251017-165453_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251017-165453_print    > : ===============================================================
-< sost_20251017-165453_print    > : Test type        : reboot
-< sost_20251017-165453_print    > : Test Count       : 0
-< sost_20251017-165453_print    > : Test Folder      : /root/reboot
-< sost_20251017-165453_print    > : Test Status      : Pass
-< sost_20251017-165453_print    > : Test Start Time  : 2025-10-17-16-54-11
-< sost_20251017-165453_print    > : Test End   Time  : 2025-10-17-16-54-53
-< sost_20251017-165453_print    > : ===============================================================
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-[31m< sost_20251017-165658_error    > : BMC Info Missing![0m
-< sost_20251017-165812_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251017-165812_print    > : ===============================================================
-< sost_20251017-165812_print    > : Test type        : reboot
-< sost_20251017-165812_print    > : Test Count       : 0
-< sost_20251017-165812_print    > : Test Folder      : /root/reboot
-< sost_20251017-165812_print    > : Test Status      : Pass
-< sost_20251017-165812_print    > : Test Start Time  : 2025-10-17-16-54-11
-< sost_20251017-165812_print    > : Test End   Time  : 2025-10-17-16-58-12
-< sost_20251017-165812_print    > : ===============================================================
-< sost_20251017-165813_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-0.html
-[31m< sost_20251017-170119_error    > : No Test is running now![0m
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-[31m< sost_20251017-170122_error    > : No Test is running now![0m
-< sost_20251017-170140_exit     > : No Test is running now!
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-[31m< sost_20251017-170233_error    > : BMC Info Missing![0m
+[31m< sost_20251020-173056_error    > : os_popen command : ipmitool fru 2>/dev/null| grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2 | wc -l error![0m
+════════════════════════════════════════════════════════════════════════════
+|                                             ░██                          |
+|                    ██████  ██████   ██████ ██████                        |
+|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
+|                  ░░█████ ░██   ░██░░█████   ░██                          |
+|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
+|                   ██████ ░░██████  ██████   ░░██                         |
+|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
+|═══════════════════════════════════════════════════════════════════════════
+|    ReTime:2025-10-20 16:45:40     Ver.[32m1.1.2  [0m BMC_Chip:[33mASPEED-2600       [0m|
+|══════════════════════════════════════════════════════════════════════════|
+|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
+|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
+|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
+|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
+|══════════════════════════════════════════════════════════════════════════|
+|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
+|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
+|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
+|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
+════════════════════════════════════════════════════════════════════════════
+< sost_20251020-173059_input    > : 5
+< sost_20251020-173059_print    > : BMC Status Checking Status......
+< sost_20251020-173100_tips     > : <------ BMC status check ----->
+< sost_20251020-173100_tips     > : [+] Bmc Status check Success!
+< sost_20251020-173101_tips     > : Checking whether bmcip can ping, Waiting.......
+< sost_20251020-173102_input    > : 
+< sost_20251020-173103_input    > : 
+< sost_20251020-173106_input    > : 
+< sost_20251020-173106_tips     > : Checking BMC User/Passwd, Waiting.......
+< sost_20251020-173106_tips     > : [+] Bmc User/Passwd check Success!
 < sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost_20251017-170312_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251017-170312_print    > : ===============================================================
-< sost_20251017-170312_print    > : Test type        : reboot
-< sost_20251017-170312_print    > : Test Count       : 0
-< sost_20251017-170312_print    > : Test Folder      : /root/reboot
-< sost_20251017-170312_print    > : Test Status      : Pass
-< sost_20251017-170312_print    > : Test Start Time  : 2025-10-17-16-54-11
-< sost_20251017-170312_print    > : Test End   Time  : 2025-10-17-17-03-12
-< sost_20251017-170312_print    > : ===============================================================
-< sost_20251017-170312_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-0.html
-════════════════════════════════════════════════════════════════════════════
-|                                             ░██                          |
-|                    ██████  ██████   ██████ ██████                        |
-|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
-|                  ░░█████ ░██   ░██░░█████   ░██                          |
-|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
-|                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════
-|    ReTime:2025-05-27 12:16:44     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
-|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
-|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
-|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
-|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
-|══════════════════════════════════════════════════════════════════════════|
-|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
-|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
-|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
-|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════
-< sost_20251017-170410_input    > : q
-[31m< sost_20251017-170410_error    > : User.Input.Error[0m
-════════════════════════════════════════════════════════════════════════════
-|                                             ░██                          |
-|                    ██████  ██████   ██████ ██████                        |
-|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
-|                  ░░█████ ░██   ░██░░█████   ░██                          |
-|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
-|                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════
-|    ReTime:2025-05-27 12:16:44     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
-|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
-|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
-|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
-|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
-|══════════════════════════════════════════════════════════════════════════|
-|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
-|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
-|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
-|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════
-< sost_20251017-170416_input    > : q
-[31m< sost_20251017-170416_error    > : User.Input.Error[0m
-════════════════════════════════════════════════════════════════════════════
-|                                             ░██                          |
-|                    ██████  ██████   ██████ ██████                        |
-|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
-|                  ░░█████ ░██   ░██░░█████   ░██                          |
-|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
-|                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════
-|    ReTime:2025-05-27 12:16:44     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
-|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
-|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
-|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
-|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
-|══════════════════════════════════════════════════════════════════════════|
-|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
-|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
-|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
-|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-[31m< sost_20251017-170521_error    > : BMC Info Missing![0m
-════════════════════════════════════════════════════════════════════════════
-|                                             ░██                          |
-|                    ██████  ██████   ██████ ██████                        |
-|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
-|                  ░░█████ ░██   ░██░░█████   ░██                          |
-|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
-|                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════
-|    ReTime:2025-05-27 12:16:44     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
-|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
-|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
-|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
-|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
-|══════════════════════════════════════════════════════════════════════════|
-|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
-|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
-|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
-|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════
-< sost_20251017-170538_tips     > : Timed_operation_mode chose = 13 , run_wait_time = 20 
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-[31m< sost_20251017-170558_error    > : BMC Info Missing![0m
-< sost_20251017-174129_print    > : swc_web is Running! Running-Time -> 20251017 17:41:29 (swc_web.py)
-< sost_20251017-174129_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251017-174133_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-174141_print    > : swc_web is Running! Running-Time -> 20251017 17:41:41 (swc_web.py)
-< sost_20251017-174141_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251017-174143_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-[31m< sost_20251017-174151_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-< sost_20251017-174358_print    > : swc_web is Running! Running-Time -> 20251017 17:43:58 (swc_web.py)
-< sost_20251017-174358_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251017-174358_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-174405_print    > : swc_web is Running! Running-Time -> 20251017 17:44:05 (swc_web.py)
-< sost_20251017-174405_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251017-174408_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-174751_print    > : swc_web is Running! Running-Time -> 20251017 17:47:51 (swc_web.py)
-< sost_20251017-174751_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251017-174753_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-[31m< sost_20251017-175022_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-[31m< sost_20251017-175145_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-[31m< sost_20251017-175147_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-[31m< sost_20251017-175149_error    > : json file EXIT! error_info : 'run_wait_time'[0m
-< sost_20251017-175536_print    > : swc_web is Running! Running-Time -> 20251017 17:55:36 (swc_web.py)
-< sost_20251017-175536_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251017-175537_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-175922_print    > : swc_web is Running! Running-Time -> 20251017 17:59:22 (swc_web.py)
-< sost_20251017-175922_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251017-175923_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-════════════════════════════════════════════════════════════════════════════
-|                                             ░██                          |
-|                    ██████  ██████   ██████ ██████                        |
-|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
-|                  ░░█████ ░██   ░██░░█████   ░██                          |
-|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
-|                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════
-|    ReTime:2025-05-27 12:16:44     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
-|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
-|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
-|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
-|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
-|══════════════════════════════════════════════════════════════════════════|
-|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
-|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
-|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
-|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════
-< sost_20251017-175941_tips     > : Timed_operation_mode chose = 1 , run_wait_time = 20 
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost_20251017-180029_print    > : swc_web is Running! Running-Time -> 20251017 18:00:29 (swc_web.py)
-< sost_20251017-180029_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251017-180029_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-180030_print    > : swc_web is Running! Running-Time -> 20251017 18:00:30 (swc_web.py)
-< sost_20251017-180030_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251017-180030_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-180030_print    > : swc_web is Running! Running-Time -> 20251017 18:00:30 (swc_web.py)
-< sost_20251017-180030_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251017-180030_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-180031_print    > : swc_web is Running! Running-Time -> 20251017 18:00:31 (swc_web.py)
-< sost_20251017-180031_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251017-180031_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251017-180031_print    > : swc_web is Running! Running-Time -> 20251017 18:00:31 (swc_web.py)
-< sost_20251017-180031_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251017-180031_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-140113_print    > : swc_web is Running! Running-Time -> 20251020 14:01:13 (swc_web.py)
-< sost_20251020-140113_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-140113_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-140113_print    > : swc_web is Running! Running-Time -> 20251020 14:01:13 (swc_web.py)
-< sost_20251020-140113_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-140113_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-140114_print    > : swc_web is Running! Running-Time -> 20251020 14:01:14 (swc_web.py)
-< sost_20251020-140114_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-140114_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-140114_print    > : swc_web is Running! Running-Time -> 20251020 14:01:14 (swc_web.py)
-< sost_20251020-140114_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-140114_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-140115_print    > : swc_web is Running! Running-Time -> 20251020 14:01:15 (swc_web.py)
-< sost_20251020-140115_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-140115_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165341_print    > : swc_web is Running! Running-Time -> 20251020 16:53:41 (swc_web.py)
-< sost_20251020-165341_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165341_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165342_print    > : swc_web is Running! Running-Time -> 20251020 16:53:42 (swc_web.py)
-< sost_20251020-165342_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165342_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165342_print    > : swc_web is Running! Running-Time -> 20251020 16:53:42 (swc_web.py)
-< sost_20251020-165342_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165342_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165343_print    > : swc_web is Running! Running-Time -> 20251020 16:53:43 (swc_web.py)
-< sost_20251020-165343_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165343_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165343_print    > : swc_web is Running! Running-Time -> 20251020 16:53:43 (swc_web.py)
-< sost_20251020-165343_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165343_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165558_print    > : swc_web is Running! Running-Time -> 20251020 16:55:58 (swc_web.py)
-< sost_20251020-165558_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165558_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165559_print    > : swc_web is Running! Running-Time -> 20251020 16:55:59 (swc_web.py)
-< sost_20251020-165559_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165559_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165559_print    > : swc_web is Running! Running-Time -> 20251020 16:55:59 (swc_web.py)
-< sost_20251020-165559_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165600_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165600_print    > : swc_web is Running! Running-Time -> 20251020 16:56:00 (swc_web.py)
-< sost_20251020-165600_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165600_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165601_print    > : swc_web is Running! Running-Time -> 20251020 16:56:01 (swc_web.py)
-< sost_20251020-165601_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165601_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165643_print    > : swc_web is Running! Running-Time -> 20251020 16:56:43 (swc_web.py)
-< sost_20251020-165643_print    > : swc_web -> swc_cinfo is aleady Running! (swc_web.py)
-< sost_20251020-165643_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251020-165651_print    > : swc_web is Running! Running-Time -> 20251020 16:56:51 (swc_web.py)
-< sost_20251020-165651_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251020-165651_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost_20251020-173109_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251020-173109_print    > : ===============================================================
+< sost_20251020-173109_print    > : Test type        : bmc_warm_kcs
+< sost_20251020-173109_print    > : Test Count       : 0
+< sost_20251020-173109_print    > : Test Folder      : /root/bmc_warm_kcs
+< sost_20251020-173109_print    > : Test Status      : NA
+< sost_20251020-173109_print    > : Test Start Time  : 2025-10-20-17-31-06
+< sost_20251020-173109_print    > : Test End   Time  : 2025-10-20-17-31-09
+< sost_20251020-173109_print    > : ===============================================================
+< sost_20251020-173109_print    > : Stability test report(稳定性测试报告生成成功) : /root/bmc_warm_kcs/sost-Result-Pass-0.html
