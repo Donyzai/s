@@ -1,8 +1,8 @@
-< sost_20251020-173052_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251020-173056_dlev_0   > : default_path : No Test is running now!
-< sost_20251020-173058_dlev_0   > : SOST is the latest version
-< sost_20251020-173058_dlev_0   > : Storcli64 Not install!
-< sost_20251020-173058_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251020-173102_dlev_0   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin
-< sost_20251020-173106_dlev_0   > : BMC_User : admin
-< sost_20251020-173106_dlev_0   > : BMC_Pass : ttytty`12
+< sost_20251020-175341_dlev_3   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251020-175425_dlev_3   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251020-175450_dlev_3   > : functestconfig Running time : 1760954090 s
+< sost_20251020-175452_dlev_3   > : []
+< sost_20251020-175457_dlev_3   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device', 'FAN', 'CMOS', 'ac', 'dc']
+< sost_20251020-175507_dlev_3   > : Last running time : 325 s
+< sost_20251020-175507_dlev_3   > : Now running time  : 43 s
+< sost_20251020-175507_dlev_3   > : Last restart time : 43 s

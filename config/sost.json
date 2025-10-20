@@ -43,18 +43,18 @@
         "pop3_password": ""
     },
     "Test_tmp": {
-        "test_type": "bmc_warm_kcs",
-        "test_count": "0",
-        "test_status": "NA",
+        "test_type": "reboot",
+        "test_count": "1",
+        "test_status": "Pass",
         "test_bmc_lan": "1",
-        "test_folder_path": "/root/bmc_warm_kcs",
-        "test_sha256": "592b476017fd66c17badb427049d327ff8588406d6e4f080e324c44b3ea6b673",
-        "run_command": "bmc_warm_kcs",
-        "startT_time": "2025-10-20-17-31-06",
-        "endT_time": "2025-10-20-17-31-09",
+        "test_folder_path": "/root/reboot",
+        "test_sha256": "68d6e40c598c0f4ee1e1504944feb9605953c6fa21a1547dbfd7482f8d3c5007",
+        "run_command": "reboot",
+        "startT_time": "2025-10-20-17-53-40",
+        "endT_time": "2025-10-20-17-55-22",
         "Running_flag": "4",
         "running_time_last": "325",
-        "running_time_now": "325",
+        "running_time_now": "43",
         "running_time_first": "",
         "swc_flags": "0"
     }

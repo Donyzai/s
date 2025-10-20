@@ -873,7 +873,7 @@ def def_Handling_sensors():
                 break
 
     def user_runTime():
-        running_time = log._in("Running Time Enter->3600s (s): ").strip()
+        running_time = log._in("Running Time Enter->3600 (s): ").strip()
         if running_time.strip() == '':
             return 3600
         try:
@@ -1968,7 +1968,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||                                                              Auther:Xiaodong Fan  ||
 ||═══════════════════════════════════════════════════════════════════════════════════||''')
     if chose == '1':
-        waitTime = log._in("Enter the time you want to wait -> Enter 3600s : ").strip()
+        waitTime = log._in("Enter the time you want to wait -> Enter 3600 : ").strip()
         log._pr(f"Please wait patiently for {str(waitTime)} seconds before the SOST starts to run automatically.")
         try:float(waitTime)
         except:log._error("User.Input.Error()")

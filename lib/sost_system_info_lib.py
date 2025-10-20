@@ -1136,6 +1136,7 @@ def dmesg(flags, folder_path, count):
         else:
             log._pr("OS dmesg Info ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
 
+
 def ipmi_sensor(flags, folder_path, count):
     if log.json_get('collect_array',"bmcsensor",web='no-log',filename='collect').strip() !='1':return 0
     if flags == "0" or flags == "2": return 0
@@ -1153,10 +1154,13 @@ def ipmi_sensor(flags, folder_path, count):
 def ipmi_sensor_data(flags, folder_path, count):
     if log.json_get('collect_array',"bmcsensor_data",web='no-log',filename='collect').strip() !='1':return 0
     if flags == "0" or flags == "2": return 0
+    ipmi_sensor_data_folder = f"{folder_path}/system_info/bmcsensor_data"
+    # create ipmi_sensor_data_folder 
+    if not os.path.exists(ipmi_sensor_data_folder):log.os_run(f"mkdir -p {ipmi_sensor_data_folder}")
 
-    for title in log.os_popen(f"cat {folder_path}/system_info/bmcsensor/bmcsensor_{count}.txt | awk '{{print $1}}'",flags='no-log').split():
-        log.os_run(f"cat {folder_path}/system_info/bmcsensor/bmcsensor_{count}.txt | grep -i {title} | awk '{{print $3}}' >> {folder_path}/system_info/bmcsensor_data/{title}.txt ",flags='no-log')
-    
+    for title in log.os_popen(f"cat {folder_path}/system_info/bmcsensor/bmcsensor_{count}.txt | cut -d '|' -f 1 ",flags='no-log').split():
+        log.os_run(f"cat {folder_path}/system_info/bmcsensor/bmcsensor_{count}.txt | grep -i '{title}' | cut -d '|' -f 2  >> {folder_path}/system_info/bmcsensor_data/{title}.txt ",flags='no-log')
+     
     if flags == "1" : 
         if diff_information(count,folder_path,"bmcsensor_data"):
             log._pr("BMC IPMI Sensor Data ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")

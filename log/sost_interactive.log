@@ -53,18 +53,6 @@ enp129s0f3               -                        18:9b:a5:82:e2:5f   1500      
 6         0001:60:01.1        Riser 2, Slot 1               PCI Express 5 x8                        Available           Long           -
 7         0001:00:01.1        Riser 2, Slot 3               PCI Express 5 x16                       Available           Long           -
 8         0000:00:00.0        Riser 3, Slot 1               <OUT OF SPEC>                           <OUT OF SPEC>       Long           0
-[31m< sost_20251020-173053_error    > : os_run command : sync -f && sync error![0m
-< sost_20251020-173053_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251020-173053_print    > : ===============================================================
-< sost_20251020-173053_print    > : Test type        : reboot
-< sost_20251020-173053_print    > : Test Count       : 0
-< sost_20251020-173053_print    > : Test Folder      : /root/reboot
-< sost_20251020-173053_print    > : Test Status      : NA
-< sost_20251020-173053_print    > : Test Start Time  : 2025-10-20-17-30-51
-< sost_20251020-173053_print    > : Test End   Time  : 2025-10-20-17-30-53
-< sost_20251020-173053_print    > : ===============================================================
-< sost_20251020-173053_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-0.html
-[31m< sost_20251020-173053_error    > : User.Exit.Test![0m
 [PSU_NUM] [PSU_Manufacturer]  [PSU_Serial_Number] [PSU_Model_Part_Number]  [PSU_Revision]  [PSU_Max_Power_Capacity] [PSU_Status]  [PSU_Type]  [PSU_Hot_Replaceable]
 PSU1       Great Wall          2N094033886           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
 PSU2       Great Wall          2M090059043           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
@@ -87,7 +75,7 @@ Core(s) per socket:                   32
 Socket(s):                            2
 Stepping:                             1
 Frequency boost:                      enabled
-CPU(s) scaling MHz:                   82%
+CPU(s) scaling MHz:                   83%
 CPU max MHz:                          4413.2319
 CPU min MHz:                          1500.0000
 BogoMIPS:                             7089.00
@@ -147,47 +135,185 @@ Storcli64 not Found!
 InterfaceType      BMC_IP            BMC_MAC
 DedicatedDHCP	192.168.60.223	18:9b:a5:83:3e:f1
 ShareDHCP	192.168.60.113	18:9b:a5:83:3e:f0
-[31m< sost_20251020-173056_error    > : os_popen command : ipmitool fru 2>/dev/null| grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2 | wc -l error![0m
-════════════════════════════════════════════════════════════════════════════
-|                                             ░██                          |
-|                    ██████  ██████   ██████ ██████                        |
-|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
-|                  ░░█████ ░██   ░██░░█████   ░██                          |
-|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
-|                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════
-|    ReTime:2025-10-20 16:45:40     Ver.[32m1.1.2  [0m BMC_Chip:[33mASPEED-2600       [0m|
-|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
-|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
-|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
-|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
-|══════════════════════════════════════════════════════════════════════════|
-|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
-|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
-|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
-|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════
-< sost_20251020-173059_input    > : 5
-< sost_20251020-173059_print    > : BMC Status Checking Status......
-< sost_20251020-173100_tips     > : <------ BMC status check ----->
-< sost_20251020-173100_tips     > : [+] Bmc Status check Success!
-< sost_20251020-173101_tips     > : Checking whether bmcip can ping, Waiting.......
-< sost_20251020-173102_input    > : 
-< sost_20251020-173103_input    > : 
-< sost_20251020-173106_input    > : 
-< sost_20251020-173106_tips     > : Checking BMC User/Passwd, Waiting.......
-< sost_20251020-173106_tips     > : [+] Bmc User/Passwd check Success!
+[BP_NAME]                     [BP_Mfg_Date]                 [BP_Mfg]                      [BP_Product]                  [BP_Serial]                   [BP_Part_Number]              [BP_Extra]
+BP1_FRU                        Wed Nov 22 04                 dong                          dong                          N/A                           N/A                           N/A
+System Power         : on
+Power Overload       : false
+Power Interlock      : inactive
+Main Power Fault     : false
+Power Control Fault  : false
+Power Restore Policy : always-off
+Chassis Intrusion    : inactive
+Front-Panel Lockout  : inactive
+Drive Fault          : false
+Cooling/Fan Fault    : false
+Sleep Button Disable : allowed
+Diag Button Disable  : allowed
+Reset Button Disable : allowed
+Power Button Disable : allowed
+Sleep Button Disabled: false
+Diag Button Disabled : false
+Reset Button Disabled: false
+Power Button Disabled: false
+
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+CPLD.ver : REV 1.04
+BMC.ver  : 1.04.00.01.00.00
+BIOS.ver : T2DMEP04.00
+Bios-ReleaseTime: 02/06/2025
+Bios-Revisione: 5.35
+BP_fw    :BP1 Version: REV 1.01(03-29-2024)
+BP2 Version: REV 1.01(11-18-2022)
+< sost_20251020-175351_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175351_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175351_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175352_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251020-175353_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175357_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175357_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175358_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175402_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175405_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175407_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175407_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175407_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175407_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175407_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175407_print    > : Test_Type         : reboot
+< sost_20251020-175407_print    > : Test_Count        : 0
+< sost_20251020-175407_print    > : Test_Status       : Pass
+< sost_20251020-175407_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251020-175423_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251020-175423_print    > : ===============================================================
+< sost_20251020-175423_print    > : Test type        : reboot
+< sost_20251020-175423_print    > : Test Count       : 0
+< sost_20251020-175423_print    > : Test Folder      : /root/reboot
+< sost_20251020-175423_print    > : Test Status      : Pass
+< sost_20251020-175423_print    > : Test Start Time  : 2025-10-20-17-53-40
+< sost_20251020-175423_print    > : Test End   Time  : 2025-10-20-17-54-22
+< sost_20251020-175423_print    > : ===============================================================
+[31m< sost_20251020-175423_error    > : DebugMode Enabled noSendCommand = 1[0m
 < sost > Please Wait Times `Ctrl + c` exit() : 24s
 < sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost_20251020-173109_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251020-173109_print    > : ===============================================================
-< sost_20251020-173109_print    > : Test type        : bmc_warm_kcs
-< sost_20251020-173109_print    > : Test Count       : 0
-< sost_20251020-173109_print    > : Test Folder      : /root/bmc_warm_kcs
-< sost_20251020-173109_print    > : Test Status      : NA
-< sost_20251020-173109_print    > : Test Start Time  : 2025-10-20-17-31-06
-< sost_20251020-173109_print    > : Test End   Time  : 2025-10-20-17-31-09
-< sost_20251020-173109_print    > : ===============================================================
-< sost_20251020-173109_print    > : Stability test report(稳定性测试报告生成成功) : /root/bmc_warm_kcs/sost-Result-Pass-0.html
+< sost > Please Wait Times `Ctrl + c` exit() : 22s
+< sost > Please Wait Times `Ctrl + c` exit() : 21s
+< sost > Please Wait Times `Ctrl + c` exit() : 20s
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251020-175450_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175450_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175450_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175451_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175451_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175451_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175451_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175451_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175451_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175451_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175452_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175452_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251020-175452_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175456_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175456_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175457_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175501_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175505_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175507_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175507_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175507_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175507_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175507_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175507_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20251020-175507_print    > : Test_Type         : reboot
+< sost_20251020-175507_print    > : Test_Count        : 1
+< sost_20251020-175507_print    > : Test_Status       : Pass
+< sost_20251020-175507_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251020-175522_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251020-175522_print    > : ===============================================================
+< sost_20251020-175522_print    > : Test type        : reboot
+< sost_20251020-175522_print    > : Test Count       : 1
+< sost_20251020-175522_print    > : Test Folder      : /root/reboot
+< sost_20251020-175522_print    > : Test Status      : Pass
+< sost_20251020-175522_print    > : Test Start Time  : 2025-10-20-17-53-40
+< sost_20251020-175523_print    > : Test End   Time  : 2025-10-20-17-55-22
+< sost_20251020-175523_print    > : ===============================================================
+[31m< sost_20251020-175523_error    > : DebugMode Enabled noSendCommand = 1[0m
