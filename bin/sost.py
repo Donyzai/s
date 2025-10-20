@@ -305,6 +305,7 @@ def parser_test():
             print('|----------|--------------------------------------------|-----------------------|')
             print("| test     |  Query SOST Test info                      | 查询当前测试信息\t|")
             print("| uuid     |  Query server UUID information             | 查询服务器UUID信息\t|")
+            print("| hwmac    |  Query server MAC Address information      | 查询服务器MAC地址信息\t|")
             print('|----------|--------------------------------------------|-----------------------|')
             print('='*80)
             print("Command : sost -i [Value] ")
@@ -327,6 +328,7 @@ def parser_test():
             elif sys.argv[2] == "bmcip":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import bmcip;bmcip('0','',' ')" ''')
             elif sys.argv[2] == "bp":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import backboard_info;backboard_info('0','',' ')" ''')
             elif sys.argv[2] == "uuid":print(os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip())
+            elif sys.argv[2] == "hwmac":print(os.popen(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''').read().strip())
             elif sys.argv[2] == "sha256":
                 try:
                     import hmac;import base64

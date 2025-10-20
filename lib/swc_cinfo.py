@@ -87,6 +87,11 @@ def fail_info():
     else:
         return "Pass"
 
+def hw_mac():
+    mac = os.popen(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''').read().strip()
+    if mac =='':mac = '00:00:00:00:00:00'
+    return mac
+
 def return_get_data():
 
     """获取系统测试数据和状态信息"""
@@ -134,6 +139,7 @@ def return_get_data():
         'hw_uuid':os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip(),
         'swc_service_connectivity':"",
         'fail_info': fail_info(),
+        'hw_mac':hw_mac()
     }
 
     count = simple_json_get("Test_tmp","test_count") or "NA"
