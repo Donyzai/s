@@ -92,6 +92,12 @@ def hw_mac():
     if mac =='':mac = '00:00:00:00:00:00'
     return mac
 
+def swc_service_connectivity():
+    swc_ip =  log.json_get("swc","swc_server_ip",web=cmd_log_flags,filename='swc')
+    print(swc_ip)
+    try:os.popen("curl http://192.168.60.143:13250/ -I GET 2>/dev/null | head -n 1");return True
+    except:return False
+
 def return_get_data():
 
     """获取系统测试数据和状态信息"""
@@ -137,7 +143,7 @@ def return_get_data():
         'mem_usage': os.popen(''' free | awk '/Mem/{printf("%.2f"), $3/$2*100}' 2>/dev/null ''').read().strip(),
         'cpu_usage': str(cpu_usage()).strip(),
         'hw_uuid':os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip(),
-        'swc_service_connectivity':"",
+        'swc_service_connectivity':swc_service_connectivity(),
         'fail_info': fail_info(),
         'hw_mac':hw_mac()
     }

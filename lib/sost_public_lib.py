@@ -15,6 +15,17 @@ from datetime import datetime, timedelta
 log = dong_log()
 log.debug_flags = str(log.json_get("debug","debug_flags",web='no-log',filename="debug"))
 
+def clear_log():
+    log_bak_path = '/tmp/sost_tmp/log_bak'
+    log.os_run(f"mkdir -p {log_bak_path} && rm -rf {log_bak_path}/*")
+    log.os_run("mv /opt/sost/log/* /tmp/sost_tmp/log_bak/")
+
+def swc_service_connectivity():
+    swc_ip =  log.json_get("swc","swc_server_ip",filename='swc')
+    print(swc_ip)
+    try:os.popen("curl http://192.168.60.143:13250/ -I GET 2>/dev/null | head -n 1");return True
+    except:return False
+
 def testsha256():
     sha256_str = log.json_get("Test_tmp","test_type").strip() + log.json_get("Test_tmp","startT_time").strip()
     # uuid encode = test_type + start_time
@@ -22,7 +33,7 @@ def testsha256():
 
 def update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256):
     clp()
-    print(f'''
+    log._pr(f'''
 ══════════════════════════════════════════════════════
 ||                                     ██           ||
 ||                                    ░██           ||
@@ -33,7 +44,7 @@ def update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256):
 ||          ██████ ░░██████  ██████   ░░██          ||
 ||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
 ══════════════════════════════════════════════════════
->> {tips}''')
+>> {tips}''',pr_flag='1')
 
     log._dp(f"update_flag    : {update_flag}")
     log._pr(f"remote_sha256  : {remote_sha256}")
@@ -53,6 +64,9 @@ def update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256):
 def update_check():
 
     sost_server_ip = log.json_get("sost","update_Web_server_ip",filename='version').strip()
+
+    if swc_service_connectivity():log._dp("Communication with SWC server successful!");log.json_set("Test_tmp","test_swc_service_connectivity",True)
+    else:log._dp("Communication with SWC server failed!");log.json_set("Test_tmp","test_swc_service_connectivity",False);return False
 
     try:
         if os.system(f'ping {sost_server_ip} -c 1 -i 0.5 -W 0.5 >/dev/null 2>&1') != 0:
@@ -94,6 +108,12 @@ def update_check():
     update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256)
 
 def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
+
+    if log.json_get("Test_tmp","test_swc_service_connectivity") == False:
+        log._error("Communication with SWC server failed, unable to start testing.")
+    else:
+        log._dp("Communication with SWC server Successed!")
+
     bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
     sost_poweronoff_serverIP = log.json_get('power_on_off','server_ip').strip()
     sost_poweronoff_serverPort = log.json_get('power_on_off','server_port').strip()
@@ -137,9 +157,9 @@ def swc_EndTest():
         count = str(int(log.json_get("Test_tmp","test_count")) - 1)
         if count == -1:count = 0
         test_type_logo(log.json_get("Test_tmp","test_type"),count)
-        print("\033[33m [ >> WebConsole_Stop_Test_flags << ] \033[0m")
-        print("\033[33m <swc-flags> WebMesole remotely sends a test interrupt flag, and the current test is paused. \033[0m")
-        print("\033[33m <swc-flags> WebConsole远程发送测试中断flag，当前测试暂停。\033[0m")
+        log._pr("\033[33m [ >> WebConsole_Stop_Test_flags << ] \033[0m",pr_flag='1')
+        log._pr("\033[33m <swc-flags> WebMesole remotely sends a test interrupt flag, and the current test is paused. \033[0m",pr_flag='1')
+        log._pr("\033[33m <swc-flags> WebConsole远程发送测试中断flag，当前测试暂停。\033[0m",pr_flag='1')
         log.json_set("Test_tmp","swc_flags","0")
         defalt_path()
         result_html()
@@ -147,7 +167,7 @@ def swc_EndTest():
 
 def mulit_main():
     clp()
-    print('''
+    log._pr('''
 ===============================================================================
 |     ████     ████          ██ ██   ██   ██████████                   ██     |
 |    ░██░██   ██░██         ░██░░   ░██  ░░░░░██░░░                   ░██     |
@@ -157,7 +177,7 @@ def mulit_main():
 |    ░██   ░    ░██░██  ░██ ░██░██  ░██      ░██    ░██░░░░  ░░░░░██  ░██     |
 |    ░██        ░██░░██████ ███░██  ░░██     ░██    ░░██████ ██████   ░░██    |
 |    ░░         ░░  ░░░░░░ ░░░ ░░    ░░      ░░      ░░░░░░ ░░░░░░     ░░     |
-===============================================================================''')
+===============================================================================''',pr_flag='1')
     if log._in("Do you want Open Mulit Mode ? [y / n] : ").lower() != "y":log._error("User.Input.Exit")
     print()
     log._pr("="*40)
@@ -724,7 +744,7 @@ def bmc_Create_sel_log(bmc_ip,bmc_user,bmc_pass):
 def bmc_tools_main(release_time, version):
     clp()
     bmc_chip = bmc_Chip()[0]
-    print(f'''
+    log._pr(f'''
 ══════════════════════════════════════════════════
 ||   ██████████                    ██           ||
 ||  ░░░░░██░░░                    ░██           ||
@@ -738,7 +758,7 @@ def bmc_tools_main(release_time, version):
 ||  1 . BMC sensor / sdr Collect to Log         ||
 ||  2 . Quick generation of BMC sel logs        ||
 ||  3 . Quick generation of BMC audit logs      || 
-||══════════════════════════════════════════════||''')
+||══════════════════════════════════════════════||''',pr_flag='1')
     chose = log._in("You Chose : ")
     # chose = "2"
     if chose == '1':
@@ -844,7 +864,7 @@ def def_Handling_sensors():
             log.os_run(f"touch {path}/sost_ipmi_sdr.txt")
             command = f"date >> {path}/sost_ipmi_sdr.txt && ipmitool sdr list 2>/dev/null >> {path}/sost_ipmi_sdr.txt"
         clp()
-        print('''\033[32m
+        log._pr('''\033[32m
     ════════════════════════════════════════════════════════
     |               ██████    ████████   ██████            |
     |              ░█░░░░██  ██░░░░░░   ██░░░░██           |
@@ -856,7 +876,7 @@ def def_Handling_sensors():
     |              ░░░░░░░  ░░░░░░░░    ░░░░░░             |
     ════════════════════════════════════════════════════════
     |           IPMI sensor collection enabled!            |
-    ════════════════════════════════════════════════════════\033[0m''')
+    ════════════════════════════════════════════════════════\033[0m''',pr_flag='1')
         runtime = timedelta(seconds=int(execution_time))
         now = datetime.now()
         log._pr(f'StartTime   : {now.strftime("%Y-%m-%d %H:%M:%S")}')
@@ -954,7 +974,7 @@ def def_Handling_sensors():
 
     running_times = user_runTime()
 
-    print('''
+    log._pr('''
 ═════════════════════════════════════════════════════════════════════════════
 |   ██████    ████████   ██████          ████ ██  ██   ██                   |
 |  ░█░░░░██  ██░░░░░░   ██░░░░██        ░██░ ░░  ░██  ░██                   |
@@ -969,7 +989,7 @@ def def_Handling_sensors():
 ═════════════════════════════════════════════════════════════════════════════
 |  0. ALL Sensors   1. TEMP     2. FAN      3. WATTS     4. User.Input      |
 ═════════════════════════════════════════════════════════════════════════════
-''')
+''',pr_flag='1')
     user_input_tmp = log._in("Select the type of sensor you want to filter 0/1/2/3/4  Enter -> 0 : ")
     
     if user_input_tmp.strip()!="":
@@ -1158,7 +1178,7 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     Dedicated_ip = log.os_popen(f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}' 2>/dev/null").strip()
     share_ip = log.os_popen(f"ipmitool lan print {Share_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}'").strip()
     if Dedicated_ip.strip() == "0.0.0.0" and share_ip.strip() == "0.0.0.0" or Dedicated_ip == "" and share_ip == "":
-        print('''\033[31m
+        log._pr('''\033[31m
 ════════════════════════════════════════════════════════════════════════════════════
 ||                            ████████     ██     ██ ██                           ||
 ||                            ░██░░░░░     ████   ░██░██                          ||
@@ -1170,13 +1190,13 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 ||                             ░░       ░░      ░░ ░░ ░░░░░░░░                    ||
 ════════════════════════════════════════════════════════════════════════════════════
 ||                          Oh.My.God Stability Fail Please                       ||
-════════════════════════════════════════════════════════════════════════════════════\033[0m''')
-        log._tips("[-] Bmc Status check Error!")
-        log._tips("BMC状态丢失,请等待一段时间后重新开始进行稳定性测试。")
+════════════════════════════════════════════════════════════════════════════════════\033[0m''',pr_flag='1')
+        log._pr("[-] Bmc Status check Error!")
+        log._pr("BMC状态丢失,请等待一段时间后重新开始进行稳定性测试。")
         log._error("BMC status lost, please wait for a period of time before resuming stability testing.")
         log._error("Dedicated_ip and share_ip is Null!")
         return
-    log._tips("[+] Bmc Status check Success!")
+    log._pr("[+] Bmc Status check Success!")
 
     #Collect dedicated ip info
     Dedicated_arry = []
@@ -1200,7 +1220,7 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     Dedicated_alive="NA"
     share_alive = "NA"
 
-    log._tips("Checking whether bmcip can ping, Waiting.......")
+    log._pr("Checking whether bmcip can ping, Waiting.......")
 
     if " 0% packet loss" in log.os_popen(f"ping -c 1 {Dedicated_ip.strip()} 2>/dev/null"):
         Dedicated_alive = "\033[42m √ \033[0m"
@@ -1212,7 +1232,7 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     else:
         share_alive = "\033[41m x \033[0m"
 
-    print(fr'''════════════════════════════════════════════════════════════════════════
+    log._pr(fr'''════════════════════════════════════════════════════════════════════════
 |     ___   __  __    ___             ___    _  _      ___    ___      |
 |    | _ ) |  \/  |  / __|           |_ _|  | \| |    | __|  / _ \     |
 |    | _ \ | |\/| | | (__     ___     | |   | .` |    | _|  | (_) |    |
@@ -1221,10 +1241,10 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 |  "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'    |
 ════════════════════════════════════════════════════════════════════════
 |     Start configuring BMC now! Automatically obtain information!     |
-════════════════════════════════════════════════════════════════════════''')
-    print(f"|    1 . Dedicated ip : {Dedicated_ip.ljust(20)}  Status : [{Dedicated_alive}]           |")
-    print(f"|    2 . Shared    ip : {share_ip.ljust(20)}  Status : [{share_alive}]           |")
-    print('════════════════════════════════════════════════════════════════════════')
+════════════════════════════════════════════════════════════════════════
+|    1 . Dedicated ip : {Dedicated_ip.ljust(20)}  Status : [{Dedicated_alive}]           |
+|    2 . Shared    ip : {share_ip.ljust(20)}  Status : [{share_alive}]           |
+════════════════════════════════════════════════════════════════════════''',pr_flag='1')
 
     if u_chos =='':
         u_chos = log._in("Chose Your Test lan  [ 1 / 2 ] Enter -> 1 ").strip()
@@ -1362,7 +1382,7 @@ def defalt_path(show_flags=True):
     test_status = log.json_get('Test_tmp','test_status').strip()
     if show_flags:
         if test_status == 'Pass':
-            print('''\033[32m
+            log._pr('''\033[32m
     ════════════════════════════════════════════════════════
     ||         ███████                                    ||
     ||        ░██░░░░██                                   || 
@@ -1372,7 +1392,7 @@ def defalt_path(show_flags=True):
     ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
     ||        ░██      ░░████████ ██████  ██████          ||
     ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
-    ════════════════════════════════════════════════════════\033[0m''')
+    ════════════════════════════════════════════════════════\033[0m''',pr_flag='1')
         elif test_status == 'FAIL':
             from .sost_system_info_lib import fail_logo
             fail_logo(save_config=False)
@@ -1608,7 +1628,7 @@ def autologin():
 # check .bash_profile
 def os_env():
     # clear old sost log
-    log.os_popen("rm -rf /opt/sost/log/*")
+    # log.os_popen("rm -rf /opt/sost/log/*")
     # clear bash_profile sost -z
     if "sost" in log.os_popen("cat /root/.bash_profile | grep -i sost").strip():
         log.os_run("yes | sost -f bash")
@@ -1617,9 +1637,9 @@ def os_env():
             f.write('sost -z')
 
 def end_test_logo():
-    print('''════════════════════════════════════════
+    log._pr('''════════════════════════════════════════
 |               End Test               |
-════════════════════════════════════════''')
+════════════════════════════════════════''',pr_flag='1')
     path = log.json_get("Test_tmp","test_folder_path").strip()
     if "failc.txt" in log.os_popen(f"ls -al {path}").strip():
         log.json_set("Test_tmp","test_status","FAILc")
@@ -1819,7 +1839,7 @@ def max_count_logo():
         try:
             if int(now_count)+1 >= int(max_count):
                 if log.json_get("Multimodal_stability","switch") != "1":
-                    print(f'''
+                    log._pr(f'''
 ════════════════════════════════════════════════════════════════════════════════
 ||                                                                            ||    
 ||       ████████                    ██         ████████               ██     ||
@@ -1835,10 +1855,10 @@ def max_count_logo():
 ||     The maximum number of tests set by the user has been reached! exit!    ||
 ════════════════════════════════════════════════════════════════════════════════
 ||       \tMax_Count : {max_count.ljust(4)}              Now_Count : {now_count.ljust(4)}\t\t      ||          
-════════════════════════════════════════════════════════════════════════════════''')
+════════════════════════════════════════════════════════════════════════════════''',pr_flag='1')
                     return True,"default"
                 else:
-                    print('''
+                    log._pr('''
 ══════════════════════════════════════════════════════════════════════════════════════════
 |     ████     ████          ██ ██   ██         ████     ████               ██           |
 |    ░██░██   ██░██         ░██░░   ░██        ░██░██   ██░██              ░██           |
@@ -1848,7 +1868,7 @@ def max_count_logo():
 |    ░██   ░    ░██░██  ░██ ░██░██  ░██        ░██   ░    ░██░██   ░██░██  ░██░██░░░░    |
 |    ░██        ░██░░██████ ███░██  ░░██       ░██        ░██░░██████ ░░██████░░██████   |
 |    ░░         ░░  ░░░░░░ ░░░ ░░    ░░        ░░         ░░  ░░░░░░   ░░░░░░  ░░░░░░    |
-══════════════════════════════════════════════════════════════════════════════════════════''')
+══════════════════════════════════════════════════════════════════════════════════════════''',pr_flag='1')
                     log._pr("The current test has been completed and we will proceed to the next test!")
                     log._pr("正在进行下一个模型测试,请勿关闭此窗口!耐心等待系统重启!")
                     now_type = log.json_get("Test_tmp","test_type")
@@ -1894,7 +1914,7 @@ def test_type_logo(test_type, count):
     else:
         test_status = "NA".ljust(14)
     if str(count)=="0":test_status="NA".ljust(14)
-    print(f'''══════════════════════════════════════════════════════
+    log._pr(f'''══════════════════════════════════════════════════════
 ||                                     ██           ||
 ||                                    ░██           ||
 ||           ██████  ██████   ██████ ██████         ||
@@ -1907,7 +1927,7 @@ def test_type_logo(test_type, count):
 || sost.ver : {version.ljust(10)}   || State : {str(test_status)}|| 
 ||--------------------------------------------------||
 || Type : {str(test_type).ljust(16)} || Count : {str(count).ljust(5)}         ||
-══════════════════════════════════════════════════════''')
+══════════════════════════════════════════════════════''',pr_flag='1')
 def Timed_operation_mode(chose='',waiting_time=''):
     if waiting_time !='' and chose !='':
         log._dp("chose and waiting_time all not null!")
@@ -1915,7 +1935,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
         return chose
     clp()
     # ----------------------------------------------------------------------------------------------
-    print(f'''═══════════════════════════════════════════════════════════════════════════════════════
+    log._pr(f'''═══════════════════════════════════════════════════════════════════════════════════════
 ||                                                                                   ||
 ||     ████████                    ██         ███████                                ||
 ||    ██░░░░░░                    ░██        ░██░░░░██                     █████     ||  
@@ -1931,11 +1951,11 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||    2 . power cycle    |    6 .                     |                              ||
 ||    3 . power reset    |    7 .                     |                              ||
 ||    4 . AClost         |    8 .                     |                              ||
-||═══════════════════════════════════════════════════════════════════════════════════||''')
+||═══════════════════════════════════════════════════════════════════════════════════||''',pr_flag='1')
     test_chose = log._in("You Chose : ")
     clp()
     # ----------------------------------------------------------------------------------------------
-    print(f'''═══════════════════════════════════════════════════════════════════════════════════════
+    log._pr(f'''═══════════════════════════════════════════════════════════════════════════════════════
 ||                                                                                   ||
 ||     ████████                    ██         ███████                                ||
 ||    ██░░░░░░                    ░██        ░██░░░░██                     █████     ||  
@@ -1948,14 +1968,14 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||                                                              Auther:Xiaodong Fan  ||
 ||═══════════════════════════════════════════════════════════════════════════════════||
 ||               1 . WaitTime                |             2 . Process               ||
-||═══════════════════════════════════════════════════════════════════════════════════||''')
+||═══════════════════════════════════════════════════════════════════════════════════||''',pr_flag='1')
     chose = log._in("You Chose -> Enter 1 : ")
     if chose == "":chose == '1'
     if chose != '1' and chose != '2':log._error("User.Input.Error -> Timed_operation_mode() -> chose")
     clp()
     # ----------------------------------------------------------------------------------------------
 
-    print(f'''═══════════════════════════════════════════════════════════════════════════════════════
+    log._pr(f'''═══════════════════════════════════════════════════════════════════════════════════════
 ||                                                                                   ||
 ||     ████████                    ██         ███████                                ||
 ||    ██░░░░░░                    ░██        ░██░░░░██                     █████     ||  
@@ -1966,7 +1986,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||    ████████ ░░██████  ██████   ░░██       ░███████  ░░██████  ███  ░██  █████     ||
 ||   ░░░░░░░░   ░░░░░░  ░░░░░░     ░░        ░░░░░░░    ░░░░░░  ░░░   ░░  ░░░░░      ||
 ||                                                              Auther:Xiaodong Fan  ||
-||═══════════════════════════════════════════════════════════════════════════════════||''')
+||═══════════════════════════════════════════════════════════════════════════════════||''',pr_flag='1')
     if chose == '1':
         waitTime = log._in("Enter the time you want to wait -> Enter 3600 : ").strip()
         log._pr(f"Please wait patiently for {str(waitTime)} seconds before the SOST starts to run automatically.")
@@ -1977,7 +1997,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
         clp()
     elif chose == '2':
         clp()
-        print(f'''═══════════════════════════════════════════════════════════════════════════════════════
+        log._pr(f'''═══════════════════════════════════════════════════════════════════════════════════════
 ||                                                                                   ||
 ||     ████████                    ██         ███████                                ||
 ||    ██░░░░░░                    ░██        ░██░░░░██                     █████     ||  
@@ -1990,7 +2010,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||                                                              Auther:Xiaodong Fan  ||
 ||═══════════════════════════════════════════════════════════════════════════════════||
 ||                   1. PID                |          2. ProcessName                 ||
-||═══════════════════════════════════════════════════════════════════════════════════||''')
+||═══════════════════════════════════════════════════════════════════════════════════||''',pr_flag='1')
         chose = log._in('chose Enter -> 1 : ')
         
         def pid_process(pid_num):
@@ -2005,7 +2025,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
             wait_time_ctrl_C('5',flags='')
             log._pr('')
             clp()
-            print(f'''═══════════════════════════════════════════════════════════════════════════════════════
+            log._pr(f'''═══════════════════════════════════════════════════════════════════════════════════════
 ||                                                                                   ||
 ||     ████████                    ██         ███████                                ||
 ||    ██░░░░░░                    ░██        ░██░░░░██                     █████     ||  
@@ -2021,7 +2041,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||═══════════════════════════════════════════════════════════════════════════════════||
 < sost > Wait for the process to end ......
 < sost > Starttime : {str(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))}
-< sost > Waiting . . . . . . . . . [-.-]''')
+< sost > Waiting . . . . . . . . . [-.-]''',pr_flag='1')
             while True:
                 time.sleep(2)
                 if log.os_popen(f'ps -p {pid_num.strip()} | wc -l',flags='no-log').strip() == '1':
@@ -2122,7 +2142,7 @@ def logo(release_time, version):
     else:
         version = "\033[32m"+version.ljust(7)+"\033[0m"
     # 原始代码部分，保持不变
-    text1 = f'''════════════════════════════════════════════════════════════════════════════
+    log._pr(f'''════════════════════════════════════════════════════════════════════════════
 |                                             ░██                          |
 |                    ██████  ██████   ██████ ██████                        |
 |                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
@@ -2130,9 +2150,9 @@ def logo(release_time, version):
 |                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
 |                   ██████ ░░██████  ██████   ░░██                         |
 |                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
-|═══════════════════════════════════════════════════════════════════════════'''
-    text2 = f"|    ReTime:{release_time.ljust(11)}     Ver.{version} "+f"BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|"
-    text3 = '''|══════════════════════════════════════════════════════════════════════════|
+|═══════════════════════════════════════════════════════════════════════════
+|    ReTime:{release_time.ljust(11)}     Ver.{version} "+f"BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|"
+|══════════════════════════════════════════════════════════════════════════|
 |   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
 |   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
 |   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
@@ -2142,14 +2162,7 @@ def logo(release_time, version):
 |  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
 |  15 . BMC Remote bmc reset warm  |  19 . NA                              |
 |  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════'''
-    # save log and print      
-    print(text1)
-    log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text=text1)
-    print(text2)
-    log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text=text2)
-    print(text3)
-    log.save_to_file(filename='/opt/sost/log/sost_interactive.log',text=text3)
+════════════════════════════════════════════════════════════════════════════''',pr_flag='1')
 
 def smtp_send_result(text):
     from email.mime.text import MIMEText

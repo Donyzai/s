@@ -172,7 +172,6 @@ class dong_log():
     # Tips Log
     def _tips(self,text=""):
         text = f"< {self.__private_title_name}_{now_time('6')}_tips     > : "+text
-        self.save_to_file(filename=self.__private_alarm_file_path,text=text)
         self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
         print(text)
         return
@@ -241,10 +240,13 @@ class dong_log():
     
     # Python interactive Area =======================================================================
     # Software.Print and save information
-    def _pr(self,text,filename=''):
+    def _pr(self,text,filename='',pr_flag=''):
         _text = f"< {self.__private_title_name}_{now_time('6')}_print    > : "+text
         self.save_to_file(filename=self.__private_sost_interactive_file_path,text=_text)
-        str_info = f"< {self.__private_title_name} > "+text
+        if pr_flag == '':
+            str_info = f"< {self.__private_title_name} > "+text
+        else:
+            str_info = text
         print(str_info)
         if filename!='':
             with open(filename,'a') as f:
@@ -257,8 +259,9 @@ class dong_log():
     # Software.User.Input and save information
     def _in(self,text):
         try:
-            text = input(f"< {self.__private_title_name} {text.strip()} > : ")
-            _text = f"< {self.__private_title_name}_{now_time('6')}_input    > : " + text
+            in_text = f"< {self.__private_title_name} {text.strip()} > : "
+            text = input(in_text)
+            _text = in_text + text
             self.save_to_file(filename=self.__private_sost_interactive_file_path,text=_text)
             # debug_flags 
             # self._tips(f"_in debug_flags : {self.debug_flags}")
