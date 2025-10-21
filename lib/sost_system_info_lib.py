@@ -14,7 +14,8 @@ log.debug_flags = str(log.json_get("debug","debug_flags",web='no-log',filename="
 
 def retry_get_ipmi_info(command='',text=''):
 
-    now_count = log.json_get('Test_tmp',"test_count")
+    now_count = log.json_get("Test_tmp","test_count")
+    retry_ipmi_log = log.json_get("Test_tmp","test_folder_path")+"/ipmi_retry_log.log"
     if now_count == '' or now_count == '0':return
     ipmi_sensdr_retry_count = log.json_get('Test_Config',"ipmi_sensdr_retry_count")
     if ipmi_sensdr_retry_count == '' or ipmi_sensdr_retry_count == '0': return
@@ -30,7 +31,8 @@ def retry_get_ipmi_info(command='',text=''):
         text = text + 'Attempt'
     for i in range(int(ipmi_sensdr_retry_count)):
         log._pr(text.ljust(40) + f"\033[33m[      {str(int(i)+1)}      ]\033[0m")
-        log.os_popen(command)
+        result = log.os_popen(command)
+        log.save_to_file(filename=retry_ipmi_log,text=result)
     log._pr(text.ljust(40) + f"\033[32m[   Complete  ]\033[0m")
     log._dp(text.ljust(40) + f'Successfully executed command {str(int(ipmi_sensdr_retry_count)+1)} times in a row')
     
@@ -959,11 +961,13 @@ def pcieinfo(flags, folder_path, count):
     for bus_addr in pci_arry:
         log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null")
         node = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
-        kernel_modules = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Kernel modules' | cut -d ':' -f 2").strip()
+        try:kernel_modules = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Kernel modules' | cut -d ':' -f 2").strip().strip().split(',')[0]
+        except:kernel_modules = og.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Kernel modules' | cut -d ':' -f 2").strip()
         if kernel_modules == "":kernel_modules="-"
         lnk_sta = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2").strip()
         if lnk_sta == "":lnk_sta="-"
-        Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip()
+        try:Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip().split(',')[0]
+        except:Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip()
         if Subsystem=="":
             Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
             if Subsystem=="":Subsystem="-"

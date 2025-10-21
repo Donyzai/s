@@ -3,3 +3,4 @@
 {time: 2025-10-16-14-16-03, type: reboot, count: 2, result: FAIL , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
 {time: 2025-10-17-10-07-59, type: bmc_warm_kcs, count: 5, result: NA , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
 {time: 2025-10-20-17-53-40, type: reboot, count: 1, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
+{time: 2025-10-21-09-22-16, type: reboot, count: 1, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}

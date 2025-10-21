@@ -10,7 +10,6 @@ import os
 import subprocess
 import logging
 import time
-import json
 
 try:
     from flask import Flask, render_template, jsonify, send_file, request
