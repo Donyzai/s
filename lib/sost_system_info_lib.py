@@ -532,12 +532,12 @@ def test_config(flags, count, path):
         if log.json_get("Test_Config","simple_test_flags")=="simple":
             print('')
             return 0
+    elif flags == "2":
         print('''
 ════════════════════════════════════════════════════════════════
 |                     Collect Information                      |
 ═══════════════════════════════════════════════[Collect]═[Check]''')
         log._pr('Collect To testconfig.log               \033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m')
-    elif flags == "2":
         pass
     elif flags == "0":
         pass

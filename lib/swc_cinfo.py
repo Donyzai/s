@@ -94,8 +94,7 @@ def hw_mac():
 
 def swc_service_connectivity():
     swc_ip =  log.json_get("swc","swc_server_ip",web=cmd_log_flags,filename='swc')
-    print(swc_ip)
-    try:os.popen("curl http://192.168.60.143:13250/ -I GET 2>/dev/null | head -n 1");return True
+    try:os.popen(f"curl http://{swc_ip}:13250/ -I GET 2>/dev/null | head -n 1");return True
     except:return False
 
 def return_get_data():
