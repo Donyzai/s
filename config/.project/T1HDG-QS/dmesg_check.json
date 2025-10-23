@@ -12,16 +12,15 @@
         "get link status cmd failed":"1",
         "couldn't allocate usb_device":"1",
         "SWESMBI Software EEPROM semaphore not granted":"1",
-        "Mac init error":"0",
-        "init ae_dev error":"0",
-        "mac speed/duplex config cmd failed":"0",
         "Firmware Bug":"0",
         "alloc failed":"0",
-        "dev error handler":"0",
-        "Exit sas_scsi_recover_host":"0",
         "tpm_tis_spi":"0",
+        "Mac init error":"0",
+        "dev error handler":"0",
+        "init ae_dev error":"0",
         "failed with error":"0",
-        "spe-v1 failed with error":"0"
-        
+        "spe-v1 failed with error":"0",
+        "Exit sas_scsi_recover_host":"0",
+        "mac speed/duplex config cmd failed":"0"
     }
 }
