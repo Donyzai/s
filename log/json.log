@@ -191,3 +191,4 @@
 < sost_20251021-092439_json_get > : type[sost] obj[Test_tmp] key[test_type] value[reboot]
 < sost_20251021-092439_json_get > : type[sost] obj[Test_tmp] key[test_folder_path] value[/root/reboot]
 < sost_20251021-092439_json_get > : type[sost] obj[Test_tmp] key[test_status] value[Pass]
+< sost_20251022-211640_json_set > : type[sost] obj[Test_tmp] key[Running_flag] old[6] new[0]
