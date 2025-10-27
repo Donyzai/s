@@ -4,7 +4,7 @@
         "Dedicated_lan_num": "1",
         "Share_lan_num": "8",
         "fail_exit_flags": "1",
-        "fail_exit_blacklist": "",
+        "fail_exit_blacklist": "NA",
         "start_wait_time": "25",
         "aclost_wait_time": "120",
         "end_wait_time": "15",

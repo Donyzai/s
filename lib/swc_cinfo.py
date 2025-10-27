@@ -94,7 +94,8 @@ def hw_mac():
 
 def swc_service_connectivity():
     swc_ip =  log.json_get("swc","swc_server_ip",web=cmd_log_flags,filename='swc')
-    try:os.popen(f"curl http://{swc_ip}:13250/ -I GET 2>/dev/null | head -n 1");return True
+    swc_port = log.json_get("swc","swc_server_port",web=cmd_log_flags,filename='swc')
+    try:os.popen(f"curl http://{swc_ip}:{swc_port}/ -I GET 2>/dev/null | head -n 1");return True
     except:return False
 
 def return_get_data():
@@ -125,7 +126,7 @@ def return_get_data():
         "OS_Kernel":str(os.popen("uname -r").read().strip()),
 
         "fail_exit_flags":str(os.popen(''' cat /opt/sost/config/sost.json  | grep -i fail_exit_flags | grep -iv blacklist | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
-        "fail_exit_blacklist":str(os.popen(''' cat /opt/sost/config/sost.json | grep -i fail_exit_blacklist | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
+        "fail_exit_blacklist":str(os.popen(''' cat /opt/sost/config/sost.json | grep -i fail_exit_blacklist | cut -d ':' -f 2 | tr -d ' "' ''').read().strip()) or 'NA',
         
         "mulit_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -A2 Multimodal_stability | grep -i switch | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
         "mode_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -i simple_test_flags | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'default',
@@ -166,7 +167,6 @@ def return_get_data():
     })
 
     runningFlag = simple_json_get("Test_tmp","Running_flag")
-    print(runningFlag)
 
     if runningFlag == '0' or runningFlag == '5':
         base_data.update({
@@ -215,8 +215,6 @@ def return_get_data():
             'Test-count': 'lds_shell',
             'Test-result': 'lds_shell'
         })
-
-
 
     return base_data
 
