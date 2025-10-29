@@ -99,12 +99,6 @@ def fail_info():
     else:
         return "Pass"
 
-def swc_service_connectivity():
-    swc_ip =  log.json_get("swc","swc_server_ip",web=cmd_log_flags,filename='swc')
-    swc_port = log.json_get("swc","swc_server_port",web=cmd_log_flags,filename='swc')
-    try:os.popen(f"curl http://{swc_ip}:{swc_port}/ -I GET 2>/dev/null | head -n 1");return True
-    except:return False
-
 def return_get_data():
 
     """获取系统测试数据和状态信息"""
@@ -141,9 +135,6 @@ def return_get_data():
         'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'mem_usage': os.popen(''' free | awk '/Mem/{printf("%.2f"), $3/$2*100}' 2>/dev/null ''').read().strip(),
         'cpu_usage': str(cpu_usage()).strip(),
-        'swc_service_connectivity':swc_service_connectivity(),
-        
-
 
         'sostVer': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
         'sostVerTime': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i Release_Time | cut -d ':' -f 2 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),

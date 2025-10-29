@@ -22,9 +22,10 @@ def clear_log():
 
 def swc_service_connectivity():
     swc_ip =  log.json_get("swc","swc_server_ip",filename='swc')
-    print(swc_ip)
-    try:os.popen("curl http://192.168.60.143:13250/ -I GET 2>/dev/null | head -n 1");return True
-    except:return False
+    swc_port = log.json_get("swc","swc_server_port",filename='swc')
+    if os.popen(f"curl http://{swc_ip}:{swc_port}/ -I GET 2>/dev/null | head -n 1").read() == '200':
+        return True
+    return False
 
 def testsha256():
     sha256_str = log.json_get("Test_tmp","test_type").strip() + log.json_get("Test_tmp","startT_time").strip()
@@ -65,14 +66,10 @@ def update_check():
 
     sost_server_ip = log.json_get("sost","update_Web_server_ip",filename='version').strip()
 
-    if swc_service_connectivity():log._dp("Communication with SWC server successful!");log.json_set("Test_tmp","test_swc_service_connectivity",True)
-    else:log._dp("Communication with SWC server failed!");log.json_set("Test_tmp","test_swc_service_connectivity",False);return False
-
-    try:
-        if os.system(f'ping {sost_server_ip} -c 1 -i 0.5 -W 0.5 >/dev/null 2>&1') != 0:
-            return False
-    except:
-        return False
+    if swc_service_connectivity():
+        log._dp("Communication with SWC server successful!")
+    else:
+        log._dp("Communication with SWC server failed!")
 
     update_flag = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/uflag 2>/dev/null").replace("\n","").strip()
     remote_sha256 = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/sostsha256 2>/dev/null").replace("\n","").strip()
@@ -108,11 +105,6 @@ def update_check():
     update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256)
 
 def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
-
-    if log.json_get("Test_tmp","test_swc_service_connectivity") == False:
-        log._error("Communication with SWC server failed, unable to start testing.")
-    else:
-        log._dp("Communication with SWC server Successed!")
 
     bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
     sost_poweronoff_serverIP = log.json_get('power_on_off','server_ip').strip()

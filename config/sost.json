@@ -49,7 +49,6 @@
         "test_bmc_lan": "1",
         "test_folder_path": "/root/reboot",
         "test_sha256": "503a378c24a43e360291acb460b093502a8e736c0c0130a769f2abd477461ae6",
-        "test_swc_service_connectivity": true,
         "run_command": "reboot",
         "startT_time": "2025-10-21-09-22-16",
         "endT_time": "2025-10-21-09-24-39",
