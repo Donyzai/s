@@ -9,6 +9,18 @@ import os
 from datetime import datetime
 import json
 import time
+import subprocess
+
+# subprocess IPMI Run Command timeout
+ipmi_timeout = 5
+
+def ipmi_run(command):
+    try:
+        result = subprocess.run(command , shell=True , timeout=5,text=True,capture_output=True)
+        result = result.stdout.strip()
+    except Exception as e:
+        result = ''
+    return result
 
 def simple_json_get(obj,key):
     aNUM = '11'
@@ -87,11 +99,6 @@ def fail_info():
     else:
         return "Pass"
 
-def hw_mac():
-    mac = os.popen(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''').read().strip()
-    if mac =='':mac = '00:00:00:00:00:00'
-    return mac
-
 def swc_service_connectivity():
     swc_ip =  log.json_get("swc","swc_server_ip",web=cmd_log_flags,filename='swc')
     swc_port = log.json_get("swc","swc_server_port",web=cmd_log_flags,filename='swc')
@@ -107,8 +114,8 @@ def return_get_data():
         'Test-type': 'NA',
         'Test-count': 'NA',
         'Test-result': 'NA',
-        'Test-uuid':'',
-        'Test-sha256': simple_json_get("Test_tmp","test_sha256") or "NA",
+        'Test-sha256': '',
+        'fail_info': fail_info(),
         
         'Test-Start-Time':get_value('startT_time'),
         'Test-End-Time':get_value('endT_time'),
@@ -120,8 +127,6 @@ def return_get_data():
         'BMC_LAN_8': '0.0.0.0',
         'bmc_chip': get_value('bmc_chip'),
         'BMC_ver':bmc_ver(),
-        'cpld_ver':cpld_ver(),
-        'SYS_IP': 'None',
         "OS":str(os.popen("cat /etc/os-release  | grep -i PRETTY_NAME | cut -d '=' -f 2 ").read().replace('(',"").replace(')',"").replace('"',"").strip()),
         "OS_Kernel":str(os.popen("uname -r").read().strip()),
 
@@ -131,21 +136,21 @@ def return_get_data():
         "mulit_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -A2 Multimodal_stability | grep -i switch | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
         "mode_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -i simple_test_flags | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'default',
         "bmc_web_check_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -A2 BMC_Survival_Config | grep -i switch | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or '0',
-
-        'Product_name': 'NA',
-        
-        'sost_version': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
-        'sost_ReTime': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i Release_Time | cut -d ':' -f 2 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
-        'sost_ver_sha256': str(os.popen("sost -i sha256",).read().strip().replace('"', "").replace(",", "")),
         
         'Bios_ver': os.popen("dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null").read().strip(),
         'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'mem_usage': os.popen(''' free | awk '/Mem/{printf("%.2f"), $3/$2*100}' 2>/dev/null ''').read().strip(),
         'cpu_usage': str(cpu_usage()).strip(),
-        'hw_uuid':os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip(),
         'swc_service_connectivity':swc_service_connectivity(),
-        'fail_info': fail_info(),
-        'hw_mac':hw_mac()
+        
+
+
+        'sostVer': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
+        'sostVerTime': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i Release_Time | cut -d ':' -f 2 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
+        'sostVersha256': str(os.popen("sost -i sha256",).read().strip().replace('"', "").replace(",", "")),
+
+        'hw_uuid':ipmi_run("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'" ),
+        'hw_mac':ipmi_run(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''' )
     }
 
     count = simple_json_get("Test_tmp","test_count") or "NA"
@@ -194,8 +199,7 @@ def return_get_data():
     base_data.update({
         'SYS_IP': get_system_ip(),
         'BMC_LAN_1': get_bmc_ip(1),
-        'BMC_LAN_8': get_bmc_ip(8),
-        'Product_name': get_product_name()
+        'BMC_LAN_8': get_bmc_ip(8)
     })
 
     log_system_status(base_data)
@@ -275,7 +279,7 @@ def get_system_ip():
 def get_bmc_ip(lan_num):
     """获取BMC IP"""
     tmp_file = f"/tmp/sost_tmp/swc_ipmi_lan{lan_num}.txt"
-    ip = os.popen(f"timeout 1 ipmitool lan print {lan_num} 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' '").read().strip()
+    ip = ipmi_run(f"ipmitool lan print {lan_num} 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
     if ip =="":
         ip = os.popen(f"timeout 1 ipmitool lan print {lan_num}  2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' '").read().strip()
         if ip =="":
@@ -287,10 +291,6 @@ def get_bmc_ip(lan_num):
         os.system(f"echo '{ip}' > {tmp_file}")
     return ip
      
-def get_product_name():
-    """获取产品名称"""
-    return os.popen("cat /tmp/sost_tmp/swc_ipmi_Board_Product.txt").read().strip() or "NA"
-
 def log_system_status(data):
     """记录系统状态日志"""
     status = "Running" if is_process_running("sost.*sost_web_console") else "Initing"
@@ -300,11 +300,8 @@ def log_system_status(data):
 Services          : sost-webconsole-service
 ServicesStatus    : {status}
 NowTime           : {now_time}
-sost-version      : {data['sost_version']}
+sost-version      : {data['sostVer']}
 sost-cmdflags     : {cmd_log_flags}
-product-name      : {data['Product_name']}
-JsonData          :
-{data}
 ================================================"""
     os.system(f"echo '{log_content}' > /tmp/sost_tmp/swc_cache")
 

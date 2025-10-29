@@ -492,17 +492,14 @@ if __name__ == '__main__':
     log.os_popen("mkdir -p /tmp/sost_tmp",flags=cmd_log_flags)
     log.os_popen("touch /tmp/sost_tmp/swc_ipmi_lan1.txt",flags=cmd_log_flags)
     log.os_popen("touch /tmp/sost_tmp/swc_ipmi_lan8.txt",flags=cmd_log_flags)
-    log.os_popen("touch /tmp/sost_tmp/swc_ipmi_Board_Product.txt",flags=cmd_log_flags)
     log.os_popen("touch /tmp/sost_tmp/swc_cache",flags=cmd_log_flags)
 
-    lan_1_result = log.os_popen("ipmitool lan print 1 | grep -i 'ip address' | grep -vi source | awk '{print $4}'",
-                                flags=cmd_log_flags)
+    lan_1_result = log.os_popen("ipmitool lan print 1 | grep -i 'ip address' | grep -vi source | awk '{print $4}'",flags=cmd_log_flags)
     if lan_1_result.strip() != "":log.os_popen(f"echo '{lan_1_result}' > /tmp/sost_tmp/swc_ipmi_lan1.txt &", flags=cmd_log_flags)
 
     lan_8_result = log.os_popen("ipmitool lan print 8 | grep -i 'ip address' | grep -vi source | awk '{print $4}'",flags=cmd_log_flags)
     if lan_8_result.strip() != "":log.os_popen(f"echo '{lan_8_result}' > /tmp/sost_tmp/swc_ipmi_lan8.txt &", flags=cmd_log_flags)
 
-    log.os_popen("ipmitool fru print 0 | grep -i 'Board Product' | awk '{print $4}' > /tmp/sost_tmp/swc_ipmi_Board_Product.txt &",flags=cmd_log_flags)
     log._pr(f"swc_web is Running! Running-Time -> {str(datetime.now().strftime('%Y%m%d %H:%M:%S'))} (swc_web.py)")
     if log.os_popen("ps aux | grep -i swc_cinfo | grep -v grep | wc -l",flags=cmd_log_flags).strip()=="0":
         log._pr("swc_web -> swc_cinfo Running! (swc_web.py)")

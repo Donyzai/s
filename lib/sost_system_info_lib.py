@@ -788,6 +788,8 @@ def bmcip(flags, folder_path, count):
             log._pr("BMC IP Info ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
     
 def fwinfo(flags, folder_path, count):
+    # 判断是否为hisi芯片，如果是直接return0
+    if log.json_get("BMC_Survival_Config","bmc_chip") == "Hisilicon-Hi1711":return 0
     if log.json_get('collect_array',"fwinfo",web='no-log',filename='collect').strip() !='1':return 0
     cpld_version = ""
     try:
