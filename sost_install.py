@@ -232,9 +232,9 @@ def build_sost():
         os.system("cd /opt/sost && touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4 $5 $6' >> /usr/local/bin/sost && cd && sync && sost -h")
 
 def swc_manager():
-    os.system("systemctl stop swc-manager.service")
-    os.system("rm -rf /etc/systemd/system/swc-manager.service")
-    os.system("touch /etc/systemd/system/swc-manager.service")
+    os.system("systemctl stop swc-manager.service 2>/dev/null")
+    os.system("rm -rf /etc/systemd/system/swc-manager.service 2>/dev/null")
+    os.system("touch /etc/systemd/system/swc-manager.service 2>/dev/null")
     with open("/etc/systemd/system/swc-manager.service","w") as f:
         f.write("[Unit]"+"\n")
         f.write("Description=swc-manager"+"\n")
@@ -249,10 +249,10 @@ def swc_manager():
         f.write("WantedBy=multi-user.target"+"\n")
         f.write(""+"\n")
         f.flush()
-    os.system("chmod 777 /etc/systemd/system/swc-manager.service")
-    os.system("systemctl daemon-reload")
-    os.system("systemctl restart swc-manager.service")
-    os.system("systemctl enable swc-manager.service")
+    os.system("chmod 777 /etc/systemd/system/swc-manager.service 2>/dev/null")
+    os.system("systemctl daemon-reload 2>/dev/null")
+    os.system("systemctl restart swc-manager.service 2>/dev/null")
+    os.system("systemctl enable swc-manager.service 2>/dev/null")
     print("<sost> service is installed!")
 
 def ubuntu_apt_replace():
@@ -333,50 +333,35 @@ if __name__ == '__main__':
     
     now_path = install_sost()
 
+    print('''
+==========================================================
+|         ████████                    ██                 |
+|        ██░░░░░░                    ░██                 |
+|       ░██         ██████   ██████ ██████               |
+|       ░█████████ ██░░░░██ ██░░░░ ░░░██░                |
+|       ░░░░░░░░██░██   ░██░░█████   ░██                 |
+|              ░██░██   ░██ ░░░░░██  ░██                 |
+|        ████████ ░░██████  ██████   ░░██                |
+|       ░░░░░░░░   ░░░░░░  ░░░░░░     ░░                 |
+==========================================================
+|    sost install Success!        Author: Xiaodong Fan   |  
+==========================================================''')
+    os.system('mkdir -p /tmp/sost_tmp 2>/dev/null')
     if install_mode == 'Online':
         if system_os[0] == 'Ubuntu':
             os.system(f"touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h")
         else:
             build_sost()
-        os.system(f'rm -rf {now_path}')
-        os.system(f'rm -rf {now_path}.tar')
-        print('''
-        ==========================================================
-        |         ████████                    ██                 |
-        |        ██░░░░░░                    ░██                 |
-        |       ░██         ██████   ██████ ██████               |
-        |       ░█████████ ██░░░░██ ██░░░░ ░░░██░                |
-        |       ░░░░░░░░██░██   ░██░░█████   ░██                 |
-        |              ░██░██   ░██ ░░░░░██  ░██                 |
-        |        ████████ ░░██████  ██████   ░░██                |
-        |       ░░░░░░░░   ░░░░░░  ░░░░░░     ░░                 |
-        ==========================================================
-        |    sost install success!       Author: Xiaodong Fan   |
-        =========================================================''')
-        os.system('mkdir -p /tmp/sost_tmp')
     else:
-        os.system(f'rm -rf {now_path}')
-        os.system(f'rm -rf {now_path}.tar')
-        os.system(f"touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h")
-        print('''
-        ==========================================================
-        |         ████████                    ██                 |
-        |        ██░░░░░░                    ░██                 |
-        |       ░██         ██████   ██████ ██████               |
-        |       ░█████████ ██░░░░██ ██░░░░ ░░░██░                |
-        |       ░░░░░░░░██░██   ░██░░█████   ░██                 |
-        |              ░██░██   ░██ ░░░░░██  ░██                 |
-        |        ████████ ░░██████  ██████   ░░██                |
-        |       ░░░░░░░░   ░░░░░░  ░░░░░░     ░░                 |
-        ==========================================================
-        |    sost install Success!        Author: Xiaodong Fan   |  
-        =========================================================''')
-        os.system('mkdir -p /tmp/sost_tmp')
+        os.system(f"touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h 2>/dev/null")
     swc_manager()
-
-    if os.popen(" whereis sost | cut -d ':' -f 2 | tr -d ' ' ") == "":
-        os.system("touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h")
+    if os.popen(" whereis sost 2>/dev/null | cut -d ':' -f 2 | tr -d ' ' ") == "":
+        os.system("touch /usr/local/bin/sost 2>/dev/null && chmod 777 /usr/local/bin/sost 2>/dev/null && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h 2>/dev/null")
     else:
-        if os.popen("file /usr/local/bin/sost | grep -i text | wc -l").read().strip() == "0":
-            os.system("rm -rf /opt/sost/bin")
-    os.system("rm -rf /tmp/run.sh")
+        if os.popen("file /usr/local/bin/sost 2>/dev/null | grep -i text | wc -l").read().strip() == "0":
+            os.system("rm -rf /opt/sost/bin 2>/dev/null")
+    os.system("rm -rf /tmp/run.sh 2>/dev/null")
+
+    now_path = os.path.dirname(os.getcwd()+"/sost_install.py")
+    os.system(f'rm -rf {now_path} 2>/dev/null')
+    os.system(f'rm -rf {now_path}.tar 2>/dev/null')

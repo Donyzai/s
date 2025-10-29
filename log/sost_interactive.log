@@ -1,15 +1,23 @@
-< sost_20251029-141309_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-141359_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-141419_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-141737_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-142105_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-142121_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-142149_print    > : swc_web is Running! Running-Time -> 20251029 14:21:49 (swc_web.py)
-< sost_20251029-142149_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251029-142151_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-142407_print    > : swc_web is Running! Running-Time -> 20251029 14:24:07 (swc_web.py)
-< sost_20251029-142407_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251029-142410_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
-< sost_20251029-142543_print    > : swc_web is Running! Running-Time -> 20251029 14:25:43 (swc_web.py)
-< sost_20251029-142543_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251029-142543_print    > : Sost has enabled the server information collection service.(swc_cinfo.py)
+< sost_20251029-160649_print    > : ════════════════════════════════════════════════════════════════════════════
+|                                             ░██                          |
+|                    ██████  ██████   ██████ ██████                        |
+|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
+|                  ░░█████ ░██   ░██░░█████   ░██                          |
+|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
+|                   ██████ ░░██████  ██████   ░░██                         |
+|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
+|═══════════════════════════════════════════════════════════════════════════
+|    ReTime:2025-10-20 16:45:40     Ver.[32m1.1.2  [0m BMC_Chip:[33mASPEED-2600       [0m|
+|══════════════════════════════════════════════════════════════════════════|
+|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
+|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
+|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
+|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
+|══════════════════════════════════════════════════════════════════════════|
+|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
+|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
+|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
+|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
+════════════════════════════════════════════════════════════════════════════
+< sost Your choice : > : q
+[31m< sost_20251029-160649_error    > : User.Input.Error[0m

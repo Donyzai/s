@@ -109,18 +109,17 @@ def return_get_data():
         'Test-count': 'NA',
         'Test-result': 'NA',
         'Test-sha256': '',
-        'fail_info': fail_info(),
-        
         'Test-Start-Time':get_value('startT_time'),
         'Test-End-Time':get_value('endT_time'),
+        'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        'fail_info': fail_info(),
+
         "start_wait_time": get_value('start_wait_time'),
         "aclost_wait_time": get_value('aclost_wait_time'),
-        "max_count":get_value('max_count'),
         
         'BMC_LAN_1': '0.0.0.0',
         'BMC_LAN_8': '0.0.0.0',
         'bmc_chip': get_value('bmc_chip'),
-        'BMC_ver':bmc_ver(),
         "OS":str(os.popen("cat /etc/os-release  | grep -i PRETTY_NAME | cut -d '=' -f 2 ").read().replace('(',"").replace(')',"").replace('"',"").strip()),
         "OS_Kernel":str(os.popen("uname -r").read().strip()),
 
@@ -129,12 +128,9 @@ def return_get_data():
         
         "mulit_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -A2 Multimodal_stability | grep -i switch | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
         "mode_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -i simple_test_flags | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'default',
-        "bmc_web_check_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -A2 BMC_Survival_Config | grep -i switch | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or '0',
-        
+       
+        'BMC_ver':bmc_ver(),
         'Bios_ver': os.popen("dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null").read().strip(),
-        'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        'mem_usage': os.popen(''' free | awk '/Mem/{printf("%.2f"), $3/$2*100}' 2>/dev/null ''').read().strip(),
-        'cpu_usage': str(cpu_usage()).strip(),
 
         'sostVer': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
         'sostVerTime': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i Release_Time | cut -d ':' -f 2 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),

@@ -32,7 +32,7 @@ def testsha256():
     # uuid encode = test_type + start_time
     log.json_set("Test_tmp","test_sha256",str(hashlib.sha256(sha256_str.encode(encoding='UTF-8')).hexdigest()))
 
-def update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256):
+def update_show(update_flag,tips,remote_sha256,local_sha256):
     clp()
     log._pr(f'''
 ══════════════════════════════════════════════════════
@@ -51,17 +51,8 @@ def update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256):
     log._pr(f"remote_sha256  : {remote_sha256}")
     log._pr(f"local_sha256   : {local_sha256}")
 
-    if update_flag == '1':
-        update_sost(noexit_flag='1')
-    elif update_flag == '2':
-        update_sost(update_flag='1')
-    elif update_flag == '3':
-        update_sost(noexit_flag='1')
-    elif update_flag == '4':
-        update_sost(update_flag='1')
-    else:
-        return
-
+    update_sost(update_flag)
+   
 def update_check():
 
     sost_server_ip = log.json_get("sost","update_Web_server_ip",filename='version').strip()
@@ -80,11 +71,17 @@ def update_check():
     if update_flag == '' or remote_sha256 == '' or local_sha256 == '':
         log._dp("SOST update_server_ip Error!")
         return 0
-        
+    # 检查sha256值是否一致，如果一致则不需要更新
     if remote_sha256 == local_sha256:
         log._dp("The sha256 remote value is consistent with the local value, so no update is needed")
         return 0
     
+    # update_flag解释
+    # 0     无需更新    无操作
+    # 1     建议更新    用户自己选择
+    # 2     强制更新    强制更新否则无法使用
+    # 3     建议降级    设计中
+    # 4     强制降级    设计中
     if update_flag == '0':
         log._dp("SOST is the latest version")
         return 0
@@ -102,7 +99,7 @@ def update_check():
         tips = 'Your SOST is not the latest version and must be downgraded'
     else:
         return 0
-    update_show(update_flag,tips,sost_server_ip,remote_sha256,local_sha256)
+    update_show(update_flag,tips,remote_sha256,local_sha256)
 
 def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
 
@@ -576,6 +573,11 @@ def bmc_stability(typee='',folder_path=''):
     # type 1 -> warm
     #      2 -> cold
     #      3 -> raw
+
+    # 增加检查判断iBMC 返回错误
+    if bmc_Chip[0] == 'Hisilicon-Hi1711' and 'cold' in typee:
+        log._error('iBMC unsupport cold reset!')
+
     bmc_ip,bmc_user,bmc_pass = get_bmc_info()
     log.os_run("sost -m bmc")
     # debug print ---------------------
@@ -1149,17 +1151,16 @@ def return_alive_server_ip():
         if "100% packet loss" not in result:
             return ip
 
-def update_sost(update_flag='',noexit_flag=''):
-    if update_flag != '1':
+def update_sost(update_flag=''):
+
+    if update_flag == '1' or update_flag == '3':
         if log._in("Do you want to Update ? [y/n] ").lower() == 'n':
-            if noexit_flag == '':
-                log._error("User.Input.Not.Update")
-            else:
-                return
-    else:
+            return 0
+    
+    elif update_flag == '2' or update_flag == '4':
         if log._in("A new version is available, you must update now ! [y/n] ").lower() == 'n':
             log._error("User.Input.Not.Update")
-            
+    
     # sost Release server ip 
     server_ip = str(return_alive_server_ip()).strip()
     # 1.0.8 add update_Web_server_ip
@@ -2151,7 +2152,7 @@ def logo(release_time, version):
 |                   ██████ ░░██████  ██████   ░░██                         |
 |                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
 |═══════════════════════════════════════════════════════════════════════════
-|    ReTime:{release_time.ljust(11)}     Ver.{version} "+f"BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|"
+|    ReTime:{release_time.ljust(11)}     Ver.{version} BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|
 |══════════════════════════════════════════════════════════════════════════|
 |   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
 |   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
