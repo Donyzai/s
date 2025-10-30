@@ -55,7 +55,7 @@ def slog():
 
     slog_type = request.args.get('type')
     
-    if slog_type not in ['alarm', 'debug', 'interactive', 'fail' ,'json', 'popen', 'run','showconfig']:
+    if slog_type not in ['alarm', 'debug', 'interactive', 'fail' ,'json', 'popen', 'run','showconfig','swc']:
         return "Invalid type parameter", 400
     
     if slog_type == 'alarm':
@@ -79,7 +79,11 @@ def slog():
     elif slog_type == 'run':
         run_log = log.os_popen("cat /opt/sost/log/run.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
         if run_log != '':return run_log
-
+    elif slog_type == 'swc':
+        run_log = log.os_popen("cat /opt/sost/log/swc.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if run_log != '':return run_log
+    else:
+        return "No log information" , 200
     return "No log information" , 200
 
 @app.route('/getrunningTime')

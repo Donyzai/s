@@ -254,34 +254,32 @@ def get_running_test_type():
     return "NA"
 
 def get_system_ip():
-    """获取系统IP"""
-    ip = os.popen('''nmcli connection show 2>/dev/null | grep -vE "lo|--|NAME" | head -n 1 | awk '{print $1}' | xargs ifconfig | grep -i inet | awk '{print $2}' | grep -v : | grep -v 127.0.0.1 ''').read().strip()
     
-    if not ip:
-        try:
-            ip = os.popen("hostname -I").read().strip().split()[0]
-        except:
-            ip = "None"
-    return ip
+    osip_file_path = '/tmp/sost_tmp/osip'
+    if not os.path.exists(osip_file_path):os.system(f"touch {osip_file_path}")
+    ip = os.popen('''nmcli connection show 2>/dev/null | grep -vE "lo|--|NAME" | head -n 1 | awk '{print $1}' | xargs ifconfig | grep -i inet | awk '{print $2}' | grep -v : | grep -v 127.0.0.1''').read().strip()
+    if ip != '' and ip != '0.0.0.0':
+        with open(osip_file_path,'w') as f:f.write(ip)
+        return ip
+    else:
+        log._sd("未获取到OSIP,使用旧文件代替")
+        return open(osip_file_path,'r').read().strip()
 
 def get_bmc_ip():
-    """获取BMC IP"""
+    # bmcip存放位置
+    bmc_ip_file = '/tmp/sost_tmp/bmcip'
+    if not os.path.exists(bmc_ip_file):
+        os.system("touch /tmp/sost_tmp/bmcip")
+    # 
     ip = ipmi_run(f"ipmitool lan print 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
     if ip=='':
         ip = ipmi_run(f"ipmitool lan print 8 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
+        if ip == '':
+            log._sd("未检测到bmcip地址!使用旧IP进行代替!")
+            return open(bmc_ip_file,'r').read().strip()
+    with open(bmc_ip_file,'w') as f:f.write(ip)
     return ip
-    # tmp_file = f"/tmp/sost_tmp/swc_ipmi_lan{lan_num}.txt"
-    # ip = ipmi_run(f"ipmitool lan print {lan_num} 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
-    # if ip =="":
-    #     ip = os.popen(f"timeout 1 ipmitool lan print {lan_num}  2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' '").read().strip()
-    #     if ip =="":
-    #         old_ip = os.popen(f"cat {tmp_file} | head -n 1").read().strip().replace('\n','')
-    #         if old_ip == '':return '0.0.0.0'
-    #         else:
-    #             return old_ip
-    # if ip not in os.popen(f"cat {tmp_file} | head -n 1").read().strip():
-    #     os.system(f"echo '{ip}' > {tmp_file}")
-    # return ip
+   
      
 def log_system_status(data):
     """记录系统状态日志"""
@@ -298,7 +296,7 @@ sost-cmdflags     : {cmd_log_flags}
     os.system(f"echo '{log_content}' > /tmp/sost_tmp/swc_cache")
 
 if __name__ == '__main__':
-    log._pr("Sost has enabled the server information collection service.(swc_cinfo.py)")
+    log._sd("Sost has enabled the server information collection service.(swc_cinfo.py)")
     while True:
         data = json.dumps(return_get_data(),indent=4)
         with open('/opt/sost/config/server_info.json','w') as f:
