@@ -1,1 +1,11 @@
-[31m< sost_20251029-160649_error    > : User.Input.Error[0m
+[31m< sost_20251029-170223_error    > : User.Input.Error[0m
+[31m< sost_20251029-170255_error    > : os_popen command : ipmitool sdr list 2>/dev/null error![0m
+[31m< sost_20251029-170255_error    > : User.Exit.Test![0m
+[31m< sost_20251029-170316_error    > : os_run command : sync -f && sync error![0m
+[31m< sost_20251029-170317_error    > : User.Exit.Test![0m
+[31m< sost_20251029-170319_error    > : os_run command : sync -f && sync error![0m
+[31m< sost_20251029-170319_error    > : User.Exit.Test![0m
+[31m< sost_20251029-170322_error    > : os_popen command : dmesg error![0m
+[31m< sost_20251029-170322_error    > : User.Exit.Test![0m
+[31m< sost_20251029-170325_error    > : os_popen command : lsusb | wc -l error![0m
+[31m< sost_20251029-170325_error    > : User.Exit.Test![0m

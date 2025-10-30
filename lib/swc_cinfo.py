@@ -97,7 +97,7 @@ def fail_info():
             fail_info = os.popen(f"cat /opt/sost/log/sost_interactive.log").read()
         return fail_info
     else:
-        return "Pass"
+        return ""
 
 def return_get_data():
 
@@ -108,7 +108,6 @@ def return_get_data():
         'Test-type': 'NA',
         'Test-count': 'NA',
         'Test-result': 'NA',
-        'Test-sha256': '',
         'Test-Start-Time':get_value('startT_time'),
         'Test-End-Time':get_value('endT_time'),
         'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -118,25 +117,12 @@ def return_get_data():
         "aclost_wait_time": get_value('aclost_wait_time'),
         
         'BMC_LAN_1': '0.0.0.0',
-        'BMC_LAN_8': '0.0.0.0',
-        'bmc_chip': get_value('bmc_chip'),
-        "OS":str(os.popen("cat /etc/os-release  | grep -i PRETTY_NAME | cut -d '=' -f 2 ").read().replace('(',"").replace(')',"").replace('"',"").strip()),
-        "OS_Kernel":str(os.popen("uname -r").read().strip()),
-
-        "fail_exit_flags":str(os.popen(''' cat /opt/sost/config/sost.json  | grep -i fail_exit_flags | grep -iv blacklist | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
-        "fail_exit_blacklist":str(os.popen(''' cat /opt/sost/config/sost.json | grep -i fail_exit_blacklist | cut -d ':' -f 2 | tr -d ' "' ''').read().strip()) or 'NA',
+        "OS":str(os.popen("cat /etc/os-release  | grep -i PRETTY_NAME | cut -d '=' -f 2 ").read().replace('(',"").replace(')',"").replace('"',"").strip())+'   '+str(os.popen("uname -r").read().strip()),
         
-        "mulit_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -A2 Multimodal_stability | grep -i switch | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
-        "mode_flag":str(os.popen(''' cat /opt/sost/config/sost.json | grep -i simple_test_flags | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'default',
-       
+        "fail_exit_flags":str(os.popen(''' cat /opt/sost/config/sost.json  | grep -i fail_exit_flags | grep -iv blacklist | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',       
         'BMC_ver':bmc_ver(),
         'Bios_ver': os.popen("dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null").read().strip(),
-
-        'sostVer': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
-        'sostVerTime': str(os.popen("cat /opt/sost/config/sost_version.json | grep -i Release_Time | cut -d ':' -f 2 2>/dev/null",).read().strip().replace('"', "").replace(",", "")),
-        'sostVersha256': str(os.popen("sost -i sha256",).read().strip().replace('"', "").replace(",", "")),
-
-        'hw_uuid':ipmi_run("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'" ),
+        'sostVer': os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", ""),
         'hw_mac':ipmi_run(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''' )
     }
 
@@ -185,8 +171,7 @@ def return_get_data():
    
     base_data.update({
         'SYS_IP': get_system_ip(),
-        'BMC_LAN_1': get_bmc_ip(1),
-        'BMC_LAN_8': get_bmc_ip(8)
+        'BMC_LAN_1': get_bmc_ip(),
     })
 
     log_system_status(base_data)
@@ -263,20 +248,24 @@ def get_system_ip():
             ip = "None"
     return ip
 
-def get_bmc_ip(lan_num):
+def get_bmc_ip():
     """获取BMC IP"""
-    tmp_file = f"/tmp/sost_tmp/swc_ipmi_lan{lan_num}.txt"
-    ip = ipmi_run(f"ipmitool lan print {lan_num} 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
-    if ip =="":
-        ip = os.popen(f"timeout 1 ipmitool lan print {lan_num}  2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' '").read().strip()
-        if ip =="":
-            old_ip = os.popen(f"cat {tmp_file} | head -n 1").read().strip().replace('\n','')
-            if old_ip == '':return '0.0.0.0'
-            else:
-                return old_ip
-    if ip not in os.popen(f"cat {tmp_file} | head -n 1").read().strip():
-        os.system(f"echo '{ip}' > {tmp_file}")
+    ip = ipmi_run(f"ipmitool lan print 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
+    if ip=='':
+        ip = ipmi_run(f"ipmitool lan print 8 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
     return ip
+    # tmp_file = f"/tmp/sost_tmp/swc_ipmi_lan{lan_num}.txt"
+    # ip = ipmi_run(f"ipmitool lan print {lan_num} 2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' ' ")
+    # if ip =="":
+    #     ip = os.popen(f"timeout 1 ipmitool lan print {lan_num}  2>/dev/null | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' '").read().strip()
+    #     if ip =="":
+    #         old_ip = os.popen(f"cat {tmp_file} | head -n 1").read().strip().replace('\n','')
+    #         if old_ip == '':return '0.0.0.0'
+    #         else:
+    #             return old_ip
+    # if ip not in os.popen(f"cat {tmp_file} | head -n 1").read().strip():
+    #     os.system(f"echo '{ip}' > {tmp_file}")
+    # return ip
      
 def log_system_status(data):
     """记录系统状态日志"""

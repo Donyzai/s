@@ -356,12 +356,12 @@ class dong_log():
             self.os_run("sync -f && sync",flags='no-log')
             return str(data)
         except Exception as e:
-                print(filename)
-                print(typee)
-                print(obj)
-                print(key)
-                # self._pr(self.os_popen("cat /opt/sost/config/sost.json"))
-                self._error(f"json file EXIT! error_info : {e} \n <! sost !>json_get obj : {obj} key : {key}")
+            print(filename)
+            print(typee)
+            print(obj)
+            print(key)
+            # self._pr(self.os_popen("cat /opt/sost/config/sost.json"))
+            self._error(f"json file EXIT! error_info : {e} \n <! sost !>json_get obj : {obj} key : {key}")
 
     # Software.Set.JsonFile.Value
     def json_set(self,obj, key, new_value,flags='',filename=""):
