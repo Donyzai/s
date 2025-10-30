@@ -271,10 +271,18 @@ class dong_log():
             self._error("User.Exit()")
         return text
 
-    # Software.Debug.Information
+    # Software.Debug.log
     def _dp(self,text):
         text = f"< {self.__private_title_name}_{now_time('6')}_dlev_{self.debug_flags}   > : {text}"
         self.save_to_file(filename=self.__private_debug_log_file_path,text=text)
+        if self.debug_flags == "1" or self.debug_flags == "3":
+            print(text)
+        return 
+
+    # Swc.Services.Debug.log
+    def _sd(self,text):
+        text = f"<   swc_{now_time('6')}_{self.debug_flags}   > : {text}"
+        self.save_to_file(filename=self.__private_swc_log_file_path,text=text)
         if self.debug_flags == "1" or self.debug_flags == "3":
             print(text)
         return 

@@ -52,7 +52,7 @@
         "run_command": "bmc_warm_kcs",
         "startT_time": "2025-10-30-10-44-54",
         "endT_time": "",
-        "Running_flag": "2",
+        "Running_flag": "6",
         "running_time_last": "43",
         "running_time_now": "62",
         "running_time_first": "",

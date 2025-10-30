@@ -99,6 +99,22 @@ def fail_info():
     else:
         return ""
 
+def hw_mac():
+    mac_file_path = '/tmp/sost_tmp/mac'
+    # 判断文件夹是否存在，判断文件是否存在
+    if not os.path.exists('mac_file_path'):
+        os.system(f'mkdir -p /tmp/sost_tmp && touch {mac_file_path}')
+
+    # 采集BMC mac地址
+    mac = ipmi_run(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''' )
+    if mac != '' and mac != '00:00:00:00:00:00':
+        with open(mac_file_path,'w') as f:
+            f.write(mac)
+        return mac
+    else:
+        log._sd("swc未采集到bmc_mac地址信息!读取旧信息替代!")
+        return open(mac_file_path,'r').read().strip()
+
 def return_get_data():
 
     """获取系统测试数据和状态信息"""
@@ -123,7 +139,7 @@ def return_get_data():
         'BMC_ver':bmc_ver(),
         'Bios_ver': os.popen("dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null").read().strip(),
         'sostVer': os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", ""),
-        'hw_mac':ipmi_run(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''' )
+        'hw_mac':hw_mac()
     }
 
     count = simple_json_get("Test_tmp","test_count") or "NA"
@@ -239,7 +255,7 @@ def get_running_test_type():
 
 def get_system_ip():
     """获取系统IP"""
-    ip = os.popen('''nmcli connection show 2>/dev/null | grep -vE "lo|--|NAME" | head -n 1 | awk '{print $1}' | xargs ifconfig | grep -i inet | awk '{print $2}' | grep -v :''').read().strip()
+    ip = os.popen('''nmcli connection show 2>/dev/null | grep -vE "lo|--|NAME" | head -n 1 | awk '{print $1}' | xargs ifconfig | grep -i inet | awk '{print $2}' | grep -v : | grep -v 127.0.0.1 ''').read().strip()
     
     if not ip:
         try:
