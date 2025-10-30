@@ -575,14 +575,18 @@ def bmc_stability(typee='',folder_path=''):
     #      3 -> raw
 
     # 增加检查判断iBMC 返回错误
-    if bmc_Chip[0] == 'Hisilicon-Hi1711' and 'cold' in typee:
-        log._error('iBMC unsupport cold reset!')
+    if bmc_Chip()[0] == 'Hisilicon-Hi1711':
+        if typee == 'bmc_warm_kcs' or typee == 'bmc_warm_lan':
+            log._error('iBMC unsupport warm reset!')
 
-    bmc_ip,bmc_user,bmc_pass = get_bmc_info()
+    if typee == 'bmc_warm_kcs' or typee == 'bmc_cold_kcs':
+        bmc_ip,bmc_user,bmc_pass = '','',''
+    else:
+        bmc_ip,bmc_user,bmc_pass = get_bmc_info()
     log.os_run("sost -m bmc")
     # debug print ---------------------
     # Set Bmc Test Mode!
-    # one Cycles Time : 240 + 25 = 265s -> 4m25s
+    # v1.1.1 -> one Cycles Time : 360 + 25 = 385s -> 6m25s
     while True:
         bmc_stability_logo(bmc_ip)
         swc_EndTest()
@@ -591,7 +595,11 @@ def bmc_stability(typee='',folder_path=''):
         runTime("0")
         print("\n")
         # check bmc state
-        if not bmc_alive(bmc_ip,bmc_user,bmc_pass):log._error('BMC UnAlive! Please Check BMC Status!')
+        if typee == 'bmc_warm_kcs' or typee == 'bmc_cold_kcs':
+            log._dp("Now Test is : kcs , Not checking BMC survival!")
+        else:
+            if not bmc_alive(bmc_ip,bmc_user,bmc_pass):
+                log._error('BMC UnAlive! Please Check BMC Status!')
         # Collect SystemInformation
         test_config("1",count,folder_path)
         log.json_set("Test_tmp","test_count",str(int(count)+1))
@@ -617,8 +625,8 @@ def bmc_stability(typee='',folder_path=''):
         if count!="0":runTime("3")
         runTime("4")
         runTime("1")
-        # v1.1.1 -> wait bmc restart 240s -> 300s
-        wait_time_ctrl_C(300,'\033[33m!Waiting for BMC restart, prohibit closing SOST process!\033[0m')
+        # v1.1.1 -> wait bmc restart 300s -> 360s
+        wait_time_ctrl_C(360,'\033[33m!Waiting for BMC restart, prohibit closing SOST process!\033[0m')
 
 # BMC quickly Create Audit Log
 def bmc_Create_audit_log(bmc_ip,bmc_user,bmc_pass):

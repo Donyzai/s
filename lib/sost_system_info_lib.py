@@ -33,6 +33,7 @@ def retry_get_ipmi_info(command='',text=''):
         log._pr(text.ljust(40) + f"\033[33m[      {str(int(i)+1)}      ]\033[0m")
         result = log.os_popen(command)
         log.save_to_file(filename=retry_ipmi_log,text=result)
+        
     log._pr(text.ljust(40) + f"\033[32m[   Complete  ]\033[0m")
     log._dp(text.ljust(40) + f'Successfully executed command {str(int(ipmi_sensdr_retry_count)+1)} times in a row')
     

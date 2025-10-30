@@ -1,18 +1,5 @@
-< sost_20251029-170222_dlev_0   > : Communication with SWC server failed!
-< sost_20251029-170222_dlev_0   > : SOST is the latest version
-< sost_20251029-170222_dlev_0   > : Storcli64 Not install!
-< sost_20251029-170222_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251029-170224_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251029-170249_dlev_0   > : functestconfig Running time : 1761728569 s
-< sost_20251029-170250_dlev_0   > : []
-< sost_20251029-170252_dlev_0   > : BMC IPMI SensorAttempt                  Successfully executed command 3 times in a row
-< sost_20251029-170254_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device', 'FAN', 'CMOS', 'ac', 'dc']
-< sost_20251029-170309_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251029-170315_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251029-170316_dlev_0   > : functestconfig Running time : 1761728596 s
-< sost_20251029-170318_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251029-170318_dlev_0   > : functestconfig Running time : 1761728598 s
-< sost_20251029-170320_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251029-170320_dlev_0   > : functestconfig Running time : 1761728600 s
-< sost_20251029-170324_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251029-170324_dlev_0   > : functestconfig Running time : 1761728604 s
+< sost_20251030-104451_dlev_0   > : Communication with SWC server failed!
+< sost_20251030-104451_dlev_0   > : SOST is the latest version
+< sost_20251030-104451_dlev_0   > : Storcli64 Not install!
+< sost_20251030-104451_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251030-104454_dlev_0   > : Bmc IP Ping is UnAlive!

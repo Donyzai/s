@@ -1,4 +1,4 @@
-< sost_20251029-170222_print    > : ════════════════════════════════════════════════════════════════════════════
+< sost_20251030-104451_print    > : ════════════════════════════════════════════════════════════════════════════
 |                                             ░██                          |
 |                    ██████  ██████   ██████ ██████                        |
 |                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
@@ -19,293 +19,5 @@
 |  15 . BMC Remote bmc reset warm  |  19 . NA                              |
 |  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
 ════════════════════════════════════════════════════════════════════════════
-< sost Your choice : > : q
-[31m< sost_20251029-170223_error    > : User.Input.Error[0m
-< sost_20251029-170224_print    > : ══════════════════════════════════════════════════════
-||                                     ██           ||
-||                                    ░██           ||
-||           ██████  ██████   ██████ ██████         ||
-||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
-||         ░░█████ ░██   ░██░░█████   ░██           ||
-||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
-||          ██████ ░░██████  ██████   ░░██          ||
-||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
-══════════════════════════════════════════════════════
-|| sost.ver : 1.1.2        || State : [32mPass[0m          || 
-||--------------------------------------------------||
-|| Type : reboot           || Count : 1             ||
-══════════════════════════════════════════════════════
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost > Please Wait Times `Ctrl + c` exit() : 22s
-< sost > Please Wait Times `Ctrl + c` exit() : 21s
-< sost > Please Wait Times `Ctrl + c` exit() : 20s
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost_20251029-170249_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170249_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170250_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
-< sost_20251029-170251_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170251_print    > : BMC IPMI SensorAttempt                  [33m[      1      ][0m
-< sost_20251029-170252_print    > : BMC IPMI SensorAttempt                  [33m[      2      ][0m
-< sost_20251029-170252_print    > : BMC IPMI SensorAttempt                  [32m[   Complete  ][0m
-< sost_20251029-170254_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170254_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170254_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170254_print    > : BMC SDR info Attempt                    [33m[      1      ][0m
-< sost_20251029-170255_print    > : BMC SDR info Attempt                    [33m[      2      ][0m
-[31m< sost_20251029-170255_error    > : os_popen command : ipmitool sdr list 2>/dev/null error![0m
-< sost_20251029-170255_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251029-170255_print    > : [32m
-    ════════════════════════════════════════════════════════
-    ||         ███████                                    ||
-    ||        ░██░░░░██                                   || 
-    ||        ░██   ░██  ██████    ██████  ██████         ||
-    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
-    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
-    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
-    ||        ░██      ░░████████ ██████  ██████          ||
-    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
-    ════════════════════════════════════════════════════════[0m
-< sost_20251029-170255_print    > : ===============================================================
-< sost_20251029-170255_print    > : Test type        : reboot
-< sost_20251029-170255_print    > : Test Count       : 2
-< sost_20251029-170255_print    > : Test Folder      : /root/reboot
-< sost_20251029-170255_print    > : Test Status      : Pass
-< sost_20251029-170255_print    > : Test Start Time  : 2025-10-21-09-22-16
-< sost_20251029-170255_print    > : Test End   Time  : 2025-10-29-17-02-55
-< sost_20251029-170255_print    > : ===============================================================
-< sost_20251029-170255_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-2.html
-[31m< sost_20251029-170255_error    > : User.Exit.Test![0m
-< sost_20251029-170309_print    > : ══════════════════════════════════════════════════════
-||                                     ██           ||
-||                                    ░██           ||
-||           ██████  ██████   ██████ ██████         ||
-||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
-||         ░░█████ ░██   ░██░░█████   ░██           ||
-||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
-||          ██████ ░░██████  ██████   ░░██          ||
-||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
-══════════════════════════════════════════════════════
-|| sost.ver : 1.1.2        || State : [32mPass[0m          || 
-||--------------------------------------------------||
-|| Type : reboot           || Count : 2             ||
-══════════════════════════════════════════════════════
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost_20251029-170312_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251029-170312_print    > : [32m
-    ════════════════════════════════════════════════════════
-    ||         ███████                                    ||
-    ||        ░██░░░░██                                   || 
-    ||        ░██   ░██  ██████    ██████  ██████         ||
-    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
-    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
-    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
-    ||        ░██      ░░████████ ██████  ██████          ||
-    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
-    ════════════════════════════════════════════════════════[0m
-< sost_20251029-170312_print    > : ===============================================================
-< sost_20251029-170312_print    > : Test type        : reboot
-< sost_20251029-170312_print    > : Test Count       : 2
-< sost_20251029-170312_print    > : Test Folder      : /root/reboot
-< sost_20251029-170312_print    > : Test Status      : Pass
-< sost_20251029-170312_print    > : Test Start Time  : 2025-10-21-09-22-16
-< sost_20251029-170312_print    > : Test End   Time  : 2025-10-29-17-03-12
-< sost_20251029-170312_print    > : ===============================================================
-< sost_20251029-170312_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-2.html
-< sost_20251029-170316_print    > : ══════════════════════════════════════════════════════
-||                                     ██           ||
-||                                    ░██           ||
-||           ██████  ██████   ██████ ██████         ||
-||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
-||         ░░█████ ░██   ░██░░█████   ░██           ||
-||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
-||          ██████ ░░██████  ██████   ░░██          ||
-||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
-══════════════════════════════════════════════════════
-|| sost.ver : 1.1.2        || State : [32mPass[0m          || 
-||--------------------------------------------------||
-|| Type : reboot           || Count : 2             ||
-══════════════════════════════════════════════════════
-< sost_20251029-170316_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170316_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-[31m< sost_20251029-170316_error    > : os_run command : sync -f && sync error![0m
-< sost_20251029-170316_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251029-170316_print    > : [32m
-    ════════════════════════════════════════════════════════
-    ||         ███████                                    ||
-    ||        ░██░░░░██                                   || 
-    ||        ░██   ░██  ██████    ██████  ██████         ||
-    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
-    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
-    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
-    ||        ░██      ░░████████ ██████  ██████          ||
-    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
-    ════════════════════════════════════════════════════════[0m
-< sost_20251029-170316_print    > : ===============================================================
-< sost_20251029-170316_print    > : Test type        : reboot
-< sost_20251029-170316_print    > : Test Count       : 3
-< sost_20251029-170316_print    > : Test Folder      : /root/reboot
-< sost_20251029-170316_print    > : Test Status      : Pass
-< sost_20251029-170316_print    > : Test Start Time  : 2025-10-21-09-22-16
-< sost_20251029-170316_print    > : Test End   Time  : 2025-10-29-17-03-16
-< sost_20251029-170316_print    > : ===============================================================
-< sost_20251029-170317_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-3.html
-[31m< sost_20251029-170317_error    > : User.Exit.Test![0m
-< sost_20251029-170318_print    > : ══════════════════════════════════════════════════════
-||                                     ██           ||
-||                                    ░██           ||
-||           ██████  ██████   ██████ ██████         ||
-||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
-||         ░░█████ ░██   ░██░░█████   ░██           ||
-||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
-||          ██████ ░░██████  ██████   ░░██          ||
-||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
-══════════════════════════════════════════════════════
-|| sost.ver : 1.1.2        || State : [32mPass[0m          || 
-||--------------------------------------------------||
-|| Type : reboot           || Count : 3             ||
-══════════════════════════════════════════════════════
-< sost_20251029-170318_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170318_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-[31m< sost_20251029-170319_error    > : os_run command : sync -f && sync error![0m
-< sost_20251029-170319_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251029-170319_print    > : [32m
-    ════════════════════════════════════════════════════════
-    ||         ███████                                    ||
-    ||        ░██░░░░██                                   || 
-    ||        ░██   ░██  ██████    ██████  ██████         ||
-    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
-    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
-    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
-    ||        ░██      ░░████████ ██████  ██████          ||
-    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
-    ════════════════════════════════════════════════════════[0m
-< sost_20251029-170319_print    > : ===============================================================
-< sost_20251029-170319_print    > : Test type        : reboot
-< sost_20251029-170319_print    > : Test Count       : 4
-< sost_20251029-170319_print    > : Test Folder      : /root/reboot
-< sost_20251029-170319_print    > : Test Status      : Pass
-< sost_20251029-170319_print    > : Test Start Time  : 2025-10-21-09-22-16
-< sost_20251029-170319_print    > : Test End   Time  : 2025-10-29-17-03-19
-< sost_20251029-170319_print    > : ===============================================================
-< sost_20251029-170319_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-4.html
-[31m< sost_20251029-170319_error    > : User.Exit.Test![0m
-< sost_20251029-170320_print    > : ══════════════════════════════════════════════════════
-||                                     ██           ||
-||                                    ░██           ||
-||           ██████  ██████   ██████ ██████         ||
-||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
-||         ░░█████ ░██   ░██░░█████   ░██           ||
-||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
-||          ██████ ░░██████  ██████   ░░██          ||
-||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
-══════════════════════════════════════════════════════
-|| sost.ver : 1.1.2        || State : [32mPass[0m          || 
-||--------------------------------------------------||
-|| Type : reboot           || Count : 4             ||
-══════════════════════════════════════════════════════
-< sost_20251029-170321_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170321_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170321_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170322_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170322_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170322_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170322_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170322_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170322_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
-[31m< sost_20251029-170322_error    > : os_popen command : dmesg error![0m
-< sost_20251029-170322_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251029-170322_print    > : [32m
-    ════════════════════════════════════════════════════════
-    ||         ███████                                    ||
-    ||        ░██░░░░██                                   || 
-    ||        ░██   ░██  ██████    ██████  ██████         ||
-    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
-    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
-    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
-    ||        ░██      ░░████████ ██████  ██████          ||
-    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
-    ════════════════════════════════════════════════════════[0m
-< sost_20251029-170322_print    > : ===============================================================
-< sost_20251029-170322_print    > : Test type        : reboot
-< sost_20251029-170322_print    > : Test Count       : 5
-< sost_20251029-170322_print    > : Test Folder      : /root/reboot
-< sost_20251029-170322_print    > : Test Status      : Pass
-< sost_20251029-170322_print    > : Test Start Time  : 2025-10-21-09-22-16
-< sost_20251029-170322_print    > : Test End   Time  : 2025-10-29-17-03-22
-< sost_20251029-170322_print    > : ===============================================================
-< sost_20251029-170322_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-5.html
-[31m< sost_20251029-170322_error    > : User.Exit.Test![0m
-< sost_20251029-170324_print    > : ══════════════════════════════════════════════════════
-||                                     ██           ||
-||                                    ░██           ||
-||           ██████  ██████   ██████ ██████         ||
-||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
-||         ░░█████ ░██   ░██░░█████   ░██           ||
-||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
-||          ██████ ░░██████  ██████   ░░██          ||
-||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
-══════════════════════════════════════════════════════
-|| sost.ver : 1.1.2        || State : [32mPass[0m          || 
-||--------------------------------------------------||
-|| Type : reboot           || Count : 5             ||
-══════════════════════════════════════════════════════
-< sost_20251029-170324_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170324_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170325_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170325_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170325_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170325_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170325_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20251029-170325_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
-[31m< sost_20251029-170325_error    > : os_popen command : lsusb | wc -l error![0m
-< sost_20251029-170325_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20251029-170325_print    > : [32m
-    ════════════════════════════════════════════════════════
-    ||         ███████                                    ||
-    ||        ░██░░░░██                                   || 
-    ||        ░██   ░██  ██████    ██████  ██████         ||
-    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
-    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
-    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
-    ||        ░██      ░░████████ ██████  ██████          ||
-    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
-    ════════════════════════════════════════════════════════[0m
-< sost_20251029-170325_print    > : ===============================================================
-< sost_20251029-170325_print    > : Test type        : reboot
-< sost_20251029-170325_print    > : Test Count       : 6
-< sost_20251029-170325_print    > : Test Folder      : /root/reboot
-< sost_20251029-170325_print    > : Test Status      : Pass
-< sost_20251029-170325_print    > : Test Start Time  : 2025-10-21-09-22-16
-< sost_20251029-170325_print    > : Test End   Time  : 2025-10-29-17-03-25
-< sost_20251029-170325_print    > : ===============================================================
-< sost_20251029-170325_print    > : Stability test report(稳定性测试报告生成成功) : /root/reboot/sost-Result-Pass-6.html
-[31m< sost_20251029-170325_error    > : User.Exit.Test![0m
+< sost Your choice : > : 5
+< sost_20251030-104453_print    > : BMC Status Checking Status......
