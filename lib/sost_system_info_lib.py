@@ -75,7 +75,7 @@ def failc_logo(save_config=True):
 def fail_info(error_type,error_info,file1,file2):
     fail_exit_flags = log.json_get("Test_Config","fail_exit_flags")
     fail_exit_blacklist = log.json_get("Test_Config","fail_exit_blacklist").strip().split(",")
-    osIP = log.os_popen(''' ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v '127.0.0.1' ''').strip().replace("\n","|")
+    osIP = log.os_popen(r''' ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v '127.0.0.1' ''').strip().replace("\n","|")
     osVer  = log.os_popen('cat /etc/os-release | grep -i PRETTY_NAME=').replace('PRETTY_NAME=','').strip()
     BMC_IP = log.os_popen('''ipmitool lan print | grep -i 'IP Address' | grep -vi source | awk '{print $4}' ''').strip()
     test_count = log.json_get("Test_tmp","test_count").strip()
@@ -404,7 +404,7 @@ def sata_collect_info(disk_name):
         result.append(sata_disk_seri)
     # sata_disk_size  4
     sata_disk_size = log.os_popen(
-        f"smartctl -i /dev/{disk_name} | grep -i 'User Capacity' | grep -oP '\[\K[^]]+'").strip()
+        fr"smartctl -i /dev/{disk_name} | grep -i 'User Capacity' | grep -oP '\[\K[^]]+'").strip()
     if sata_disk_size == "":
         result.append("N/A")
     else:
@@ -679,13 +679,13 @@ def check_rebooting_time(flags, path, count):
         log.os_run(f"rm -rf {path}/fail.txt")
 
     max_time = int(log.json_get("Test_Config","Maximum_restart_time").strip())
-    end_time = log.os_popen(f"cat {path}/debug/end_time.txt").strip()
+    end_time = log.os_popen(f"cat {path}/debug/end_time.txt 2>/dev/null").strip()
     start_time = log.os_popen(f"cat {path}/debug/start_time.txt").strip()
     rebooting_time = int(start_time) - int(end_time)
     if int(rebooting_time) > max_time:
         log._pr("Restart TimeTooLong ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
         error_tmp = f'System shutdown time   : {str(end_time)}\n< sost > System on time         : {str(start_time)}\n< sost > Phase difference time  : {str(rebooting_time)}s'
-        fail_info('restart TimeTool Long',error_tmp,f'{path}/debug/start_time.txt',f"cat {path}/debug/end_time.txt")
+        fail_info('restart TimeTool Long',error_tmp,f'{path}/debug/start_time.txt',f"cat {path}/debug/end_time.txt ")
     else:
         log._pr("Restart TimeTooLong ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
 
@@ -1258,7 +1258,7 @@ def os_disk_info_1(flags, folder_path, count):
                 try:nvme_cpus = str(nvme_cpus[0] + "-" + nvme_cpus[-1])
                 except:nvme_cpus = "GetFail!"
                 nvme_health = strings_judeging(log.os_popen(f"smartctl -H /dev/{nvme_name} | grep -i result | awk '{{print $6}}'").strip())
-                nvme_Size = strings_judeging(log.os_popen(f"smartctl -i /dev/{nvme_name} | grep -i 'Total NVM Capacity:' | awk 'match($0, /\[([^][]+)\]/, arr) {{print arr[1]}}' ").strip())
+                nvme_Size = strings_judeging(log.os_popen(fr"smartctl -i /dev/{nvme_name} | grep -i 'Total NVM Capacity:' | awk 'match($0, /\[([^][]+)\]/, arr) {{print arr[1]}}' ").strip())
                 print_save_text(flags=flags, folder_path=folder_path, type="hddinfo", count=count,
                                 text="".ljust(3) + str(disk_num).ljust(9) + nvme_name.ljust(14) + nvme_Size.ljust(
                                     10) + nvme_Namespace.ljust(6) + nvme_Node.ljust(6) + nvme_cpus.ljust(
@@ -1358,56 +1358,69 @@ def os_disk_info(flags, folder_path, count):
 def backboard_info(flags, folder_path, count):
     if log.json_get('collect_array',"backboar",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
-    if log.os_popen("ipmitool fru 2>/dev/null| grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2 | wc -l").strip()=="0":
+
+    log.os_run("ipmitool fru > /tmp/sost_tmp/sost_tmp")
+    log.os_run('cat /tmp/sost_tmp/sost_tmp')
+
+    if log.os_popen("cat /tmp/sost_tmp/sost_tmp 2>/dev/null| grep 'FRU Device Description :' | grep BP | wc -l").strip()=="0":
         if flags == "1" or flags == "0":
             log._pr("BMC Backboard Info collect WARN!".ljust(40) + "\033[33m[Warn]\033[0m   \033[33m[Warn]\033[0m")
             print_save_text(flags=flags, folder_path=folder_path, type="backboard", count=count,text="BP_INFO : NA")
             return 0
 
-    print_save_text(flags=flags, folder_path=folder_path, type="backboard", count=count,
-                    text="[BP_NAME]".ljust(30) + "[BP_Mfg_Date]".ljust(30) + "[BP_Mfg]".ljust(
-                        30) + "[BP_Product]".ljust(30) + "[BP_Serial]".ljust(30) + "[BP_Part_Number]".ljust(
-                        30) + "[BP_Extra]")
-    log.os_run("ipmitool fru > /tmp/sost_tmp/sost_tmp")
-    log.os_run('cat /tmp/sost_tmp/sost_tmp')
-    # 判断FRU中是否有BP信息
+    title_num = log.os_popen("cat /tmp/sost_tmp/sost_tmp | grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2 | wc -l ").strip()
+    print_save_text(flags=flags, folder_path=folder_path, type="backboard", count=count,text=f"fru backboard title num : {title_num}")
+
+
+    # if log.os_popen("ipmitool fru 2>/dev/null| grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2 | wc -l").strip()=="0":
+    #     if flags == "1" or flags == "0":
+    #         log._pr("BMC Backboard Info collect WARN!".ljust(40) + "\033[33m[Warn]\033[0m   \033[33m[Warn]\033[0m")
+    #         print_save_text(flags=flags, folder_path=folder_path, type="backboard", count=count,text="BP_INFO : NA")
+    #         return 0
+
+
+    # print_save_text(flags=flags, folder_path=folder_path, type="backboard", count=count,
+    #                 text="[BP_NAME]".ljust(30) + "[BP_Mfg_Date]".ljust(30) + "[BP_Mfg]".ljust(
+    #                     30) + "[BP_Product]".ljust(30) + "[BP_Serial]".ljust(30) + "[BP_Part_Number]".ljust(
+    #                     30) + "[BP_Extra]")
+    # log.os_run("ipmitool fru > /tmp/sost_tmp/sost_tmp")
+    # log.os_run('cat /tmp/sost_tmp/sost_tmp')
+    # # 判断FRU中是否有BP信息
     
-    for bp_title in log.os_popen(
-            "cat /tmp/sost_tmp/sost_tmp | grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2").strip().split():
-        if log.os_popen(f"cat /tmp/sost_tmp/sost_tmp | grep -vi unknown | grep -A1 ' {bp_title} ' | tail -n 1").strip().replace(
-                "\n", "") == "":
-            continue
-        bp_name = bp_title
+    # for bp_title in log.os_popen("cat /tmp/sost_tmp/sost_tmp | grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2").strip().split():
+    #     if log.os_popen(f"cat /tmp/sost_tmp/sost_tmp | grep -vi unknown | grep -A1 ' {bp_title} ' | tail -n 1").strip().replace("\n", "") == "":
+    #         continue
+    #     bp_name = bp_title
 
-        bp_mfg_date = log.os_popen(
-            f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'mfg date' | cut -d ':' -f 2").replace("\n", "")
-        if bp_mfg_date == "": var = bp_mfg_date == "-"
+    #     bp_mfg_date = log.os_popen(
+    #         f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'mfg date' | cut -d ':' -f 2").replace("\n", "")
+    #     if bp_mfg_date == "": var = bp_mfg_date == "-"
 
-        bp_mfg = log.os_popen(
-            f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'mfg' | grep -vi date | cut -d ':' -f 2").replace("\n",
-                                                                                                                  "")
-        if bp_mfg == "": bp_mfg == "-"
-        bp_Product = log.os_popen(
-            f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Product' | cut -d ':' -f 2").replace("\n", "")
-        if bp_Product == "": bp_Product == "-"
+    #     bp_mfg = log.os_popen(
+    #         f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'mfg' | grep -vi date | cut -d ':' -f 2").replace("\n",
+    #                                                                                                               "")
+    #     if bp_mfg == "": bp_mfg == "-"
+    #     bp_Product = log.os_popen(
+    #         f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Product' | cut -d ':' -f 2").replace("\n", "")
+    #     if bp_Product == "": bp_Product == "-"
 
-        bp_Serial = log.os_popen(f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Serial' | cut -d ':' -f 2").replace(
-            "\n", "")
-        if bp_Serial == "": bp_Serial == "-"
+    #     bp_Serial = log.os_popen(f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Serial' | cut -d ':' -f 2").replace(
+    #         "\n", "")
+    #     if bp_Serial == "": bp_Serial == "-"
 
-        bp_Part_Number = log.os_popen(
-            f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Part Number' | cut -d ':' -f 2").replace("\n", "")
-        if bp_Part_Number == "": bp_Part_Number == "-"
+    #     bp_Part_Number = log.os_popen(
+    #         f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Part Number' | cut -d ':' -f 2").replace("\n", "")
+    #     if bp_Part_Number == "": bp_Part_Number == "-"
 
-        bp_Extra = log.os_popen(f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Extra' | cut -d ':' -f 2").replace(
-            "\n", "")
-        if bp_Extra == "": bp_Extra == "-"
+    #     bp_Extra = log.os_popen(f"cat /tmp/sost_tmp/sost_tmp | grep -A7 {bp_title} | grep -i 'Extra' | cut -d ':' -f 2").replace(
+    #         "\n", "")
+    #     if bp_Extra == "": bp_Extra == "-"
 
-        print_save_text(flags=flags, folder_path=folder_path, type="backboard", count=count,
-                        text=bp_name.ljust(30) + bp_mfg_date.ljust(30) + bp_mfg.ljust(30) + bp_Product.ljust(
-                            30) + bp_Serial.ljust(30) + bp_Part_Number.ljust(30) + bp_Extra)
-    log.os_popen("cat /tmp/sost_tmp/sost_tmp")
-    log.os_popen("rm -rf /tmp/sost_tmp/sost_tmp")
+    #     print_save_text(flags=flags, folder_path=folder_path, type="backboard", count=count,
+    #                     text=bp_name.ljust(30) + bp_mfg_date.ljust(30) + bp_mfg.ljust(30) + bp_Product.ljust(
+    #                         30) + bp_Serial.ljust(30) + bp_Part_Number.ljust(30) + bp_Extra)
+    # log.os_popen("cat /tmp/sost_tmp/sost_tmp")
+    # log.os_popen("rm -rf /tmp/sost_tmp/sost_tmp")
     
     if flags == "1" : 
         if diff_information(count,folder_path,"backboard"):
@@ -1525,7 +1538,7 @@ def bmc_survival_check_ibmc(flags, path, count):
     bmcip = log.os_popen(''' ipmitool lan print | grep -i 'ip address' | grep -vi source | cut -d ':' -f 2 | tr -d ' *' ''').strip()
     username = log.json_get("BMC_Survival_Config", "BMC_Username").strip()
     password = log.json_get("BMC_Survival_Config", "BMC_Password").strip()
-    osip_arry = log.os_popen(''' ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v '127.0.0.1' ''').split()
+    osip_arry = log.os_popen(r''' ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v '127.0.0.1' ''').split()
     log._dp(f"iBMC BMC Survival Login osip arry : {str(osip_arry)}")
     if osip_arry == []:log._error("OS Not Found IP Address!")
     if flags == "1" :
@@ -1709,7 +1722,7 @@ def bmc_survival_check_2600(flags, path, count):
             # -------------------------------------------------------------------------
             response = requests.post(url=url, headers=headers, data=data, verify=False)
             cookie = response.cookies
-            re_cookie = '(?<=<RequestsCookieJar\[<Cookie)(.+?)(?= for )'
+            re_cookie = r'(?<=<RequestsCookieJar\[<Cookie)(.+?)(?= for )'
             cookie = re.findall(re_cookie, str(cookie), re.S)[0].strip()
             re_CSRFToken = '(?<="CSRFToken": ")(.+?)(?=", "channel": )'
             csrf_token = re.findall(re_CSRFToken, response.text, re.S)[0]

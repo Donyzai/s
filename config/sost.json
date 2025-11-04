@@ -12,7 +12,7 @@
         "max_count": "",
         "collect_cmd": "",
         "Maximum_restart_time": "900",
-        "simple_test_flags": "bmc",
+        "simple_test_flags": "",
         "result_html": "1",
         "ipmi_sensdr_retry_count": "0",
         "running_time_max": "60"
@@ -52,7 +52,7 @@
         "run_command": "bmc_warm_kcs",
         "startT_time": "2025-10-30-10-44-54",
         "endT_time": "",
-        "Running_flag": "6",
+        "Running_flag": "0",
         "running_time_last": "43",
         "running_time_now": "62",
         "running_time_first": "",

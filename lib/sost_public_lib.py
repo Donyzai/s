@@ -57,18 +57,18 @@ def update_check():
 
     sost_server_ip = log.json_get("sost","update_Web_server_ip",filename='version').strip()
 
-    if swc_service_connectivity():
-        log._dp("Communication with SWC server successful!")
-    else:
+    if not swc_service_connectivity():
         log._dp("Communication with SWC server failed!")
+        return 0
 
     update_flag = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/uflag 2>/dev/null").replace("\n","").strip()
+    if update_flag == '0' or update_flag == '':return 0
     remote_sha256 = log.os_popen(f"curl -X GET http://{sost_server_ip}/sost/sostsha256 2>/dev/null").replace("\n","").strip()
     local_sha256 = log.os_popen('sost -i sha256').replace("\n","").strip()
     if local_sha256 == '0000000000000000000000000000000000000000000000000000000000000000':
         return False
 
-    if update_flag == '' or remote_sha256 == '' or local_sha256 == '':
+    if remote_sha256 == '' or local_sha256 == '':
         log._dp("SOST update_server_ip Error!")
         return 0
     # 检查sha256值是否一致，如果一致则不需要更新
@@ -1686,7 +1686,7 @@ def runTime(flags,se_flag=''):
         last_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/last_time.txt"
         end_time_file_path = str(log.json_get("Test_tmp", "test_folder_path")) + "/debug/end_time.txt"
         now_timem = time.time()
-        end_time = log.os_popen(f"cat {end_time_file_path}")
+        end_time = log.os_popen(f"cat {end_time_file_path} 2>/dev/null")
         result = str(int(now_timem) - int(end_time))
         if end_time == "" or now_timem == "": log._error("end.time.now.time.Error.Exit!")
         with open(last_time_file_path,"w") as f:
@@ -1742,7 +1742,7 @@ def runTime(flags,se_flag=''):
             func_testconfig_running_time = func_testconfig_end_time - func_testconfig_start_time
             with open(debug_file_path,"a") as f:
                 f.write("=" * 40 + "\n")
-                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n"+f"\n< sost > functestconfig Running time : {str(func_testconfig_running_time)} s"+"\n")
+                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t\t : {now_time()}"+f"\n< sost > functestconfig Running time : {str(func_testconfig_running_time)} s"+"\n")
                 f.write("=" * 40 + "\n")
                 os.fsync(f.fileno())
     else:
