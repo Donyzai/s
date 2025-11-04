@@ -1,7 +1,4 @@
-< sost_20251103-195007_dlev_0   > : Communication with SWC server failed!
-< sost_20251103-195007_dlev_0   > : Storcli64 Not install!
-< sost_20251103-195007_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251104-090849_dlev_0   > : RHEL 10.0 Only Text Mode Running Test!
-< sost_20251104-090849_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251104-090852_dlev_0   > : RHEL 10.0 Only Text Mode Running Test!
-< sost_20251104-090852_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251104-132523_dlev_0   > : Communication with SWC server failed!
+< sost_20251104-132524_dlev_0   > : Storcli64 Not install!
+< sost_20251104-132524_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251104-132530_dlev_0   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin

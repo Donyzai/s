@@ -1,13 +1,13 @@
-< sost_20251103-195007_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+< sost_20251104-132523_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
 0
 
-< sost_20251103-195007_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+< sost_20251104-132523_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20251103-195007_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+< sost_20251104-132523_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20251103-195007_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+< sost_20251104-132523_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
 0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
 00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
 10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
@@ -27,74 +27,169 @@ e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
 
-< sost_20251103-195007_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+< sost_20251104-132523_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
 52
 
-< sost_20251103-195007_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+< sost_20251104-132523_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
  "ASPEED-2600",
 
-< sost_20251103-195007_popen_com> : whereis nvme | awk '{print $2}' -> Result
+< sost_20251104-132524_popen_com> : whereis nvme | awk '{print $2}' -> Result
 /usr/sbin/nvme
 
-< sost_20251103-195007_popen_com> : whereis ipmitool | awk '{print $2}' -> Result
+< sost_20251104-132524_popen_com> : whereis ipmitool | awk '{print $2}' -> Result
 /usr/bin/ipmitool
 
-< sost_20251103-195007_popen_com> : whereis numactl | awk '{print $2}' -> Result
+< sost_20251104-132524_popen_com> : whereis numactl | awk '{print $2}' -> Result
 /usr/bin/numactl
 
-< sost_20251104-090849_popen_com> : tty -> Result
-not a tty
+< sost_20251104-132526_popen_com> : ipmitool mc info 2>/dev/null| grep -i Product | wc -l -> Result
+2
 
-< sost_20251104-090849_popen_com> : cat /etc/os-release | grep -i ubuntu | wc -l -> Result
+< sost_20251104-132527_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
 0
 
-< sost_20251104-090849_popen_com> : ps aux | grep -i auto_test | grep -v grep | grep -v sd | wc -l -> Result
+< sost_20251104-132527_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20251104-090849_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
-PRETTY_NAME="Red Hat Enterprise Linux 10.0 (Coughlan)"
-
-< sost_20251104-090849_popen_com> : cat /etc/passwd | grep -i 'root::0:0' | wc -l -> Result
+< sost_20251104-132527_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20251104-090849_popen_com> : cat /etc/os-release | grep -w VERSION= | tr -d ' ' -> Result
-VERSION="10.0(Coughlan)"
+< sost_20251104-132527_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
-< sost_20251104-090849_popen_com> : systemctl get-default -> Result
-multi-user.target
 
-< sost_20251104-090849_popen_com> : cat /etc/ssh/sshd_config | grep -i '#PermitEmptyPasswords' -> Result
+< sost_20251104-132527_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
 
-< sost_20251104-090849_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
-PRETTY_NAME="Red Hat Enterprise Linux 10.0 (Coughlan)"
+< sost_20251104-132527_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
 
-< sost_20251104-090850_popen_com> : cat /root/bmc_warm_kcs/debug/end_time.txt 2>/dev/null -> Result
+< sost_20251104-132527_popen_com> : ipmitool sel clear -> Result
+Clearing SEL.  Please allow a few seconds to erase.
 
-< sost_20251104-090852_popen_com> : tty -> Result
-not a tty
-
-< sost_20251104-090852_popen_com> : cat /etc/os-release | grep -i ubuntu | wc -l -> Result
+< sost_20251104-132528_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
 0
 
-< sost_20251104-090852_popen_com> : ps aux | grep -i auto_test | grep -v grep | grep -v sd | wc -l -> Result
+< sost_20251104-132528_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20251104-090852_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
-PRETTY_NAME="Red Hat Enterprise Linux 10.0 (Coughlan)"
-
-< sost_20251104-090852_popen_com> : cat /etc/passwd | grep -i 'root::0:0' | wc -l -> Result
+< sost_20251104-132528_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20251104-090852_popen_com> : cat /etc/os-release | grep -w VERSION= | tr -d ' ' -> Result
-VERSION="10.0(Coughlan)"
+< sost_20251104-132528_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
-< sost_20251104-090852_popen_com> : systemctl get-default -> Result
-multi-user.target
 
-< sost_20251104-090852_popen_com> : cat /etc/ssh/sshd_config | grep -i '#PermitEmptyPasswords' -> Result
+< sost_20251104-132528_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
 
-< sost_20251104-090852_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
-PRETTY_NAME="Red Hat Enterprise Linux 10.0 (Coughlan)"
+< sost_20251104-132528_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
 
-< sost_20251104-090852_popen_com> : cat /root/bmc_warm_kcs/debug/end_time.txt 2>/dev/null -> Result
+< sost_20251104-132528_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{print $4}' 2>/dev/null -> Result
+192.168.60.223
+
+< sost_20251104-132528_popen_com> : ipmitool lan print 8 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{print $4}' -> Result
+192.168.60.113
+
+< sost_20251104-132529_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'subnet mask' | awk '{print $4}'  -> Result
+255.255.254.0
+
+< sost_20251104-132529_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'Default Gateway IP' | awk '{print $5}'  -> Result
+192.168.60.254
+
+< sost_20251104-132529_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'MAC Address' | awk '{print $4}'  -> Result
+18:9b:a5:83:3e:f1
+
+< sost_20251104-132529_popen_com> : ipmitool lan print 8 2>/dev/null | grep -vi source | grep -i 'subnet mask' | awk '{print $4}'  -> Result
+255.255.254.0
+
+< sost_20251104-132529_popen_com> : ipmitool lan print 8 2>/dev/null  | grep -vi source | grep -i 'Default Gateway IP' | awk '{print $5}'  -> Result
+192.168.60.254
+
+< sost_20251104-132529_popen_com> : ipmitool lan print 8 2>/dev/null  | grep -vi source | grep -i 'MAC Address' | awk '{print $4}'  -> Result
+18:9b:a5:83:3e:f0
+
+< sost_20251104-132529_popen_com> : ping -c 1 192.168.60.223 2>/dev/null -> Result
+PING 192.168.60.223 (192.168.60.223) 56(84) bytes of data.
+64 bytes from 192.168.60.223: icmp_seq=1 ttl=64 time=0.350 ms
+
+--- 192.168.60.223 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.350/0.350/0.350/0.000 ms
+
+< sost_20251104-132529_popen_com> : ping -c 1 192.168.60.113 2>/dev/null -> Result
+PING 192.168.60.113 (192.168.60.113) 56(84) bytes of data.
+64 bytes from 192.168.60.113: icmp_seq=1 ttl=64 time=0.334 ms
+
+--- 192.168.60.113 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.334/0.334/0.334/0.000 ms
+
+< sost_20251104-132530_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20251104-132530_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20251104-132530_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20251104-132530_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:a2:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 c0 00 00 00 c1 01 40 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20251104-132530_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20251104-132530_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
 
