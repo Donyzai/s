@@ -663,7 +663,6 @@ def bmc_Create_audit_log(bmc_ip,bmc_user,bmc_pass):
         for i in tqdm(range(test_num)):
             log.os_run(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} sel clear")
         log._pr("\n"+'='*120+"\n"+'Log generation successful, please log in to BMC to view the audit log list. GoodBye! \n'+"="*120+"\n")
-   
     try:
         bmc_chip_type = bmc_Chip()[0]
         if bmc_chip_type == "Phy-E2000S":
@@ -1357,6 +1356,17 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     else:
         log._error("User.Input.Err")
 
+def save_to_history(count):
+    test_type = log.json_get('Test_tmp','test_type')
+    result_folder = log.json_get('Test_tmp','test_folder_path')
+    test_result = log.json_get("Test_tmp","test_status")
+    start_time = log.os_popen(f"cat {result_folder}/sost_start_time.txt").strip()
+    bios_ver = log.os_popen(f"cat {result_folder}/system_info/fwinfo/fwinfo_0.txt | grep -i bios.ver | cut -d ':' -f 2 && cat {result_folder}/system_info/fwinfo/fwinfo_0.txt  | grep -i Bios-ReleaseTime | cut -d ':' -f 2 ").strip().replace("\n","")
+    bmcc_ver = log.os_popen(f"cat {result_folder}/system_info/fwinfo/fwinfo_0.txt  | grep -i bmc.ver | cut -d ':' -f 2").strip()
+    test_sha256 = log.json_get("Test_tmp","test_sha256").strip()
+    json_data = f'{{"time": "{start_time}", "type": "{test_type}", "count": {count}, "result": "{test_result}" , "bios.ver" : "{bios_ver}" , "bmc.ver" : "{bmcc_ver}" , "sha256" : "{test_sha256}"}}'
+    log.os_run(f' touch /opt/sost/history && echo "{json_data}" >> /opt/sost/history')
+    
 def defalt_path(show_flags=True):
     nowRunning_flag = log.json_get("Test_tmp","Running_flag").strip()
     if nowRunning_flag == "0" or nowRunning_flag == "4" or nowRunning_flag == "5" or nowRunning_flag == "6":
@@ -1430,16 +1440,8 @@ def defalt_path(show_flags=True):
     log.os_run("sed -i 's/root::/root:x:/' /etc/passwd")
     # history
     count = log.json_get('Test_tmp','test_count').strip()
-    if count != "0":
-        test_type = log.json_get('Test_tmp','test_type')
-        result_folder = log.json_get('Test_tmp','test_folder_path')
-        test_result = log.json_get("Test_tmp","test_status")
-        start_time = log.os_popen(f"cat {result_folder}/sost_start_time.txt").strip()
-        bios_ver = log.os_popen(f"cat {result_folder}/system_info/fwinfo/fwinfo_0.txt | grep -i bios.ver | cut -d ':' -f 2 && cat {result_folder}/system_info/fwinfo/fwinfo_0.txt  | grep -i Bios-ReleaseTime | cut -d ':' -f 2 ").strip().replace("\n","")
-        bmcc_ver = log.os_popen(f"cat {result_folder}/system_info/fwinfo/fwinfo_0.txt  | grep -i bmc.ver | cut -d ':' -f 2").strip()
-        json_data = f'{{"time": "{start_time}", "type": "{test_type}", "count": {count}, "result": "{test_result}" , "bios.ver" : "{bios_ver}" , "bmc.ver" : "{bmcc_ver}"}}'
-        log.os_run(f' touch /opt/sost/history && echo "{json_data}" >> /opt/sost/history')
-
+    if int(count) > 1:
+        save_to_history(count)
 
 def wait_time(runtime,flags=''):
     for i in reversed(range(int(runtime))):

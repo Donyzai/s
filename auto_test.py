@@ -6,8 +6,9 @@ log.debug_flags = str(log.json_get("debug","debug_flags",filename="debug"))
 log.os_run("mkdir -p /tmp/sost_tmp")
 
 # check tty
-if "pts" in log.os_popen("tty"):
-    log._exitt("The program cannot be interrupted in PTS!")
+if log.json_get("debug","noSendCommand",filename="debug")!="1":
+    if "pts" in log.os_popen("tty"):
+        log._exitt("The program cannot be interrupted in PTS!")
 
 #check stability status
 if str(log.os_popen("cat /etc/os-release | grep -i ubuntu | wc -l").strip())=="0":

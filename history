@@ -1,12 +1,3 @@
-{time: xxxx-xx-xx-xx-xx-xx, type: reboot, count: 10000, result: Pass , bios.ver : xxxxx.xxxx.xx.xx.xxx.xx , bmc.ver : xxxx.xx.x.x.x.x.x...xxx}{time: 2025-10-13-10-10-38, type: reboot, count: 2, result: FAILc , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-16-14-16-03, type: reboot, count: 1, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-16-14-16-03, type: reboot, count: 2, result: FAIL , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-17-10-07-59, type: bmc_warm_kcs, count: 5, result: NA , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-20-17-53-40, type: reboot, count: 1, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-21-09-22-16, type: reboot, count: 1, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-29-16-29-21, type: reboot, count: 2, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-29-16-29-21, type: reboot, count: 2, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-29-16-29-21, type: reboot, count: 3, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-29-16-29-21, type: reboot, count: 4, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-29-16-29-21, type: reboot, count: 5, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
-{time: 2025-10-29-16-29-21, type: reboot, count: 6, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00}
+{time: xxx, type: xxx, count: xxx, result: xxx , bios.ver : xxx, bmc.ver : xxx , sha256 : xxx}
+{time: 2025-11-04-13-36-59, type: reboot, count: 3, result: Fail , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00 , sha256 : bb3f797f0abbcf6dad4729e764d33695c2f3013b688369e059b400f09c85dbb1}
+{time: 2025-11-04-13-36-59, type: reboot, count: 4, result: Fail , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00 , sha256 : bb3f797f0abbcf6dad4729e764d33695c2f3013b688369e059b400f09c85dbb1}

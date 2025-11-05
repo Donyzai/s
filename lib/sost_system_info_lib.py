@@ -284,6 +284,10 @@ def normal_diff(file1,file2,typee,path='',count=''):
     elif "bmcsensor" == typee:
         result = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 2,1 | grep -i '0x0' | sort ) <(cat {file2} | cut -d '|' -f 2,1 | grep -i '0x0' | sort )" 2>/dev/null''').strip()
         result = result + log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 2,1 | grep -i na | sort ) <(cat {file2} | cut -d '|' -f 2,1 | grep -i na | sort )" 2>/dev/null''').strip()
+
+        # fan_2_speed = int(log.os_popen(f"cat {file2} | grep 'FAN2 Speed' | cut -d '|' -f 2 | tr -d ' '").replace("\n","").replace(".000","").strip())
+        # if fan_2_speed > 14000:log._error("BMCSensor FAN2 Speed too high Err!")
+        
     elif "bmcsdr" == typee:
         result = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 3,1 | grep -i 'ok' | sort ) <(cat {file2} | cut -d '|' -f 3,1 | grep -i 'ok' | sort )" 2>/dev/null''').strip()
         result = result + log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 3,1 | grep -i 'ns' | sort ) <(cat {file2} | cut -d '|' -f 3,1 | grep -i 'ns' | sort )" 2>/dev/null''').strip()
