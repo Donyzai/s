@@ -20,3 +20,17 @@
 |  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
 ════════════════════════════════════════════════════════════════════════════
 [31m< sost_20251104-175335_error    > : User.Exit()[0m
+[Order]   [Bus_Addr]     [Node]    [Lnk_Sta]                                    [Subsystem]
+0         0000:00:14.0   0         -                                            Advanced Micro Devices
+1         0000:41:00.4   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+2         0000:81:00.0   0         Speed 5GT/s, Width x4                        00.0 Ethernet controller
+3         0000:81:00.1   0         Speed 5GT/s, Width x4                        00.1 Ethernet controller
+4         0000:81:00.2   0         Speed 5GT/s, Width x4                        00.2 Ethernet controller
+5         0000:81:00.3   0         Speed 5GT/s, Width x4                        00.3 Ethernet controller
+6         0000:a2:00.0   0         -                                            ASPEED Technology
+7         0000:e1:00.0   0         Speed 16GT/s, Width x8                       Broadcom / LSI 9500-16i Tri-Mode HBA
+8         0000:e2:00.4   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+9         0000:e3:00.0   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+10        0000:e3:00.1   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+11        0001:e2:00.0   1         Speed 32GT/s, Width x16                      Advanced Micro Devices
+12        0001:e2:00.1   1         Speed 32GT/s, Width x16                      Advanced Micro Devices

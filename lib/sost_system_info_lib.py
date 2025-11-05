@@ -13,22 +13,21 @@ log.popen_save_file_flags = True
 log.debug_flags = str(log.json_get("debug","debug_flags",web='no-log',filename="debug"))
 
 def retry_get_ipmi_info(command='',text=''):
+    ipmi_sensdr_retry_count = log.json_get('Test_Config',"ipmi_sensdr_retry_count").strip()
+    if ipmi_sensdr_retry_count == '' or ipmi_sensdr_retry_count == '0': return
 
     now_count = log.json_get("Test_tmp","test_count")
-    retry_ipmi_log = log.json_get("Test_tmp","test_folder_path")+"/ipmi_retry_log.log"
+    retry_ipmi_log = log.json_get("Test_tmp","test_folder_path")+"/ipmi_retry.log"
     if now_count == '' or now_count == '0':return
-    ipmi_sensdr_retry_count = log.json_get('Test_Config',"ipmi_sensdr_retry_count")
-    if ipmi_sensdr_retry_count == '' or ipmi_sensdr_retry_count == '0': return
+    
     try:
         int(ipmi_sensdr_retry_count)
     except:
         log._tips('sost config ipmi_sensdr_retry_count value Err!')
         return
     if command == '': return 
-    if text == '': 
-        text = 'ipmi retry count '
-    else:
-        text = text + 'Attempt'
+    if text == '': text = 'ipmi retry count '
+    else: text = text + 'Attempt'
     for i in range(int(ipmi_sensdr_retry_count)):
         log._pr(text.ljust(40) + f"\033[33m[      {str(int(i)+1)}      ]\033[0m")
         result = log.os_popen(command)
@@ -964,13 +963,10 @@ def pcieinfo(flags, folder_path, count):
     #bak data
     tmp = 0
     pci_arry = log.os_popen("lspci 2>/dev/null| grep -ivE 'Bridge|Encryption controller|Non-Essential|iommu|System peripheral' |awk '{print $1}'").strip().split()
-    print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[Kernel_mod]".ljust(25)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
+    print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
     for bus_addr in pci_arry:
         log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null")
         node = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
-        try:kernel_modules = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Kernel modules' | cut -d ':' -f 2").strip().strip().split(',')[0]
-        except:kernel_modules = og.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Kernel modules' | cut -d ':' -f 2").strip()
-        if kernel_modules == "":kernel_modules="-"
         lnk_sta = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2").strip()
         if lnk_sta == "":lnk_sta="-"
         try:Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip().split(',')[0]
@@ -978,7 +974,7 @@ def pcieinfo(flags, folder_path, count):
         if Subsystem=="":
             Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
             if Subsystem=="":Subsystem="-"
-        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(tmp).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+kernel_modules.ljust(25)+lnk_sta.ljust(45)+Subsystem)
+        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(tmp).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+lnk_sta.ljust(45)+Subsystem)
         tmp+=1
 
     if flags == "1" : 
