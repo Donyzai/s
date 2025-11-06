@@ -14,7 +14,7 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 11. 增加debug信息用于记录test_config函数运行时间
 12. 增加runningTime报错后，记录systemd-analyze plot信息至稳定性文件
 13. 优化所有in/pr位置提示语
-14. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp [x]
+14. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp
 15. 增加bmc reset warm / cold KCS通道测试
 16. 修复看板无法实现aclost运行测试  [x]
     修复方法 看板执行时修改command执行方式，看板收到信息后，创建aclost.sh文件，command修改为sh aclost.sh
