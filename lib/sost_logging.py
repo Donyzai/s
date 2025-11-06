@@ -48,25 +48,7 @@ def now_time(type="0"):
 
 class dong_log():
 
-    # 私有变量不可直接调用
-    # 私有变量放在公有函数中可以被调用
-
-    # __init__ : 构造函数，在生成对象时调用
-    # __del__ : 析构函数，释放对象时使用
-    # __repr__ : 打印，转换
-    # __setitem__ : 按照索引赋值
-    # __getitem__: 按照索引获取值
-    # __len__: 获得长度
-    # __cmp__: 比较运算
-    # __call__: 函数调用
-    # __add__: 加运算
-    # __sub__: 减运算
-    #  : 乘运算
-    # __truediv__: 除运算
-    # __mod__: 求余运算
-    # __pow__: 乘方
-
-    # Class fxd_log Private List==============================================================
+    # Class dong_log Private List==============================================================
 
     # 日志标题名称
     __private_title_name = 'sost'
@@ -419,11 +401,9 @@ class dong_log():
             self.os_run("sync -f && sync",flags='no-log')
             return
         except Exception as e:
-            print('dopny')
-            print(typee)
             print(obj)
             print(key)
             print(new_value)
             print(filename)
-            print(self.os_popen("cat /opt/sost/config/sost.json"))
+            self.os_popen("cat /opt/sost/config/sost.json")
             self._error(f"json file EXIT! error_info : {e}")
