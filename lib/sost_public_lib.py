@@ -23,7 +23,8 @@ def clear_log():
 def swc_service_connectivity():
     swc_ip =  log.json_get("swc","swc_server_ip",filename='swc')
     swc_port = log.json_get("swc","swc_server_port",filename='swc')
-    if os.popen(f"curl http://{swc_ip}:{swc_port}/ -I GET 2>/dev/null | head -n 1").read() == '200':
+    if '200' in log.os_popen(f"curl http://{swc_ip}:{swc_port}/ -I GET 2>/dev/null | head -n 2 | grep -i http") :
+        log._pr("SWC Service Connectivity Success!")
         return True
     return False
 

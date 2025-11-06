@@ -3,7 +3,6 @@
 # Version:1.1
 # by:Xiaodong Fan
 
-# from .sost_logging import *
 from .sost_logging import *
 import os
 import re
@@ -342,7 +341,7 @@ def normal_diff(file1,file2,typee,path='',count=''):
     else:
         result = log.os_popen(f"diff {file1} {file2} 2>/dev/null").strip()
 
-    if len(result.replace('\n','')) == 0:
+    if len(str(result).replace('\n','')) == 0:
         return True,result
     else:
         return False,result
@@ -391,9 +390,7 @@ def sata_collect_info(disk_name):
     else:
         result.append(sata_disk_inch)
     # sata_disk_temp  1
-    temp = log.os_popen((
-                         f"smartctl -a /dev/{disk_name} | grep -i Temperature_Celsius | grep Old_age | awk '{{print $10}}' ").strip().split(
-        "\n")[0])
+    temp = log.os_popen(( f"smartctl -a /dev/{disk_name} | grep -i Temperature_Celsius | grep Old_age | awk '{{print $10}}' ").strip().split("\n")[0])
     if temp == "":
         temp = log.os_popen(
             f"smartctl -a /dev/{disk_name} | grep -i 'Current Drive Temperature:' | awk '{{print $4}}' ").strip().split(
@@ -517,41 +514,40 @@ def print_save_text(flags, folder_path, type, count, text):
     log.os_run("sync -f && sync",flags='no-log')
 
 def system_info_check(flags, path, count):
-    try:
-        osip(flags, path, count)
-        meminfo(flags, path, count)
-        pcieinfo(flags, path, count)
-        pcieslot(flags, path, count)
-        psuinfo(flags, path, count)
-        cpu_info(flags, path, count)
-        os_disk_info(flags, path, count)
-        os_net_info(flags, path, count)
-        usb_info_check(flags, path, count)
-        dmesg(flags, path, count)
-        storinfo(flags, path, count)
-        # check_rtc_time(flags, path, count)
-    except Exception as e:
-        from .sost_public_lib import defalt_path,result_html
-        defalt_path()
-        result_html()
-        log._error(f"script error : {e}")
+    # try:
+    osip(flags, path, count)
+    meminfo(flags, path, count)
+    pcieinfo(flags, path, count)
+    pcieslot(flags, path, count)
+    psuinfo(flags, path, count)
+    cpu_info(flags, path, count)
+    os_disk_info(flags, path, count)
+    os_net_info(flags, path, count)
+    usb_info_check(flags, path, count)
+    dmesg(flags, path, count)
+    storinfo(flags, path, count)
+    # except Exception as e:
+    #     from .sost_public_lib import defalt_path,result_html
+    #     defalt_path()
+    #     result_html()
+    #     log._error(f"script error : {e}")
     
 def bmc_info_check(flags, path, count):
-    try:
-        bmcip(flags, path, count)
-        ipmi_sensor(flags, path, count)
-        ipmi_sensor_data(flags, path, count)
-        ipmi_sel_log(flags, path, count)
-        bmc_sdr_info(flags, path, count)
-        bmc_sdre_info(flags, path, count)
-        backboard_info(flags, path, count)
-        chassis_status(flags, path, count)
-        ipmi_mcinfo(flags, path, count)
-    except Exception as e:
-        from .sost_public_lib import defalt_path,result_html
-        defalt_path()
-        result_html()
-        log._error(f"script error : {e}")
+    # try:
+    bmcip(flags, path, count)
+    ipmi_sensor(flags, path, count)
+    ipmi_sensor_data(flags, path, count)
+    ipmi_sel_log(flags, path, count)
+    bmc_sdr_info(flags, path, count)
+    bmc_sdre_info(flags, path, count)
+    backboard_info(flags, path, count)
+    chassis_status(flags, path, count)
+    ipmi_mcinfo(flags, path, count)
+    # except Exception as e:
+    #     from .sost_public_lib import defalt_path,result_html
+    #     defalt_path()
+    #     result_html()
+    #     log._error(f"script error : {e}")
         
 def test_config(flags, count, path):
     log.json_set('Test_tmp','Running_flag','2')

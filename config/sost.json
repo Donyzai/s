@@ -3,9 +3,9 @@
         "Result_path": "/root",
         "Dedicated_lan_num": "1",
         "Share_lan_num": "8",
-        "fail_exit_flags": "1",
-        "fail_exit_blacklist": "NA",
-        "start_wait_time": "0",
+        "fail_exit_flags": "0",
+        "fail_exit_blacklist": "",
+        "start_wait_time": "25",
         "aclost_wait_time": "120",
         "end_wait_time": "15",
         "frist_sdi_time": "0",
@@ -29,10 +29,10 @@
         "count_powerreset": ""
     },
     "BMC_Survival_Config": {
-        "bmc_chip": "ASPEED-2600",
+        "bmc_chip": "",
         "switch": "0",
-        "BMC_Username": "admin",
-        "BMC_Password": "ttytty`12"
+        "BMC_Username": "",
+        "BMC_Password": ""
     },
     "smtp": {
         "Fail_send_email": "",
@@ -43,19 +43,19 @@
         "pop3_password": ""
     },
     "Test_tmp": {
-        "test_type": "reboot",
-        "test_count": "4",
-        "test_status": "Fail",
-        "test_bmc_lan": "2",
-        "test_folder_path": "/root/reboot",
-        "test_sha256": "bb3f797f0abbcf6dad4729e764d33695c2f3013b688369e059b400f09c85dbb1",
-        "run_command": "reboot",
-        "startT_time": "2025-11-04-13-36-59",
-        "endT_time": "2025-11-04-13-44-07",
+        "test_type": "",
+        "test_count": "",
+        "test_status": "",
+        "test_bmc_lan": "",
+        "test_folder_path": "",
+        "test_sha256": "",
+        "run_command": "",
+        "startT_time": "",
+        "endT_time": "",
         "Running_flag": "0",
-        "running_time_last": "76",
-        "running_time_now": "25",
+        "running_time_last": "",
+        "running_time_now": "",
         "running_time_first": "",
-        "swc_flags": "0"
+        "swc_flags": ""
     }
 }

@@ -20,6 +20,8 @@
         "ac":"1",
         "dc":"1",
         "Power Supply PSU1 Status":"1",
-        "Power Supply PSU2 Status":"1"
+        "Power Supply PSU2 Status":"1",
+        "Device Absent":"1",
+        "Cooling Device":"1"
     }
 }

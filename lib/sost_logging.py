@@ -346,8 +346,8 @@ class dong_log():
             data = config[obj][key]
             text = f"< {self.__private_title_name}_{now_time('6')}_json_get > : type[{typee}] obj[{obj}] key[{key}] value[{data}]"
             if web !='no-log':self.save_to_file(filename=self.__private_json_log_file_path,text=text)
-            if self.debug_flags == "1" or self.debug_flags == "3" :
-                if flags != '1':print(text)
+            if self.debug_flags == "3" :
+                print(text)
             # os.system("echo 3 > /proc/sys/vm/drop_caches >/dev/null")
             self.os_run("sync -f && sync",flags='no-log')
             return str(data)

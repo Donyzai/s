@@ -24,7 +24,6 @@
         "storinfo" : "1" ,
         "ipmitool":"1",
         "rebooting_time" : "1",
-        "running_time" : "1",
-        "rtctime" : "1"
+        "running_time" : "1"
     }
 }
