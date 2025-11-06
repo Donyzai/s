@@ -34,3 +34,7 @@
 10        0000:e3:00.1   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
 11        0001:e2:00.0   1         Speed 32GT/s, Width x16                      Advanced Micro Devices
 12        0001:e2:00.1   1         Speed 32GT/s, Width x16                      Advanced Micro Devices
+[31m< sost_20251106-100053_error    > : json file EXIT! error_info : Expecting value: line 1 column 1 (char 0) 
+ <! sost !>json_get obj : smtp key : smtp_server[0m
+[31m< sost_20251106-100056_error    > : json file EXIT! error_info : Expecting value: line 1 column 1 (char 0) 
+ <! sost !>json_get obj : smtp key : smtp_server[0m

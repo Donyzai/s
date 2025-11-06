@@ -281,12 +281,36 @@ def normal_diff(file1,file2,typee,path='',count=''):
     elif "usbinfo" == typee:
         result = log.os_popen(f"bash -c 'diff <(head -n 1 {file1}) <(head -n 1 {file2})' 2>/dev/null").strip()
     elif "bmcsensor" == typee:
-        result = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 2,1 | grep -i '0x0' | sort ) <(cat {file2} | cut -d '|' -f 2,1 | grep -i '0x0' | sort )" 2>/dev/null''').strip()
-        result = result + log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 2,1 | grep -i na | sort ) <(cat {file2} | cut -d '|' -f 2,1 | grep -i na | sort )" 2>/dev/null''').strip()
+        # 控制显示的diff格式
+        diff_format = '' # "-y -W 50 "
+        # 控制显示diff结果的行数
+        tail_lines = ''  #'| tail -n +2'#'| tail -n +2'
+        # 结果初始化
+        result = ''
+        # 检查sensor value 数组
+        check_strings_array = ['0x0','0x00','0x01','na']
+        for check_strings in check_strings_array:
+            result_tmp = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 2,1 | grep -i '{check_strings}' | sort ) <(cat {file2} | cut -d '|' -f 2,1 | grep -i '{check_strings}' | sort ) {diff_format} " {tail_lines} 2>/dev/null''').strip()+'\n'
+            # 检查每次diff结果是否为空行，若不是则追加到最终结果中
+            if result_tmp != '\n':
+                result = result + result_tmp
+        # check fan speed rate 0
+        fan_name_file2 = log.os_popen(f"cat {file2} | grep -i fan | grep -i speed | cut -d '|' -f 1,2 | grep -vi na | awk '{{print $1}}'").strip().split("\n")
+        fan_rate_file2 = log.os_popen(f"cat {file2} | grep -i fan | grep -i speed | cut -d '|' -f 1,2 | grep -vi na | awk '{{print $3}}' | cut -d '.' -f 1").strip().split("\n")
+        # 判断转速列表是否为空
+        if fan_rate_file2 == ['']:result = result+''
+        # 遍历风扇速度列表，检查是否有速度为0的情况
+        for num in range(len(fan_rate_file2)):
+            try:
+                if int(fan_rate_file2[num]) == 0:
+                    result = result + f"fan_name : {fan_name_file2[num]} , fan_speed : {fan_rate_file2[num].strip()}\n"
+            except:
+                continue
+        # 检查其他0x状态值变化
+        value_0x = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 1,2 | grep -viE 'na|0x0|0x00' | grep -i 0x | sort ) <(cat {file2} | cut -d '|' -f 1,2 | grep -viE 'na|0x0|0x00' | grep -i 0x | sort ) {diff_format} " {tail_lines} 2>/dev/null''').strip()+'\n'
+        if value_0x != '\n':
+            result = result + value_0x
 
-        # fan_2_speed = int(log.os_popen(f"cat {file2} | grep 'FAN2 Speed' | cut -d '|' -f 2 | tr -d ' '").replace("\n","").replace(".000","").strip())
-        # if fan_2_speed > 14000:log._error("BMCSensor FAN2 Speed too high Err!")
-        
     elif "bmcsdr" == typee:
         result = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 3,1 | grep -i 'ok' | sort ) <(cat {file2} | cut -d '|' -f 3,1 | grep -i 'ok' | sort )" 2>/dev/null''').strip()
         result = result + log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 3,1 | grep -i 'ns' | sort ) <(cat {file2} | cut -d '|' -f 3,1 | grep -i 'ns' | sort )" 2>/dev/null''').strip()
@@ -318,7 +342,7 @@ def normal_diff(file1,file2,typee,path='',count=''):
     else:
         result = log.os_popen(f"diff {file1} {file2} 2>/dev/null").strip()
 
-    if len(result) == 0:
+    if len(result.replace('\n','')) == 0:
         return True,result
     else:
         return False,result

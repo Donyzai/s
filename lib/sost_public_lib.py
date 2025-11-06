@@ -2176,29 +2176,32 @@ def logo(release_time, version):
 ════════════════════════════════════════════════════════════════════════════''',pr_flag='1')
 
 def smtp_send_result(text):
-    from email.mime.text import MIMEText
-    from email.mime.multipart import MIMEMultipart
-    import smtplib
-    global server_stmp
-    smtp_server = log.json_get("smtp","smtp_server")
-    smtp_port = int(log.json_get("smtp","smtp_port"))
-    sender_email = log.json_get("smtp","sender_email")
-    receiver_email = log.json_get("smtp","receiver_email")
-    password = log.json_get("smtp","pop3_password")
-    msg = MIMEMultipart()
-    msg['From'] = sender_email
-    msg['To'] = receiver_email
-    msg['Subject'] = 'Sost Stability Fail Tips!'
-    msg.attach(MIMEText(text, 'plain'))
+    smtp_server = log.json_get("smtp","smtp_server",filename='smtp')
+    if smtp_server == "":return
     try:
-        server_stmp = smtplib.SMTP(smtp_server, smtp_port)
-        if smtp_port == 465:
-            server_stmp.starttls()
-        server_stmp.login(sender_email, password)
-        server_stmp.sendmail(sender_email, receiver_email, msg.as_string())
-        print('Email sent successfully!')
+        from email.mime.text import MIMEText
+        from email.mime.multipart import MIMEMultipart
+        import smtplib
+        global server_stmp
+        smtp_port = int(log.json_get("smtp","smtp_port",filename='smtp'))
+        sender_email = log.json_get("smtp","sender_email",filename='smtp')
+        receiver_email = log.json_get("smtp","receiver_email",filename='smtp')
+        password = log.json_get("smtp","pop3_password",filename='smtp')
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = receiver_email
+        msg['Subject'] = 'Sost Stability Fail Tips!'
+        msg.attach(MIMEText(text, 'plain'))
+        try:
+            server_stmp = smtplib.SMTP(smtp_server, smtp_port)
+            if smtp_port == 465:
+                server_stmp.starttls()
+            server_stmp.login(sender_email, password)
+            server_stmp.sendmail(sender_email, receiver_email, msg.as_string())
+            print('Email sent successfully!')
+        except Exception as e:
+            print(f'Error occurred: {e}')
+        finally:
+            server_stmp.quit()
     except Exception as e:
-        print(f'Error occurred: {e}')
-    finally:
-        server_stmp.quit()
-
+        log._dp(f"smtp_send_result.Err : {str(e)}")

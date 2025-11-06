@@ -19,12 +19,16 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 16. 修复看板无法实现aclost运行测试  [x]
     修复方法 看板执行时修改command执行方式，看板收到信息后，创建aclost.sh文件，command修改为sh aclost.sh
 17. 增加稳定性类型判断，如果HisiBMC选择BMC热重启退出测试。
-18. IPMI sensor检查FAN信息是否有读值为0的情况。         [x]
+18. IPMI sensor检查FAN信息是否有读值为0的情况。
+    18.1 检查sensor中'0x0','0x00','0x01','na'变化情况
+    18.2 检查其他0x开头value值变化情况。
 19. 增加swc连通性标识。
 20. 修复test_config(2)判断错误问题。
 21. 调整BMCReset等待时间由300s->360s，start_wait_time:25 + 360s ，默认情况下reset一圈6m25s
 22. 新增两种类型测试:bmc_warm_kcs/bmc_cold_kcs。
 23. 优化retry_get_ipmi_info函数，记录retry日志到ipmi_retry.log中
+24. smtp配置文件单独创建。
+
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------

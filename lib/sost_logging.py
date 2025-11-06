@@ -90,6 +90,9 @@ class dong_log():
     # sost_ver配置文件路径
     __private_sost_ver_file_path = '/opt/sost/config/sost_version.json'
     
+    # smtp配置文件路径
+    __private_smtp_file_path = '/opt/sost/config/smtp.json'
+    
     # sost debug文件路径
     __private_sost_debug_file_path = '/opt/sost/config/debug.json'
     
@@ -349,6 +352,9 @@ class dong_log():
         elif filename == "version":
             typee = 'version'
             filename = self.__private_sost_ver_file_path
+        elif filename == 'smtp':
+            typee = 'smtp'
+            filename = self.__private_smtp_file_path 
         else: 
             filename = self.__private_user_config_file_path
         try:
