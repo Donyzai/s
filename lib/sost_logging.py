@@ -151,7 +151,7 @@ class dong_log():
         text = f"< {self.__private_title_name}_{now_time('6')}_exit     > : "+text
         self.save_to_file(filename=self.__private_alarm_file_path,text=text)
         self.save_to_file(filename=self.__private_sost_interactive_file_path,text=text)
-        print(text)
+        if self.debug_flags == "1" or self.debug_flags == "3" or self.debug_flags == '0':print(text)
         exit()
     
     # Tips Log

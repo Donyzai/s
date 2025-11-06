@@ -338,10 +338,12 @@ def normal_diff(file1,file2,typee,path='',count=''):
             result = "ibmcfile1 : "+log.os_popen(f"cat {file1.strip()}").strip().replace(" ","")+"   ibmcfile2 : "+log.os_popen(f"cat {file2.strip()}").strip().replace(" ","")
     elif "bmclog" == typee:
         result = bmclog_check(path=path,count=count)
+        if result == []:result = ''
+        log._dp(f"bmclog diff result : {str(result)}")
     else:
         result = log.os_popen(f"diff {file1} {file2} 2>/dev/null").strip()
 
-    if len(str(result).replace('\n','')) == 0:
+    if result == '' or len(str(result).replace('\n','')) == 0:
         return True,result
     else:
         return False,result
@@ -776,10 +778,11 @@ def osip(flags, folder_path, count):
                             15) + nic_state.ljust(15) + nic_duplex.ljust(15)+nic_bdf.ljust(15)+nic_node)
     if flags == "1" : 
         if diff_information(count,folder_path,"osip"):
+            print()
             log._pr("OS IP Info ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
         else:
+            print()
             log._pr("OS IP Info ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
-
 
 def bmcip(flags, folder_path, count):
     if log.json_get('collect_array',"bmcip",web='no-log',filename='collect').strip() !='1':return 0
@@ -812,22 +815,26 @@ def bmcip(flags, folder_path, count):
             log._pr("BMC IP Info ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
     
 def fwinfo(flags, folder_path, count):
-    # 判断是否为hisi芯片，如果是直接return0
-    if log.json_get("BMC_Survival_Config","bmc_chip") == "Hisilicon-Hi1711":return 0
-    if log.json_get('collect_array',"fwinfo",web='no-log',filename='collect').strip() !='1':return 0
-    cpld_version = ""
-    try:
-        # 32
-        device_id = log.os_popen("ipmitool mc info 2>/dev/null | grep -i 'device id' | awk '{{print $4}}'").strip()
-        if device_id == "32":
-            raw_str = log.os_popen("ipmitool raw 0x0e 0x6f 2>/dev/null").strip()
-            for i in range(8):
-                hex_value = raw_str.split()[i]
-                raw = int(hex_value, 16)
-                cpld_version = cpld_version + "".join(chr(raw))
-    except:
-        cpld_version = "GetFail!"
     
+    if log.json_get('collect_array',"fwinfo",web='no-log',filename='collect').strip() !='1':
+        return 0
+    # 判断是否为hisi芯片，如果是直接return0
+    if log.json_get("BMC_Survival_Config","bmc_chip") != "Hisilicon-Hi1711":
+        cpld_version = ""
+        try:
+            # 32
+            device_id = log.os_popen("ipmitool mc info 2>/dev/null | grep -i 'device id' | awk '{{print $4}}'").strip()
+            if device_id == "32":
+                raw_str = log.os_popen("ipmitool raw 0x0e 0x6f 2>/dev/null").strip()
+                for i in range(8):
+                    hex_value = raw_str.split()[i]
+                    raw = int(hex_value, 16)
+                    cpld_version = cpld_version + "".join(chr(raw))
+        except:
+            cpld_version = "GetFail!"
+    else:
+        cpld_version = "NA"
+        
     BMC_Ver = log.os_popen(''' echo "$(ipmitool mc info 2>/dev/null | grep 'Firmware Revision' | awk '{ print $4 }').$(ipmitool mc info 2>/dev/null | grep -A4 'Aux Firmware Rev Info' | grep -vi 'Firmware' | head -n 4 | awk '{ print $1 }' | sed 's/0x//g' | paste -sd.)" ''').strip()
     Bios_Ver = log.os_popen("dmidecode -s bios-version 2>/dev/null").strip()
     if Bios_Ver == "":Bios_Ver = log.os_popen("dmidecode -t bios | grep -i version | cut -d ':' -f 2").strip()
@@ -848,9 +855,6 @@ def fwinfo(flags, folder_path, count):
             bp_fw = result
     except:
         bp_fw = "GetFail!"
-
-
-    if cpld_version == "": cpld_version = "NA"
 
     print_save_text(flags=flags, folder_path=folder_path, type="fwinfo", count=count,text=f"CPLD.ver : {cpld_version}\nBMC.ver  : {BMC_Ver}\nBIOS.ver : {Bios_Ver}\nBios-ReleaseTime: {Bios_relea_time}\nBios-Revisione: {Bios_revision_time}\nBP_fw    :{bp_fw}")
     
@@ -1566,8 +1570,6 @@ def bmc_survival_check_ibmc(flags, path, count):
 ════════════════════════════════════════════════════════════════
 |                     Services Status Check                    |
 ═══════════════════════════════════════════════[Collect]═[Check]''')
-        log._pr(f"Check iBMC : {bmcip}")
-        log._pr(f"Login OSIP : {str(osip_arry[::])}")
     # Determine whether to enable the check
     try:
         import time

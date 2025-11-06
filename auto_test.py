@@ -17,7 +17,7 @@ if str(log.os_popen("cat /etc/os-release | grep -i ubuntu | wc -l").strip())=="0
 else:
     log._dp("OS is Ubuntu, so ignore stability test!")
 
-if log.json_get("Test_tmp","test_type") == "":log._error("No Stability Running!")
+if log.json_get("Test_tmp","test_type") == "":log._error("No stability testing was conducted!")
 # Init logging
 autologin()
 Judging_autologin()

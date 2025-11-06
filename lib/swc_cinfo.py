@@ -128,6 +128,7 @@ def return_get_data():
         'Test-End-Time':get_value('endT_time'),
         'zLast_Time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'fail_info': fail_info(),
+        'bmc_chip': get_value('bmc_chip'),
 
         "start_wait_time": get_value('start_wait_time'),
         "aclost_wait_time": get_value('aclost_wait_time'),
