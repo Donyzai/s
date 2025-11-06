@@ -514,40 +514,40 @@ def print_save_text(flags, folder_path, type, count, text):
     log.os_run("sync -f && sync",flags='no-log')
 
 def system_info_check(flags, path, count):
-    # try:
-    osip(flags, path, count)
-    meminfo(flags, path, count)
-    pcieinfo(flags, path, count)
-    pcieslot(flags, path, count)
-    psuinfo(flags, path, count)
-    cpu_info(flags, path, count)
-    os_disk_info(flags, path, count)
-    os_net_info(flags, path, count)
-    usb_info_check(flags, path, count)
-    dmesg(flags, path, count)
-    storinfo(flags, path, count)
-    # except Exception as e:
-    #     from .sost_public_lib import defalt_path,result_html
-    #     defalt_path()
-    #     result_html()
-    #     log._error(f"script error : {e}")
+    try:
+        osip(flags, path, count)
+        meminfo(flags, path, count)
+        pcieinfo(flags, path, count)
+        pcieslot(flags, path, count)
+        psuinfo(flags, path, count)
+        cpu_info(flags, path, count)
+        os_disk_info(flags, path, count)
+        os_net_info(flags, path, count)
+        usb_info_check(flags, path, count)
+        dmesg(flags, path, count)
+        storinfo(flags, path, count)
+    except Exception as e:
+        from .sost_public_lib import defalt_path,result_html
+        defalt_path()
+        result_html()
+        log._error(f"script error : {e}")
     
 def bmc_info_check(flags, path, count):
-    # try:
-    bmcip(flags, path, count)
-    ipmi_sensor(flags, path, count)
-    ipmi_sensor_data(flags, path, count)
-    ipmi_sel_log(flags, path, count)
-    bmc_sdr_info(flags, path, count)
-    bmc_sdre_info(flags, path, count)
-    backboard_info(flags, path, count)
-    chassis_status(flags, path, count)
-    ipmi_mcinfo(flags, path, count)
-    # except Exception as e:
-    #     from .sost_public_lib import defalt_path,result_html
-    #     defalt_path()
-    #     result_html()
-    #     log._error(f"script error : {e}")
+    try:
+        bmcip(flags, path, count)
+        ipmi_sensor(flags, path, count)
+        ipmi_sensor_data(flags, path, count)
+        ipmi_sel_log(flags, path, count)
+        bmc_sdr_info(flags, path, count)
+        bmc_sdre_info(flags, path, count)
+        backboard_info(flags, path, count)
+        chassis_status(flags, path, count)
+        ipmi_mcinfo(flags, path, count)
+    except Exception as e:
+        from .sost_public_lib import defalt_path,result_html
+        defalt_path()
+        result_html()
+        log._error(f"script error : {e}")
         
 def test_config(flags, count, path):
     log.json_set('Test_tmp','Running_flag','2')
