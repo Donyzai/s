@@ -302,6 +302,7 @@ def parser_test():
             print("| bp       |  Query server Backplane information        | 查询服务器物理背板信息|")
             print("| bmcip    |  Query server BMCIP information            | 查询服务器BMCIP信息\t|")
             print("| bmchip   |  Query server BMC chip information         | 查询服务器BMC芯片信息\t|")
+            print("| raid     |  Query server RAID information             | 查询服务器RAID卡信息\t|")
             print('|----------|--------------------------------------------|-----------------------|')
             print("| test     |  Query SOST Test info                      | 查询当前测试信息\t|")
             print("| uuid     |  Query server UUID information             | 查询服务器UUID信息\t|")
@@ -329,6 +330,7 @@ def parser_test():
             elif sys.argv[2] == "bp":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import backboard_info;backboard_info('0','',' ')" ''')
             elif sys.argv[2] == "uuid":print(os.popen("ipmitool mc guid | grep -vi ipmi | grep -i guid | cut -d ':' -f 2 | tr -d ' -'").read().strip())
             elif sys.argv[2] == "hwmac":print(os.popen(''' ipmitool lan print | awk -F': ' '/MAC Address[ ]*:/ {print $2}' ''').read().strip())
+            elif sys.argv[2] == "raid":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import storinfo;storinfo('0','','')" ''')
             elif sys.argv[2] == "sha256":
                 try:
                     import hmac;import base64

@@ -982,12 +982,29 @@ def meminfo(flags, folder_path, count):
             log._pr("OS Memory ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
 
 def pcieinfo(flags, folder_path, count):
+
     if log.json_get('collect_array',"pcieinfo",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
     #bak data
-    tmp = 0
+    order = 0
+    pci_switch = False
+    # Huawie project switch slot map
+    # [root@localhost sost]# lspci | grep -i 'Broadcom / LSI PCIe Switch management endpoint'
+    # 1a:00.0 Serial Attached SCSI controller: Broadcom / LSI PCIe Switch management endpoint (rev b0)
+    # 9d:00.0 Serial Attached SCSI controller: Broadcom / LSI PCIe Switch management endpoint (rev b0)
+    # [root@localhost sost]# lspci | grep -i 'Broadcom / LSI PCIe Switch management endpoint' | wc -l
+    # config -> switch_slot_map_num: 2
+    # 逻辑判断是否有PCI switch
+    if log.os_popen("lspci | grep -i 'Broadcom / LSI PCIe Switch management endpoint' | wc -l").strip() != "0":
+        pci_switch = True
+    
     pci_arry = log.os_popen("lspci 2>/dev/null| grep -ivE 'Bridge|Encryption controller|Non-Essential|iommu|System peripheral' |awk '{print $1}'").strip().split()
-    print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
+    if pci_switch:
+        text = "[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[SN]".ljust(20)+"[PN]".ljust(20)+"[Switch_Slot]".ljust(20)+"[Lnk_Sta]".ljust(45)+"[Subsystem]"
+    
+    else:
+        text = "[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[SN]".ljust(20)+"[PN]".ljust(20)+"[Lnk_Sta]".ljust(45)+"[Subsystem]"
+    print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=text)
     for bus_addr in pci_arry:
         log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null")
         node = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
@@ -998,15 +1015,35 @@ def pcieinfo(flags, folder_path, count):
         if Subsystem=="":
             Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
             if Subsystem=="":Subsystem="-"
-        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(tmp).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+lnk_sta.ljust(45)+Subsystem)
-        tmp+=1
+        
+        pci_sn = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Serial Number:' | cut -d ':' -f 2").strip()
+        if pci_sn == "":pci_sn="-"
+        pci_pn = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Part Number:' | cut -d ':' -f 2").strip()
+        if pci_pn == "":pci_pn="-"
+
+        if pci_switch:
+            dev_pci_slot_num = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'slot #' | cut -d ',' -f 1 | cut -d '#' -f 2").strip()
+            if dev_pci_slot_num == "":dev_pci_slot_num = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Physical Slot:' | cut -d ':' -f 2").strip()
+            try:
+                switch_map = json.loads(open(f"/opt/sost/config/switch_slot_map.json","r").read())
+                Switch_Slot = switch_map['switch_slot'][str(dev_pci_slot_num)].strip()
+            except Exception as e:
+                Switch_Slot = "-"
+        
+        if pci_switch:
+            text = str(order).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+Switch_Slot.ljust(20)+lnk_sta.ljust(45)+Subsystem
+        else:
+            text = str(order).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+lnk_sta.ljust(45)+Subsystem
+
+        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=text)
+        order+=1
 
     if flags == "1" : 
         if diff_information(count,folder_path,"pcieinfo"):
             log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
         else:
             log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
-
+            
 def pcieslot(flags, folder_path, count):
     if log.json_get('collect_array',"pcieslot",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
@@ -1454,23 +1491,60 @@ def backboard_info(flags, folder_path, count):
 
 # Mega storcli collect raid info
 def storinfo(flags, folder_path, count):
+
     if log.json_get('collect_array',"storinfo",web='no-log',filename='collect').strip() !='1':return 0
     if log.os_popen("lspci | grep -i sas | grep -v usb").strip() == "":return 0
     if not os.path.exists("/opt/MegaRAID/storcli/storcli64"):
         print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count, text="Storcli64 not Found!")
         if flags == "1" :
             log._pr("OS Storcli64 Not Found!".ljust(40) + "\033[33m[Warn]\033[0m   \033[33m[Warn]\033[0m")
+            return 0
     else:
-        # raid lspci collect info
-        lspci_info = log.os_popen("lspci | grep -i sas | grep -v usb").strip()
-        # storcli64 collect info
-        stor_infoo = log.os_popen(
-            "/opt/MegaRAID/storcli/storcli64 /call show all | head -n 211 | grep -v 'Date' | grep -v 'temperature' | grep -v 'BBU status' ",flags='no-log')
-        # check lspci info == 0 and stor_info == 0 exit
-        if len(lspci_info) == len(stor_infoo): log._error("Raid.info.Error.Exit!")
-        # storinfo
-        print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count,
-                        text="-" * 60 + "\n" + lspci_info + "\n" + "-" * 60 + "\n" + stor_infoo + "\n" + "=" * 60)
+
+        # controller num 
+        controller_num = log.os_popen("/opt/MegaRAID/storcli/storcli64 /call show | grep -i controller | grep -vi time | cut -d '=' -f 2 | tr -d ' '",flags='no-log').strip().split()
+        if controller_num == []:
+            print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count, text="Storcli64 Controller Not Found!")
+            if flags == "1" :
+                log._pr("OS Storcli64 Controller Not Found!".ljust(40) + "\033[33m[Warn]\033[0m   \033[33m[Warn]\033[0m")
+                return 0
+        
+        command = '/opt/MegaRAID/storcli/storcli64'
+
+        for ctrl in controller_num:
+            print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count, text="-"*40+f"\nController".ljust(15)+"Product Name".ljust(30)+'Serial Number'.ljust(20)+'BDF'.ljust(20)+'FW'.ljust(20)+'Physical Drives')
+            raid_product_name = log.os_popen(f"{command} /c{ctrl} show | grep 'Product Name' | cut -d '=' -f 2",flags='no-log').strip()
+            raid_serial_number = log.os_popen(f"{command} /c{ctrl} show | grep 'Serial Number' | cut -d '=' -f 2",flags='no-log').strip()
+            raid_bdf = log.os_popen(f"{command} /c{ctrl} show | grep 'PCI Address' | cut -d '=' -f 2",flags='no-log').strip()
+            raid_fw = log.os_popen(f"{command} /c{ctrl} show | grep 'FW Version' | cut -d '=' -f 2",flags='no-log').strip()
+            raid_phy_num = log.os_popen(f"{command} /c{ctrl}/eall/sall show all| grep -i 'physical sector size' | wc -l",flags='no-log').strip()
+            raid_phy_dev_list = log.os_popen(f"{command} /c{ctrl}/eall/sall show all | grep Drive | grep State | awk '{{print $2}}'",flags='no-log').strip().replace(":",",").split()
+            print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count, text=ctrl.ljust(14)+raid_product_name.ljust(30)+raid_serial_number.ljust(20)+raid_bdf.ljust(20)+raid_fw.ljust(20)+raid_phy_num)
+            if raid_phy_dev_list == ['']:continue
+            print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count,text="-"*40+"\nController".ljust(16)+"PhySlot".ljust(15)+"SN".ljust(15)+"ModelNumber".ljust(25)+"FW".ljust(10)+"RawSize".ljust(15)+"DevSpeed".ljust(10)+"LinkSpeed".ljust(15)+"State".ljust(10)+"Type".ljust(10)+"Interface")
+            for disk in raid_phy_dev_list:
+                disk_sn = log.os_popen(f"{command} {disk} show all | grep 'SN = ' | cut -d '=' -f 2 | tr -d ' '").strip()
+                disk_model_number = log.os_popen(f"{command} {disk} show all | grep 'Model Number' | cut -d '=' -f 2 | tr -d ' '").strip()
+                disk_fw = log.os_popen(f"{command} {disk} show all | grep 'Firmware Revision' | cut -d '=' -f 2 | tr -d ' '").strip()
+                disk_raw_size = log.os_popen(f"{command} {disk} show all | grep 'Raw size' | cut -d '=' -f 2 | cut -d '[' -f 1").strip()
+                disk_DevSpeed = log.os_popen(f"{command} {disk} show all | grep 'Device Speed' | cut -d '=' -f 2 | tr -d ' '").strip()
+                disk_linkSpeed = log.os_popen(f"{command} {disk} show all | grep 'Link Speed' | cut -d '=' -f 2 | tr -d ' '").strip()
+                disk_state = log.os_popen(f"{command} {disk} show all | sed -n '14p' | awk '{{print $3}}'").strip()
+                disk_Type = log.os_popen(f"{command} {disk} show all | sed -n '14p'|awk '{{print $8}}' ").strip()
+                disk_Inter = log.os_popen(f"{command} {disk} show all | sed -n '14p' | awk '{{print $7}}' ").strip()
+
+                print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count,text=ctrl.ljust(15)+disk.ljust(15)+disk_sn.ljust(15)+disk_model_number.ljust(25)+disk_fw.ljust(10)+disk_raw_size.ljust(15)+disk_DevSpeed.ljust(10)+disk_linkSpeed.ljust(15)+disk_state.ljust(10)+disk_Type.ljust(10)+disk_Inter)
+
+        # # raid lspci collect info
+        # lspci_info = log.os_popen("lspci | grep -i sas | grep -v usb").strip()
+        # # storcli64 collect info
+        # stor_infoo = log.os_popen(
+        #     "/opt/MegaRAID/storcli/storcli64 /call show all | head -n 211 | grep -v 'Date' | grep -v 'temperature' | grep -v 'BBU status' ",flags='no-log')
+        # # check lspci info == 0 and stor_info == 0 exit
+        # if len(lspci_info) == len(stor_infoo): log._error("Raid.info.Error.Exit!")
+        # # storinfo
+        # print_save_text(flags=flags, folder_path=folder_path, type="storinfo", count=count,
+        #                 text="-" * 60 + "\n" + lspci_info + "\n" + "-" * 60 + "\n" + stor_infoo + "\n" + "=" * 60)
         if flags == "1" : log._pr(
             "OS Storcli64 Info ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
 

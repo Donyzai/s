@@ -5,7 +5,7 @@
         "Share_lan_num": "8",
         "fail_exit_flags": "0",
         "fail_exit_blacklist": "",
-        "start_wait_time": "25",
+        "start_wait_time": "30",
         "aclost_wait_time": "120",
         "end_wait_time": "15",
         "frist_sdi_time": "0",

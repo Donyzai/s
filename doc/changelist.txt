@@ -28,7 +28,9 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 22. 新增两种类型测试:bmc_warm_kcs/bmc_cold_kcs。
 23. 优化retry_get_ipmi_info函数，记录retry日志到ipmi_retry.log中
 24. smtp配置文件单独创建。
-
+25. 修改start_wait_time由25秒修改为30秒。
+26. 自动识别PCI Switch芯片，匹配PCI bdf 与 SLOT关系映射关系(/opt/sost/config/switch_slot_map.json)
+27. 增加sost -i raid信息查询。
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------
