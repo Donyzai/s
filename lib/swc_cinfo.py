@@ -137,6 +137,7 @@ def return_get_data():
         "OS":str(os.popen("cat /etc/os-release  | grep -i PRETTY_NAME | cut -d '=' -f 2 ").read().replace('(',"").replace(')',"").replace('"',"").strip())+'   '+str(os.popen("uname -r").read().strip()),
         
         "fail_exit_flags":str(os.popen(''' cat /opt/sost/config/sost.json  | grep -i fail_exit_flags | grep -iv blacklist | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',       
+        "fail_exit_blacklist":str(os.popen(''' cat /opt/sost/config/sost.json  | grep -i fail_exit_blacklist | cut -d ':' -f 2 | tr -d ' ",' ''').read().strip()) or 'NA',
         'BMC_ver':bmc_ver(),
         'Bios_ver': os.popen("dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null").read().strip(),
         'sostVer': os.popen("cat /opt/sost/config/sost_version.json | grep -i version | cut -b 21-25 2>/dev/null",).read().strip().replace('"', "").replace(",", ""),

@@ -585,6 +585,25 @@ def bmc_stability(typee='',folder_path=''):
     else:
         bmc_ip,bmc_user,bmc_pass = get_bmc_info()
     log.os_run("sost -m bmc")
+    
+    # warm
+    if typee == "bmc_warm_lan":
+        command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset warm")
+    elif typee == "bmc_warm_kcs":
+        command = ("ipmitool bmc reset warm")
+    # cold
+    elif typee == "bmc_cold_lan":
+        command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset cold")
+    elif typee == "bmc_cold_kcs":
+        command = ("ipmitool bmc reset cold")
+    # raw
+    elif typee == "bmc_raw_lan":
+        command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} raw 0x06 0x02")
+    else:
+        log._error(f"bmc_stability() -> typee : {typee}")
+
+    log.json_set("Test_tmp","run_command",command)
+
     # debug print ---------------------
     # Set Bmc Test Mode!
     # v1.1.1 -> one Cycles Time : 360 + 25 = 385s -> 6m25s
@@ -603,23 +622,12 @@ def bmc_stability(typee='',folder_path=''):
                 log._error('BMC UnAlive! Please Check BMC Status!')
         # Collect SystemInformation
         test_config("1",count,folder_path)
+        # 设置圈数+1
         log.json_set("Test_tmp","test_count",str(int(count)+1))
+        # sleep 3s
         time.sleep(3)
-        # warm
-        if typee == "bmc_warm_lan":
-            log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset warm")
-        elif typee == "bmc_warm_kcs":
-            log.os_popen("ipmitool bmc reset warm")
-        # cold
-        elif typee == "bmc_cold_lan":
-            log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset cold")
-        elif typee == "bmc_cold_kcs":
-            log.os_popen("ipmitool bmc reset cold")
-        # raw
-        elif typee == "bmc_raw_lan":
-            log.os_popen(f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} raw 0x06 0x02")
-        else:
-            log._error(f"bmc_stability() -> typee : {typee}")
+        # runcommand 
+        log.os_popen(log.json_get("Test_tmp","run_command"))
         #save count -> folder_path>count.txt
         log.os_popen(f"echo {str(int(count)+1)} > {folder_path}/count.txt")
         #waiting for
@@ -1177,6 +1185,7 @@ def update_sost(update_flag=''):
     updating_sost(update_ver,server_ip)
 
 def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
+    
     clp()
     log._tips("<------ BMC status check ----->")
     Dedicated_lan_num = log.json_get("Test_Config","Dedicated_lan_num")
@@ -1314,12 +1323,14 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     else:
         iuser = 'admin'
         ipass = 'admin'
-                
-    input_text_user =  log._in(f'Input Bmc_Username [ Enter -> {iuser.ljust(20)}]: ').strip()
-    if input_text_user == 'q':log._error("User.Input.Quit")
-    input_text_pass =  log._in(f'Input Bmc_Password [ Enter -> {ipass.ljust(20)}]: ').strip()
-    if input_text_pass == 'q':log._error("User.Input.Quit")
-
+    if BMC_User == '' and BMC_Pass == '':
+        input_text_user =  log._in(f'Input Bmc_Username [ Enter -> {iuser.ljust(20)}]: ').strip()
+        if input_text_user == 'q':log._error("User.Input.Quit")
+        input_text_pass =  log._in(f'Input Bmc_Password [ Enter -> {ipass.ljust(20)}]: ').strip()
+        if input_text_pass == 'q':log._error("User.Input.Quit")
+    else:
+        input_text_user = BMC_User
+        input_text_pass = BMC_Pass
     log._dp("BMC_User : " + (input_text_user if input_text_user != '' else iuser))
     log._dp("BMC_Pass : " + (input_text_pass if input_text_pass != '' else ipass))
 
@@ -1760,6 +1771,7 @@ def dmesg_show():
 
 # clear terminal print
 def clp(): 
+    return 0
     if log.json_get("debug","debug_flags",filename="debug") == "0":
         os.system("clear")
     return

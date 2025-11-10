@@ -60,7 +60,7 @@ else:
             chose = data["chose"]
             run_wait_time = data['run_wait_time']
             log._dp(f"data = {data}")
-            if run_wait_time != '':
+            if run_wait_time != 'None':
                 log._dp(f"chose = {chose}")
                 log._dp(f"run_wait_time = {run_wait_time}")
                 log._tips(f"Timed_operation_mode chose = {chose} , run_wait_time = {run_wait_time} ")
@@ -73,9 +73,11 @@ else:
                 except:BMC_User = ''
                 try:BMC_Pass = data['bmcpass']
                 except:BMC_Pass = ''
+                log._pr(f"bmclan = {bmclan}")
+                log._pr(f"BMC_User = {BMC_User}")
+                log._pr(f"BMC_Pass = {BMC_Pass}")
                 if bmclan == '' or BMC_User == '' or BMC_Pass == '':
                     log._error("BMC Info Missing!")
-
         elif sys.argv[1] == "reboot":
             chose = "1"
         elif sys.argv[1] == "powercycle":

@@ -21,6 +21,8 @@ from datetime import datetime
 app = Flask(__name__)
 app.logger.setLevel(logging.ERROR)
 
+cmd_log_flags = 'no-log'
+
 # 关闭请求日志
 @app.after_request
 def after_request(response):
@@ -80,8 +82,8 @@ def slog():
         run_log = log.os_popen("cat /opt/sost/log/run.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
         if run_log != '':return run_log
     elif slog_type == 'swc':
-        run_log = log.os_popen("cat /opt/sost/log/swc.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
-        if run_log != '':return run_log
+        swc_log = log.os_popen("cat /opt/sost/log/swc.log",flags=cmd_log_flags).replace('\n','<br>').replace(" ", "&nbsp&nbsp")
+        if swc_log != '':return swc_log
     else:
         return "No log information" , 200
     return "No log information" , 200
@@ -181,58 +183,41 @@ def sjson():
 @app.route('/run', methods=['GET'])
 def run_stability():
 
-    data = request.args.get('type')
-    testOrder = request.args.get('testOrder')
+    typea = request.args.get('type')
     bmclan = request.args.get('bmclan')
     bmcuser = request.args.get('bmcuser')
     bmcpass = request.args.get('bmcpass')
+    if bmcpass == 'ttytty`12':bmcpass = r'ttytty\`12'
     run_wait_time = request.args.get('run_wait_time')
-
-    print(data,testOrder,bmclan,bmcuser,bmcpass,run_wait_time)
-
-
-    if data == 'other' and testOrder == None:
-        return jsonify({"error": "Missing required parameter 'testOrder'"}), 400
-    if data == 'other' and bmclan == None:
-        return jsonify({"error": "Missing required parameter 'bmclan'"}), 400    
-    if data == 'other' and bmcuser == None:
-        return jsonify({"error": "Missing required parameter 'bmcuser'"}), 400
-    if data == 'other' and bmcpass == None:
-        return jsonify({"error": "Missing required parameter 'bmcpass'"}), 400
-
-    if not data:
-        return jsonify({"error": "Missing required parameter 'type'"}), 400
-    try:
-        process_count = int(subprocess.check_output(
-            "pgrep -f -c 'sost(-[zs]|\\.py)( -[zs]|\\.py -[zs])?( -a)?( reboot| powercycle| powerreset| aclost)?'", 
-            shell=True
-        ).strip())
-    except (subprocess.CalledProcessError, ValueError):
-        process_count = 0
+    addc = ""
     
-    if process_count > 0:
+    print(typea,bmclan,bmcuser,bmcpass,run_wait_time)
+    
+    stability_array = {
+        "reboot":"1",
+        "powercycle":"2",
+        "powerreset":"3",
+        "aclost":"4",
+        "bmcresetwarm":"5",
+        "bmcresetcold":"6",
+        "powroffon":"18",
+        "powercycle_ipmi":"14",
+        "powerreset_ipmi":"13",
+        "powroffon_ipmi":"18"
+    }
+    
+    # 检查SOST是否已经在运行稳定性测试
+    if log.os_popen("ps -axu | grep -iE 'auto_test | sost_main' | grep -vi grep | wc -l",flags=cmd_log_flags).strip() != '0':
         return jsonify({"error": "SOST is already running a stability test!"}), 400
+    
+    #判断run_wait_time是否为空
     if run_wait_time != None or run_wait_time != '':
-        if data == 'reboot':
-            testOrder = '1'
-            typee = 'reboot'
-        elif data == 'powercycle':
-            testOrder = '2'
-            typee = 'powercycle'
-        elif data == 'powerreset':
-            testOrder = '3'
-            typee = 'powerreset'
-        elif data == 'aclost':
-            testOrder = '4'
-            typee = 'aclost'
-        else:
-            testOrder = ''
-            typee = ''
-        addc = f"json_test:dongzai,chose:{testOrder},run_wait_time:{run_wait_time}"
+        if typea in ['reboot','powercycle','powerreset','aclost']:
+            print("no set run_wait_time!")
+            addc = typea
     else:
-        addc = ''
-        typee = ''
-
+        addc = f"json_test:dongzai,chose:{stability_array[typea]},run_wait_time:{run_wait_time}"
+    
     commands = {
         'reboot': f'sost -s {addc} &',
         'powercycle': f'sost -s {addc} &',
@@ -240,14 +225,13 @@ def run_stability():
         'aclost': f'sost -s {addc} &',
         'continue'  : 'sost -z &',
         'stop'      : 'sost -k &',
-        'other': f'''  sost -s json_test:dongzai,chose:{testOrder},bmclan:{bmclan},bmcuser:{bmcuser},bmcpass:{bmcpass},run_wait_time:{run_wait_time} & '''
+        'other': f'''  sost -s json_test:dongzai,chose:{stability_array[typea]},bmclan:{bmclan},bmcuser:{bmcuser},bmcpass:'{bmcpass}',run_wait_time:{run_wait_time} & '''
     }
-    if data not in commands:
-        return jsonify({"error": "Invalid command parameter"}), 400
+    
     try:
-        run_command = commands[data]
+        run_command = commands[typea]
         subprocess.Popen(run_command, shell=True, executable='/bin/bash')
-        return jsonify({"message": f"{data.capitalize()} command executed successfully."}), 200
+        return jsonify({"message": f"{typea.capitalize()} command executed successfully."}), 200
     except Exception as e:
         return jsonify({"error": f"Failed to execute command: {str(e)}"}), 400
 

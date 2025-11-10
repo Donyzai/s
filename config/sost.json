@@ -31,8 +31,8 @@
     "BMC_Survival_Config": {
         "bmc_chip": "ASPEED-2600",
         "switch": "0",
-        "BMC_Username": "",
-        "BMC_Password": ""
+        "BMC_Username": "admin",
+        "BMC_Password": "ttytty`12"
     },
     "smtp": {
         "Fail_send_email": "",
@@ -43,16 +43,16 @@
         "pop3_password": ""
     },
     "Test_tmp": {
-        "test_type": "",
-        "test_count": "",
-        "test_status": "",
-        "test_bmc_lan": "",
-        "test_folder_path": "",
-        "test_sha256": "",
-        "run_command": "",
-        "startT_time": "",
-        "endT_time": "",
-        "Running_flag": "0",
+        "test_type": "Bmc_Remote_Cycle",
+        "test_count": "0",
+        "test_status": "Pass",
+        "test_bmc_lan": "1",
+        "test_folder_path": "/root/Bmc_Remote_Cycle",
+        "test_sha256": "259da6875efee5989fb6a02004247f930a0d16a013fd1bd5c773a1fad51662fd",
+        "run_command": "ipmitool -C 17 -I lanplus -H 192.168.60.223 -U admin -P 'ttytty`12' power cycle",
+        "startT_time": "2025-11-10-08-48-48",
+        "endT_time": "2025-11-10-08-54-31",
+        "Running_flag": "4",
         "running_time_last": "",
         "running_time_now": "",
         "running_time_first": "",
