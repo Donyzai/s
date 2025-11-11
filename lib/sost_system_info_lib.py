@@ -537,6 +537,8 @@ def system_info_check(flags, path, count):
 def bmc_info_check(flags, path, count):
     try:
         bmcip(flags, path, count)
+        bmcguid(flags, path, count)
+        bmchealth(flags, path, count)
         ipmi_sensor(flags, path, count)
         ipmi_sensor_data(flags, path, count)
         ipmi_sel_log(flags, path, count)
@@ -660,12 +662,22 @@ def test_config(flags, count, path):
 #         fail_info('RTC Time seconds check',error_tmp,f'timedatectl',f"timedatectl")
 #     else:
 #         log._pr("RTC Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+# bmc mc self test result
+def bmchealth(flags, path, count):
+    if log.json_get('collect_array',"bmchealth",web='no-log',filename='collect').strip() !='1':return 0
+    bmc_guid = log.os_popen("ipmitool mc selftest").strip()
+    print_save_text(flags=flags, folder_path=path, type="bmchealth", count=count,text=bmc_guid)
+    if flags == "1" : 
+        if diff_information(count,path,"bmchealth"):
+            log._pr("BMC IPMI health ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+        else:
+            log._pr("BMC IPMI health ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
 
 # check bmc guid
-def check_bmc_guid(flags, path, count):
+def bmcguid(flags, path, count):
     if log.json_get('collect_array',"bmcguid",web='no-log',filename='collect').strip() !='1':return 0
-    bmc_guid = log.os_popen("ipmitool mc guid | grep 'System GUID' | head -n 1 | cut -d ':' -f 2  | tr -d ' '").strip()
-    print_save_text(flags=flags, folder_path=path, type="bmcguid", count=count,text=f"BMC GUID : {bmc_guid}")
+    bmc_guid = log.os_popen("ipmitool mc guid | grep 'System GUID' | head -n 1").strip()
+    print_save_text(flags=flags, folder_path=path, type="bmcguid", count=count,text=bmc_guid)
     if flags == "1" : 
         if diff_information(count,path,"bmcguid"):
             log._pr("BMC IPMI GUID ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")

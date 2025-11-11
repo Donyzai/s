@@ -1945,7 +1945,7 @@ def test_type_logo(test_type, count):
 ||          ██████ ░░██████  ██████   ░░██          ||
 ||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
 ══════════════════════════════════════════════════════
-|| sost.ver : {version.ljust(10)}   || State : {str(test_status)}|| 
+|| sost : {version.ljust(14)}   || State : {str(test_status)}|| 
 ||--------------------------------------------------||
 || Type : {str(test_type).ljust(16)} || Count : {str(count).ljust(5)}         ||
 ══════════════════════════════════════════════════════''',pr_flag='1')

@@ -32,7 +32,7 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 26. 自动识别PCI Switch芯片，匹配PCI bdf 与 SLOT关系映射关系(/opt/sost/config/switch_slot_map.json)
 27. 增加sost -i raid信息查询。
 28. 增加bmc guid采集判断。
-29. 
+29. 增加bmc ipmi mc selftest检查结果采集判断。
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------

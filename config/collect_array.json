@@ -25,6 +25,7 @@
         "ipmitool":"1",
         "rebooting_time" : "1",
         "running_time" : "1",
-        "bmcguid":"1"
+        "bmcguid":"1",
+        "bmchealth":"1"
     }
 }
