@@ -1756,7 +1756,7 @@ def runTime(flags,se_flag=''):
             func_testconfig_running_time = func_testconfig_end_time - func_testconfig_start_time
             with open(debug_file_path,"a") as f:
                 f.write("=" * 40 + "\n")
-                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t\t : {now_time()}"+f"\n< sost > functestconfig Running time : {str(func_testconfig_running_time)} s"+"\n")
+                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t\t : {now_time()}"+"\n")
                 f.write("=" * 40 + "\n")
                 os.fsync(f.fileno())
     else:
@@ -1835,7 +1835,7 @@ def init_stability_path(test_type):
         else:
             continue
     #backup sost.json to result folder
-    log.os_run(f"cp -rf /opt/sost/config/sost.json {result_folder_path}/debug/",flags='no-log')
+    log.os_run(f"cp -rf /opt/sost/config/* {result_folder_path}/debug/",flags='no-log')
     #save systeminfo -> ps -aux 
     log.os_run(f"ps -aux >> {result_folder_path}/debug/sost_ps_aux.log",flags='no-log')
     #save systeminfo -> cat /proc/meminfo

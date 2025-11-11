@@ -13,7 +13,7 @@
         "collect_cmd": "",
         "Maximum_restart_time": "900",
         "simple_test_flags": "",
-        "result_html": "1",
+        "result_html": "0",
         "ipmi_sensdr_retry_count": "0",
         "running_time_max": "60"
     },
@@ -45,16 +45,16 @@
     "Test_tmp": {
         "test_type": "reboot",
         "test_count": "0",
-        "test_status": "NA",
+        "test_status": "Pass",
         "test_bmc_lan": "1",
         "test_folder_path": "/root/reboot",
-        "test_sha256": "f1a7cae80fafc177573c720e8c76dda32872b0a94d2ccc3071a35558cfd59a86",
+        "test_sha256": "2c06dac6dccdd761aebdadde05fedeeec60bad2589535d61b1af21c5666a882e",
         "run_command": "reboot",
-        "startT_time": "2025-11-11-09-10-54",
-        "endT_time": "",
-        "Running_flag": "2",
-        "running_time_last": "",
-        "running_time_now": "95",
+        "startT_time": "2025-11-11-09-19-35",
+        "endT_time": "2025-11-11-09-20-24",
+        "Running_flag": "4",
+        "running_time_last": "50",
+        "running_time_now": "71",
         "running_time_first": "",
         "swc_flags": "0"
     }

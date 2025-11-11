@@ -1,5 +1,5 @@
-< sost_20251111-091054_print    > : SWC Service Connectivity Success!
-< sost_20251111-091054_print    > : ════════════════════════════════════════════════════════════════════════════
+< sost_20251111-091934_print    > : SWC Service Connectivity Success!
+< sost_20251111-091934_print    > : ════════════════════════════════════════════════════════════════════════════
 |                                             ░██                          |
 |                    ██████  ██████   ██████ ██████                        |
 |                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
@@ -20,7 +20,7 @@
 |  15 . BMC Remote bmc reset warm  |  19 . NA                              |
 |  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
 ════════════════════════════════════════════════════════════════════════════
-< sost_20251111-091057_print    > : ══════════════════════════════════════════════════════
+< sost_20251111-091937_print    > : ══════════════════════════════════════════════════════
 ||                                     ██           ||
 ||                                    ░██           ||
 ||           ██████  ██████   ██████ ██████         ||
@@ -175,5 +175,167 @@ InterfaceType      BMC_IP            BMC_MAC
 DedicatedDHCP	192.168.60.223	18:9b:a5:83:3e:f1
 ShareDHCP	192.168.60.113	18:9b:a5:83:3e:f0
 System GUID   : 8c353192-0e03-11ef-01e8-f13e83a59b18
-[31m< sost_20251111-091101_error    > : json file EXIT! error_info : 'bmchealth' 
- <! sost !>json_get obj : collect_array key : bmchealth[0m
+Selftest: passed
+fru backboard title num : 6
+System Power         : on
+Power Overload       : false
+Power Interlock      : inactive
+Main Power Fault     : false
+Power Control Fault  : false
+Power Restore Policy : always-off
+Chassis Intrusion    : inactive
+Front-Panel Lockout  : inactive
+Drive Fault          : false
+Cooling/Fan Fault    : false
+Sleep Button Disable : allowed
+Diag Button Disable  : allowed
+Reset Button Disable : allowed
+Power Button Disable : allowed
+Sleep Button Disabled: false
+Diag Button Disabled : false
+Reset Button Disabled: false
+Power Button Disabled: false
+
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+CPLD.ver : REV 1.04
+BMC.ver  : 1.04.00.01.00.00
+BIOS.ver : T2DMEP04.00
+Bios-ReleaseTime: 02/06/2025
+Bios-Revisione: 5.35
+BP_fw    :BP1 Version: REV 1.01(03-29-2024)
+BP2 Version: REV 1.01(11-18-2022)
+< sost_20251111-091943_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091950_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091951_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091952_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091953_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091953_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091953_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091953_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091954_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091954_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091954_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091954_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251111-091955_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091955_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091955_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-091959_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092000_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092000_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092004_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092007_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092008_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092008_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092008_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092009_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092009_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251111-092009_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20251111-092009_print    > : Test_Type         : reboot
+< sost_20251111-092009_print    > : Test_Count        : 0
+< sost_20251111-092009_print    > : Test_Status       : Pass
+< sost_20251111-092009_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251111-092025_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251111-092025_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20251111-092025_print    > : ===============================================================
+< sost_20251111-092025_print    > : Test type        : reboot
+< sost_20251111-092025_print    > : Test Count       : 0
+< sost_20251111-092025_print    > : Test Folder      : /root/reboot
+< sost_20251111-092025_print    > : Test Status      : Pass
+< sost_20251111-092025_print    > : Test Start Time  : 2025-11-11-09-19-35
+< sost_20251111-092025_print    > : Test End   Time  : 2025-11-11-09-20-24
+< sost_20251111-092025_print    > : ===============================================================
+[31m< sost_20251111-092025_error    > : DebugMode Enabled noSendCommand = 1[0m
+[Order]   [Bus_Addr]     [Node]    [SN]                [PN]                [Lnk_Sta]                                    [Subsystem]
+0         0001:e2:00.1   1         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+[Order]   [Bus_Addr]     [Node]    [SN]                [PN]                [Lnk_Sta]                                    [Subsystem]
+0         0000:00:14.0   0         -                   -                   -                                            Advanced Micro Devices
+1         0000:41:00.4   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+2         0000:81:00.0   0         -                   -                   Speed 5GT/s, Width x4                        00.0 Ethernet controller
+3         0000:81:00.1   0         -                   -                   Speed 5GT/s, Width x4                        00.1 Ethernet controller
+4         0000:81:00.2   0         -                   -                   Speed 5GT/s, Width x4                        00.2 Ethernet controller
+5         0000:81:00.3   0         -                   -                   Speed 5GT/s, Width x4                        00.3 Ethernet controller
+6         0000:a2:00.0   0         -                   -                   -                                            ASPEED Technology
+7         0000:e1:00.0   0         -                   -                   Speed 16GT/s, Width x8                       Broadcom / LSI 9500-16i Tri-Mode HBA
+8         0000:e2:00.4   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+9         0000:e3:00.0   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+10        0000:e3:00.1   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+11        0001:e2:00.0   1         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+12        0001:e2:00.1   1         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+[Order]   [Bus_Addr]     [Node]    [SN]                [PN]                [Lnk_Sta]                                    [Subsystem]
+0         0000:00:14.0   0         -                   -                   -                                            Advanced Micro Devices
+1         0000:41:00.4   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+2         0000:81:00.0   0         -                   -                   Speed 5GT/s, Width x4                        00.0 Ethernet controller
+3         0000:81:00.1   0         -                   -                   Speed 5GT/s, Width x4                        00.1 Ethernet controller
+4         0000:81:00.2   0         -                   -                   Speed 5GT/s, Width x4                        00.2 Ethernet controller
+5         0000:81:00.3   0         -                   -                   Speed 5GT/s, Width x4                        00.3 Ethernet controller
+6         0000:a2:00.0   0         -                   -                   -                                            ASPEED Technology
+7         0000:e1:00.0   0         -                   -                   Speed 16GT/s, Width x8                       Broadcom / LSI 9500-16i Tri-Mode HBA
+8         0000:e2:00.4   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+9         0000:e3:00.0   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+10        0000:e3:00.1   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+11        0001:e2:00.0   1         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+12        0001:e2:00.1   1         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+[Order]   [Bus_Addr]     [Node]    [SN]                [PN]                [Lnk_Sta]                                    [Subsystem]
+0         0000:00:14.0   0         -                   -                   -                                            Advanced Micro Devices
+1         0000:41:00.4   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+2         0000:81:00.0   0         -                   -                   Speed 5GT/s, Width x4                        00.0 Ethernet controller
+3         0000:81:00.1   0         -                   -                   Speed 5GT/s, Width x4                        00.1 Ethernet controller
+4         0000:81:00.2   0         -                   -                   Speed 5GT/s, Width x4                        00.2 Ethernet controller
+5         0000:81:00.3   0         -                   -                   Speed 5GT/s, Width x4                        00.3 Ethernet controller
+6         0000:a2:00.0   0         -                   -                   -                                            ASPEED Technology
+7         0000:e1:00.0   0         -                   -                   Speed 16GT/s, Width x8                       Broadcom / LSI 9500-16i Tri-Mode HBA
+8         0000:e2:00.4   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+9         0000:e3:00.0   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+10        0000:e3:00.1   0         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+11        0001:e2:00.0   1         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
+12        0001:e2:00.1   1         -                   -                   Speed 32GT/s, Width x16                      Advanced Micro Devices
