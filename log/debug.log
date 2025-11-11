@@ -1,9 +1,4 @@
-< sost_20251110-084841_dlev_0   > : Storcli64 Not install!
-< sost_20251110-084841_dlev_0   > : Sost Stability Tools check Success!
-< sost_20251110-084847_dlev_0   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin
-< sost_20251110-084848_dlev_0   > : BMC_User : admin
-< sost_20251110-084848_dlev_0   > : BMC_Pass : ttytty`12
-< sost_20251110-084851_dlev_0   > : RHEL 10.0 Only Text Mode Running Test!
-< sost_20251110-084851_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
-< sost_20251110-085419_dlev_0   > : RHEL 10.0 Only Text Mode Running Test!
-< sost_20251110-085419_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!
+< sost_20251111-090233_dlev_0   > : Storcli64 Not install!
+< sost_20251111-090233_dlev_0   > : Sost Stability Tools check Success!
+< sost_20251111-090235_dlev_0   > : RHEL 10.0 Only Text Mode Running Test!
+< sost_20251111-090235_dlev_0   > : RHEL Currently mode : text , Set Autologing Success!

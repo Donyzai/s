@@ -661,6 +661,18 @@ def test_config(flags, count, path):
 #     else:
 #         log._pr("RTC Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
 
+# check bmc guid
+def check_bmc_guid(flags, path, count):
+    if log.json_get('collect_array',"bmcguid",web='no-log',filename='collect').strip() !='1':return 0
+    bmc_guid = log.os_popen("ipmitool mc guid | grep 'System GUID' | head -n 1 | cut -d ':' -f 2  | tr -d ' '").strip()
+    print_save_text(flags=flags, folder_path=path, type="bmcguid", count=count,text=f"BMC GUID : {bmc_guid}")
+    if flags == "1" : 
+        if diff_information(count,path,"bmcguid"):
+            log._pr("BMC IPMI GUID ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+        else:
+            log._pr("BMC IPMI GUID ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
+
+
 # check RuningTime
 def check_running_time(count):
 
@@ -1228,7 +1240,6 @@ def ipmi_sensor_data(flags, folder_path, count):
 
     for title in log.os_popen(f"cat {folder_path}/system_info/bmcsensor/bmcsensor_{count}.txt | cut -d '|' -f 1 ",flags='no-log').split():
         log.os_run(f"cat {folder_path}/system_info/bmcsensor/bmcsensor_{count}.txt | grep -i '{title}' | cut -d '|' -f 2  >> {folder_path}/system_info/bmcsensor_data/{title}.txt ",flags='no-log')
-     
     if flags == "1" : 
         if diff_information(count,folder_path,"bmcsensor_data"):
             log._pr("BMC IPMI Sensor Data ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
