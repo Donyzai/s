@@ -511,6 +511,9 @@ def print_save_text(flags, folder_path, type, count, text):
             f.flush()
             os.fsync(f.fileno())
     else:
+        if flags =='show':
+            print(text)
+            return 0
         log._error("Save.to.File.Err.Exit!")
     
     log.os_run("sync -f && sync",flags='no-log')
@@ -1025,8 +1028,8 @@ def pcieinfo(flags, folder_path, count):
             pci_switch = True
         else:
             pci_switch = False
-        
-    if pci_switch:
+
+    if pci_switch and flags !='show':
         print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[parent_node]".ljust(15)+"[child_node]".ljust(15)+"[Node]".ljust(10)+"[SN]".ljust(20)+"[PN]".ljust(20)+"[Switch_Slot]".ljust(20)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
         pci_switch_list = log.os_popen("lspci | grep -i 'PEX890xx PCIe Gen' | grep -i switch | cut -d ' ' -f 1").strip().split()
         if pci_switch_list == []:
@@ -1101,7 +1104,10 @@ def pcieinfo(flags, folder_path, count):
             print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(order).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+lnk_sta.ljust(45)+Subsystem)
             order+=1
 
-    if flags == "1" : 
+    if flags == "show":
+        return 0
+    
+    if flags == "1": 
         if diff_information(count,folder_path,"pcieinfo"):
             log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
         else:

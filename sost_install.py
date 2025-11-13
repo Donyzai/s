@@ -140,20 +140,30 @@ def rhel_yum_replace(ver):
 def install_tools(install_type):
     tools_arr = ["nvme-cli","numactl","ipmitool","smartmontools","python3-pip","minicom","python3-flask","net-tools","network-manager"]
     if install_type == "ubuntu":
+        os.system("apt list --installed > /tmp/apt_installed_list.txt 2>/dev/null")
+        f = open("/tmp/apt_installed_list.txt","r").read()
         for tool in tools_arr:
+            if tool.strip() in f:
+                continue
             os.system(f"apt-get install {tool.strip()} -y")
     else:
+        os.system("yum list installed > /tmp/yum_installed_list.txt 2>/dev/null")
+        f = open("/tmp/yum_installed_list.txt","r").read()
         for tool in tools_arr:
+            if tool.strip() in f:
+                continue
             os.system(f"yum install {tool.strip()} -y")
     # init python3 pip
+    os.system("pip3 list > /tmp/pip3_installed_list.txt 2>/dev/null")
+    f = open("/tmp/pip3_installed_list.txt","r").read()
     os.system("python3 -m ensurepip --default-pip")
-    os.system("pip3 install --upgrade nltk -i https://pypi.tuna.tsinghua.edu.cn/simple --force")
-    os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple wheel --force')
-    os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pyinstaller --force')
-    os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple flask --force')
-    os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple requests --force')
-    os.system('pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple tqdm --force')
-
+    #os.system("pip3 install --upgrade nltk -i https://pypi.tuna.tsinghua.edu.cn/simple --force")
+    pip_install_array = ["wheel","pyinstaller","Flask","requests","tqdm","nltk"]
+    for pip_package in pip_install_array:
+        if pip_package.strip() in f:
+            continue
+        os.system(f'pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple {pip_package} --force')
+    
 def install_sost():
 
     print(os.getcwd())

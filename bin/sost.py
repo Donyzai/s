@@ -291,6 +291,7 @@ def parser_test():
             print('='*80)
             print('\n|--[Value]-|-----------[Help Information]---------------|-------[帮助信息]------|')
             print("| pcieinfo |  Query server PCIE device information      | 查询服务器PCIE设备信息|")
+            print("| pcieinfo1|  Query server PCIE device information      | 查询服务器PCIE设备信息|")
             print("| pcieslot |  Query server PCIE interface information   | 查询服务器PCIE接口信息|")
             print("| osip     |  Query server system IP information        | 查询服务器系统IP信息\t|")
             print("| mem      |  Query server memory information           | 查询服务器内存信息\t|")
@@ -313,6 +314,7 @@ def parser_test():
             print('='*80)
         try:
             if sys.argv[2] == "pcieinfo":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import pcieinfo;pcieinfo('0','',' ')" ''')
+            elif sys.argv[2] == "pcieinfo1":os.system('''cd /opt/sost/ && python3 -c "from lib.sost_system_info_lib import pcieinfo;pcieinfo('show','',' ')" ''')
             elif sys.argv[2] == "test":
                 print('='*40+'\n'+os.popen('''cat /opt/sost/config/sost.json | grep -A 5 BMC_Survival_Config | grep -v BMC_Survival_Config | tr -d ' "{},' ''').read().replace(":","  \t:  ").strip()+'\n'+'='*40)
                 print(os.popen('''cat /opt/sost/config/sost.json | grep -A 6 Multimodal_stability | grep -v Multimodal_stability | tr -d ' "{},' ''').read().replace(":","       \t:  ").strip()+'\n'+'='*40)
