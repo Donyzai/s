@@ -1,17 +1,17 @@
 {
-    "switch_slot":{
-        "slot0":"6",
-        "slot1":"0xff",
-        "slot2":"10",
-        "slot3":"9",
-        "slot4":"8",
-        "slot5":"7",
-        "slot6":"11",
-        "slot7":"106",
-        "slot8":"107",
-        "slot9":"103",
-        "slot10":"104",
-        "slot11":"100",
-        "slot12":"108"
+    "switch_slot": {
+        "6": "slot0",
+        "0xff": "slot1",
+        "10": "slot2",
+        "9": "slot3",
+        "8": "slot4",
+        "7": "slot5",
+        "11": "slot6",
+        "106": "slot7",
+        "107": "slot8",
+        "103": "slot9",
+        "104": "slot10",
+        "100": "slot11",
+        "108": "slot12"
     }
 }

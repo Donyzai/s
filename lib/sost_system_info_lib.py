@@ -1064,7 +1064,6 @@ def switch_info(flags, folder_path, count):
     pci_switch_list = log.os_popen("lspci 2>/dev/null | grep -i 'PEX890xx PCIe Gen' | grep -i switch | cut -d ' ' -f 1").strip().split()
     if pci_switch_list == []:
         pci_switch_list = log.os_popen("lspci 2>/dev/null| grep -i 'PCI bridge: Broadcom' | grep -vi scsi | cut -d ' ' -f 1").strip().split()
-    
     for switch_bdf in pci_switch_list:
         parent_node_slot = log.os_popen(f"lspci -vvvs {switch_bdf} 2>/dev/null| grep 'Slot #' | cut -d ',' -f 1 | cut -d '#' -f 2").strip()
         child_node_bdf = log.os_popen(f"lspci -vvvs {switch_bdf.strip()} 2>/dev/null | grep secondary | cut -d ',' -f 2 | cut -d '=' -f 2 ").strip()+':00.0'
