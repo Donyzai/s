@@ -186,13 +186,11 @@ def return_get_data():
             })
     else:
         base_data.update({'Test-status': 'sostScriptErr'})
-   
+
     base_data.update({
         'SYS_IP': get_system_ip(),
         'BMC_LAN_1': get_bmc_ip(),
     })
-
-    log_system_status(base_data)
 
     if os.popen('ps -aux  | grep -i xmx_shell | grep -vi grep').read().strip()!='':
         base_data.update({
@@ -281,21 +279,6 @@ def get_bmc_ip():
             return open(bmc_ip_file,'r').read().strip()
     with open(bmc_ip_file,'w') as f:f.write(ip)
     return ip
-   
-     
-def log_system_status(data):
-    """记录系统状态日志"""
-    status = "Running" if is_process_running("sost.*sost_web_console") else "Initing"
-    now_time = os.popen("date").read().strip()
-    log_content = f"""
-================================================
-Services          : sost-webconsole-service
-ServicesStatus    : {status}
-NowTime           : {now_time}
-sost-version      : {data['sostVer']}
-sost-cmdflags     : {cmd_log_flags}
-================================================"""
-    os.system(f"echo '{log_content}' > /tmp/sost_tmp/swc_cache")
 
 if __name__ == '__main__':
     log._sd("Sost has enabled the server information collection service.(swc_cinfo.py)")

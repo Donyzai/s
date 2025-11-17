@@ -1,5 +1,8 @@
 from lib.sost_public_lib import test_type_logo,dong_log,runTime,end_test_logo,wait_time_ctrl_C,max_count_logo,Judging_autologin,time,autologin,defalt_path,result_html,swc_EndTest,return_wait_time,debug_mode
 from lib.sost_system_info_lib import test_config,check_running_time
+# Record the time before testing -> end_time.log
+runTime("1")
+runTime("3")
 # init logging
 log = dong_log()
 log.debug_flags = str(log.json_get("debug","debug_flags",filename="debug"))
@@ -35,9 +38,6 @@ if max_count_flags != None:
 last_count = log.json_get("Test_tmp", "test_count")
 next_count = str(int(last_count)+1)
 path = log.json_get("Test_tmp","test_folder_path")
-#write last_time
-try:runTime("2")
-except:log._exitt("Unable to Continue Test!") 
 #User.ctrl + c exit()----------------------------------------------------
 wait_time = return_wait_time()
 # show logo
@@ -48,8 +48,6 @@ log.json_set('Test_tmp','Running_flag','2')
 wait_time_ctrl_C(wait_time,flags='start')
 #set now count
 log.json_set("Test_tmp","test_count",next_count)
-# write start_time
-runTime("0")
 # save count to count
 log.os_popen(f"echo {next_count} > {path}/count.txt")
 # show Now Test logo
@@ -57,17 +55,16 @@ log.os_popen(f"echo {next_count} > {path}/count.txt")
 runTime("5","start")
 test_config("1",next_count,path)
 runTime("5","end")
+#------------------------------------------------------------------------
 #0 start_time 1 end_time 2 last_time 3 Power off -> Os Run Time  4 sost running timerunTime("1")
-runTime("3")
-runTime("4")
-runTime("1")
 check_running_time(next_count)
 end_test_logo()
 log.json_set('Test_tmp','Running_flag','3')
 wait_time_ctrl_C(int(log.json_get("Test_Config","end_wait_time")),flags='end')
-debug_mode()
 swc_EndTest()
-# Force Sync Data , solve Power Off Not Sync DatarunTime
-log.os_run("sync -f && sync",flags='no-log')
+# Record the time before testing -> start_time.log
+runTime("4")
+runTime("0")
+debug_mode()
 log.os_run(log.json_get("Test_tmp","run_command").strip())
 time.sleep(int(log.json_get("Test_Config","end_wait_time")))

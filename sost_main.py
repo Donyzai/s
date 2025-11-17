@@ -11,8 +11,6 @@ def runstart(test_arry):
     log.json_set('Test_tmp','test_status','NA')
     os_env()
     autologin()
-    # 0 start_time 1 end_time 2 last_time 3 Power off -> Os Run Time  4 sost running timerunTime("1")
-    runTime("0")
     clp()
     test_type = log.json_get("Test_tmp","test_type")
     test_test_folder = log.json_get("Test_tmp","test_folder_path")
@@ -26,12 +24,13 @@ def runstart(test_arry):
         test_config("1","0",test_test_folder)
     end_test_logo()
     Judging_autologin()
-    runTime("1")
     log.json_set('Test_tmp','Running_flag','3')
     wait_time_ctrl_C(int(log.json_get("Test_Config","end_wait_time")),flags='end')
-    debug_mode()
+    # 0 start_time 1 end_time 2 last_time 3 Power off -> Os Run Time  4 sost running timerunTime("1")
+    # time.time() -> start_time.log
+    runTime("0")
     # Force Sync Data , solve Power Off Not Sync Data
-    log.os_run("sync -f && sync",flags='no-log')
+    debug_mode()
     log.os_run(log.json_get("Test_tmp","run_command"))
     time.sleep(int(log.json_get("Test_Config","end_wait_time")))
 #================================================

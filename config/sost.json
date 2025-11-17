@@ -44,17 +44,17 @@
     },
     "Test_tmp": {
         "test_type": "reboot",
-        "test_count": "0",
+        "test_count": "4",
         "test_status": "Pass",
         "test_bmc_lan": "1",
         "test_folder_path": "/root/reboot",
-        "test_sha256": "2c06dac6dccdd761aebdadde05fedeeec60bad2589535d61b1af21c5666a882e",
+        "test_sha256": "cf52fc115c9582058bd8987839f148c55fc364b40ed5781906f8e120193a5c0d",
         "run_command": "reboot",
-        "startT_time": "2025-11-11-09-19-35",
-        "endT_time": "2025-11-11-09-20-24",
+        "startT_time": "2025-11-17-13-35-23",
+        "endT_time": "2025-11-17-13-42-51",
         "Running_flag": "4",
-        "running_time_last": "50",
-        "running_time_now": "71",
+        "running_time_last": "22",
+        "running_time_now": "22",
         "running_time_first": "",
         "swc_flags": "0"
     }

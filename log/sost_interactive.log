@@ -1,0 +1,913 @@
+< sost_20251117-133522_print    > : SWC Service Connectivity Success!
+< sost_20251117-133523_print    > : ════════════════════════════════════════════════════════════════════════════
+|                                             ░██                          |
+|                    ██████  ██████   ██████ ██████                        |
+|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
+|                  ░░█████ ░██   ░██░░█████   ░██                          |
+|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
+|                   ██████ ░░██████  ██████   ░░██                         |
+|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
+|═══════════════════════════════════════════════════════════════════════════
+|    ReTime:2025-11-06 13:56:47     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
+|══════════════════════════════════════════════════════════════════════════|
+|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
+|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
+|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
+|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
+|══════════════════════════════════════════════════════════════════════════|
+|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
+|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
+|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
+|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
+════════════════════════════════════════════════════════════════════════════
+< sost_20251117-133525_print    > : ══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+|| sost : 1.1.1            || State : NA            || 
+||--------------------------------------------------||
+|| Type : reboot           || Count : 0             ||
+══════════════════════════════════════════════════════
+[NIC_NAME]               [NIC_IPv4]               [NIC_MAC]           [NIC_MTU]      [NIC_Speed]    [NIC_State]    [NIC_duplex]   [NIC_BDF]      [NIC_Node]
+enp129s0f0               192.168.60.143           18:9b:a5:82:e2:5c   1500           1000           up             full           0000:81:00.0   0
+enp129s0f1               -                        18:9b:a5:82:e2:5d   1500           -              down           unknown        0000:81:00.1   0
+enp129s0f2               -                        18:9b:a5:82:e2:5e   1500           -              down           unknown        0000:81:00.2   0
+enp129s0f3               -                        18:9b:a5:82:e2:5f   1500           -              down           unknown        0000:81:00.3   0
+[Order] [Manufacturer]   [PartNumber]        [Size]  [Volatile_size]  [Speed]     [Config Speed] [Serial_Number]    [Locator]    [Bank_Locator]
+   0      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      038929E3       CPU1 DIMM A1   P0 CHANNEL A
+   1      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892B5C       CPU1 DIMM B1   P0 CHANNEL B
+   2      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892A15       CPU1 DIMM C1   P0 CHANNEL C
+   3      -              -                    -           -           -              -              -              CPU1 DIMM D1   P0 CHANNEL D
+   4      -              -                    -           -           -              -              -              CPU1 DIMM E1   P0 CHANNEL E
+   5      -              -                    -           -           -              -              -              CPU1 DIMM F1   P0 CHANNEL F
+   6      -              -                    -           -           -              -              -              CPU1 DIMM G1   P0 CHANNEL G
+   7      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892AE3       CPU1 DIMM H1   P0 CHANNEL H
+   8      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892B88       CPU1 DIMM I1   P0 CHANNEL I
+   9      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      038929C5       CPU1 DIMM J1   P0 CHANNEL J
+   10     -              -                    -           -           -              -              -              CPU1 DIMM K1   P0 CHANNEL K
+   11     -              -                    -           -           -              -              -              CPU1 DIMM L1   P0 CHANNEL L
+   12     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892ABD       CPU2 DIMM A1   P1 CHANNEL A
+   13     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892A39       CPU2 DIMM B1   P1 CHANNEL B
+   14     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892938       CPU2 DIMM C1   P1 CHANNEL C
+   15     -              -                    -           -           -              -              -              CPU2 DIMM D1   P1 CHANNEL D
+   16     -              -                    -           -           -              -              -              CPU2 DIMM E1   P1 CHANNEL E
+   17     -              -                    -           -           -              -              -              CPU2 DIMM F1   P1 CHANNEL F
+   18     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892BB4       CPU2 DIMM G1   P1 CHANNEL G
+   19     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892B3E       CPU2 DIMM H1   P1 CHANNEL H
+   20     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892AB1       CPU2 DIMM I1   P1 CHANNEL I
+   21     -              -                    -           -           -              -              -              CPU2 DIMM J1   P1 CHANNEL J
+   22     -              -                    -           -           -              -              -              CPU2 DIMM K1   P1 CHANNEL K
+   23     -              -                    -           -           -              -              -              CPU2 DIMM L1   P1 CHANNEL L
+[Order]   [Bus_Addr]     [Node]    [Lnk_Sta]                                    [Subsystem]
+0         0000:00:14.0   0         -                                            Advanced Micro Devices
+1         0000:41:00.4   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+2         0000:81:00.0   0         Speed 5GT/s, Width x4                        00.0 Ethernet controller
+3         0000:81:00.1   0         Speed 5GT/s, Width x4                        00.1 Ethernet controller
+4         0000:81:00.2   0         Speed 5GT/s, Width x4                        00.2 Ethernet controller
+5         0000:81:00.3   0         Speed 5GT/s, Width x4                        00.3 Ethernet controller
+6         0000:a2:00.0   0         -                                            ASPEED Technology
+7         0000:e1:00.0   0         Speed 16GT/s, Width x8                       Broadcom / LSI 9500-16i Tri-Mode HBA
+8         0000:e2:00.4   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+9         0000:e3:00.0   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+10        0000:e3:00.1   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+11        0001:e2:00.0   1         Speed 32GT/s, Width x16                      Advanced Micro Devices
+12        0001:e2:00.1   1         Speed 32GT/s, Width x16                      Advanced Micro Devices
+No PCIe Switch Detected
+[Order]   [BUS_Addr]          [Designation]                 [Type]                                  [Current Usage]     [Length]       [Node]
+0         0000:a0:03.1        CPU1 M.2 slot                 M.2 Socket 3                            Available           Long           -
+1         0001:a0:03.1        CPU2 M.2 slot                 M.2 Socket 3                            Available           Long           -
+2         0000:80:01.1        OCP slot 0                    OCP NIC 3.0 Small Form Factor (SFF)     In Use              Long           0
+3         0000:e0:01.1        Riser 1, Slot 1               PCI Express 5 x16                       In Use              Long           0
+4         0000:00:01.1        Riser 1, Slot 2               PCI Express 5 x8                        Available           Long           -
+5         0000:00:01.2        Riser 1, Slot 3               PCI Express 5 x8                        Available           Long           -
+6         0001:60:01.1        Riser 2, Slot 1               PCI Express 5 x8                        Available           Long           -
+7         0001:00:01.1        Riser 2, Slot 3               PCI Express 5 x16                       Available           Long           -
+8         0000:00:00.0        Riser 3, Slot 1               <OUT OF SPEC>                           <OUT OF SPEC>       Long           0
+[PSU_NUM] [PSU_Manufacturer]  [PSU_Serial_Number] [PSU_Model_Part_Number]  [PSU_Revision]  [PSU_Max_Power_Capacity] [PSU_Status]  [PSU_Type]  [PSU_Hot_Replaceable]
+PSU1       Great Wall          2N094033886           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
+PSU2       Great Wall          2M090059043           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
+128 model name	: AMD EPYC 9355 32-Core Processor
+128 vendor_id	: AuthenticAMD
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        52 bits physical, 57 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               128
+On-line CPU(s) list:                  0-127
+Vendor ID:                            AuthenticAMD
+BIOS Vendor ID:                       Advanced Micro Devices, Inc.
+Model name:                           AMD EPYC 9355 32-Core Processor
+BIOS Model name:                      AMD EPYC 9355 32-Core Processor                 Unknown CPU @ 3.5GHz
+BIOS CPU family:                      107
+CPU family:                           26
+Model:                                2
+Thread(s) per core:                   2
+Core(s) per socket:                   32
+Socket(s):                            2
+Stepping:                             1
+Frequency boost:                      enabled
+CPU(s) scaling MHz:                   36%
+CPU max MHz:                          4413.2319
+CPU min MHz:                          1500.0000
+BogoMIPS:                             7089.11
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd amd_ppin cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d debug_swap amd_lbr_pmc_freeze
+Virtualization:                       AMD-V
+L1d cache:                            3 MiB (64 instances)
+L1i cache:                            2 MiB (64 instances)
+L2 cache:                             64 MiB (64 instances)
+L3 cache:                             512 MiB (16 instances)
+NUMA node(s):                         2
+NUMA node0 CPU(s):                    0-31,64-95
+NUMA node1 CPU(s):                    32-63,96-127
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+--------------------------------------------------------------------------------------------------------------
+Sys_disk_num  : 1
+Sys_disk_arry : sda
+--------------------------------------------------------------------------------------------------------------
+>> NVMe Disk Info <<
+--------------------------------------------------------------------------------------------------------------
+[Order]   [NAME]         [MODEL]                            [SERIAL]            [REV]     [SIZE]   [Format]
+--------------------------------------------------------------------------------------------------------------
+>> SATA Disk Info <<
+--------------------------------------------------------------------------------------------------------------
+[Order]        [NAME]      [TYPE] [MODEL]          [SERIAL]       [REV_][SIZE][TRAN]
+0              sda           disk ST16000NM000J-2TW103 ZR70LWLX SN02 14.6T sata
+1              ├─sda1        part                                     600M 
+2              ├─sda2        part                                       1G 
+3              └─sda3        part                                    14.6T
+[Order]  [Nic_Name]          [BDF]          [Nic_Lnk]                          [Module]       [DD_Version]                       [FW_Version]
+   0     enp129s0f0          0000:81:00.0   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+   1     enp129s0f1          0000:81:00.1   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+   2     enp129s0f2          0000:81:00.2   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+   3     enp129s0f3          0000:81:00.3   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+USB Device num : 10
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 174c:2074 ASMedia Technology Inc. ASM1074 High-Speed hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 002: ID 174c:3074 ASMedia Technology Inc. ASM1074 SuperSpeed hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 046b:ff01 American Megatrends, Inc. Virtual Hub
+Bus 003 Device 003: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 003 Device 004: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
+Bus 003 Device 005: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Storcli64 not Found!
+1min 53ms NetworkManager-wait-online.service
+   7.346s sys-module-fuse.device
+   7.298s sys-devices-platform-serial8250-serial8250:0-serial8250:0.3-tty-ttyS3.device
+   7.298s dev-ttyS3.device
+   7.297s dev-ttyS2.device
+   7.297s sys-devices-platform-serial8250-serial8250:0-serial8250:0.2-tty-ttyS2.device
+   7.294s sys-devices-platform-serial8250-serial8250:0-serial8250:0.1-tty-ttyS1.device
+   7.294s dev-ttyS1.device
+   7.274s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart1.device
+   7.274s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartnum-1.device
+   7.274s dev-disk-by\x2dpartlabel-EFI\x5cx20System\x5cx20Partition.device
+   7.274s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2\x2dpart1.device
+   7.274s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartuuid-2281945a\x2d6773\x2d4a6c\x2d9271\x2daa187282c316.device
+   7.274s dev-disk-by\x2duuid-77F8\x2d57A1.device
+   7.274s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart1.device
+   7.274s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart1.device
+   7.274s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2duuid-77F8\x2d57A1.device
+   7.274s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartlabel-EFI\x5cx20System\x5cx20Partition.device
+   7.274s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host18-target18:0:0-18:0:0:0-block-sda-sda1.device
+   7.274s dev-disk-by\x2ddiskseq-1\x2dpart1.device
+   7.274s dev-disk-by\x2dpartuuid-2281945a\x2d6773\x2d4a6c\x2d9271\x2daa187282c316.device
+   7.274s dev-sda1.device
+   7.264s sys-module-configfs.device
+   7.254s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host18-target18:0:0-18:0:0:0-block-sda-sda3.device
+   7.254s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2\x2dpart3.device
+   7.254s dev-disk-by\x2dpartuuid-b1383acb\x2d6d16\x2d4eb2\x2db310\x2d73499fd80a3d.device
+   7.254s dev-disk-by\x2ddiskseq-1\x2dpart3.device
+   7.254s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart3.device
+   7.254s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartnum-3.device
+   7.254s dev-sda3.device
+   7.254s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartuuid-b1383acb\x2d6d16\x2d4eb2\x2db310\x2d73499fd80a3d.device
+   7.254s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart3.device
+   7.254s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart3.device
+   7.249s sys-devices-pnp0-00:03-00:03:0-00:03:0.0-tty-ttyS0.device
+   7.249s dev-ttyS0.device
+   7.196s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host18-target18:0:0-18:0:0:0-block-sda-sda2.device
+   7.196s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart2.device
+   7.196s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2duuid-828c460e\x2dfacc\x2d453b\x2d87d6\x2d496f8d5372f9.device
+   7.196s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2\x2dpart2.device
+   7.196s dev-disk-by\x2ddiskseq-1\x2dpart2.device
+   7.196s dev-sda2.device
+   7.196s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartuuid-66fae33b\x2d2123\x2d4b39\x2db216\x2d86c07e4fd3a0.device
+   7.196s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart2.device
+   7.196s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart2.device
+   7.196s dev-disk-by\x2duuid-828c460e\x2dfacc\x2d453b\x2d87d6\x2d496f8d5372f9.device
+   7.196s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartnum-2.device
+   7.196s dev-disk-by\x2dpartuuid-66fae33b\x2d2123\x2d4b39\x2db216\x2d86c07e4fd3a0.device
+   7.113s dev-sda.device
+   7.113s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db.device
+   7.112s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host18-target18:0:0-18:0:0:0-block-sda.device
+   7.112s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0.device
+   7.112s dev-disk-by\x2ddiskseq-1.device
+   7.112s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX.device
+   7.112s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.device
+   3.557s initrd-switch-root.service
+   2.514s kdump.service
+   1.867s pmcd.service
+   1.847s fwupd.service
+   1.835s firewalld.service
+   1.406s dracut-initqueue.service
+   1.367s user@0.service
+   1.333s pmlogger.service
+   1.169s tuned.service
+    884ms systemd-tmpfiles-setup.service
+    853ms systemd-tmpfiles-setup-dev-early.service
+    753ms ModemManager.service
+    740ms pmie.service
+    734ms polkit.service
+    680ms cups.service
+    679ms chronyd.service
+    629ms smartd.service
+    604ms virtqemud.service
+    572ms lvm2-monitor.service
+    533ms dbus-broker.service
+    511ms gssproxy.service
+    491ms NetworkManager.service
+    392ms rsyslog.service
+    367ms plocate-updatedb.service
+    338ms systemd-udevd.service
+    330ms boot.mount
+    325ms systemd-sysctl.service
+    298ms dev-disk-by\x2duuid-5dc45e4c\x2d9d5a\x2d4924\x2d8b32\x2d2e1a0989fbdb.swap
+    293ms sysstat.service
+    274ms home.mount
+    238ms lm_sensors.service
+    232ms udisks2.service
+    209ms cockpit-issue.service
+    209ms dnf-makecache.service
+    203ms auditd.service
+    203ms cockpit.socket
+    202ms systemd-remount-fs.service
+    186ms upower.service
+    181ms systemd-tmpfiles-clean.service
+    179ms systemd-fsck@dev-disk-by\x2duuid-77F8\x2d57A1.service
+    179ms systemd-udev-trigger.service
+    173ms systemd-journald.service
+    170ms audit-rules.service
+    170ms unbound-anchor.service
+    145ms systemd-random-seed.service
+    144ms systemd-modules-load.service
+    143ms avahi-daemon.service
+    138ms dev-hugepages.mount
+    137ms dev-mqueue.mount
+    137ms sys-kernel-debug.mount
+    136ms sys-kernel-tracing.mount
+    128ms systemd-journal-flush.service
+    126ms systemd-logind.service
+    113ms modprobe@dm_multipath.service
+    112ms var-lib-nfs-rpc_pipefs.mount
+    101ms plymouth-switch-root.service
+    100ms rhsmcertd.service
+     97ms sys-fs-fuse-connections.mount
+     97ms dracut-shutdown.service
+     87ms plymouth-quit-wait.service
+     86ms plymouth-quit.service
+     84ms modprobe@loop.service
+     82ms rpcbind.service
+     77ms boot-efi.mount
+     76ms sysstat-summary.service
+     76ms logrotate.service
+     75ms plymouth-read-write.service
+     71ms systemd-udev-load-credentials.service
+     63ms initrd-parse-etc.service
+     58ms kmod-static-nodes.service
+     57ms systemd-vconsole-setup.service
+     56ms fwupd-refresh.service
+     56ms raid-check.service
+     54ms fstrim.service
+     50ms systemd-network-generator.service
+     50ms systemd-hostnamed.service
+     43ms rpc-statd-notify.service
+     42ms dracut-pre-udev.service
+     42ms dracut-cmdline.service
+     39ms packagekit.service
+     37ms systemd-tmpfiles-setup-dev.service
+     36ms pmie_farm.service
+     35ms systemd-userdbd.service
+     34ms systemd-update-utmp.service
+     34ms modprobe@drm.service
+     33ms modprobe@efi_pstore.service
+     33ms modprobe@dm_mod.service
+     30ms systemd-update-utmp-runlevel.service
+     29ms sysstat-collect.service
+     29ms initrd-cleanup.service
+     27ms user-runtime-dir@0.service
+     26ms sshd.service
+     26ms pmlogger_farm.service
+     23ms pmie_farm_check.service
+     23ms modprobe@configfs.service
+     23ms pmlogger_daily.service
+     22ms modprobe@fuse.service
+     22ms pmlogger_check.service
+     22ms pmie_check.service
+     21ms sysstat-rotate.service
+     21ms pmlogger_farm_check.service
+     20ms systemd-hibernate-resume.service
+     20ms pmie_daily.service
+     19ms systemd-machined.service
+     16ms dracut-pre-pivot.service
+     14ms plymouth-start.service
+     13ms systemd-fsck-root.service
+     11ms systemd-sysusers.service
+      9ms systemd-user-sessions.service
+      6ms initrd-udevadm-cleanup-db.service
+InterfaceType      BMC_IP            BMC_MAC
+DedicatedDHCP	192.168.60.223	18:9b:a5:83:3e:f1
+ShareDHCP	192.168.60.113	18:9b:a5:83:3e:f0
+System GUID   : 8c353192-0e03-11ef-01e8-f13e83a59b18
+Selftest: passed
+fru backboard title num : 6
+System Power         : on
+Power Overload       : false
+Power Interlock      : inactive
+Main Power Fault     : false
+Power Control Fault  : false
+Power Restore Policy : always-off
+Chassis Intrusion    : inactive
+Front-Panel Lockout  : inactive
+Drive Fault          : false
+Cooling/Fan Fault    : false
+Sleep Button Disable : allowed
+Diag Button Disable  : allowed
+Reset Button Disable : allowed
+Power Button Disable : allowed
+Sleep Button Disabled: false
+Diag Button Disabled : false
+Reset Button Disabled: false
+Power Button Disabled: false
+
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+CPLD.ver : REV 1.04
+BMC.ver  : 1.04.00.01.00.00
+BIOS.ver : T2DMEP04.00
+Bios-ReleaseTime: 02/06/2025
+Bios-Revisione: 5.35
+BP_fw    :BP1 Version: REV 1.01(03-29-2024)
+BP2 Version: REV 1.01(11-18-2022)
+< sost_20251117-133531_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133538_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133539_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133540_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133541_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133541_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133541_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133542_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133542_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133542_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133542_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133542_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251117-133544_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133544_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133544_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133547_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133548_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133549_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133551_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133554_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133555_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133555_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133556_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133556_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133556_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133556_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20251117-133556_print    > : Test_Type         : reboot
+< sost_20251117-133556_print    > : Test_Count        : 0
+< sost_20251117-133556_print    > : Test_Status       : Pass
+< sost_20251117-133556_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-133613_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251117-133613_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20251117-133613_print    > : ===============================================================
+< sost_20251117-133613_print    > : Test type        : reboot
+< sost_20251117-133613_print    > : Test Count       : 0
+< sost_20251117-133613_print    > : Test Folder      : /root/reboot
+< sost_20251117-133613_print    > : Test Status      : Pass
+< sost_20251117-133613_print    > : Test Start Time  : 2025-11-17-13-35-23
+< sost_20251117-133613_print    > : Test End   Time  : 2025-11-17-13-36-12
+< sost_20251117-133613_print    > : ===============================================================
+[31m< sost_20251117-133613_error    > : DebugMode Enabled noSendCommand = 1[0m
+< sost_20251117-133615_print    > : ══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+|| sost : 1.1.1            || State : NA            || 
+||--------------------------------------------------||
+|| Type : reboot           || Count : 0             ||
+══════════════════════════════════════════════════════
+< sost > Please Wait Times `Ctrl + c` exit() : 29s
+< sost > Please Wait Times `Ctrl + c` exit() : 28s
+< sost > Please Wait Times `Ctrl + c` exit() : 27s
+< sost > Please Wait Times `Ctrl + c` exit() : 26s
+< sost > Please Wait Times `Ctrl + c` exit() : 25s
+< sost > Please Wait Times `Ctrl + c` exit() : 24s
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost > Please Wait Times `Ctrl + c` exit() : 22s
+< sost > Please Wait Times `Ctrl + c` exit() : 21s
+< sost > Please Wait Times `Ctrl + c` exit() : 20s
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-133646_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133647_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133648_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133648_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133649_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133649_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133649_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133650_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133650_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133650_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133650_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251117-133652_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133652_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133652_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133656_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133656_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133657_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133701_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133704_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133705_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133705_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133705_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133706_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133706_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133706_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133706_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20251117-133706_print    > : Test_Type         : reboot
+< sost_20251117-133706_print    > : Test_Count        : 1
+< sost_20251117-133706_print    > : Test_Status       : Pass
+< sost_20251117-133706_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-133722_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251117-133722_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20251117-133723_print    > : ===============================================================
+< sost_20251117-133723_print    > : Test type        : reboot
+< sost_20251117-133723_print    > : Test Count       : 1
+< sost_20251117-133723_print    > : Test Folder      : /root/reboot
+< sost_20251117-133723_print    > : Test Status      : Pass
+< sost_20251117-133723_print    > : Test Start Time  : 2025-11-17-13-35-23
+< sost_20251117-133723_print    > : Test End   Time  : 2025-11-17-13-37-22
+< sost_20251117-133723_print    > : ===============================================================
+[31m< sost_20251117-133723_error    > : DebugMode Enabled noSendCommand = 1[0m
+< sost_20251117-133745_print    > : ══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+|| sost : 1.1.1            || State : [32mPass[0m          || 
+||--------------------------------------------------||
+|| Type : reboot           || Count : 1             ||
+══════════════════════════════════════════════════════
+< sost > Please Wait Times `Ctrl + c` exit() : 29s
+< sost > Please Wait Times `Ctrl + c` exit() : 28s
+< sost > Please Wait Times `Ctrl + c` exit() : 27s
+< sost > Please Wait Times `Ctrl + c` exit() : 26s
+< sost > Please Wait Times `Ctrl + c` exit() : 25s
+< sost > Please Wait Times `Ctrl + c` exit() : 24s
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost > Please Wait Times `Ctrl + c` exit() : 22s
+< sost > Please Wait Times `Ctrl + c` exit() : 21s
+< sost > Please Wait Times `Ctrl + c` exit() : 20s
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-133816_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133816_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133818_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133818_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133818_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133818_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133819_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133819_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133819_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133819_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133819_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251117-133821_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133821_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133821_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133846_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133846_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133847_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133851_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133854_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133855_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133855_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133855_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133855_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133855_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133856_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133856_print    > : Running Time check                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-133856_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20251117-133856_print    > : Test_Type         : reboot
+< sost_20251117-133856_print    > : Test_Count        : 2
+< sost_20251117-133856_print    > : Test_Status       : Pass
+< sost_20251117-133856_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-133912_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251117-133913_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20251117-133913_print    > : ===============================================================
+< sost_20251117-133913_print    > : Test type        : reboot
+< sost_20251117-133913_print    > : Test Count       : 2
+< sost_20251117-133913_print    > : Test Folder      : /root/reboot
+< sost_20251117-133913_print    > : Test Status      : Pass
+< sost_20251117-133913_print    > : Test Start Time  : 2025-11-17-13-35-23
+< sost_20251117-133913_print    > : Test End   Time  : 2025-11-17-13-39-12
+< sost_20251117-133913_print    > : ===============================================================
+[31m< sost_20251117-133913_error    > : DebugMode Enabled noSendCommand = 1[0m
+< sost_20251117-133935_print    > : ══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+|| sost : 1.1.1            || State : [32mPass[0m          || 
+||--------------------------------------------------||
+|| Type : reboot           || Count : 2             ||
+══════════════════════════════════════════════════════
+< sost > Please Wait Times `Ctrl + c` exit() : 29s
+< sost > Please Wait Times `Ctrl + c` exit() : 28s
+< sost > Please Wait Times `Ctrl + c` exit() : 27s
+< sost > Please Wait Times `Ctrl + c` exit() : 26s
+< sost > Please Wait Times `Ctrl + c` exit() : 25s
+< sost > Please Wait Times `Ctrl + c` exit() : 24s
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost > Please Wait Times `Ctrl + c` exit() : 22s
+< sost > Please Wait Times `Ctrl + c` exit() : 21s
+< sost > Please Wait Times `Ctrl + c` exit() : 20s
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-134005_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134006_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134007_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134008_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134008_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134008_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134008_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134009_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134009_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134009_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134009_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251117-134011_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134011_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134011_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134035_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134035_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134036_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134039_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134043_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134043_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134044_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134044_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134044_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134044_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134044_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134044_print    > : Running Time check                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134044_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20251117-134045_print    > : Test_Type         : reboot
+< sost_20251117-134045_print    > : Test_Count        : 3
+< sost_20251117-134045_print    > : Test_Status       : Pass
+< sost_20251117-134045_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-134101_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251117-134101_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20251117-134101_print    > : ===============================================================
+< sost_20251117-134101_print    > : Test type        : reboot
+< sost_20251117-134101_print    > : Test Count       : 3
+< sost_20251117-134101_print    > : Test Folder      : /root/reboot
+< sost_20251117-134101_print    > : Test Status      : Pass
+< sost_20251117-134101_print    > : Test Start Time  : 2025-11-17-13-35-23
+< sost_20251117-134101_print    > : Test End   Time  : 2025-11-17-13-41-01
+< sost_20251117-134101_print    > : ===============================================================
+[31m< sost_20251117-134102_error    > : DebugMode Enabled noSendCommand = 1[0m
+< sost_20251117-134124_print    > : ══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+|| sost : 1.1.1            || State : [32mPass[0m          || 
+||--------------------------------------------------||
+|| Type : reboot           || Count : 3             ||
+══════════════════════════════════════════════════════
+< sost > Please Wait Times `Ctrl + c` exit() : 29s
+< sost > Please Wait Times `Ctrl + c` exit() : 28s
+< sost > Please Wait Times `Ctrl + c` exit() : 27s
+< sost > Please Wait Times `Ctrl + c` exit() : 26s
+< sost > Please Wait Times `Ctrl + c` exit() : 25s
+< sost > Please Wait Times `Ctrl + c` exit() : 24s
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost > Please Wait Times `Ctrl + c` exit() : 22s
+< sost > Please Wait Times `Ctrl + c` exit() : 21s
+< sost > Please Wait Times `Ctrl + c` exit() : 20s
+< sost > Please Wait Times `Ctrl + c` exit() : 19s
+< sost > Please Wait Times `Ctrl + c` exit() : 18s
+< sost > Please Wait Times `Ctrl + c` exit() : 17s
+< sost > Please Wait Times `Ctrl + c` exit() : 16s
+< sost > Please Wait Times `Ctrl + c` exit() : 15s
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-134154_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134155_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134156_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134157_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134157_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134157_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134157_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134158_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134158_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134158_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134158_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20251117-134200_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134200_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134200_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134224_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134224_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134225_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134229_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134232_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134233_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134234_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134234_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134234_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134234_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134234_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134234_print    > : Running Time check                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20251117-134234_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20251117-134235_print    > : Test_Type         : reboot
+< sost_20251117-134235_print    > : Test_Count        : 4
+< sost_20251117-134235_print    > : Test_Status       : Pass
+< sost_20251117-134235_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20251117-134251_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20251117-134251_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20251117-134251_print    > : ===============================================================
+< sost_20251117-134251_print    > : Test type        : reboot
+< sost_20251117-134251_print    > : Test Count       : 4
+< sost_20251117-134252_print    > : Test Folder      : /root/reboot
+< sost_20251117-134252_print    > : Test Status      : Pass
+< sost_20251117-134252_print    > : Test Start Time  : 2025-11-17-13-35-23
+< sost_20251117-134252_print    > : Test End   Time  : 2025-11-17-13-42-51
+< sost_20251117-134252_print    > : ===============================================================
+[31m< sost_20251117-134252_error    > : DebugMode Enabled noSendCommand = 1[0m

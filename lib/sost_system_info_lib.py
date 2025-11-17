@@ -523,6 +523,7 @@ def system_info_check(flags, path, count):
         osip(flags, path, count)
         meminfo(flags, path, count)
         pcieinfo(flags, path, count)
+        switch_info(flags, path, count)
         pcieslot(flags, path, count)
         psuinfo(flags, path, count)
         cpu_info(flags, path, count)
@@ -557,6 +558,7 @@ def bmc_info_check(flags, path, count):
         log._error(f"script error : {e}")
         
 def test_config(flags, count, path):
+    
     log.json_set('Test_tmp','Running_flag','2')
     # 0 print 1 to file 2 to testconfig.txt => stability_config.json
     if flags == "1":
@@ -611,8 +613,14 @@ def test_config(flags, count, path):
         log._dp(" TestMode         : simple")
     else:
         system_info_check(flags ,path, count)
+        systemd_analyze_blame(flags, path, count)
         bmc_info_check(flags, path, count)
         public_check(flags, path, count)
+
+# 记录每次重启系统服务所需时间
+def systemd_analyze_blame(flags, path, count):
+    bmc_guid = log.os_popen("systemd-analyze blame").strip()
+    print_save_text(flags=flags, folder_path=path, type="systemd_analyze_blame", count=count,text=bmc_guid)
 
 #check rtc_time
 # def check_rtc_time(flags, path, count):
@@ -665,6 +673,7 @@ def test_config(flags, count, path):
 #         fail_info('RTC Time seconds check',error_tmp,f'timedatectl',f"timedatectl")
 #     else:
 #         log._pr("RTC Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+
 # bmc mc self test result
 def bmchealth(flags, path, count):
     if log.json_get('collect_array',"bmchealth",web='no-log',filename='collect').strip() !='1':return 0
@@ -686,7 +695,6 @@ def bmcguid(flags, path, count):
             log._pr("BMC IPMI GUID ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
         else:
             log._pr("BMC IPMI GUID ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
-
 
 # check RuningTime
 def check_running_time(count):
@@ -1007,13 +1015,35 @@ def meminfo(flags, folder_path, count):
         else:
             log._pr("OS Memory ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
 
+# show pcie info
 def pcieinfo(flags, folder_path, count):
     if log.json_get('collect_array',"pcieinfo",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
-    pci_arry = log.os_popen("lspci 2>/dev/null| grep -ivE 'Bridge|Encryption controller|Non-Essential|iommu|System peripheral' |awk '{print $1}'").strip().split()
     #bak data
-    order = 0
-    pci_switch = False
+    tmp = 0
+    pci_arry = log.os_popen("lspci 2>/dev/null| grep -ivE 'Bridge|Encryption controller|Non-Essential|iommu|System peripheral' |awk '{print $1}'").strip().split()
+    print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
+    for bus_addr in pci_arry:
+        log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null")
+        node = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
+        lnk_sta = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2").strip()
+        if lnk_sta == "":lnk_sta="-"
+        try:Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip().split(',')[0]
+        except:Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip()
+        if Subsystem=="":
+            Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
+            if Subsystem=="":Subsystem="-"
+        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(tmp).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+lnk_sta.ljust(45)+Subsystem)
+        tmp+=1
+
+    if flags == "1" : 
+        if diff_information(count,folder_path,"pcieinfo"):
+            log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+        else:
+            log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
+    
+# show switch info
+def switch_info(flags, folder_path, count):
     # Huawie project switch slot map
     # [root@localhost sost]# lspci | grep -i 'Broadcom / LSI PCIe Switch management endpoint'
     # 1a:00.0 Serial Attached SCSI controller: Broadcom / LSI PCIe Switch management endpoint (rev b0)
@@ -1021,55 +1051,25 @@ def pcieinfo(flags, folder_path, count):
     # [root@localhost sost]# lspci | grep -i 'Broadcom / LSI PCIe Switch management endpoint' | wc -l
     # config -> switch_slot_map_num: 2
     # 逻辑判断是否有PCI switch
-    if log.os_popen("lspci | grep -i 'Broadcom / LSI PCIe Switch management endpoint'| grep -vi scsi | wc -l").strip() != "0":
-        pci_switch = True
-    else:
-        if log.os_popen("lspci | grep -i 'PCI bridge: Broadcom' | grep -vi scsi | wc -l").strip() != "0":
-            pci_switch = True
-        else:
-            pci_switch = False
-
-    if pci_switch and flags !='show':
-        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[parent_node]".ljust(15)+"[child_node]".ljust(15)+"[Node]".ljust(10)+"[SN]".ljust(20)+"[PN]".ljust(20)+"[Switch_Slot]".ljust(20)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
-        pci_switch_list = log.os_popen("lspci | grep -i 'PEX890xx PCIe Gen' | grep -i switch | cut -d ' ' -f 1").strip().split()
-        if pci_switch_list == []:
-            pci_switch_list = log.os_popen("lspci | grep -i 'PCI bridge: Broadcom' | grep -vi scsi | cut -d ' ' -f 1").strip().split()
+    if log.os_popen("lspci 2>/dev/null| grep -i 'Broadcom / LSI PCIe Switch management endpoint'| grep -vi scsi | wc -l").strip() == "0":
+        if log.os_popen("lspci 2>/dev/null| grep -i 'PCI bridge: Broadcom' | grep -vi scsi | wc -l").strip() == "0":
+            print_save_text(flags=flags, folder_path=folder_path, type="switchinfo", count=count,text='No PCIe Switch Detected')
+            return 0
         
-        for switch_bdf in pci_switch_list:
-            parent_node_slot = log.os_popen(f"lspci -vvvs {switch_bdf} | grep 'Slot #' | cut -d ',' -f 1 | cut -d '#' -f 2").strip()
-            child_node_bdf = log.os_popen(f"lspci -vvvs {switch_bdf.strip()} 2>/dev/null | grep secondary | cut -d ',' -f 2 | cut -d '=' -f 2 ").strip()+':00.0'
-            if log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null").strip() == "":
-                continue
-            node = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
-            lnk_sta = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2").strip()
-            if lnk_sta == "":lnk_sta="-"
-            try:Subsystem = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip().split(',')[0]
-            except:Subsystem = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip()
-            if Subsystem=="":
-                Subsystem = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
-                if Subsystem=="":Subsystem="-"
-            pci_sn = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i 'Serial Number:' | cut -d ':' -f 2").strip()
-            if pci_sn == "":pci_sn="-"
-            pci_pn = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i 'Part Number:' | cut -d ':' -f 2").strip()
-            if pci_pn == "":pci_pn="-"
-            
-            if parent_node_slot == "":
-                Switch_Slot = "-"
-            else:
-                data = json.loads(open(f"/opt/sost/config/switch_slot_map.json","r").read())
-                try:
-                    Switch_Slot = data['switch_slot'][str(parent_node_slot)].strip()
-                except Exception as e:
-                    Switch_Slot = "-"
-            
-            print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(order).ljust(10)+switch_bdf.ljust(15)+child_node_bdf.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+Switch_Slot.ljust(20)+lnk_sta.ljust(45)+Subsystem)
-            order+=1
-        # 处理Switch直连设备
-        direct_parent_node_bdf = '00:00.0'
-        child_node_bdf = log.os_popen(f"lspci -vvvs {direct_parent_node_bdf} | grep Bus: | cut -d ',' -f 2 | cut -d '=' -f 2").strip()+':00.0'
-        child_node_pci_info = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null").strip()
-        if child_node_pci_info == "":
-            return
+    if log.json_get('collect_array',"switchinfo",web='no-log',filename='collect').strip() !='1':return 0
+    echo_dev_info_sleep(flags,count)
+    #bak data
+    order = 0
+    print_save_text(flags=flags, folder_path=folder_path, type="switchinfo", count=count,text="[Order]".ljust(10)+"[parent_node]".ljust(15)+"[child_node]".ljust(15)+"[Node]".ljust(10)+"[SN]".ljust(20)+"[PN]".ljust(20)+"[Switch_Slot]".ljust(20)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
+    pci_switch_list = log.os_popen("lspci 2>/dev/null | grep -i 'PEX890xx PCIe Gen' | grep -i switch | cut -d ' ' -f 1").strip().split()
+    if pci_switch_list == []:
+        pci_switch_list = log.os_popen("lspci 2>/dev/null| grep -i 'PCI bridge: Broadcom' | grep -vi scsi | cut -d ' ' -f 1").strip().split()
+    
+    for switch_bdf in pci_switch_list:
+        parent_node_slot = log.os_popen(f"lspci -vvvs {switch_bdf} 2>/dev/null| grep 'Slot #' | cut -d ',' -f 1 | cut -d '#' -f 2").strip()
+        child_node_bdf = log.os_popen(f"lspci -vvvs {switch_bdf.strip()} 2>/dev/null | grep secondary | cut -d ',' -f 2 | cut -d '=' -f 2 ").strip()+':00.0'
+        if log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null").strip() == "":
+            continue
         node = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
         lnk_sta = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2").strip()
         if lnk_sta == "":lnk_sta="-"
@@ -1082,36 +1082,47 @@ def pcieinfo(flags, folder_path, count):
         if pci_sn == "":pci_sn="-"
         pci_pn = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i 'Part Number:' | cut -d ':' -f 2").strip()
         if pci_pn == "":pci_pn="-"
-        Switch_Slot = "Direct"
-        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(order).ljust(10)+direct_parent_node_bdf.ljust(15)+child_node_bdf.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+Switch_Slot.ljust(20)+lnk_sta.ljust(45)+Subsystem)
-    else:
-        text = "[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[SN]".ljust(20)+"[PN]".ljust(20)+"[Lnk_Sta]".ljust(45)+"[Subsystem]"
-        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=text)
-        for bus_addr in pci_arry:
-            log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null")
-            node = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
-            lnk_sta = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2").strip()
-            if lnk_sta == "":lnk_sta="-"
-            try:Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip().split(',')[0]
-            except:Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip()
-            if Subsystem=="":
-                Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
-                if Subsystem=="":Subsystem="-"
-            pci_sn = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Serial Number:' | cut -d ':' -f 2").strip()
-            if pci_sn == "":pci_sn="-"
-            pci_pn = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Part Number:' | cut -d ':' -f 2").strip()
-            if pci_pn == "":pci_pn="-"
-            print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(order).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+lnk_sta.ljust(45)+Subsystem)
-            order+=1
-
-    if flags == "show":
-        return 0
+        
+        if parent_node_slot == "":
+            Switch_Slot = "-"
+        else:
+            data = json.loads(open(f"/opt/sost/config/switch_slot_map.json","r").read())
+            try:
+                Switch_Slot = data['switch_slot'][str(parent_node_slot)].strip()
+                if Switch_Slot == "slot4":
+                    if "pcieport" == log.os_popen(f"lspci -vvvs {child_node_bdf} 2>/dev/null| grep -i 'kernel driver' | cut -d ':' -f 2 | tr -d ' '").strip():
+                        continue 
+            except Exception as e:
+                Switch_Slot = "-"
+        
+        print_save_text(flags=flags, folder_path=folder_path, type="switchinfo", count=count,text=str(order).ljust(10)+switch_bdf.ljust(15)+child_node_bdf.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+Switch_Slot.ljust(20)+lnk_sta.ljust(45)+Subsystem)
+        order+=1
+    # 处理Switch直连设备
+    direct_parent_node_bdf = '00:00.0'
+    child_node_bdf = log.os_popen(f"lspci -vvvs {direct_parent_node_bdf} 2>/dev/null| grep Bus: | cut -d ',' -f 2 | cut -d '=' -f 2").strip()+':00.0'
+    child_node_pci_info = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null").strip()
+    if child_node_pci_info == "":
+        return
+    node = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
+    lnk_sta = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2").strip()
+    if lnk_sta == "":lnk_sta="-"
+    try:Subsystem = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip().split(',')[0]
+    except:Subsystem = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities'").replace("Subsystem:","").strip()
+    if Subsystem=="":
+        Subsystem = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
+        if Subsystem=="":Subsystem="-"
+    pci_sn = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i 'Serial Number:' | cut -d ':' -f 2").strip()
+    if pci_sn == "":pci_sn="-"
+    pci_pn = log.os_popen(f"lspci -vvvs {child_node_bdf.strip()} 2>/dev/null| grep -i 'Part Number:' | cut -d ':' -f 2").strip()
+    if pci_pn == "":pci_pn="-"
+    Switch_Slot = "Direct"
+    print_save_text(flags=flags, folder_path=folder_path, type="switchinfo", count=count,text=str(order).ljust(10)+direct_parent_node_bdf.ljust(15)+child_node_bdf.ljust(15)+node.ljust(10)+pci_sn.ljust(20)+pci_pn.ljust(20)+Switch_Slot.ljust(20)+lnk_sta.ljust(45)+Subsystem)
     
     if flags == "1": 
-        if diff_information(count,folder_path,"pcieinfo"):
-            log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
+        if diff_information(count,folder_path,"switchinfo"):
+            log._pr("OS Switch ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
         else:
-            log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
+            log._pr("OS Switch ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
             
 def pcieslot(flags, folder_path, count):
     if log.json_get('collect_array',"pcieslot",web='no-log',filename='collect').strip() !='1':return 0

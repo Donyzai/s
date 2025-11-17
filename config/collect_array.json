@@ -26,6 +26,8 @@
         "rebooting_time" : "1",
         "running_time" : "1",
         "bmcguid":"1",
-        "bmchealth":"1"
+        "bmchealth":"1",
+        "switchinfo":"1",
+        "systemd_analyze_blame":"1"
     }
 }
