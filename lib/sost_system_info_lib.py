@@ -1437,13 +1437,7 @@ def os_disk_info_1(flags, folder_path, count):
         disk_num = 0
         for sata_disk in contrast_result:
             sata_collect_info_tmp = sata_collect_info(sata_disk)
-            print_save_text(flags=flags, folder_path=folder_path, type="hddinfo", count=count,
-                            text="".ljust(3) + str(disk_num).ljust(8) + sata_disk.ljust(11) + sata_collect_info_tmp[
-                                1].ljust(7) + sata_collect_info_tmp[0].ljust(7) + sata_collect_info_tmp[4].ljust(12) +
-                                 sata_collect_info_tmp[5].ljust(13) + sata_collect_info_tmp[7].ljust(10) +
-                                 sata_collect_info_tmp[8].ljust(11) + sata_collect_info_tmp[9].ljust(11) +
-                                 sata_collect_info_tmp[6].ljust(14) + sata_collect_info_tmp[3].ljust(22) +
-                                 sata_collect_info_tmp[2].ljust(5))
+            print_save_text(flags=flags, folder_path=folder_path, type="hddinfo", count=count,text="".ljust(3) + str(disk_num).ljust(8) + sata_disk.ljust(11) + sata_collect_info_tmp[1].ljust(7) + sata_collect_info_tmp[0].ljust(7) + sata_collect_info_tmp[4].ljust(12) + sata_collect_info_tmp[5].ljust(13) + sata_collect_info_tmp[7].ljust(10) + sata_collect_info_tmp[8].ljust(11) + sata_collect_info_tmp[9].ljust(11) + sata_collect_info_tmp[6].ljust(14) + sata_collect_info_tmp[3].ljust(22) + sata_collect_info_tmp[2].ljust(5))
             disk_num = disk_num + 1
         if flags == "1" : log._pr("OS HDD Info ".ljust(40) + "\033[32m[Pass]\033[0m")
 
