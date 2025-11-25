@@ -138,7 +138,7 @@ def rhel_yum_replace(ver):
     print("rhel_yum_replace Success!")
 
 def install_tools(install_type):
-    tools_arr = ["nvme-cli","numactl","ipmitool","smartmontools","python3-pip","minicom","python3-flask","net-tools","network-manager"]
+    tools_arr = ["nvme-cli","ipmitool","smartmontools","python3-pip","minicom","python3-flask","net-tools","network-manager"]
     if install_type == "ubuntu":
         os.system("apt list --installed > /tmp/apt_installed_list.txt 2>/dev/null")
         f = open("/tmp/apt_installed_list.txt","r").read()
@@ -146,6 +146,7 @@ def install_tools(install_type):
             if tool.strip() in f:
                 continue
             os.system(f"apt-get install {tool.strip()} -y")
+        os.system("apt-get install numactl* -y")
     else:
         os.system("yum list installed > /tmp/yum_installed_list.txt 2>/dev/null")
         f = open("/tmp/yum_installed_list.txt","r").read()
@@ -153,6 +154,7 @@ def install_tools(install_type):
             if tool.strip() in f:
                 continue
             os.system(f"yum install {tool.strip()} -y")
+        os.system("yum install numactl* -y")
     # init python3 pip
     os.system("pip3 list > /tmp/pip3_installed_list.txt 2>/dev/null")
     f = open("/tmp/pip3_installed_list.txt","r").read()

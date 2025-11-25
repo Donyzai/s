@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------
 sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/xx
 ----------------------------------------------------------------------------------
-1. 已适配KylinV11系统。
+templates1. 已适配KylinV11系统。
 2. 增加update提示功能。
 3. 优化sensor Handle处理
 4. 增加iBMC SEL日志检查PSU在位情况(与ac/dc/reset判断逻辑保持一致)
@@ -13,11 +13,10 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 10. 多模型测试sost -z后检查文件夹中是否有mulit字样，如果存在mulit_switch设置1
 11. 增加debug信息用于记录test_config函数运行时间
 12. 增加runningTime报错后，记录systemd-analyze plot信息至稳定性文件
-13. 优化所有in/pr位置提示语
-14. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp
+13. 优化所有in/pr位置提示语4. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp
 15. 增加bmc reset warm / cold KCS通道测试
 16. 修复看板无法实现aclost运行测试  [x]
-    修复方法 看板执行时修改command执行方式，看板收到信息后，创建aclost.sh文件，command修改为sh aclost.sh
+    修复方法 看板执行时修改command执行方式，看板收到信息后，创建aclost.sh文件，command修改为sh aclost.sh    [x]
 17. 增加稳定性类型判断，如果HisiBMC选择BMC热重启退出测试。
 18. IPMI sensor检查FAN信息是否有读值为0的情况。
     18.1 检查sensor中'0x0','0x00','0x01','na'变化情况
@@ -36,8 +35,10 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 30. 优化安装逻辑，检查依赖包存在不做重新安装动作。
 31. sost增加
     (1) sost -i switch查看switch信息
-    (2) sost -i pcieinfo查看switch信息。
+    (2) sost -i pcieinfo查看switch信息
 32. 
+33. 
+34. 
 
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
