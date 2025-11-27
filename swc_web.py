@@ -90,7 +90,10 @@ def slog():
 
 @app.route('/getrunningTime')
 def get_running_time():
-    runTime = log.os_popen(f"cat {log.json_get('Test_tmp','test_folder_path',web=cmd_log_flags)}/running_time.txt",flags=cmd_log_flags).strip()
+    path = log.json_get('Test_tmp','test_folder_path',web=cmd_log_flags)
+    if not path:
+        return "Path not found", 404
+    runTime = log.os_popen(f"cat {path}/running_time.txt",flags=cmd_log_flags).strip()
     return runTime.replace('\n','<br>')
 
 @app.route('/clearinfo')
@@ -210,12 +213,20 @@ def run_stability():
     if log.os_popen("ps -axu | grep -iE 'auto_test | sost_main' | grep -vi grep | wc -l",flags=cmd_log_flags).strip() != '0':
         return jsonify({"error": "SOST is already running a stability test!"}), 400
     
+    # 检查typea参数
+    if not typea:
+        return jsonify({"error": "Missing required parameter: type"}), 400
+    
     #判断run_wait_time是否为空
-    if run_wait_time != None or run_wait_time != '':
+    if run_wait_time is None or run_wait_time == '':
         if typea in ['reboot','powercycle','powerreset','aclost']:
             print("no set run_wait_time!")
             addc = typea
+        else:
+            return jsonify({"error": "run_wait_time is required for this type"}), 400
     else:
+        if typea not in stability_array:
+            return jsonify({"error": f"Invalid type parameter: {typea}"}), 400
         addc = f"json_test:dongzai,chose:{stability_array[typea]},run_wait_time:{run_wait_time}"
     
     commands = {
@@ -225,10 +236,12 @@ def run_stability():
         'aclost': f'sost -s {addc} &',
         'continue'  : 'sost -z &',
         'stop'      : 'sost -k &',
-        'other': f'''  sost -s json_test:dongzai,chose:{stability_array[typea]},bmclan:{bmclan},bmcuser:{bmcuser},bmcpass:'{bmcpass}',run_wait_time:{run_wait_time} & '''
+        'other': f'''  sost -s json_test:dongzai,chose:{stability_array.get(typea, '')},bmclan:{bmclan},bmcuser:{bmcuser},bmcpass:'{bmcpass}',run_wait_time:{run_wait_time} & '''
     }
     
     try:
+        if typea not in commands:
+            return jsonify({"error": f"Invalid type parameter: {typea}"}), 400
         run_command = commands[typea]
         subprocess.Popen(run_command, shell=True, executable='/bin/bash')
         return jsonify({"message": f"{typea.capitalize()} command executed successfully."}), 200
@@ -419,7 +432,12 @@ def return_history():
 
             # 提取具体字段
             for field in entry_data:
-                key, value = field.split(':')
+                if ':' not in field:
+                    continue  # 跳过没有冒号的字段
+                try:
+                    key, value = field.split(':', 1)  # 只分割第一个冒号
+                except ValueError:
+                    continue  # 如果分割失败，跳过该字段
                 if key.strip() == "time":
                     time = value.strip()
                 elif key.strip() == "type":

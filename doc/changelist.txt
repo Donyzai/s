@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------
 sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/xx
 ----------------------------------------------------------------------------------
-templates1. 已适配KylinV11系统。
+1. 已适配KylinV11系统。
 2. 增加update提示功能。
 3. 优化sensor Handle处理
 4. 增加iBMC SEL日志检查PSU在位情况(与ac/dc/reset判断逻辑保持一致)
@@ -36,7 +36,7 @@ templates1. 已适配KylinV11系统。
 31. sost增加
     (1) sost -i switch查看switch信息
     (2) sost -i pcieinfo查看switch信息
-32. 
+32. dmesgCheck增加IPMI SI信息检查。
 33. 
 34. 
 

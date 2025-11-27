@@ -1,7 +1,7 @@
 # Filename : sost_logging.py
 # Release time : 2024.11.04
 # Version:1.1
-# by:Xiaodong Fan
+# by:Fan Xiaodong
 # Role : log_lib
 import locale
 import json

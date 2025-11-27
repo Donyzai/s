@@ -1,7 +1,7 @@
 # Filename : system_info_lib.py
 # Release time : 2024-10-18
 # Version:1.1
-# by:Xiaodong Fan
+# by:Fan Xiaodong
 
 from .sost_logging import *
 import os

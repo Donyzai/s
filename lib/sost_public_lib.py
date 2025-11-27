@@ -997,7 +997,7 @@ def def_Handling_sensors():
 |  ░███████  ████████  ░░██████    | 
 |  ░░░░░░░  ░░░░░░░░    ░░░░░░     | 
 ════════════════════════════════════
-|      Auther:Xiaodong Fan         |
+|      Auther:Fan Xiaodong         |
 ════════════════════════════════════
 |  0. ALL Sensors                  |
 |  1. TEMP                         |
@@ -1955,7 +1955,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||          ░██░██   ░██ ░░░░░██  ░██   ||
 ||    ████████ ░░██████  ██████   ░░██  ||
 ||   ░░░░░░░░   ░░░░░░  ░░░░░░     ░░   ||
-||                 Auther:Xiaodong Fan  ||
+||                 Auther:Fan Xiaodong  ||
 ══════════════════════════════════════════
 ||    1 . reboot                        ||
 ||    2 . power cycle                   ||
@@ -1975,7 +1975,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||          ░██░██   ░██ ░░░░░██  ░██   ||
 ||    ████████ ░░██████  ██████   ░░██  ||
 ||   ░░░░░░░░   ░░░░░░  ░░░░░░     ░░   ||
-||                 Auther:Xiaodong Fan  ||
+||                 Auther:Fan Xiaodong  ||
 ══════════════════════════════════════════
 ||    1 . WaitTime                      ||
 ||    2 . Process                       ||
@@ -1996,7 +1996,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||          ░██░██   ░██ ░░░░░██  ░██   ||
 ||    ████████ ░░██████  ██████   ░░██  ||
 ||   ░░░░░░░░   ░░░░░░  ░░░░░░     ░░   ||
-||                 Auther:Xiaodong Fan  ||
+||                 Auther:Fan Xiaodong  ||
 ||══════════════════════════════════════||''',pr_flag='1')
     if chose == '1':
         waitTime = log._in("Enter the time you want to wait -> Enter 3600 : ").strip()
@@ -2018,7 +2018,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||          ░██░██   ░██ ░░░░░██  ░██   ||
 ||    ████████ ░░██████  ██████   ░░██  ||
 ||   ░░░░░░░░   ░░░░░░  ░░░░░░     ░░   ||
-||                 Auther:Xiaodong Fan  ||
+||                 Auther:Fan Xiaodong  ||
 ||══════════════════════════════════════||
 ||   1. PID      |  2. ProcessName      ||
 ||══════════════════════════════════════||''',pr_flag='1')
@@ -2046,7 +2046,7 @@ def Timed_operation_mode(chose='',waiting_time=''):
 ||          ░██░██   ░██ ░░░░░██  ░██    ||
 ||    ████████ ░░██████  ██████   ░░██   ||
 ||   ░░░░░░░░   ░░░░░░  ░░░░░░     ░░    ||
-||                  Auther:Xiaodong Fan  ||
+||                  Auther:Fan Xiaodong  ||
 ||═══════════════════════════════════════||
 ||     PID process monitoring is turned  ||
 ||      on do not turn off SOST!         ||   
@@ -2161,7 +2161,7 @@ def logo(release_time, version):
 |                  ░░█████ ░██   ░██░░█████   ░██                          |
 |                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
 |                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Xiaodong Fan  |
+|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Fan Xiaodong  |
 |═══════════════════════════════════════════════════════════════════════════
 |    ReTime:{release_time.ljust(11)}     Ver.{version} BMC_Chip:\033[33m{bmc_chip.ljust(18)}\033[0m|
 |══════════════════════════════════════════════════════════════════════════|
