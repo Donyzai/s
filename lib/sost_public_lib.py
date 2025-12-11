@@ -1185,7 +1185,7 @@ def update_sost(update_flag=''):
     updating_sost(update_ver,server_ip)
 
 def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
-    
+
     clp()
     log._tips("<------ BMC status check ----->")
     Dedicated_lan_num = log.json_get("Test_Config","Dedicated_lan_num")
