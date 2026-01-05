@@ -493,37 +493,8 @@ export PATH
 
     # Continue test execution function
     if args.continuee:
-        if "multi-user.target" in os.popen("systemctl get-default").read():
-            if "sost -z" not in os.popen("cat /root/.bash_profile").read():
-                with open('/root/.bash_profile','a') as f:
-                    f.write('sost -z')
-        else:
-            def autostart(tmp):
-                os.system("yes | sost -f bash >/dev/null ")
-                if not os.path.exists("/root/.config/autostart/sost.desktop"):
-                    if not os.path.exists("/root/.config/autostart"): os.mkdir("/root/.config/autostart")
-                    os.system("rm -rf /root/.config/autostart/*")
-                    os.system("touch /root/.config/autostart/sost.desktop")
-                    os.system("echo '[Desktop Entry]' >> /root/.config/autostart/sost.desktop")
-                    os.system("echo 'Type=Application' >> /root/.config/autostart/sost.desktop")
-                    os.system(f"echo '{tmp}' >> /root/.config/autostart/sost.desktop")
-                    os.system("echo 'Name=Sost_AutoStart' >> /root/.config/autostart/sost.desktop")
-                    os.system("echo 'Icon=system-run' >> /root/.config/autostart/sost.desktop")
-                    os.system("echo '' >> /root/.config/autostart/sost.desktop")
-            if str(os.popen("cat /etc/os-release | grep -i kylin | wc -l").read()) != "0":
-                tmp = 'Exec=mate-terminal --window --maximize -x bash -c "sost -z;exec bash;"'
-                autostart(tmp)
-            elif str(os.popen("cat /etc/os-release | grep -i rhel | wc -l").read()) != "0":
-                tmp = 'Exec=gnome-terminal -- bash -c "sost -z; exec bash;"'
-                autostart(tmp)
-            else:
-                with open('/root/.bash_profile','a') as f:
-                    f.write('sost -z')
-        
-        # Check if multimodal stability test is enabled
-        if 'sost_mulit_result' in os.popen("sost -i test | grep -i test_folder_path | cut -d ':' -f 2 | tr -d ' '").read().strip():
-            json_set('Multimodal_stability','switch','1')
-
+        if "sost -z" not in os.popen("cat /root/.bash_profile").read() and not os.path.exists('/root/.config/autostart/sost.desktop'):
+            os.system('cd /opt/sost && python3 -c "from lib.sost_public_lib import autologin;autologin()"')
         # Start the auto_test.py script
         os.system("cd /opt/sost && python3 auto_test.py")
 

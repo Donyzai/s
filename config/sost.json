@@ -24,15 +24,15 @@
     "Multimodal_stability": {
         "switch": "0",
         "count_aclost": "",
-        "count_reboot": "",
-        "count_powercycle": "",
-        "count_powerreset": ""
+        "count_reboot": "0",
+        "count_powercycle": "5",
+        "count_powerreset": "5"
     },
     "BMC_Survival_Config": {
         "bmc_chip": "ASPEED-2600",
-        "switch": "0",
-        "BMC_Username": "admin",
-        "BMC_Password": "ttytty`12"
+        "switch": "",
+        "BMC_Username": "",
+        "BMC_Password": ""
     },
     "smtp": {
         "Fail_send_email": "",
@@ -43,18 +43,18 @@
         "pop3_password": ""
     },
     "Test_tmp": {
-        "test_type": "reboot",
-        "test_count": "4",
+        "test_type": "powercycle",
+        "test_count": "0",
         "test_status": "Pass",
-        "test_bmc_lan": "1",
-        "test_folder_path": "/root/reboot",
-        "test_sha256": "cf52fc115c9582058bd8987839f148c55fc364b40ed5781906f8e120193a5c0d",
-        "run_command": "reboot",
-        "startT_time": "2025-11-17-13-35-23",
-        "endT_time": "2025-11-17-13-42-51",
+        "test_bmc_lan": "",
+        "test_folder_path": "/root/sost_mulit_result/powercycle",
+        "test_sha256": "adead5cb161d0df54cf39970048d8baf6c9581a41efbca4837b629ff66006564",
+        "run_command": "ipmitool power cycle",
+        "startT_time": "2026-01-04-17-18-53",
+        "endT_time": "2026-01-04-17-24-23",
         "Running_flag": "4",
-        "running_time_last": "22",
-        "running_time_now": "22",
+        "running_time_last": "206",
+        "running_time_now": "271",
         "running_time_first": "",
         "swc_flags": "0"
     }

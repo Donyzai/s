@@ -1,4 +1,473 @@
-< sost_20251125-101904_print    > : swc_web is Running! Running-Time -> 20251125 10:19:04 (swc_web.py)
-< sost_20251125-101904_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
-< sost_20251125-102115_print    > : swc_web is Running! Running-Time -> 20251125 10:21:15 (swc_web.py)
-< sost_20251125-102115_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260104-171852_print    > : SWC Service Connectivity Success!
+< sost_20260104-171853_print    > : ════════════════════════════════════════════════════════════════════════════
+|                                             ░██                          |
+|                    ██████  ██████   ██████ ██████                        |
+|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
+|                  ░░█████ ░██   ░██░░█████   ░██                          |
+|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
+|                   ██████ ░░██████  ██████   ░░██                         |
+|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Fan Xiaodong  |
+|═══════════════════════════════════════════════════════════════════════════
+|    ReTime:2025-11-06 13:56:47     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
+|══════════════════════════════════════════════════════════════════════════|
+|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
+|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
+|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
+|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
+|══════════════════════════════════════════════════════════════════════════|
+|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
+|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
+|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
+|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
+════════════════════════════════════════════════════════════════════════════
+< sost_20260104-171856_print    > : ══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+|| sost : 1.1.1            || State : NA            || 
+||--------------------------------------------------||
+|| Type : powercycle       || Count : 0             ||
+══════════════════════════════════════════════════════
+[NIC_NAME]               [NIC_IPv4]               [NIC_MAC]           [NIC_MTU]      [NIC_Speed]    [NIC_State]    [NIC_duplex]   [NIC_BDF]      [NIC_Node]
+enp129s0f0               192.168.60.143           18:9b:a5:82:e2:5c   1500           1000           up             full           0000:81:00.0   0
+enp129s0f1               -                        18:9b:a5:82:e2:5d   1500           -              down           unknown        0000:81:00.1   0
+enp129s0f2               -                        18:9b:a5:82:e2:5e   1500           -              down           unknown        0000:81:00.2   0
+enp129s0f3               -                        18:9b:a5:82:e2:5f   1500           -              down           unknown        0000:81:00.3   0
+[Order] [Manufacturer]   [PartNumber]        [Size]  [Volatile_size]  [Speed]     [Config Speed] [Serial_Number]    [Locator]    [Bank_Locator]
+   0      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      038929E3       CPU1 DIMM A1   P0 CHANNEL A
+   1      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892B5C       CPU1 DIMM B1   P0 CHANNEL B
+   2      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892A15       CPU1 DIMM C1   P0 CHANNEL C
+   3      -              -                    -           -           -              -              -              CPU1 DIMM D1   P0 CHANNEL D
+   4      -              -                    -           -           -              -              -              CPU1 DIMM E1   P0 CHANNEL E
+   5      -              -                    -           -           -              -              -              CPU1 DIMM F1   P0 CHANNEL F
+   6      -              -                    -           -           -              -              -              CPU1 DIMM G1   P0 CHANNEL G
+   7      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892AE3       CPU1 DIMM H1   P0 CHANNEL H
+   8      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892B88       CPU1 DIMM I1   P0 CHANNEL I
+   9      Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      038929C5       CPU1 DIMM J1   P0 CHANNEL J
+   10     -              -                    -           -           -              -              -              CPU1 DIMM K1   P0 CHANNEL K
+   11     -              -                    -           -           -              -              -              CPU1 DIMM L1   P0 CHANNEL L
+   12     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892ABD       CPU2 DIMM A1   P1 CHANNEL A
+   13     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892A39       CPU2 DIMM B1   P1 CHANNEL B
+   14     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892938       CPU2 DIMM C1   P1 CHANNEL C
+   15     -              -                    -           -           -              -              -              CPU2 DIMM D1   P1 CHANNEL D
+   16     -              -                    -           -           -              -              -              CPU2 DIMM E1   P1 CHANNEL E
+   17     -              -                    -           -           -              -              -              CPU2 DIMM F1   P1 CHANNEL F
+   18     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892BB4       CPU2 DIMM G1   P1 CHANNEL G
+   19     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892B3E       CPU2 DIMM H1   P1 CHANNEL H
+   20     Samsung        M321R2GA3BB6-CQKEG   16 GB       16 GB       4800 MT/s      4800 MT/s      03892AB1       CPU2 DIMM I1   P1 CHANNEL I
+   21     -              -                    -           -           -              -              -              CPU2 DIMM J1   P1 CHANNEL J
+   22     -              -                    -           -           -              -              -              CPU2 DIMM K1   P1 CHANNEL K
+   23     -              -                    -           -           -              -              -              CPU2 DIMM L1   P1 CHANNEL L
+[Order]   [Bus_Addr]     [Node]    [Lnk_Sta]                                    [Subsystem]
+0         0000:00:14.0   0         -                                            Advanced Micro Devices
+1         0000:41:00.4   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+2         0000:81:00.0   0         Speed 5GT/s, Width x4                        00.0 Ethernet controller
+3         0000:81:00.1   0         Speed 5GT/s, Width x4                        00.1 Ethernet controller
+4         0000:81:00.2   0         Speed 5GT/s, Width x4                        00.2 Ethernet controller
+5         0000:81:00.3   0         Speed 5GT/s, Width x4                        00.3 Ethernet controller
+6         0000:a2:00.0   0         -                                            ASPEED Technology
+7         0000:e1:00.4   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+8         0000:e2:00.0   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+9         0000:e2:00.1   0         Speed 32GT/s, Width x16                      Advanced Micro Devices
+10        0001:e2:00.0   1         Speed 32GT/s, Width x16                      Advanced Micro Devices
+11        0001:e2:00.1   1         Speed 32GT/s, Width x16                      Advanced Micro Devices
+No PCIe Switch Detected
+[Order]   [BUS_Addr]          [Designation]                 [Type]                                  [Current Usage]     [Length]       [Node]
+0         0000:a0:03.1        CPU1 M.2 slot                 M.2 Socket 3                            Available           Long           -
+1         0001:a0:03.1        CPU2 M.2 slot                 M.2 Socket 3                            Available           Long           -
+2         0000:80:01.1        OCP slot 0                    OCP NIC 3.0 Small Form Factor (SFF)     In Use              Long           0
+3         0000:e0:01.1        Riser 1, Slot 1               PCI Express 5 x16                       Available           Long           -
+4         0000:00:01.1        Riser 1, Slot 2               PCI Express 5 x8                        Available           Long           -
+5         0000:00:01.2        Riser 1, Slot 3               PCI Express 5 x8                        Available           Long           -
+6         0001:60:01.1        Riser 2, Slot 1               PCI Express 5 x8                        Available           Long           -
+7         0001:00:01.1        Riser 2, Slot 3               PCI Express 5 x16                       Available           Long           -
+8         0000:00:00.0        Riser 3, Slot 1               <OUT OF SPEC>                           <OUT OF SPEC>       Long           0
+[PSU_NUM] [PSU_Manufacturer]  [PSU_Serial_Number] [PSU_Model_Part_Number]  [PSU_Revision]  [PSU_Max_Power_Capacity] [PSU_Status]  [PSU_Type]  [PSU_Hot_Replaceable]
+PSU1       Great Wall          2N094033886           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
+PSU2       Great Wall          2M090059043           CRPS1300D2             1.010               1300 W                OK       Switching            Yes
+128 model name	: AMD EPYC 9355 32-Core Processor
+128 vendor_id	: AuthenticAMD
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        52 bits physical, 57 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               128
+On-line CPU(s) list:                  0-127
+Vendor ID:                            AuthenticAMD
+BIOS Vendor ID:                       Advanced Micro Devices, Inc.
+Model name:                           AMD EPYC 9355 32-Core Processor
+BIOS Model name:                      AMD EPYC 9355 32-Core Processor                 Unknown CPU @ 3.5GHz
+BIOS CPU family:                      107
+CPU family:                           26
+Model:                                2
+Thread(s) per core:                   2
+Core(s) per socket:                   32
+Socket(s):                            2
+Stepping:                             1
+Frequency boost:                      enabled
+CPU(s) scaling MHz:                   36%
+CPU max MHz:                          4413.2319
+CPU min MHz:                          1500.0000
+BogoMIPS:                             7089.64
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd amd_ppin cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d debug_swap amd_lbr_pmc_freeze
+Virtualization:                       AMD-V
+L1d cache:                            3 MiB (64 instances)
+L1i cache:                            2 MiB (64 instances)
+L2 cache:                             64 MiB (64 instances)
+L3 cache:                             512 MiB (16 instances)
+NUMA node(s):                         2
+NUMA node0 CPU(s):                    0-31,64-95
+NUMA node1 CPU(s):                    32-63,96-127
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+--------------------------------------------------------------------------------------------------------------
+Sys_disk_num  : 2
+Sys_disk_arry : sdasdb
+--------------------------------------------------------------------------------------------------------------
+>> NVMe Disk Info <<
+--------------------------------------------------------------------------------------------------------------
+[Order]   [NAME]         [MODEL]                            [SERIAL]            [REV]     [SIZE]   [Format]
+--------------------------------------------------------------------------------------------------------------
+>> SATA Disk Info <<
+--------------------------------------------------------------------------------------------------------------
+[Order]        [NAME]      [TYPE] [MODEL]          [SERIAL]       [REV_][SIZE][TRAN]
+0              sda           disk ST16000NM000J-2TW103 ZR70LWLX SN02 14.6T sata
+1              ├─sda1        part                                     600M 
+2              ├─sda2        part                                       1G 
+3              └─sda3        part                                    14.6T 
+4              sdb           disk ST16000NM000J-2TW103 ZR60JPM9 SN02 14.6T sata
+[Order]  [Nic_Name]          [BDF]          [Nic_Lnk]                          [Module]       [DD_Version]                       [FW_Version]
+   0     enp129s0f0          0000:81:00.0   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+   1     enp129s0f1          0000:81:00.1   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+   2     enp129s0f2          0000:81:00.2   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+   3     enp129s0f3          0000:81:00.3   Speed5GT/s,Widthx4                 igb            6.12.0-55.9.1.el10_0.x86_64        1.63,_0x800009fa
+USB Device num : 10
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 174c:2074 ASMedia Technology Inc. ASM1074 High-Speed hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 002: ID 174c:3074 ASMedia Technology Inc. ASM1074 SuperSpeed hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 046b:ff01 American Megatrends, Inc. Virtual Hub
+Bus 003 Device 003: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 003 Device 004: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
+Bus 003 Device 005: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+1min 60ms NetworkManager-wait-online.service
+   7.152s sys-module-fuse.device
+   7.040s dev-ttyS3.device
+   7.040s sys-devices-platform-serial8250-serial8250:0-serial8250:0.3-tty-ttyS3.device
+   7.037s sys-devices-platform-serial8250-serial8250:0-serial8250:0.1-tty-ttyS1.device
+   7.037s dev-ttyS1.device
+   7.035s dev-ttyS2.device
+   7.035s sys-devices-platform-serial8250-serial8250:0-serial8250:0.2-tty-ttyS2.device
+   7.019s sys-devices-pnp0-00:03-00:03:0-00:03:0.0-tty-ttyS0.device
+   7.019s dev-ttyS0.device
+   7.008s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2\x2dpart3.device
+   7.008s dev-disk-by\x2dpartuuid-b1383acb\x2d6d16\x2d4eb2\x2db310\x2d73499fd80a3d.device
+   7.008s dev-sda3.device
+   7.008s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartnum-3.device
+   7.008s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host17-target17:0:0-17:0:0:0-block-sda-sda3.device
+   7.008s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart3.device
+   7.008s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart3.device
+   7.008s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartuuid-b1383acb\x2d6d16\x2d4eb2\x2db310\x2d73499fd80a3d.device
+   7.008s dev-disk-by\x2ddiskseq-1\x2dpart3.device
+   7.008s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart3.device
+   7.003s sys-module-configfs.device
+   6.911s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart1.device
+   6.911s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart1.device
+   6.911s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartuuid-2281945a\x2d6773\x2d4a6c\x2d9271\x2daa187282c316.device
+   6.911s dev-disk-by\x2ddiskseq-1\x2dpart1.device
+   6.911s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartnum-1.device
+   6.911s dev-disk-by\x2duuid-77F8\x2d57A1.device
+   6.911s dev-disk-by\x2dpartlabel-EFI\x5cx20System\x5cx20Partition.device
+   6.911s dev-sda1.device
+   6.911s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart1.device
+   6.911s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host17-target17:0:0-17:0:0:0-block-sda-sda1.device
+   6.911s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2\x2dpart1.device
+   6.911s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2duuid-77F8\x2d57A1.device
+   6.911s dev-disk-by\x2dpartuuid-2281945a\x2d6773\x2d4a6c\x2d9271\x2daa187282c316.device
+   6.911s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartlabel-EFI\x5cx20System\x5cx20Partition.device
+   6.873s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartuuid-66fae33b\x2d2123\x2d4b39\x2db216\x2d86c07e4fd3a0.device
+   6.873s dev-disk-by\x2dpartuuid-66fae33b\x2d2123\x2d4b39\x2db216\x2d86c07e4fd3a0.device
+   6.873s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2duuid-828c460e\x2dfacc\x2d453b\x2d87d6\x2d496f8d5372f9.device
+   6.873s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart2.device
+   6.873s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host17-target17:0:0-17:0:0:0-block-sda-sda2.device
+   6.873s dev-sda2.device
+   6.873s dev-disk-by\x2duuid-828c460e\x2dfacc\x2d453b\x2d87d6\x2d496f8d5372f9.device
+   6.872s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart2.device
+   6.872s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart-by\x2dpartnum-2.device
+   6.872s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0\x2dpart2.device
+   6.872s dev-disk-by\x2ddiskseq-1\x2dpart2.device
+   6.872s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2\x2dpart2.device
+   6.783s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db.device
+   6.783s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata18-host17-target17:0:0-17:0:0:0-block-sda.device
+   6.783s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.0.device
+   6.783s dev-sda.device
+   6.783s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d2.device
+   6.783s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX.device
+   6.783s dev-disk-by\x2ddiskseq-1.device
+   6.722s dev-disk-by\x2duuid-216c7f9a\x2d8872\x2d490c\x2d9f6a\x2d16e12d484ac8.device
+   6.722s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d3.device
+   6.722s dev-disk-by\x2ddiskseq-2.device
+   6.722s sys-devices-pci0001:e0-0001:e0:07.2-0001:e2:00.0-ata19-host18-target18:0:0-18:0:0:0-block-sdb.device
+   6.722s dev-sdb.device
+   6.721s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR60JPM9.device
+   6.721s dev-disk-by\x2dpath-pci\x2d0001:e2:00.0\x2data\x2d3.0.device
+   6.721s dev-disk-by\x2did-wwn\x2d0x5000c500e43b5aca.device
+   3.564s initrd-switch-root.service
+   2.493s kdump.service
+   2.197s firewalld.service
+   1.785s pmcd.service
+   1.455s dracut-initqueue.service
+   1.278s pmlogger.service
+   1.079s tuned.service
+   1.078s pmie.service
+    905ms smartd.service
+    870ms systemd-tmpfiles-setup-dev-early.service
+    867ms systemd-tmpfiles-setup.service
+    854ms virtqemud.service
+    714ms user@0.service
+    696ms cups.service
+    689ms polkit.service
+    643ms ModemManager.service
+    623ms NetworkManager.service
+    618ms lvm2-monitor.service
+    537ms gssproxy.service
+    535ms chronyd.service
+    528ms dbus-broker.service
+    385ms sshd.service
+    344ms avahi-daemon.service
+    334ms rsyslog.service
+    334ms systemd-udevd.service
+    329ms lm_sensors.service
+    309ms dracut-shutdown.service
+    303ms boot.mount
+    284ms home.mount
+    268ms sysstat.service
+    257ms cockpit.socket
+    248ms dev-disk-by\x2duuid-5dc45e4c\x2d9d5a\x2d4924\x2d8b32\x2d2e1a0989fbdb.swap
+    247ms systemd-fsck@dev-disk-by\x2duuid-77F8\x2d57A1.service
+    243ms audit-rules.service
+    221ms systemd-sysctl.service
+    197ms systemd-udev-trigger.service
+    181ms systemd-modules-load.service
+    171ms user-runtime-dir@0.service
+    168ms auditd.service
+    168ms systemd-machined.service
+    146ms systemd-random-seed.service
+    144ms systemd-remount-fs.service
+    144ms systemd-journald.service
+    140ms boot-efi.mount
+    140ms cockpit-issue.service
+    130ms modprobe@dm_multipath.service
+    128ms rpcbind.service
+    128ms systemd-journal-flush.service
+    119ms systemd-logind.service
+    118ms rpc-statd-notify.service
+    108ms plymouth-quit-wait.service
+     97ms dev-hugepages.mount
+     96ms dev-mqueue.mount
+     95ms sys-kernel-debug.mount
+     95ms sys-kernel-tracing.mount
+     94ms plymouth-switch-root.service
+     87ms systemd-udev-load-credentials.service
+     86ms plymouth-quit.service
+     82ms var-lib-nfs-rpc_pipefs.mount
+     77ms systemd-vconsole-setup.service
+     76ms modprobe@loop.service
+     75ms kmod-static-nodes.service
+     65ms initrd-parse-etc.service
+     60ms systemd-network-generator.service
+     56ms systemd-update-utmp.service
+     50ms plymouth-read-write.service
+     50ms systemd-hostnamed.service
+     49ms sys-fs-fuse-connections.mount
+     46ms rhsmcertd.service
+     42ms modprobe@dm_mod.service
+     41ms modprobe@drm.service
+     40ms modprobe@efi_pstore.service
+     40ms dracut-pre-udev.service
+     40ms systemd-fsck-root.service
+     37ms dracut-cmdline.service
+     32ms systemd-tmpfiles-setup-dev.service
+     30ms pmie_farm.service
+     29ms systemd-userdbd.service
+     29ms systemd-update-utmp-runlevel.service
+     29ms pmlogger_farm.service
+     23ms modprobe@configfs.service
+     23ms modprobe@fuse.service
+     17ms systemd-user-sessions.service
+     17ms pmie_check.service
+     15ms plymouth-start.service
+     14ms dracut-pre-pivot.service
+     13ms systemd-hibernate-resume.service
+     12ms systemd-sysusers.service
+      9ms pmlogger_check.service
+      8ms initrd-cleanup.service
+      6ms initrd-udevadm-cleanup-db.service
+      3ms pmie_farm_check.service
+      1ms pmlogger_farm_check.service
+InterfaceType      BMC_IP            BMC_MAC
+DedicatedDHCP	192.168.60.223	18:9b:a5:83:3e:f1
+ShareDHCP	192.168.60.113	18:9b:a5:83:3e:f0
+System GUID   : 8c353192-0e03-11ef-01e8-f13e83a59b18
+Selftest: passed
+fru backboard title num : 6
+System Power         : on
+Power Overload       : false
+Power Interlock      : inactive
+Main Power Fault     : false
+Power Control Fault  : false
+Power Restore Policy : always-off
+Chassis Intrusion    : inactive
+Front-Panel Lockout  : inactive
+Drive Fault          : false
+Cooling/Fan Fault    : false
+Sleep Button Disable : allowed
+Diag Button Disable  : allowed
+Reset Button Disable : allowed
+Power Button Disable : allowed
+Sleep Button Disabled: false
+Diag Button Disabled : false
+Reset Button Disabled: false
+Power Button Disabled: false
+
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.04
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x01
+    0x00
+    0x00
+
+CPLD.ver : REV 1.04
+BMC.ver  : 1.04.00.01.00.00
+BIOS.ver : T2DMEP04.00
+Bios-ReleaseTime: 02/06/2025
+Bios-Revisione: 5.35
+BP_fw    :BP1 Version: REV 1.01(03-29-2024)
+BP2 Version: REV 1.01(11-18-2022)
+< sost_20260104-171902_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171909_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171910_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171911_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171911_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171912_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171912_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171912_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171912_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171912_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171912_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171914_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171914_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171914_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171918_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171919_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171919_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171923_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171926_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171927_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171927_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171927_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171927_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171927_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260104-171927_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20260104-171927_print    > : Test_Type         : powercycle
+< sost_20260104-171927_print    > : Test_Count        : 0
+< sost_20260104-171927_print    > : Test_Status       : Pass
+< sost_20260104-171927_print    > : Waiting for restart........
+< sost > Please Wait Times `Ctrl + c` exit() : 14s
+< sost > Please Wait Times `Ctrl + c` exit() : 13s
+< sost > Please Wait Times `Ctrl + c` exit() : 12s
+< sost > Please Wait Times `Ctrl + c` exit() : 11s
+< sost > Please Wait Times `Ctrl + c` exit() : 10s
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20260104-172309_print    > : swc_web is Running! Running-Time -> 20260104 17:23:09 (swc_web.py)
+< sost_20260104-172309_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260104-172415_print    > : ══════════════════════════════════════════════════════
+||                                     ██           ||
+||                                    ░██           ||
+||           ██████  ██████   ██████ ██████         ||
+||          ██░░░░  ██░░░░██ ██░░░░ ░░░██░          ||
+||         ░░█████ ░██   ░██░░█████   ░██           ||
+||          ░░░░░██░██   ░██ ░░░░░██  ░██           ||
+||          ██████ ░░██████  ██████   ░░██          ||
+||         ░░░░░░   ░░░░░░  ░░░░░░     ░░           ||
+══════════════════════════════════════════════════════
+|| sost : 1.1.1            || State : NA            || 
+||--------------------------------------------------||
+|| Type : powercycle       || Count : 0             ||
+══════════════════════════════════════════════════════
+< sost > Please Wait Times `Ctrl + c` exit() : 29s
+< sost > Please Wait Times `Ctrl + c` exit() : 28s
+< sost > Please Wait Times `Ctrl + c` exit() : 27s
+< sost > Please Wait Times `Ctrl + c` exit() : 26s
+< sost > Please Wait Times `Ctrl + c` exit() : 25s
+< sost > Please Wait Times `Ctrl + c` exit() : 24s
+< sost > Please Wait Times `Ctrl + c` exit() : 23s
+< sost_20260104-172423_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20260104-172423_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20260104-172423_print    > : ===============================================================
+< sost_20260104-172424_print    > : Test type        : powercycle
+< sost_20260104-172424_print    > : Test Count       : 0
+< sost_20260104-172424_print    > : Test Folder      : /root/sost_mulit_result/powercycle
+< sost_20260104-172424_print    > : Test Status      : Pass
+< sost_20260104-172424_print    > : Test Start Time  : 2026-01-04-17-18-53
+< sost_20260104-172424_print    > : Test End   Time  : 2026-01-04-17-24-23
+< sost_20260104-172424_print    > : ===============================================================

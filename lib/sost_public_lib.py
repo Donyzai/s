@@ -15,6 +15,11 @@ from datetime import datetime, timedelta
 log = dong_log()
 log.debug_flags = str(log.json_get("debug","debug_flags",web='no-log',filename="debug"))
 
+def check_bash_profile():
+    if not os.path.exists('/root/.bash_profile'):
+        log._pr("Not found /root/.bash_profile , Create default bash_profile!")
+        log.os_run('yes | sost -f bash')
+
 def clear_log():
     log_bak_path = '/tmp/sost_tmp/log_bak'
     log.os_run(f"mkdir -p {log_bak_path} && rm -rf {log_bak_path}/*")
@@ -1029,15 +1034,14 @@ def def_Handling_sensors():
 
     if flags == "0":
         countdown(running_times, flags, path)
-        Handling_sensors(file_path=f"{path}/sost_ipmi_sensor.txt", result_folder=path, sensors_type="sensor",
-                         filter_type=filter_type, flags="")
+        Handling_sensors(file_path=f"{path}/sost_ipmi_sensor.txt", result_folder=path, sensors_type="sensor",filter_type=filter_type, flags="")
     else:
         countdown(running_times, flags, path)
-        Handling_sensors(file_path=f"{path}/sost_ipmi_sdr.txt", result_folder=path, sensors_type="sdr",
-                         filter_type=filter_type, flags="")
+        Handling_sensors(file_path=f"{path}/sost_ipmi_sdr.txt", result_folder=path, sensors_type="sdr",filter_type=filter_type, flags="")
     exit()
 
 def Judging_autologin():
+    
     if "kylin" in log.os_popen("cat /etc/os-release |grep 'PRETTY_NAME'").lower().strip():
         # False or True
         log.os_run("mkdir -p /root/.config/autostart")
@@ -1060,7 +1064,10 @@ def Judging_autologin():
                 log.os_run("rm -rf /root/.config/autostart/*")
         else:
             log._pr("The self startup file is normal!")
-
+    else:
+        log._dp("Not Kylin OS!")
+        
+        
 def minicon_config():
     tmp = log.os_popen("cat /etc/minirc.dfl 2>/dev/null")
     if "/dev/ttyUSB0" in tmp and "pu rtscts" in tmp:
@@ -1542,6 +1549,7 @@ def kylin_autologin():
     file_1 = "/usr/share/lightdm/lightdm.conf.d/60-kylin.conf"
     file_2 = "/etc/lightdm/lightdm.conf"
     file_3 = "/root/.profile"
+    
     #touch aleardy file not clear text
     log.os_run(f"touch {file_1}")
     log.os_run(f"touch {file_2}")
@@ -1574,18 +1582,39 @@ def kylin_Gui_Run():
         with open('/root/.bash_profile','a') as f:
             f.write('sost -z')
     else:
+        kylin_ver = log.os_popen("uname -r | grep -i ky11 | wc -l").strip()
         log.os_run("yes | sost -f bash")
-        if not os.path.exists("/root/.config/autostart"):os.mkdir("/root/.config/autostart")
-        log.os_run("rm -rf /root/.config/autostart/*")
-        log.os_run("touch /root/.config/autostart/sost.desktop")
-        log.os_run("echo '[Desktop Entry]' >> /root/.config/autostart/sost.desktop")
-        log.os_run("echo 'Type=Application' >> /root/.config/autostart/sost.desktop")
-        tmp = 'Exec=mate-terminal --window --maximize -x bash -c "sost -z;exec bash;"'
-        log.os_run(f"echo '{tmp}' >> /root/.config/autostart/sost.desktop")
-        log.os_run("echo 'Name=Sost_AutoStart' >> /root/.config/autostart/sost.desktop")
-        log.os_run("echo 'Icon=system-run' >> /root/.config/autostart/sost.desktop")
+        if kylin_ver == '1':
+            log.os_run("rm -rf /root/.config/autostart*")
+            log._dp("kylin_Gui_Run() kylin_ver : ky11" )
+            if not os.path.exists("/etc/xdg/autostart/"):
+                log.os_run("mkdir -p /etc/xdg/autostart/")
+            log.os_run("rm -rf /etc/xdg/autostart/*")
+            log.os_run("touch /etc/xdg/autostart/sost.desktop")
+            log.os_run("echo '[Desktop Entry]' >> /etc/xdg/autostart/sost.desktop")
+            log.os_run("echo 'Type=Application' >> /etc/xdg/autostart/sost.desktop")
+            tmp = 'Exec=mate-terminal --window --maximize -x bash -c "sost -z;exec bash;"'
+            log.os_run(f"echo '{tmp}' >> /etc/xdg/autostart/sost.desktop")
+            log.os_run("echo 'Name=Sost_AutoStart' >> /etc/xdg/autostart/sost.desktop")
+            log.os_run("echo 'Icon=system-run' >> /etc/xdg/autostart/sost.desktop")
+            log.os_run("echo '' >> /etc/xdg/autostart/sost.desktop")
+            
+        else:
+            if not os.path.exists("/root/.config/autostart"):
+                log.os_run("mkdir -p /root/.config/autostart")
+            log.os_run("rm -rf /root/.config/autostart/*")
+            log.os_run("touch /root/.config/autostart/sost.desktop")
+            log.os_run("echo '[Desktop Entry]' >> /root/.config/autostart/sost.desktop")
+            log.os_run("echo 'Type=Application' >> /root/.config/autostart/sost.desktop")
+            tmp = 'Exec=mate-terminal --window --maximize -x bash -c "sost -z;exec bash;"'
+            log.os_run(f"echo '{tmp}' >> /root/.config/autostart/sost.desktop")
+            log.os_run("echo 'Name=Sost_AutoStart' >> /root/.config/autostart/sost.desktop")
+            log.os_run("echo 'Icon=system-run' >> /root/.config/autostart/sost.desktop")
+            log.os_run("echo '' >> /root/.config/autostart/sost.desktop")
+        os.system("sync -f && sync")
 
 def RHEL_Gui_Run():
+    
     config_autologging()
 
     if '10.0' in log.os_popen("cat /etc/os-release | grep -w VERSION= | tr -d ' '"):
@@ -1614,7 +1643,9 @@ def RHEL_Gui_Run():
 
 #check os and set autologin
 def autologin():
+    
     os_ver = log.os_popen("cat /etc/os-release |grep 'PRETTY_NAME'")
+    
     if "Kylin" in os_ver:
         kylin_autologin()
         kylin_Gui_Run()
@@ -2004,6 +2035,9 @@ def Timed_operation_mode(chose='',waiting_time=''):
         try:float(waitTime)
         except:log._error("User.Input.Error()")
         start_end_time(waitTime)
+        # set flags 7 -> sostWaitingForTest
+        log.json_set("Test_tmp","Running_flag","7")
+        
         wait_time_ctrl_C(waitTime,flags='start')
         clp()
     elif chose == '2':
@@ -2058,7 +2092,6 @@ def Timed_operation_mode(chose='',waiting_time=''):
                 time.sleep(2)
                 if log.os_popen(f'ps -p {pid_num.strip()} | wc -l',flags='no-log').strip() == '1':
                     break
-
         if chose == "":chose == '1'
         if chose != '1' and chose != '2':log._error("User.Input.Error -> Timed_operation_mode() -> chose")
         if chose == '1':

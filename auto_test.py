@@ -1,17 +1,19 @@
-from lib.sost_public_lib import test_type_logo,dong_log,runTime,end_test_logo,wait_time_ctrl_C,max_count_logo,Judging_autologin,time,autologin,defalt_path,result_html,swc_EndTest,return_wait_time,debug_mode
+from lib.sost_public_lib import test_type_logo,dong_log,runTime,end_test_logo,wait_time_ctrl_C,max_count_logo,Judging_autologin,time,defalt_path,result_html,swc_EndTest,return_wait_time,debug_mode
 from lib.sost_system_info_lib import test_config,check_running_time
+
 # Record the time before testing -> end_time.log
 runTime("1")
 runTime("3")
+
 # init logging
 log = dong_log()
 log.debug_flags = str(log.json_get("debug","debug_flags",filename="debug"))
 log.os_run("mkdir -p /tmp/sost_tmp")
 
-# check tty
-if log.json_get("debug","noSendCommand",filename="debug")!="1":
-    if "pts" in log.os_popen("tty"):
-        log._exitt("The program cannot be interrupted in PTS!")
+# # check tty
+# if log.json_get("debug","noSendCommand",filename="debug")!="1":
+#     if "pts" in log.os_popen("tty"):
+#         log._exitt("The program cannot be interrupted in PTS!")
 
 #check stability status
 if str(log.os_popen("cat /etc/os-release | grep -i ubuntu | wc -l").strip())=="0":
@@ -21,9 +23,7 @@ else:
     log._dp("OS is Ubuntu, so ignore stability test!")
 
 if log.json_get("Test_tmp","test_type") == "":log._error("No stability testing was conducted!")
-# Init logging
-autologin()
-Judging_autologin()
+# Judging_autologin()
 #judge max count
 max_count_flags = max_count_logo()
 if max_count_flags != None:
@@ -32,9 +32,7 @@ if max_count_flags != None:
             log.json_set("Test_Config","max_count","0")
             defalt_path()
             result_html()
-            exit()
-        else:
-            exit()
+        exit()
 last_count = log.json_get("Test_tmp", "test_count")
 next_count = str(int(last_count)+1)
 path = log.json_get("Test_tmp","test_folder_path")

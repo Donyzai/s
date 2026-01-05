@@ -156,7 +156,6 @@ done''')
         if error_type in fail_exit_blacklist:
             log._pr(f"error_type : {error_type}")
             log._pr(f"blacklist  : {str(fail_exit_blacklist)}")
-            
             log._error("Set error not to exit, trigger blacklist, exit test!")
 
 def bmclog_check(path,count):
@@ -1285,7 +1284,9 @@ def dmesg(flags, folder_path, count):
 
 
 def ipmi_sensor(flags, folder_path, count):
+    
     if log.json_get('collect_array',"bmcsensor",web='no-log',filename='collect').strip() !='1':return 0
+    
     if flags == "0" or flags == "2": return 0
 
     retry_get_ipmi_info('ipmitool sensor list 2>/dev/null','BMC IPMI Sensor')
@@ -1361,8 +1362,8 @@ def bmc_sdr_info(flags, folder_path, count):
 def os_disk_info_1(flags, folder_path, count):
     # judgment disk
     # remove dm dm-1 dm-2 dm-3
-    _disk_num = log.os_popen('ls /sys/block/ | grep -v dm | wc -l ').strip().replace("\n", "")
-    _disk_arry = log.os_popen('ls /sys/block/ | grep -v dm').strip().replace("\n", "")
+    _disk_num = log.os_popen('ls /sys/block/ | grep -v dm | grep -vi md | wc -l ').strip().replace("\n", "")
+    _disk_arry = log.os_popen('ls /sys/block/ | grep -v dm | grep -vi md ').strip().replace("\n", "")
     print_save_text(flags=flags, folder_path=folder_path, type="hddinfo", count=count,
                     text="-" * 120 + "\n" + f"Sys_disk_num  : {_disk_num}\nSys_disk_arry : {_disk_arry}" + "\n" + "-" * 120)
     # ------------------------------------------------------------------------NVMe------------------------------------------------------------------------
@@ -1445,8 +1446,8 @@ def os_disk_info(flags, folder_path, count):
     if log.json_get('collect_array',"hddinfo",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
     try:
-        _disk_num = log.os_popen('ls /sys/block/ | grep -v dm | grep -vi loop | wc -l ').strip().replace("\n", "")
-        _disk_arry = log.os_popen('ls /sys/block/ | grep -v dm | grep -vi loop').strip().replace("\n", "")
+        _disk_num = log.os_popen('ls /sys/block/ | grep -v dm | grep -vi loop | grep -vi md | wc -l ').strip().replace("\n", "")
+        _disk_arry = log.os_popen('ls /sys/block/ | grep -v dm | grep -vi loop | grep -vi md | grep -vi md ').strip().replace("\n", "")
         print_save_text(flags=flags, folder_path=folder_path, type="hddinfo", count=count,text="-" * 110 + "\n" + f"Sys_disk_num  : {_disk_num}\nSys_disk_arry : {_disk_arry}\n"+'-'* 110+'\n>> NVMe Disk Info <<\n'+'-'*110)
         nvme_list_arry = log.os_popen('ls /sys/block/ | grep -i nvme').strip().split()
         a = 0
