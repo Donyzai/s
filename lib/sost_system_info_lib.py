@@ -309,6 +309,21 @@ def normal_diff(file1,file2,typee,path='',count=''):
         if value_0x != '\n':
             result = result + value_0x
 
+        # sost-v1.1.0-Release Script Addition : check sensor status change diff
+        # result = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 2,1 | grep -i '0x0' | sort ) <(cat {file2} | cut -d '|' -f 2,1 | grep -i '0x0' | sort )" 2>/dev/null''').strip()
+        # result = result + log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 2,1 | grep -i na | sort ) <(cat {file2} | cut -d '|' -f 2,1 | grep -i na | sort )" 2>/dev/null''').strip()
+        ipmi_sensor_blacklist = log.json_get("Test_Config","ipmi_sensor_blacklist").strip().split(",")
+        if ipmi_sensor_blacklist != ['']:
+            for black_item in ipmi_sensor_blacklist:
+                if black_item.strip() in result:
+                    from .sost_public_lib import defalt_path
+                    defalt_path()
+                    log._error(f"normal_diff() -> ipmi_sensor_blacklist item : {black_item} found in diff result , exit test!")
+                else:
+                    log._dp(f"normal_diff() -> ipmi_sensor_blacklist item : {black_item} not found in diff result , continue test!")
+        else:
+            log._dp("normal_diff() -> ipmi_sensor_blacklist is empty , not check blacklist item!")
+            
     elif "bmcsdr" == typee:
         result = log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 3,1 | grep -i 'ok' | sort ) <(cat {file2} | cut -d '|' -f 3,1 | grep -i 'ok' | sort )" 2>/dev/null''').strip()
         result = result + log.os_popen(f'''bash -c "diff <(cat {file1} | cut -d '|' -f 3,1 | grep -i 'ns' | sort ) <(cat {file2} | cut -d '|' -f 3,1 | grep -i 'ns' | sort )" 2>/dev/null''').strip()

@@ -1386,6 +1386,7 @@ def save_to_history(count):
     json_data = f'{{"time": "{start_time}", "type": "{test_type}", "count": {count}, "result": "{test_result}" , "bios.ver" : "{bios_ver}" , "bmc.ver" : "{bmcc_ver}" , "sha256" : "{test_sha256}"}}'
     log.os_run(f' touch /opt/sost/history && echo "{json_data}" >> /opt/sost/history')
     
+# init environment to default
 def defalt_path(show_flags=True):
     nowRunning_flag = log.json_get("Test_tmp","Running_flag").strip()
     if nowRunning_flag == "0" or nowRunning_flag == "4" or nowRunning_flag == "5" or nowRunning_flag == "6":
@@ -1450,7 +1451,8 @@ def defalt_path(show_flags=True):
 
     # clear autoTest Config File
     log.os_run("rm -rf /root/.config/autostart/*")
-    log.os_run("yes | sost -f bash")
+    log.os_run("rm -rf /etc/xdg/autostart/*")
+    log.os_run("yes | sost -f bash > /dev/null ")
     # Set Default swc config
     log.json_set("Test_tmp","swc_flags","0")
     log.json_set("Test_Config","max_count","")
