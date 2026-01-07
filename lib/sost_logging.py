@@ -352,10 +352,10 @@ class dong_log():
             self.os_run("sync -f && sync",flags='no-log')
             return str(data)
         except Exception as e:
-            print(filename)
-            print(typee)
-            print(obj)
-            print(key)
+            self._pr(filename)
+            self._pr(typee)
+            self._pr(obj)
+            self._pr(key)
             # self._pr(self.os_popen("cat /opt/sost/config/sost.json"))
             self._error(f"json file EXIT! error_info : {e} \n <! sost !>json_get obj : {obj} key : {key}")
 
@@ -401,9 +401,9 @@ class dong_log():
             self.os_run("sync -f && sync",flags='no-log')
             return
         except Exception as e:
-            print(obj)
-            print(key)
-            print(new_value)
-            print(filename)
+            self._pr(obj)
+            self._pr(key)
+            self._pr(new_value)
+            self._pr(filename)
             self.os_popen("cat /opt/sost/config/sost.json")
             self._error(f"json file EXIT! error_info : {e}")

@@ -1863,6 +1863,8 @@ def init_stability_path(test_type):
     log.os_run(f"cat /proc/meminfo >> {result_folder_path}/debug/sost_meminfo.log",flags='no-log')
     #save systeminfo -> /proc/cmdline
     log.os_run(f"cat /proc/cmdline >> {result_folder_path}/debug/sost_cmdline.log",flags='no-log')
+    #save systeminfo -> /etc/os-release
+    log.os_run(f"cat /etc/os-release >> {result_folder_path}/debug/sost_os_release.log",flags='no-log')
     #save systeminfo -> devices
     log.os_run(f"ls /dev >> {result_folder_path}/debug/sost_devices.log",flags='no-log')
     #save systeminfo -> ssh_users
