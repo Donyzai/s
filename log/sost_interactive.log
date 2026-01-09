@@ -471,3 +471,9 @@ BP2 Version: REV 1.01(11-18-2022)
 < sost_20260104-172424_print    > : Test Start Time  : 2026-01-04-17-18-53
 < sost_20260104-172424_print    > : Test End   Time  : 2026-01-04-17-24-23
 < sost_20260104-172424_print    > : ===============================================================
+< sost_20260108-100941_print    > : swc_web is Running! Running-Time -> 20260108 10:09:41 (swc_web.py)
+< sost_20260108-100941_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260108-102343_print    > : swc_web is Running! Running-Time -> 20260108 10:23:43 (swc_web.py)
+< sost_20260108-102344_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20250310-080016_print    > : swc_web is Running! Running-Time -> 20250310 08:00:16 (swc_web.py)
+< sost_20250310-080016_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
