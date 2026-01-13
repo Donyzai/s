@@ -83,7 +83,7 @@ def parser_test():
     parser.add_argument("sost [args]", nargs='?', help="Command to execute")
     parser.add_argument("-a", "--autologin", action="store_true", help="Enable auto-login for sost")
     parser.add_argument("-b", "--bmclog_check", action="store_true", help="Check BMC log errors")
-    parser.add_argument("-c", "--config", action="store_true", help="Modify sost configuration.")
+    parser.add_argument("-c", "--config", action="store_true", help="Modify sost configuration.\nsost -c / sost -c sost -> change sost.json\nsost -c natt -> change natt_config.json")
     # parser.add_argument("-c", "--config", nargs='*',
     #                    help="Modify sost configuration.\n"
     #                         "Usage:\n"
@@ -95,6 +95,7 @@ def parser_test():
     parser.add_argument("-f", "--fix", action="store_true", help="Repair sost environment")
     parser.add_argument("-k", "--killall", action="store_true", help="Kill all sost processes")
     parser.add_argument("-m", "--testmode", action="store_true", help="Enable test mode")
+    parser.add_argument("-n", "--natt", action="store_true", help="Enable test mode")
     parser.add_argument("-o", "--output", action="store_true", help="Generate stability test report")
     parser.add_argument("-s", "--start", action="store_true", help="Start sost tool execution")
     parser.add_argument("-u", "--uninstall", action="store_true", help="Uninstall sost tools")
@@ -112,6 +113,9 @@ def parser_test():
 
     args = parser.parse_args()
 
+    if args.natt:
+        os.system('''cd /opt/sost/ && python3 natt_main.py ''')
+    
     if args.debug:
         print("<sost> Debug mode enabled - detailed logs will be output")
         print('===========================================================')
@@ -129,7 +133,17 @@ def parser_test():
         print('-----------------------------------------------------')
 
     if args.config:
-        os.system("vim /opt/sost/config/sost.json")
+        try:
+            # sys.argv[1] -> -c
+            # sys.argv[2] -> value
+            key = sys.argv[2]
+            if key == "natt":
+                os.system("vim /opt/sost/config/natt_config.json")
+            else:
+                os.system("vim /opt/sost/config/sost.json")
+        except:
+            os.system("vim /opt/sost/config/sost.json")
+            
         # try:sys.argv[3]
         # except:os.system("vim /opt/sost/config/sost.json")
 

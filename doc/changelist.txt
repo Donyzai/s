@@ -37,6 +37,7 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
     (1) sost -i switch查看switch信息
     (2) sost -i pcieinfo查看switch信息
 32. dmesgCheck增加IPMI SI信息检查。
+33. 合并natt-v1.1.3版本                 [x]  
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------

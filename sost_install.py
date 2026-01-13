@@ -138,7 +138,7 @@ def rhel_yum_replace(ver):
     print("rhel_yum_replace Success!")
 
 def install_tools(install_type):
-    tools_arr = ["nvme-cli","ipmitool","smartmontools","python3-pip","minicom","python3-flask","net-tools","network-manager"]
+    tools_arr = ["nvme-cli","ipmitool","smartmontools","python3-pip","minicom","python3-flask","net-tools","network-manager","fio","libaio*","nvme-cli","numactl","sysstat"]
     if install_type == "ubuntu":
         os.system("apt list --installed > /tmp/apt_installed_list.txt 2>/dev/null")
         f = open("/tmp/apt_installed_list.txt","r").read()

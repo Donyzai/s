@@ -8,3 +8,4 @@
 {time: 2025-11-17-13-35-23, type: reboot, count: 2, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00 , sha256 : cf52fc115c9582058bd8987839f148c55fc364b40ed5781906f8e120193a5c0d}
 {time: 2025-11-17-13-35-23, type: reboot, count: 3, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00 , sha256 : cf52fc115c9582058bd8987839f148c55fc364b40ed5781906f8e120193a5c0d}
 {time: 2025-11-17-13-35-23, type: reboot, count: 4, result: Pass , bios.ver : T2DMEP04.00 02/06/2025 , bmc.ver : 1.04.00.01.00.00 , sha256 : cf52fc115c9582058bd8987839f148c55fc364b40ed5781906f8e120193a5c0d}
+{time: 2026-01-12-09-33-34, type: powercycle, count: 5, result: Pass , bios.ver :  , bmc.ver :  , sha256 : fe80976e7d6b30906cb5c6ba7ef850714add4aebd5d679fcec3330fa4c9d3eec}

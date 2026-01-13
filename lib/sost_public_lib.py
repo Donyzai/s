@@ -242,7 +242,7 @@ def mulit_main():
     log._pr(f"PowerReset count     : {powerreset_count}")
     log._pr(f"ACLost     count     : {aclost_count}")
     print("================Config================")
-    if log._in("Are you ok ? [y / n] : ") !="y":log._error("User.Input.Exit!")
+    if log._in("Continue ? [y / n] : ") !="y":log._error("User.Input.Exit!")
     log.json_set("Multimodal_stability","switch","1")
     path = log.json_get("Test_Config", "Result_path")
     log.os_popen(f"mv {path}/sost_mulit_result {path}/sost_old_folder/sost_mulit_result_{now_time()} 2>/dev/null")
@@ -1450,8 +1450,8 @@ def defalt_path(show_flags=True):
         log._pr("===============================================================")
 
     # clear autoTest Config File
-    log.os_run("rm -rf /root/.config/autostart/*")
-    log.os_run("rm -rf /etc/xdg/autostart/*")
+    log.os_run("rm -rf /root/.config/autostart/")
+    log.os_run("rm -rf /etc/xdg/autostart/sost.desktop")
     log.os_run("yes | sost -f bash > /dev/null ")
     # Set Default swc config
     log.json_set("Test_tmp","swc_flags","0")
@@ -1556,7 +1556,6 @@ def kylin_autologin():
     log.os_run(f"touch {file_1}")
     log.os_run(f"touch {file_2}")
     log.os_run(f"touch {file_3}")
-
     with open(file_1,"w") as f:
         f.write("[SeatDefaults]\n")
         f.write("user-session=mate\n")
@@ -1588,11 +1587,12 @@ def kylin_Gui_Run():
         log.os_run("yes | sost -f bash")
         if kylin_ver == '1':
             log.os_run("rm -rf /root/.config/autostart*")
+            
             log._dp("kylin_Gui_Run() kylin_ver : ky11" )
-            if not os.path.exists("/etc/xdg/autostart/"):
-                log.os_run("mkdir -p /etc/xdg/autostart/")
-            log.os_run("rm -rf /etc/xdg/autostart/*")
-            log.os_run("touch /etc/xdg/autostart/sost.desktop")
+            if not os.path.exists("/etc/xdg/autostart/sost.desktop"):
+                log.os_run("touch /etc/xdg/autostart/sost.desktop")
+            else:
+                log.os_run("echo '' > /etc/xdg/autostart/sost.desktop")
             log.os_run("echo '[Desktop Entry]' >> /etc/xdg/autostart/sost.desktop")
             log.os_run("echo 'Type=Application' >> /etc/xdg/autostart/sost.desktop")
             tmp = 'Exec=mate-terminal --window --maximize -x bash -c "sost -z;exec bash;"'
@@ -1600,7 +1600,6 @@ def kylin_Gui_Run():
             log.os_run("echo 'Name=Sost_AutoStart' >> /etc/xdg/autostart/sost.desktop")
             log.os_run("echo 'Icon=system-run' >> /etc/xdg/autostart/sost.desktop")
             log.os_run("echo '' >> /etc/xdg/autostart/sost.desktop")
-            
         else:
             if not os.path.exists("/root/.config/autostart"):
                 log.os_run("mkdir -p /root/.config/autostart")
@@ -1613,6 +1612,7 @@ def kylin_Gui_Run():
             log.os_run("echo 'Name=Sost_AutoStart' >> /root/.config/autostart/sost.desktop")
             log.os_run("echo 'Icon=system-run' >> /root/.config/autostart/sost.desktop")
             log.os_run("echo '' >> /root/.config/autostart/sost.desktop")
+            
         os.system("sync -f && sync")
 
 def RHEL_Gui_Run():

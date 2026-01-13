@@ -1,0 +1,2 @@
+[2026-01-13 16:11:31]
+nohup  fio --filename=/dev/sdb --description='natt_seqread' --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio --runtime=3600 --time_based  --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_16-11-21/sequence_read_512k_sdb.log &
