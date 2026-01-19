@@ -4,9 +4,18 @@ import sys
 import json
 import time
 
-def json_load(key, value):
-    if value == 'Version' or 'Release_Time':
+def json_load(key, value, config_type='sost'):
+    """Load configuration from JSON file
+    
+    Args:
+        key: Configuration key
+        value: Configuration value key
+        config_type: Configuration type ('sost', 'natt', or 'version')
+    """
+    if config_type == 'version' or value == 'Version' or value == 'Release_Time':
         json_filename = '/opt/sost/config/sost_version.json'
+    elif config_type == 'natt':
+        json_filename = '/opt/sost/config/natt_config.json'
     else:
         json_filename = '/opt/sost/config/sost.json'
     config = open(json_filename, "r")
@@ -24,6 +33,23 @@ def json_set(class_name, key, new_value):
     with open(json_filename, 'w') as file:
         json.dump(data, file, indent=4)
         file.flush()
+
+def natt_kill(debug):
+    """Kill all NATT related processes"""
+    proce_name_arry = ["natt_main", "fio", "iostat", "dd", "sar", "vmstat", "mpstat", "pidstat"]
+    for pro_name in proce_name_arry:
+        print("||"+"-"*120)
+        print(f'|| <natt-kill>            :  {pro_name}')
+        if debug:
+            print(f"|| <natt-kill-before>     :  "+os.popen(f"ps -aux | grep -i {pro_name} | grep -vE 'ipv6|add|grep|usr'").read().strip())
+            print(f"|| <natt-Cmd>             :  ps -aux | grep -i {pro_name} |grep -vE 'ipv6|add|grep|usr'| awk '{{print $2}}' | xargs kill -9")
+            print(f"|| <natt-Kill-after>      :  "+os.popen(f"ps -aux | grep -i {pro_name} |grep -vE 'ipv6|add|grep|usr'").read().strip())
+        os.system(f"ps -aux | grep -i {pro_name} | grep -vE 'ipv6|add|grep|usr' | awk '{{print $2}}' | xargs kill -9 2>/dev/null")
+    print("||"+"-"*120)
+
+def natt_version():
+    """Get NATT version"""
+    return json_load("Version", "natt_version", config_type='natt')
 
 def debug_info():
     try:
@@ -66,6 +92,16 @@ def debug_info():
                 return 0
         if sys.argv[1] == "dony":
             print('dony')
+        
+        # NATT debug info support
+        if sys.argv[1] == "args":
+            try: print("args 0 : " + sys.argv[0])
+            except: print("args 0 : None")
+            try: print("args 1 : " + sys.argv[1])
+            except: print("args 1 : None")
+            for i in range(2, 10):
+                try: print(f"args {i} : " + sys.argv[i])
+                except: print(f"args {i} : None")
     except:
         return 0
 
@@ -84,18 +120,11 @@ def parser_test():
     parser.add_argument("-a", "--autologin", action="store_true", help="Enable auto-login for sost")
     parser.add_argument("-b", "--bmclog_check", action="store_true", help="Check BMC log errors")
     parser.add_argument("-c", "--config", action="store_true", help="Modify sost configuration.\nsost -c / sost -c sost -> change sost.json\nsost -c natt -> change natt_config.json")
-    # parser.add_argument("-c", "--config", nargs='*',
-    #                    help="Modify sost configuration.\n"
-    #                         "Usage:\n"
-    #                         "  sost -c open              # Directly open configuration file\n"
-    #                         "  sost -c get <OBJECT>      # Get configuration (e.g., 'sost -c get 2')\n"
-    #                         "  sost -c set <OBJECT> <KEY> <VALUE>  # Set configuration")
     parser.add_argument("-d", "--dmesg_check", action="store_true", help="Check dmesg errors")
     parser.add_argument("-e", "--exittest", action="store_true", help="Run exit test")
     parser.add_argument("-f", "--fix", action="store_true", help="Repair sost environment")
     parser.add_argument("-k", "--killall", action="store_true", help="Kill all sost processes")
     parser.add_argument("-m", "--testmode", action="store_true", help="Enable test mode")
-    parser.add_argument("-n", "--natt", action="store_true", help="Enable test mode")
     parser.add_argument("-o", "--output", action="store_true", help="Generate stability test report")
     parser.add_argument("-s", "--start", action="store_true", help="Start sost tool execution")
     parser.add_argument("-u", "--uninstall", action="store_true", help="Uninstall sost tools")
@@ -104,6 +133,16 @@ def parser_test():
     parser.add_argument("-z", "--continuee", action="store_true", help="Continue test execution")
     parser.add_argument("-i", "--info", action="store_true", help="Query server specific information")
     parser.add_argument("-sensor", "--sensor", action="store_true", help="Collect IPMI sensor data")
+    parser.add_argument("-iokill", "--iokill", action="store_true", help="Kill all NATT IO test processes (merged from natt -k)")
+    
+    # NATT (Disk Test Tool) parameters - integrated from natt.py
+    # Note: -a is already used for --autologin, so we use --all-disk for natt's -a/--all
+    parser.add_argument("--all-disk", dest="all_disk", action="store_true", help="Display NVMe and SATA Disk info (NATT)")
+    parser.add_argument("-nvme", "--nvme_info", action="store_true", help="Display NVMe Disk info (e.g., -nvme nvme0n1,nvme1n1)")
+    parser.add_argument("-sata", "--sata_info", action="store_true", help="Display SATA Disk info (e.g., -sata sda,sdb,sdc)")
+    parser.add_argument("-nattlog", "--natt_log", action="store_true", help="Natt log Result Handle Info (e.g., -nattlog natt_log_xxxxx)")
+    parser.add_argument("-otherlog", "--other_log", action="store_true", help="iostat log Result Handle Info (e.g., -otherlog xxxx.log)")
+    parser.add_argument("--disktest", dest="disktest", action="store_true", help="Start running the disk test tool (NATT)")
 
     # Hidden parameters for advanced users or debugging
     parser.add_argument("-D", "--debug", action="store_true", help=argparse.SUPPRESS)
@@ -113,9 +152,6 @@ def parser_test():
 
     args = parser.parse_args()
 
-    if args.natt:
-        os.system('''cd /opt/sost/ && python3 natt_main.py ''')
-    
     if args.debug:
         print("<sost> Debug mode enabled - detailed logs will be output")
         print('===========================================================')
@@ -137,58 +173,12 @@ def parser_test():
             # sys.argv[1] -> -c
             # sys.argv[2] -> value
             key = sys.argv[2]
-            if key == "natt":
+            if key == "disktest":
                 os.system("vim /opt/sost/config/natt_config.json")
             else:
                 os.system("vim /opt/sost/config/sost.json")
         except:
             os.system("vim /opt/sost/config/sost.json")
-            
-        # try:sys.argv[3]
-        # except:os.system("vim /opt/sost/config/sost.json")
-
-        # try:
-        #     if sys.argv[2] == "open":
-        #         os.system("vim /opt/sost/config/sost.json")
-        #         exit()
-        #     # parms1 = get / set 
-        #     parms1 = args.in1
-        #     # parms2 = config object
-        #     parms2 = args.in2
-        #     # parms3 = config key
-        #     parms3 = args.in3
-        #     # parms4 = config new_value
-        #     parms4 = args.in4
-        #     # command 
-        #     # sost --config -i1 get -i2 Test_Config -i3 Result_path
-        #     print('-'*70)
-        #     print(f"<sost> parms1 Configuration operation type : {parms1}")
-        #     print(f"<sost> parms2 Configuration object         : {parms2}")
-        #     print(f"<sost> parms3 Configuration key            : {parms3}")
-        #     print(f"<sost> parms4 New configuration value      : {parms4}")
-        #     print('-'*70)
-        #     if parms1 == 'get':
-        #         print("sost -c get")
-        #         if parms2 == None and parms3 == None:
-        #             print("<sost> parms2 and parms3 are required for 'get' operation")
-        #         elif parms2 != None and parms3 == None:
-        #             print("<sost> parms3 is required for 'get' operation")
-        #         else:
-        #             print(json_load(parms2, parms3))
-        #     elif parms1 == 'set':
-        #         print("sost -c set")
-        #         if parms2 == None or parms3 == None or parms4 == None:
-        #             print("<sost> parms2, parms3, and parms4 are required for 'set' operation")
-        #         else:
-        #             json_set(parms2, parms3, parms4)
-        #             print(f"<sost> Set {parms2} {parms3} to {parms4} Success!")
-        #     elif parms1 == "open":
-        #         print("sost -c open")
-        #         os.system("vim /opt/sost/config/sost.json")
-        #     else:
-        #         config_help_d()
-        # except:
-        #     config_help_d()
 
     if args.bmclog_check:
         os.system('''cd /opt/sost && python3 -c "from lib.sost_system_info_lib import bmclog_check;bmclog_check('','')"''')
@@ -377,6 +367,15 @@ def parser_test():
 
     # Start test execution function
     if args.killall:
+        # Check if debug mode is enabled
+        debug = False
+        try:
+            if len(sys.argv) >= 3 and sys.argv[2] == "0x01":
+                debug = True
+        except:
+            pass
+        
+        # Kill sost processes
         os.system("ps -aux | grep -i swc | grep -v grep | awk '{print $2}' | xargs kill -9")
         os.system("ps -aux | grep -i auto_test | grep -v grep | awk '{print $2}' | xargs kill -9")
         json_set("Test_tmp","Running_flag","6")
@@ -384,6 +383,9 @@ def parser_test():
         os.system("rm -rf /root/.config/autostart/*")
         print("<sost> All processes of sost have been cleaned up and bash-profile has been reset!")
         os.system("ps -aux | grep -i sost | grep -v grep | awk '{print $2}' | xargs kill -9")
+        
+        # Kill NATT processes
+        natt_kill(debug)
 
     # Start test execution function
     if args.fix:
@@ -512,19 +514,108 @@ export PATH
         # Start the auto_test.py script
         os.system("cd /opt/sost && python3 auto_test.py")
 
-    # sost uninstall function
+    # sost uninstall function (includes natt uninstall)
     if args.uninstall:
-        if input("<sost> Do you want to uninstall sost? (y/n) ").lower() == "y":
+        if input("<sost> Do you want to uninstall sost (including natt)? (y/n) ").lower() == "y":
             print("<sost> Waiting 10s before uninstalling... Ctrl + C kill uninstall Process!")
             time.sleep(10)
+            # Kill sost processes
             os.system('systemctl stop swc-manager.service >/dev/null 2>&1')
+            os.system("ps -aux | grep -i swc | grep -v grep | awk '{print $2}' | xargs kill -9 2>/dev/null")
+            os.system("ps -aux | grep -i auto_test | grep -v grep | awk '{print $2}' | xargs kill -9 2>/dev/null")
+            os.system("ps -aux | grep -i sost | grep -v grep | awk '{print $2}' | xargs kill -9 2>/dev/null")
+            # Kill natt processes
+            natt_kill(False)
+            # Remove command files
             os.system("rm -rf /usr/bin/sost")
             os.system("rm -rf /usr/local/bin/sost")
+            os.system("rm -rf /usr/bin/natt")
+            os.system("rm -rf /usr/local/bin/natt")
             if input("<sost> Do you want to keep the old tool information? (y/n) ").lower() == "y":
                 os.system("mv /opt/sost /tmp/sost_uninstall_tmp_folder")
             else:
                 os.system("rm -rf /opt/sost")
-            print("<sost> Uninstalling sost Success! Luck to you!")
+            print("<sost> Uninstalling sost (including natt) Success! Luck to you!")
+
+    # NATT (Disk Test Tool) functionality handlers
+    if args.other_log:
+        filepath = ''
+        try:
+            filepath = sys.argv[2]
+        except:
+            print("=" * 40)
+            print("Please specify the absolute path of the natt result log!")
+            print("Eg : sost -otherlog /root/iostat.log")
+            print("=" * 40)
+            exit()
+        os.system(f''' cd /opt/sost && python3 -c "from nattlib.natt_disk_lib import handle_other_iostat_data;handle_other_iostat_data('{filepath}')" ''')
+
+    if args.natt_log:
+        filepath = ''
+        try:
+            filepath = sys.argv[2]
+        except:
+            print("="*40)
+            print("Please specify the absolute path of the natt result folder!")
+            print("Eg : sost -nattlog /root/natt_log_xxxxxxx")
+            print("=" * 40)
+            exit()
+        os.system(f''' cd /opt/sost && python3 -c "from nattlib.natt_disk_lib import result_handle;result_handle('{filepath}')" ''')
+
+    if args.all_disk:
+        os.system(r''' cd /opt/sost/ && python3 -c "from nattlib.natt_disk_lib import *;sata_disk_info('');nvme_disk_info('')" ''')
+
+    if args.nvme_info:
+        try:
+            if len(sys.argv) >= 3 and "nvme" in sys.argv[2]:
+                disk_array = sys.argv[2].split(',')
+                from nattlib.natt_disk_lib import nvme_disk_info
+                nvme_disk_info(disk_array)
+            else:
+                from nattlib.natt_disk_lib import nvme_disk_info
+                nvme_disk_info('')
+        except ImportError:
+            try:
+                if len(sys.argv) >= 3 and "nvme" in sys.argv[2]:
+                    os.system(f''' cd /opt/sost/ && python3 -c "from nattlib.natt_disk_lib import *;disk_arry = '{sys.argv[2]}'.split(',');nvme_disk_info(disk_arry)" ''')
+                else:
+                    os.system(r''' cd /opt/sost/ && python3 -c "from nattlib.natt_disk_lib import *;nvme_disk_info('')" ''')
+            except:
+                print("<sost> Error: nattlib.natt_disk_lib module not found")
+
+    if args.sata_info:
+        try:
+            if len(sys.argv) >= 3 and "sd" in sys.argv[2]:
+                disk_array = sys.argv[2].split(',')
+                from nattlib.natt_disk_lib import sata_disk_info
+                sata_disk_info(disk_array)
+            else:
+                from nattlib.natt_disk_lib import sata_disk_info
+                sata_disk_info('')
+        except ImportError:
+            try:
+                if len(sys.argv) >= 3 and "sd" in sys.argv[2]:
+                    os.system(f''' cd /opt/sost/ && python3 -c "from nattlib.natt_disk_lib import *;disk_arry = '{sys.argv[2]}'.split(',');sata_disk_info(disk_arry)" ''')
+                else:
+                    os.system(r''' cd /opt/sost/ && python3 -c "from nattlib.natt_disk_lib import *;sata_disk_info('')" ''')
+            except:
+                print("<sost> Error: nattlib.natt_disk_lib module not found")
+
+    # Disk test start (NATT)
+    if args.disktest:
+        os.system("sh -c 'cd /opt/sost/ && python3 -B natt_main.py'")
+
+    # Kill NATT IO test processes (merged from natt -k)
+    if args.iokill:
+        # Check if debug mode is enabled
+        debug = False
+        try:
+            if len(sys.argv) >= 3 and sys.argv[2] == "0x01":
+                debug = True
+        except:
+            pass
+        # Kill NATT processes
+        natt_kill(debug)
 
     # sost help display
     if len(sys.argv) == 1: parser.print_help()

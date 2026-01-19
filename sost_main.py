@@ -1,5 +1,5 @@
 #================================================
-from lib.sost_public_lib import wait_time_ctrl_C,time,init_stability_path,change_json,clp,test_type_logo,os_env,end_test_logo,runTime,autologin,sel_bak_clear,check_stability_tools,get_bmc_info,update_sost,Multimodal_stability,Judging_autologin,aclost_init_env,bmc_tools_main,bmc_stability,Timed_operation_mode,startup_check,mulit_main,check_bmc_status,debug_mode,init_poweronoff_env,update_check,testsha256,clear_log,check_bash_profile
+from lib.sost_public_lib import wait_time_ctrl_C,change_test_value,time,init_stability_path,change_json,clp,test_type_logo,os_env,end_test_logo,runTime,autologin,sel_bak_clear,check_stability_tools,get_bmc_info,update_sost,Multimodal_stability,Judging_autologin,aclost_init_env,bmc_tools_main,bmc_stability,Timed_operation_mode,startup_check,mulit_main,check_bmc_status,debug_mode,init_poweronoff_env,update_check,testsha256,clear_log,check_bash_profile
 from lib.sost_logging import dong_log,json
 from lib.sost_system_info_lib import test_config
 import sys
@@ -18,6 +18,7 @@ def runstart(test_arry):
         log._error("sost_main.Exit.in 17 line")
     test_type_logo(test_type,"0")
     testsha256()
+    change_test_value()
     if log.json_get("Test_Config","simple_test_flags") != "simple":
         test_config("0","0",test_test_folder)
         test_config("2","0",test_test_folder)

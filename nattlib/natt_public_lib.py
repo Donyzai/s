@@ -9,22 +9,31 @@ import os
 import platform
 import random
 import smtplib
+import sys
+import subprocess
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 #####################################################################################
-from .natt_logging import dong_log, subprocess
-log = dong_log()
-log.json_filename = 'config/natt_config.json'
-if log.json_load('debug', 'debug_print') == '1':
-    log.d_p_flag = True
-else:
-    log.d_p_flag = False
+# Use sost_logging instead of natt_logging
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from lib.sost_logging import dong_log as sost_dong_log
+
+log = sost_dong_log()
+# Set debug flags from natt config
+try:
+    debug_print = log.json_get('debug', 'debug_print', filename='natt', web='no-log')
+    if debug_print == '1':
+        log.debug_flags = "1"  # Enable debug print
+    else:
+        log.debug_flags = "0"
+except:
+    log.debug_flags = "0"
 log.error_exit = True
 #####################################################################################
 
 # 清除终端信息
 def clear_p():
-    subprocess.run("clear")
+    os.system("clear")
 
 # 返回当前时间
 def now_time():
@@ -37,7 +46,7 @@ def warning_tips():
     print('[   Warning! Are you sure you want to continue with the dangerous operation?   |')
     print('[  （警告你确定要继续进行危险的操作吗?)                                           |')
     print('[==============================================================================]')
-    if log.u_in("Do you want to Continue ? (y/n) : ").lower() == 'n':
+    if log._in("Do you want to Continue ? (y/n) : ").lower() == 'n':
         return False
     else:
         return True
@@ -45,115 +54,129 @@ def warning_tips():
 # 打印小提示信息
 def print_tips(tips):
     print("=" * 60)
-    log.n_p(f"[+] {tips} waiting 30s runstart! [Ctrl + C] Exit!")
-    log.n_p("[+] Print the execution command below [Ctrl +C] Exit!")
+    log._pr(f"[+] {tips} waiting 30s runstart! [Ctrl + C] Exit!")
+    log._pr("[+] Print the execution command below [Ctrl +C] Exit!")
     print("=" * 60)
-    log.n_p("Command Show : ")
-
+    log._pr("Command Show : ")
 
 def config_check():
-    if log.json_load('Bound_nucleus', 'Bound_nucleus_type_1').strip() == log.json_load('Bound_nucleus',
-                                                                                       'Bound_nucleus_type_2').strip() == '1':
-        log.n_p("Config json File Error!Please Check Bound_nucleus Type 1 and 2!")
+    if log.json_get('Bound_nucleus', 'Bound_nucleus_type_1', filename='natt', web='no-log').strip() == log.json_get('Bound_nucleus',
+                                                                                       'Bound_nucleus_type_2', filename='natt', web='no-log').strip() == '1':
+        log._pr("Config json File Error!Please Check Bound_nucleus Type 1 and 2!")
         exit()
-    elif log.json_load('Bound_nucleus', 'Bound_nucleus_type_2').strip() == log.json_load('Bound_nucleus',
-                                                                                         'Bound_nucleus_type_3').strip() == '1':
-        log.n_p("Config json File Error!Please Check Bound_nucleus Type 2 and 3!")
+    elif log.json_get('Bound_nucleus', 'Bound_nucleus_type_2', filename='natt', web='no-log').strip() == log.json_get('Bound_nucleus',
+                                                                                         'Bound_nucleus_type_3', filename='natt', web='no-log').strip() == '1':
+        log._pr("Config json File Error!Please Check Bound_nucleus Type 2 and 3!")
         exit()
-    elif log.json_load('Bound_nucleus', 'Bound_nucleus_type_1').strip() == log.json_load('Bound_nucleus',
-                                                                                         'Bound_nucleus_type_3').strip() == '1':
-        log.n_p("Config json File Error!Please Check Bound_nucleus Type 1 and 3!")
+    elif log.json_get('Bound_nucleus', 'Bound_nucleus_type_1', filename='natt', web='no-log').strip() == log.json_get('Bound_nucleus',
+                                                                                         'Bound_nucleus_type_3', filename='natt', web='no-log').strip() == '1':
+        log._pr("Config json File Error!Please Check Bound_nucleus Type 1 and 3!")
         exit()
-    elif log.json_load("DiskInfo", "nvme_info") != '' and log.json_load("DiskInfo", "sata_info") != '':
-        log.n_p("Please check config.json nvme_info and sata_info ! ")
+    elif log.json_get("DiskInfo", "nvme_info", filename='natt', web='no-log') != '' and log.json_get("DiskInfo", "sata_info", filename='natt', web='no-log') != '':
+        log._pr("Please check config.json nvme_info and sata_info ! ")
 
     else:
-        log.n_p("Config json File check Success!")
+        log._pr("Config json File check Success!")
 
 
 # fio iostat监控
-def fio_iostat_monitor(log_name, test_type, iostat_flags,running_time):
-    log.n_p("Running FIO/IOSTAT Process : ")
-    print(log.popen("ps -aux | grep -iE 'fio|iostat' | grep -v grep").strip())
+def fio_iostat_monitor(log_name, test_type, iostat_flags,running_time,prewriting_flags=False):
+    log._pr("Running FIO/IOSTAT Process : ")
+    print(log.os_popen("ps -aux | grep -iE 'fio|iostat' | grep -v grep").strip())
     print("=" * 60)
-    log.n_p("持续监控fio和iostat进程，不要操作，等待进程结束!")
-    log.n_p("Continuously monitor the fio and iostat processes, do not operate, wait for the process to end!")
+    log._pr("持续监控fio和iostat进程，不要操作，等待进程结束!")
+    log._pr("Continuously monitor the fio and iostat processes, do not operate, wait for the process to end!")
     print("=" * 60)
     start_end_time(running_time)
+    
     if test_type == "" or log_name == "":
         tmp_if = False
     else:
-        if log.json_load("Monitor", "numa_info") == "1":
+        if log.json_get("Monitor", "numa_info", filename='natt', web='no-log') == "1":
             tmp_if = True
         else:
             tmp_if = False
+            
     if iostat_flags == "1":
-        log.d_p("Test iostat pkill !")
-        log.d_p("iostat_flags : " + iostat_flags)
+        log._dp("Test iostat pkill !")
+        log._dp("iostat_flags : " + iostat_flags)
         iostat_num = str(subprocess.Popen("ps -aux | grep iostat | grep -v grep | wc -l", stdout=subprocess.PIPE,shell=True).stdout.read().decode(str(log.system_code)).strip())
-        log.d_p("iostat num : " + iostat_num)
+        log._dp("iostat num : " + iostat_num)
         if iostat_num == "0":
-            log.exitt("Iostat Process Not Found!Please check cmd.log")
+            log._exitt("Iostat Process Not Found!Please check cmd.log")
+            
     while True:
         if tmp_if: numa_info(log_name, test_type)
-        iostat_num = str(subprocess.Popen("ps -aux | grep fio | grep filename | grep -v grep | wc -l", stdout=subprocess.PIPE,
-                                          shell=True).stdout.read().decode(str(log.system_code)).strip())
-        fio_num = str(subprocess.Popen("ps -aux | grep 'iostat -xm 1 -s'| grep 'ALL' | grep -v grep | wc -l",
-                                       stdout=subprocess.PIPE, shell=True).stdout.read().decode(
-            str(log.system_code)).strip())
+        iostat_num = str(subprocess.Popen("ps -aux | grep fio | grep filename | grep -v grep | wc -l", stdout=subprocess.PIPE,shell=True).stdout.read().decode(str(log.system_code)).strip())
+        fio_num = str(subprocess.Popen("ps -aux | grep 'iostat -g all -xm' | grep -v grep | wc -l",stdout=subprocess.PIPE, shell=True).stdout.read().decode(str(log.system_code)).strip())
+        if prewriting_flags:
+            if fio_num == "0":
+                log._pr('检测到预写Fio进程结束 Pre-write Fio process end detected!')
+                time.sleep(3)
+                log.os_run("pkill -9 iostat")
+                log._pr('已结束iostat进程 Iostat process has been ended!')
+                break
+        
         if iostat_num == "0" and fio_num == "0":
-            log.n_p('检测到Fio / Iostat进程结束!')
-            log.n_p('Fio/Iostat process end detected!')
+            log._pr('检测到Fio / Iostat进程结束!')
+            log._pr('Fio/Iostat process end detected!')
             break
 def start_end_time(time):
     runtime = timedelta(seconds=int(time))
     now = datetime.now()
     end_time = now + runtime
     print("=" * 60)
-    log.n_p("Time:")
+    log._pr("Time:")
     print(f'StartTime   : {now.strftime("%Y-%m-%d %H:%M:%S")}')
     print(f'EndTime     : {end_time.strftime("%Y-%m-%d %H:%M:%S")}')
     print("=" * 60)
 
-
 def monitor_start(runtime, file_name, disk_name, log_name):
+    log._dp("monitor_start disk_name : " + disk_name)
+    log._dp("monitor_start log_name : " + log_name)
+    log._dp("monitor_start file_name : " + file_name)
+    log._dp("monitor_start runtime : " + str(runtime))
     # ------------------------------------------------------------------------------------------
     tags = ''
-    if "dd" in disk_name:
-        log.run(f"iostat -xm 1 -s {runtime} ALL >> /tmp/iostat-dd-{file_name} & ")
+    if "ddtest" in disk_name:
+        log._dp("dd test iostat monitor start!")
+        log.os_run(f"iostat -xm 1 -s {runtime} ALL >> /tmp/iostat-dd-{file_name} & ")
         return
 
-    if log.popen("ps -aux | grep 'iostat -g all -xm 1' | grep -v grep | wc -l").strip() == "0":
+    if log.os_popen("ps -aux | grep 'iostat -g all -xm 1' | grep -v grep | wc -l").strip() == "0":
         if "nvme" in disk_name:
             tags = 'nvme'
         elif "sd" in disk_name:
             tags = 'sata'
         else:
-            log.n_p("Uknown disk type!")
+            log._pr("Uknown disk type!")
             exit()
     else:
-        log.n_p("iostat not exist!")
+        log._pr("iostat not exist!")
 
-    log.run(f"iostat -g all -xm 1 {runtime} >> {log_name}/{tags}-{file_name} & ")
+    log._dp("iostat command : " + f"iostat -g all -xm 1 {runtime} >> {log_name}/{tags}-{file_name} & " )
+    data = log.os_popen(f"iostat -g all -xm 1 {runtime} >> {log_name}/{tags}-{file_name} & ")
+    log._dp("monitor_start iostat data : " + data)
 
     # ------------------------------------------------------------------------------------------
     if not os.path.exists(log_name + "/debug"):
-        log.run(f"mkdir -p {log_name}/debug")
-    if str(log.json_load("Monitor", "sar_d")).strip() == "1":
-        if log.popen("ps -aux | grep 'sar -b'| grep -v grep | wc -l").strip() == "0":
-            log.run(f"sar -b 1 {runtime} >> {log_name}/debug/sar_d-{file_name} & ")
-    if str(log.json_load("Monitor", "vmstat_w")).strip() == "1":
-        if log.popen("ps -aux | grep -i 'vmstat -w' | grep -v grep | wc -l").strip() == "0":
-            log.run(f"vmstat -w 1 {runtime} >> {log_name}/debug/vmstat_w-{file_name} & ")
-    if str(log.json_load("Monitor", "mpstat_p_all")).strip() == "1":
-        if log.popen("ps -aux | grep -i 'mpstat -P ALL 1' | grep -v grep | wc -l").strip() == "0":
-            log.run(f"mpstat -P ALL 1 {runtime} >> {log_name}/debug/mpstat_p_all-{file_name} & ")
-    if str(log.json_load("Monitor", "pidstat_d")).strip() == "1":
-        if log.popen("ps -aux | grep -i 'pidstat -d 1' | grep -v grep | wc -l").strip() == "0":
-            log.run(f"pidstat -d 1 {runtime} >> {log_name}/debug/pidstat_d-{file_name} & ")
-    if str(log.json_load("Monitor", "dstat")).strip() == "1":
-        if log.popen("ps -aux | grep -i 'dstat 1' | grep -v grep | wc -l").strip() == "0":
-            log.run(f"dstat 1 {runtime} >> {log_name}/debug/dstat-{file_name} & ")
+        log.os_run(f"mkdir -p {log_name}/debug")
+        
+    if str(log.json_get("Monitor", "sar_d", filename='natt', web='no-log')).strip() == "1":
+        if log.os_popen("ps -aux | grep 'sar -b'| grep -v grep | wc -l").strip() == "0":
+            log.os_run(f"sar -b 1 {runtime} >> {log_name}/debug/sar_d-{file_name} & ")
+    if str(log.json_get("Monitor", "vmstat_w", filename='natt', web='no-log')).strip() == "1":
+        if log.os_popen("ps -aux | grep -i 'vmstat -w' | grep -v grep | wc -l").strip() == "0":
+            log.os_run(f"vmstat -w 1 {runtime} >> {log_name}/debug/vmstat_w-{file_name} & ")
+    if str(log.json_get("Monitor", "mpstat_p_all", filename='natt', web='no-log')).strip() == "1":
+        if log.os_popen("ps -aux | grep -i 'mpstat -P ALL 1' | grep -v grep | wc -l").strip() == "0":
+            log.os_run(f"mpstat -P ALL 1 {runtime} >> {log_name}/debug/mpstat_p_all-{file_name} & ")
+    if str(log.json_get("Monitor", "pidstat_d", filename='natt', web='no-log')).strip() == "1":
+        if log.os_popen("ps -aux | grep -i 'pidstat -d 1' | grep -v grep | wc -l").strip() == "0":
+            log.os_run(f"pidstat -d 1 {runtime} >> {log_name}/debug/pidstat_d-{file_name} & ")
+    if str(log.json_get("Monitor", "dstat", filename='natt', web='no-log')).strip() == "1":
+        if log.os_popen("ps -aux | grep -i 'dstat 1' | grep -v grep | wc -l").strip() == "0":
+            log.os_run(f"dstat 1 {runtime} >> {log_name}/debug/dstat-{file_name} & ")
     # ------------------------------------------------------------------------------------------
 
 
@@ -161,19 +184,19 @@ def soft_info(log_name):
     with open(log_name + "/debug/soft_ver.log", "a") as f:
         f.write("=" * 60 + "\n")
         f.write("[Fio.Ver]\n")
-        f.write(log.popen("fio -v") + "\n")
+        f.write(log.os_popen("fio -v") + "\n")
         f.write("=" * 60 + "\n")
         f.write("[Iostat.Ver]\n")
-        f.write(log.popen("iostat -V") + "\n")
+        f.write(log.os_popen("iostat -V") + "\n")
         f.write("=" * 60 + "\n")
         f.write("[OS.Ver]\n")
-        f.write(log.popen("cat /etc/os-release") + "\n")
+        f.write(log.os_popen("cat /etc/os-release") + "\n")
         f.write("=" * 60 + "\n")
         f.write("[Uname]\n")
-        f.write(log.popen("uname -a") + "\n")
+        f.write(log.os_popen("uname -a") + "\n")
         f.write("=" * 60 + "\n")
         f.write("[cmdline]\n")
-        f.write(log.popen("cat /proc/cmdline") + "\n")
+        f.write(log.os_popen("cat /proc/cmdline") + "\n")
         f.write("=" * 60 + "\n")
         # BMC
         a = os.popen(" ipmitool mc info |grep 'Firmware Revision' |awk '{ print $4}' ").read().strip()
@@ -201,66 +224,69 @@ def print_save_text(file_path_name, text):
 #blktrace_start
 def blktrace_start(disk_info,log_path,test_type,runtime):
     if not os.path.exists(f"{log_path}/blktrace_files"):
-        log.popen(f"mkdir -p {log_path}/blktrace_files")
+        log.os_popen(f"mkdir -p {log_path}/blktrace_files")
     for i in range(0,len(disk_info),3):
         disk_name = disk_info[i]
         folder_name = f"{disk_name.strip()}_{test_type}"
         if not os.path.exists(f"{log_path}/blktrace_files/{folder_name}"):
-            log.popen(f"mkdir -p {log_path}/blktrace_files/{folder_name}")
-        log.run(f"blktrace /dev/{disk_name} -D {log_path}/blktrace_files/{folder_name} -o {folder_name} -w {runtime} & ")
-    log.n_p("已开启blktrace 追踪I/O层的信息")
-    log.n_p("BLKTRACE tracking of I/O layer information enabled")
+            log.os_popen(f"mkdir -p {log_path}/blktrace_files/{folder_name}")
+        log.os_run(f"blktrace /dev/{disk_name} -D {log_path}/blktrace_files/{folder_name} -o {folder_name} -w {runtime} & ")
+    log._pr("已开启blktrace 追踪I/O层的信息")
+    log._pr("BLKTRACE tracking of I/O layer information enabled")
     print("=" * 60)
 #blktrace result
 def blktrace_result(log_path):
     print("=" * 60)
-    log.n_p("Start processing BLKTRACE data information")
-    log.n_p("开始处理blktrace数据信息")
+    log._pr("Start processing BLKTRACE data information")
+    log._pr("开始处理blktrace数据信息")
     print("=" * 60)
     folder_path = log_path+"/blktrace_files"
     for path, dirs, files in os.walk(folder_path):
         if path == folder_path:continue
         file_name = path.replace(folder_path+"/","")
-        log.run(f"cd {path} && blkparse -i {file_name} -d {file_name}.blktrace.bin")
-        log.run(f"cd {path} && iowatcher -t {file_name}.blktrace.bin -o {log_path}/blktrace_files/{file_name}.svg")
-    log.popen(f"cp {folder_path}/*.svg {log_path}")
-    log.n_p("处理完毕，请检查结果文件夹中.svg文件")
+        log.os_run(f"cd {path} && blkparse -i {file_name} -d {file_name}.blktrace.bin")
+        log.os_run(f"cd {path} && iowatcher -t {file_name}.blktrace.bin -o {log_path}/blktrace_files/{file_name}.svg")
+    log.os_popen(f"cp {folder_path}/*.svg {log_path}")
+    log._pr("处理完毕，请检查结果文件夹中.svg文件")
     print("=" * 60)
+
 # debug输出及运行
 def debug_run_print(debug, command):
     if debug == "1":
-        log.run(command)
+        log.os_run(command)
     elif debug == "0":
-        with open("./cmd.log", "a") as p:
+        with open("/opt/sost/log/natt_cmd.log", "a") as p:
             p.write("[" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "]\n")
             p.write(command + "\n")
             p.flush()
         if "fio" in command and "nohup" in command:
-            with open("./fio_command.log", "a") as p:
+            with open("/opt/sost/log/fio_command.log", "a") as p:
                 p.write("[" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "]\n")
                 p.write(command + "\n")
                 p.flush()
         print(command)
+    else:
+        return
 
 
 # 初始化log文件夹
 def init_log():
-    if "natt_log" in log.popen("ls /root").strip():
+    if "natt_log" in log.os_popen("ls /root").strip():
         if os.path.exists("/root/natt_old"):
-            log.run("mv /root/natt_log* /root/natt_old")
+            log.os_run("mv /root/natt_log* /root/natt_old")
         else:
-            log.run("mkdir /root/natt_old")
-            log.run("mv /root/natt_log* /root/natt_old")
+            log.os_run("mkdir /root/natt_old")
+            log.os_run("mv /root/natt_log* /root/natt_old")
     # 获取当前路径
     create_file_name = f"/root/natt_log_{now_time()}"
-    log.run(f"mkdir {create_file_name}")
-    log.run(f"mkdir -p {create_file_name}/debug")
+    log.os_run(f"mkdir {create_file_name}")
+    log.os_run(f"mkdir -p {create_file_name}/debug")
     return create_file_name
 
 
 def numa_info(log_name, test_type):
     if not os.path.exists(log_name + "/debug"):
-        log.popen(f"mkdir -p {log_name}/debug")
+        log.os_popen(f"mkdir -p {log_name}/debug")
     log_path = f"{log_name}/debug"
     # [root@localhost]# numastat -v
     # Per-node numastat info (in MBs):
@@ -285,145 +311,143 @@ def numa_info(log_name, test_type):
 
 def init_natt():
     config_check()
-    if log.json_load("debug", "natt_Double_opening") == "0":
+    if log.json_get("debug", "natt_Double_opening", filename='natt', web='no-log') == "0":
         # 禁止双开
-        # if int(log.popen('ps -aux | grep -i python | grep -i natt | grep -v grep | wc -l').strip()) != 1:
-        #     log.error('Natt Prohibit double opening!Please run command :   natt -k ')
+        # if int(log.os_popen('ps -aux | grep -i python | grep -i natt | grep -v grep | wc -l').strip()) != 1:
+        #     log._error('Natt Prohibit double opening!Please run command :   natt -k ')
         #     exit()
 
         # 测试前kill iostat/fio
-        if int(log.popen('ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l').strip()) != 0:
-            log.n_p("fio/iostat is already running! Now kill all processes!")
-            log.run("pkill -9 fio ; pkill -9 iostat")
+        if int(log.os_popen('ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l').strip()) != 0:
+            log._pr("fio/iostat is already running! Now kill all processes!")
+            log.os_run("pkill -9 fio ; pkill -9 iostat")
 
         # 测试前删除 natt -a遗留的硬盘信息
-        if int(log.popen('ls /tmp/ | grep natt | wc -l').strip()) != 0:
+        if int(log.os_popen('ls /tmp/ | grep natt | wc -l').strip()) != 0:
             for file_name in os.listdir("/tmp"):
-                if "natt" in file_name: log.run(f'rm -rf /tmp/{file_name}')
+                if "natt" in file_name: log.os_run(f'rm -rf /tmp/{file_name}')
 
-    elif log.json_load("debug", "natt_Double_opening") == "1":
-        log.n_p("\n[-] NATT enables dual mode, performance testing is prohibited!")
-        log.n_p("[-] If performance testing is required, please set natt -c debug nattDouble_opening=0")
-        log.n_p("[-] natt开启双开模式，请勿进行硬盘性能导入测试!")
-        log.n_p("[-] 如需进行性能测试,请使用natt -c 设置debug natt_Double_opening = 0\n")
+    elif log.json_get("debug", "natt_Double_opening", filename='natt', web='no-log') == "1":
+        log._pr("\n[-] NATT enables dual mode, performance testing is prohibited!")
+        log._pr("[-] If performance testing is required, please set natt -c debug nattDouble_opening=0")
+        log._pr("[-] natt开启双开模式，请勿进行硬盘性能导入测试!")
+        log._pr("[-] 如需进行性能测试,请使用natt -c 设置debug natt_Double_opening = 0\n")
         if warning_tips():
-            log.n_p("wait 3s start natt.....")
+            log._pr("wait 3s start natt.....")
             wait(3)
         else:
-            log.error('You Chose N!')
+            log._error('You Chose N!')
     else:
-        log.error(
+        log._error(
             '<natt> Debug natt_Double_opening Config Error! Please Check natt_config.json! natt_Double_opening set 0 / 1 !')
 
     # 测试前删除 natt -a遗留的硬盘信息
+    if int(log.os_popen('ls /tmp/ | grep natt | wc -l').strip()) != 0:
+        for file_name in os.listdir("/tmp"):
+            if "natt" in file_name: log.os_run(f'rm -rf /tmp/{file_name}')
     try:
-        if int(log.popen('ls /tmp/ | grep natt | wc -l').strip()) != 0:
-            for file_name in os.listdir("/tmp"):
-                if "natt" in file_name: log.run(f'rm -rf /tmp/{file_name}')
-    except:
-        pass
-    try:
-        cmd_log_size_kb = int(int(log.popen("ls -al /opt/natt/cmd.log 2>/dev/null | awk '{{print $5}}'")) / 1024)
-        max_size = int(log.json_load("natt", "cmd_log_size_kb"))
+        cmd_log_size_kb = int(int(log.os_popen("ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}'")) / 1024)
+        max_size = int(log.json_get("natt", "cmd_log_size_kb", filename='natt', web='no-log'))
         if cmd_log_size_kb > max_size:
-            log.n_p("cmd.log大小超过设定的最大值,现在进行备份处理!")
-            log.n_p("The size of the cmd.log file exceeds the set maximum value!Now proceed with backup processing")
-            log.run("mkdir -p /opt/natt/Cache_File")
-            log.run(f"mv /opt/natt/cmd.log /opt/natt/Cache_File/cmd_bak_{str(now_time())}.log")
+            log._pr("natt_cmd大小超过设定的最大值,现在进行备份处理!")
+            log._pr("The size of the natt_cmd file exceeds the set maximum value!Now proceed with backup processing")
+            log.os_run("mkdir -p /opt/natt/Cache_File")
+            log.os_run(f"mv /opt/sost/log/natt_cmd.log 2>/dev/null /opt/natt/Cache_File/cmd_bak_{str(now_time())}.log")
             time.sleep(2)
     except:
         pass
     # Clear system cache
-    log.run("echo 3 > /proc/sys/vm/drop_caches")
-    log.run("sync")
+    log.os_run("echo '' > /opt/sost/log/fio_command.log")
+    log.os_run("echo 3 > /proc/sys/vm/drop_caches")
+    log.os_run("sync")
 
 # 判断字符串是否为空
 def str_null(strings, text):
     if text == 1:
         if not strings.isdigit():
-            log.n_p("Input Error!")
+            log._pr("Input Error!")
             exit()
         if strings == "exit":
-            log.n_p("User Input Exit!")
+            log._pr("User Input Exit!")
             exit()
         if strings == '':
-            log.n_p("Input Error!")
+            log._pr("Input Error!")
             exit()
         if int(strings) > 22:
-            log.n_p("Input Error!")
+            log._pr("Input Error!")
             exit()
         elif strings == "19":
-            log.n_p("Disk Quickly Check (null)")
+            log._pr("Disk Quickly Check (null)")
             exit()
         elif strings == "21":
-            log.n_p("DD Test (null)")
+            log._pr("DD Test (null)")
             exit()
         elif strings == "22":
-            log.n_p("Waiting for development (null)")
+            log._pr("Waiting for development (null)")
             exit()
     else:
-        log.n_p("check judge input type!")
+        log._pr("check judge input type!")
 
 
 def show_sys_info():
     try:
-        os_info = log.popen('cat /etc/system-release').strip()
+        os_info = log.os_popen('cat /etc/system-release').strip()
         platform_info = platform.platform()
         processor_architecture = platform.processor()
-        BMC_IP = log.popen(
+        BMC_IP = log.os_popen(
             "ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}'").strip()
         if BMC_IP == "": BMC_IP = "GetFail!"
-        SYS_IP = log.popen("hostname -I").split()[0]
+        SYS_IP = log.os_popen("hostname -I").split()[0]
         if SYS_IP == "": SYS_IP = "GetFail!"
-        log.n_p("System name            : " + os_info)
-        log.n_p("System version         : " + os_info)
-        log.n_p("System release         : " + platform_info)
-        log.n_p("System architecture    : " + processor_architecture)
-        log.n_p("BMC IP                 : " + BMC_IP)
-        log.n_p("SYS IP                 : " + SYS_IP)
-        log.n_p("=========================================================")
+        log._pr("System name            : " + os_info)
+        log._pr("System version         : " + os_info)
+        log._pr("System release         : " + platform_info)
+        log._pr("System architecture    : " + processor_architecture)
+        log._pr("BMC IP                 : " + BMC_IP)
+        log._pr("SYS IP                 : " + SYS_IP)
+        log._pr("=========================================================")
     except:
-        log.n_p("System name            : Getfail!")
-        log.n_p("System version         : Getfail!")
-        log.n_p("System release         : Getfail!")
-        log.n_p("System architecture    : Getfail!")
-        log.n_p("BMC IP                 : Getfail!")
-        log.n_p("SYS IP                 : Getfail!")
-        log.n_p("[+]Failed acquisition does not affect hard drive testing")
-        log.n_p("[+]获取失败不影响硬盘测试!")
+        log._pr("System name            : Getfail!")
+        log._pr("System version         : Getfail!")
+        log._pr("System release         : Getfail!")
+        log._pr("System architecture    : Getfail!")
+        log._pr("BMC IP                 : Getfail!")
+        log._pr("SYS IP                 : Getfail!")
+        log._pr("[+]Failed acquisition does not affect hard drive testing")
+        log._pr("[+]获取失败不影响硬盘测试!")
 
 
 def readme():
     clear_p()
-    print(log.popen(r"cat /opt/natt/README.md"))
-    log.n_p("\n")
+    print(log.os_popen(r"cat /opt/natt/README.md"))
+    log._pr("\n")
 
 def nvme_judge_mem():
     # 获取CPU node memory信息
-    node_memory = log.popen("numactl -H | grep free | awk '{{print $4}}'").split()
+    node_memory = log.os_popen("numactl -H | grep free | awk '{{print $4}}'").split()
     # 获取nvme硬盘名称 和 pciebus信息
-    nvme_bus_list = log.popen("nvme list-subsys | grep +- | awk '{print $2,$4}'").split()
+    nvme_bus_list = log.os_popen("nvme list-subsys | grep +- | awk '{print $2,$4}'").split()
     # 循环对比nvme硬盘所在node memory信息
     for i in range(0, len(nvme_bus_list)):
         if i % 2 == 0: continue
         # 获取当前循环nvme硬盘node信息
-        nvme_node = log.popen(f"lspci -vvvs {nvme_bus_list[i]} | grep -i node | awk '{{print $3}}'").strip()
+        nvme_node = log.os_popen(f"lspci -vvvs {nvme_bus_list[i]} | grep -i node | awk '{{print $3}}'").strip()
         # 对比nvme_node 与 cpu_node 中 memory信息
         if node_memory[int(nvme_node)] == 0:
-            log.n_p(f"nvme_name:{nvme_bus_list[i - 1]} Node:{nvme_node} Node_memory:{node_memory[int(nvme_node)]}")
-            log.n_p(
+            log._pr(f"nvme_name:{nvme_bus_list[i - 1]} Node:{nvme_node} Node_memory:{node_memory[int(nvme_node)]}")
+            log._pr(
                 f"he node where the current NVME hard disk is located has insufficient memory. Please check the memory access status!")
-            log.n_p(f"Memory check failed, program automatically closes!")
+            log._pr(f"Memory check failed, program automatically closes!")
             exit()
         else:
             continue
-    log.n_p("Check Nvme disk memory Success!")
+    log._pr("Check Nvme disk memory Success!")
 
     if '0' in node_memory:
         print(node_memory)
-        print(log.popen('numactl -H'))
-        log.n_p("你的测试环境Node存在内存确失，可能会影响性能测试是否继续？")
-        log.n_p(
+        print(log.os_popen('numactl -H'))
+        log._pr("你的测试环境Node存在内存确失，可能会影响性能测试是否继续？")
+        log._pr(
             "There is a memory error in your testing environment Node, which may affect performance testing. Do you want to continue?")
         if 'n' in input("You chose [ y / n ]: "):
             exit()
@@ -436,7 +460,7 @@ def wait(sleep_time):
 
 # fio每个进程运行等待时长
 def wait_disk_run():
-    json_time = str(log.json_load("debug", "fio_process_wait_time")).strip()
+    json_time = str(log.json_get("debug", "fio_process_wait_time", filename='natt', web='no-log')).strip()
     if json_time == '':
         time.sleep(3)
     else:
@@ -445,7 +469,7 @@ def wait_disk_run():
 
 # 打印fio后等待时长
 def wait_disk_print():
-    json_time = str(log.json_load("debug", "fio_print_wait_time")).strip()
+    json_time = str(log.json_get("debug", "fio_print_wait_time", filename='natt', web='no-log')).strip()
     if json_time == '':
         time.sleep(1)
     else:
@@ -511,11 +535,11 @@ def Blessings():
 
 def smtp_send_result(result):
     global server_stmp
-    smtp_server = log.json_load("email", "smtp_server")
-    smtp_port = log.json_load("email", "smtp_port")
-    sender_email = log.json_load("email", "sender_email")
-    receiver_email = log.json_load("email", "receiver_email")
-    password = log.json_load("email", "password")
+    smtp_server = log.json_get("email", "smtp_server", filename='natt', web='no-log')
+    smtp_port = log.json_get("email", "smtp_port", filename='natt', web='no-log')
+    sender_email = log.json_get("email", "sender_email", filename='natt', web='no-log')
+    receiver_email = log.json_get("email", "receiver_email", filename='natt', web='no-log')
+    password = log.json_get("email", "password", filename='natt', web='no-log')
     msg = MIMEMultipart()
     msg['From'] = sender_email
     msg['To'] = receiver_email
@@ -532,4 +556,3 @@ def smtp_send_result(result):
         print(f'Error occurred: {e}')
     finally:
         server_stmp.quit()
-

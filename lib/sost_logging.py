@@ -57,6 +57,9 @@ class dong_log():
     # 用户配置文件路径
     __private_user_config_file_path = '/opt/sost/config/sost.json'
 
+    # natt配置文件路径
+    __private_natt_config_file_path = '/opt/sost/config/natt_config.json'
+
     # SWC配置文件路径
     __private_swc_config_file_path = '/opt/sost/config/swc.json'
 
@@ -337,6 +340,9 @@ class dong_log():
         elif filename == 'smtp':
             typee = 'smtp'
             filename = self.__private_smtp_file_path 
+        elif filename == "natt":
+            typee = 'natt'
+            filename = self.__private_natt_config_file_path
         else: 
             filename = self.__private_user_config_file_path
         try:
@@ -378,6 +384,9 @@ class dong_log():
         elif filename == "dmesg_check":
             typee = 'dmesg_check'
             filename = self.__private_sost_dmesg_check_file_path
+        elif filename == "natt":
+            typee = 'natt'
+            filename = self.__private_natt_config_file_path
         else: 
             filename = self.__private_user_config_file_path
             typee = 'sost'

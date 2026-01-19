@@ -23,8 +23,9 @@ def ipmi_run(command):
     return result
 
 def simple_json_get(obj,key):
-    aNUM = '11'
+    aNUM = '12'
     if obj == "Multimodal_stability":aNUM = '2'
+    print(f''' cat /opt/sost/config/sost.json  | grep -{aNUM} {obj} | grep -i {key}| tr -d ' ,"' | cut -d ':' -f 2 ''')
     return log.os_popen(f''' cat /opt/sost/config/sost.json  | grep -{aNUM} {obj} | grep -i {key}| tr -d ' ,"' | cut -d ':' -f 2 ''',flags=cmd_log_flags).replace('"',"").replace(",","").strip()
 
 def bmc_ver():
@@ -171,6 +172,19 @@ def return_get_data():
             'Test-count': 'NA',
             'Test-result': 'NA'
         })
+
+    # value	role	swc_status
+    # 0	No-Test	No-Test
+    # 1	Running-Test	Running
+    # 2	Collecting information	Collecting
+    # 3	Rebooting	Rebooting
+    # 4	TestEnding	Ending
+    # 5	Clear TestTmpInfo -> swcClearInfoButton	No-Test / NA
+    # 6	sostErrStop	sostErrStop
+    # 7	sostWaitingForTest	sostWaitingForTest
+    # 8	natt TestStart	DiskTestRunning
+    # 9	natt TestEnd	DiskTestEnding
+
     elif runningFlag == '1':
         base_data.update({'Test-status': 'Running'})
     elif runningFlag == '2':
@@ -184,8 +198,29 @@ def return_get_data():
             'Test-status': 'sostErrStop',
             'Test-result': 'FAIL'
             })
+    elif runningFlag == '7':
+        base_data.update({
+            'Test-status': 'sostWaitingForTest',
+            'Test-type': simple_json_get("Test_tmp","test_type"),
+            'Test-count': '0',
+            'Test-result': 'Pass'
+            })
+    elif runningFlag == '8':
+        base_data.update({
+            'Test-status': 'DiskTestRunning',
+            'Test-type': 'DiskTest',
+            'Test-count': '0',
+            'Test-result': 'Pass'
+            })
+    elif runningFlag == '9':
+        base_data.update({
+            'Test-status': 'DiskTestEnding',
+            'Test-type': 'DiskTest',
+            'Test-count': 'NA',
+            'Test-result': 'Pass'
+            })
     else:
-        base_data.update({'Test-status': 'sostScriptErr'})
+        base_data.update({'Test-status': 'NA'})
 
     base_data.update({
         'SYS_IP': get_system_ip(),

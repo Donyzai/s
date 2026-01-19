@@ -157,12 +157,11 @@ def install_tools(install_type):
         os.system("yum install numactl* -y")
     # init python3 pip
     os.system("pip3 list > /tmp/pip3_installed_list.txt 2>/dev/null")
-    f = open("/tmp/pip3_installed_list.txt","r").read()
     os.system("python3 -m ensurepip --default-pip")
     #os.system("pip3 install --upgrade nltk -i https://pypi.tuna.tsinghua.edu.cn/simple --force")
     pip_install_array = ["wheel","pyinstaller","Flask","requests","tqdm","nltk"]
     for pip_package in pip_install_array:
-        if pip_package.strip() in f:
+        if pip_package.strip() in open("/tmp/pip3_installed_list.txt","r").read():
             continue
         os.system(f'pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple {pip_package} --force')
     
@@ -224,6 +223,7 @@ def build_sost():
     # Delete Old sost Command
     os.system('rm -rf /usr/bin/sost')
     os.system('rm -rf /usr/local/bin/sost')
+
     #Check pyinstaller Tools
     if os.popen("whereis pyinstaller | cut -d ':' -f 2").read().strip() != "":
         #Check bin Folder
@@ -232,13 +232,14 @@ def build_sost():
             exit()
         # build sost.py
         os.system('cd /opt/sost/bin && pyinstaller -F --onefile sost.py && mv dist/sost . && rm -rf sost.spec && rm -rf build/ && rm -rf dist/ && yes | mv /opt/sost/bin/sost /usr/local/bin/sost')
-        
+
         #check build sost command
         if os.path.exists("/usr/local/bin/sost"):
             print("sost build command success!")
         else:
             print("sost build command Fail!")
             os.system("cd /opt/sost && touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4 $5 $6' >> /usr/local/bin/sost && cd && sync && sost -h")
+
     else:
         print("Pyinstaller安装失败，现在进行手动安装。")
         os.system("cd /opt/sost && touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4 $5 $6' >> /usr/local/bin/sost && cd && sync && sost -h")
@@ -330,8 +331,9 @@ if __name__ == '__main__':
         install_tools(install_type)
     elif install_mode == 'Offline':
         os.system("chmod 777 /opt/sost/bin/sost.py && echo 'python3 /opt/sost/bin/sost.py' >> /usr/local/bin/sost && chmod 777 /usr/local/bin/sost")
-        sost_print('Install Tool : fio / iostst(sysstat) / numactl / libaio!')
-        sost_print('无法识别网络可用！更改为离线安装!请手动安装 fio  iostst(sysstat)  numactl  libaio 四个工具!才能够正常使用!')
+
+        sost_print('Install Tool : iostst(sysstat) / numactl / libaio!')
+        sost_print('无法识别网络可用！更改为离线安装!请手动安装 nvme iostst(sysstat)  numactl  libaio 四个工具!才能够正常使用!')
         sost_print('Install sost into the server')
         sost_print('正在安装sost工具至服务器中....')
         sost_print('Please manually install the following tools(手动安装以下工具!)')
@@ -349,16 +351,20 @@ if __name__ == '__main__':
     if install_mode == 'Online':
         if system_os[0] == 'Ubuntu':
             os.system(f"touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h")
+
         else:
             build_sost()
     else:
         os.system(f"touch /usr/local/bin/sost && chmod 777 /usr/local/bin/sost && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h 2>/dev/null")
+
     swc_manager()
     if os.popen(" whereis sost 2>/dev/null | cut -d ':' -f 2 | tr -d ' ' ") == "":
         os.system("touch /usr/local/bin/sost 2>/dev/null && chmod 777 /usr/local/bin/sost 2>/dev/null && echo 'python3 /opt/sost/bin/sost.py $1 $2 $3 $4' > /usr/local/bin/sost && sost -h 2>/dev/null")
+
     else:
         if os.popen("file /usr/local/bin/sost 2>/dev/null | grep -i text | wc -l").read().strip() == "0":
             os.system("rm -rf /opt/sost/bin 2>/dev/null")
+            
     os.system("rm -rf /tmp/run.sh 2>/dev/null")
 
     now_path = os.path.dirname(os.getcwd()+"/sost_install.py")

@@ -15,6 +15,13 @@ from datetime import datetime, timedelta
 log = dong_log()
 log.debug_flags = str(log.json_get("debug","debug_flags",web='no-log',filename="debug"))
 
+def change_test_value():
+    bmc_ver = log.os_popen(''' echo "$(ipmitool mc info 2>/dev/null | grep 'Firmware Revision' | awk '{ print $4 }').$(ipmitool mc info 2>/dev/null | grep -A4 'Aux Firmware Rev Info' | grep -vi 'Firmware' | head -n 4 | awk '{ print $1 }' | sed 's/0x//g' | paste -sd.)" ''').strip()
+    bios_ver = log.os_popen("dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null").strip()
+
+    log.json_set("Test_tmp","test_bmc_ver",bmc_ver)
+    log.json_set("Test_tmp","test_bios_ver",bios_ver)
+
 def check_bash_profile():
     if not os.path.exists('/root/.bash_profile'):
         log._pr("Not found /root/.bash_profile , Create default bash_profile!")
@@ -1385,7 +1392,22 @@ def save_to_history(count):
     test_sha256 = log.json_get("Test_tmp","test_sha256").strip()
     json_data = f'{{"time": "{start_time}", "type": "{test_type}", "count": {count}, "result": "{test_result}" , "bios.ver" : "{bios_ver}" , "bmc.ver" : "{bmcc_ver}" , "sha256" : "{test_sha256}"}}'
     log.os_run(f' touch /opt/sost/history && echo "{json_data}" >> /opt/sost/history')
-    
+
+def post_info_to_swcServer():
+    hw_mac = log.os_popen("sost -i hwmac").strip().replace(":", "")
+    bmc_ver = log.json_get("Test_tmp","test_bmc_ver").strip()
+    bios_ver = log.json_get("Test_tmp","test_bios_ver").strip()
+    test_sha256 = log.json_get("Test_tmp","test_sha256").strip()
+    test_type = log.json_get("Test_tmp","test_type").strip()
+    test_count = log.json_get("Test_tmp","test_count").strip()
+    test_result = log.json_get("Test_tmp","test_status").strip()
+    EndTime = log.json_get("Test_tmp","endT_time").strip()
+    json_data = f'{{"hw_mac": "{hw_mac}", "bmc_ver": "{bmc_ver}", "bios_ver": "{bios_ver}", "test_sha256": "{test_sha256}", "test_type": "{test_type}", "test_count": {test_count}, "test_result": "{test_result}", "EndTime": "{EndTime}"}}'
+    swc_server_ip = log.json_get("swc","swc_server_ip",filename='swc').strip()
+    swc_server_port = log.json_get("swc","swc_server_port",filename='swc').strip()
+    log.os_run(f" nohup curl -X POST -H 'Content-Type: application/json' -d '{json_data}' http://{swc_server_ip}:{swc_server_port}/api/upload_test_info &")
+    log._dp(f"Post test info to swcServer: {json_data}")
+
 # init environment to default
 def defalt_path(show_flags=True):
     nowRunning_flag = log.json_get("Test_tmp","Running_flag").strip()
@@ -1463,6 +1485,8 @@ def defalt_path(show_flags=True):
     count = log.json_get('Test_tmp','test_count').strip()
     if int(count) > 1:
         save_to_history(count)
+    
+    post_info_to_swcServer()
 
 def wait_time(runtime,flags=''):
     for i in reversed(range(int(runtime))):

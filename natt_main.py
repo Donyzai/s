@@ -6,17 +6,25 @@
 from nattlib.natt_disk_lib import *
 from nattlib.natt_public_lib import *
 import json
+import sys
+import os
 
 #####################################################################################
-from nattlib.natt_logging import dong_log
+# Use sost_logging instead of natt_logging
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'lib'))
+from lib.sost_logging import dong_log as sost_dong_log
 
 # init log
-log = dong_log()
-log.json_filename = 'config/natt_config.json'
-if log.json_load('debug', 'debug_print') == '1':
-    log.dprint_flag = True
-else:
-    log.dprint_flag = False
+log = sost_dong_log()
+# Set debug flags from natt config
+try:
+    debug_print = log.json_get('debug', 'debug_print', filename='natt', web='no-log')
+    if debug_print == '1':
+        log.debug_flags = "1"  # Enable debug print
+    else:
+        log.debug_flags = "0"
+except:
+    log.debug_flags = "0"
 log.error_exit = True
 log.fail_exit = True
 
@@ -115,7 +123,7 @@ def main_show():
     print("|\033[34m    ░░      ░░░ ░░      ░░     ░░         ░░            \033[0m|")
     print("|                                                       |")
     print(
-        f"|\033[32m Version:{str(log.json_load('Version', 'natt_version')).strip()}   | Author: Xiaodong Fan | Time:20260107 \033[0m|")
+        f"|\033[32m Version:{str(log.json_get('Version', 'natt_version', filename='natt', web='no-log')).strip()}   | Author: Xiaodong Fan | Time:20260107 \033[0m|")
     print("=========================================================")
 
 
@@ -147,7 +155,7 @@ def user_chose(cho_num, dis_typ):
     if test_type_arr[int(cho_num)] != "":
         home_page(test_type_arr[int(cho_num)], dis_typ, cho_num)
     else:
-        log.fail("[Fail] User selection Error!")
+        log._fail("[Fail] User selection Error!")
 
 def home_page(test_type, dis_typ, cho_num):
     disk_info = ''
@@ -184,62 +192,67 @@ def home_page(test_type, dis_typ, cho_num):
     # DEBUG 用户输入测试硬盘信息进行测试
     if dis_typ == "nvme":
         nvme_info = nvme_disk_info(disk_info)
-        log.run(f"mv /tmp/natt_nvme_info.log {log_name}")
+        log.os_run(f"mv /tmp/natt_nvme_info.log {log_name}")
         if len(nvme_info) == 0:
-            log.fail(" No Nvme Disk Info found!")
+            log._fail(" No Nvme Disk Info found!")
         else:
             run_start(nvme_info, cho_num, log_name)
     elif dis_typ == "sata":
         sata_info = sata_disk_info(disk_info)
         if len(sata_info) == 0:
-            log.n_p("No Sata Disk Info found!")
+            log._pr("No Sata Disk Info found!")
             exit()
-        log.run(f"mv /tmp/natt_sata_info.log {log_name}")
+        log.os_run(f"mv /tmp/natt_sata_info.log {log_name}")
         run_start(sata_info, cho_num, log_name)
     elif dis_typ == "all":
         if disk_info == []:disk_info = ''
         nvme_info = nvme_disk_info(disk_info)
         sata_info = sata_disk_info(disk_info)
         all_info = nvme_info+sata_info
-        log.run(f"mv /tmp/natt_all_info.log {log_name}")
+        log.os_run(f"mv /tmp/natt_all_info.log {log_name}")
         run_start(all_info, cho_num, log_name)
     else:
-        log.n_p(f"Disk Test Type Error! Now : {dis_typ}")
+        log._pr(f"Disk Test Type Error! Now : {dis_typ}")
         exit()
-
 
 def run_start(disk_info, test_type, log_name):
-    # 用户判断是否进行格式化操作
-    format_disk_type = log.u_in(" Do you want to format Disk? [y/n] : ")
-    if format_disk_type == "y":
-        print("<natt> format disk info : ", end='')
-        print(disk_info)
-        if "sd" in disk_info[0]:
-            for i in range(0, len(disk_info), 3):
-                sata_format(disk_info[i])
-        elif "nvme" in disk_info[0]:
-            print("[----[Nvme Format Type]----]")
-            print("[    1.mkfs.ext4           ]")
-            print("[    2.nvme format         ]")
-            print("[--------------------------]")
-            nvme_format_type = log.u_in(" chose : ")
-            # for循环取disk_info中硬盘名称所在的数值
-            for i in range(0, len(disk_info), 3):
-                nvme_format(disk_info[i], nvme_format_type)
-        else:
-            log.n_p(" You chose No format disk!")
+    if log.json_get("DiskInfo","fio_mode",filename='natt') == "1":
+        tmp = log._in(" Do you still want to continue [y/n] : ")
+        if tmp == "n":
+            exit()
+        start_test(test_type, disk_info, log_name)
     else:
-        log.n_p(" You have chosen not to perform formatting operations!")
+        # 用户判断是否进行格式化操作
+        format_disk_type = log._in(" Do you want to format Disk? [y/n] : ")
+        if format_disk_type == "y":
+            print("<natt> format disk info : ", end='')
+            print(disk_info)
+            if "sd" in disk_info[0]:
+                for i in range(0, len(disk_info), 3):
+                    sata_format(disk_info[i])
+            elif "nvme" in disk_info[0]:
+                print("[----[Nvme Format Type]----]")
+                print("[    1.mkfs.ext4           ]")
+                print("[    2.nvme format         ]")
+                print("[--------------------------]")
+                nvme_format_type = log._in(" chose : ")
+                # for循环取disk_info中硬盘名称所在的数值
+                for i in range(0, len(disk_info), 3):
+                    nvme_format(disk_info[i], nvme_format_type)
+            else:
+                log._pr(" You chose No format disk!")
+        else:
+            log._pr(" You have chosen not to perform formatting operations!")
 
-    tmp = log.u_in(" Do you still want to continue [y/n] : ")
-    if tmp == "n":
-        exit()
-
-    # 按照用户所选测试模型进行测试
-    start_test(test_type, disk_info, log_name)
-
+        tmp = log._in(" Do you still want to continue [y/n] : ")
+        if tmp == "n":
+            exit()
+        # 按照用户所选测试模型进行测试
+        start_test(test_type, disk_info, log_name)
+    return 0
 if __name__ == '__main__':
     # init natt
+    
     init_natt()
     main_show()
     Blessings()
@@ -247,34 +260,34 @@ if __name__ == '__main__':
     help_text()
     while True:
         # 快速测试模块
-        # qk_flags = log.json_load('debug','debug_qk')
-        user_input = log.u_in('')
+        # qk_flags = log.json_get('debug','debug_qk', filename='natt', web='no-log')
+        user_input = log._in('')
         if user_input == 'show':
-            log.n_p("\n" * 6)
+            log._pr("\n" * 6)
             mode_list()
         elif user_input == 'update':
-            now_ver = int(log.json_load("Version", "natt_version").strip().replace(".", ""))
-            server_ip = log.json_load("Version", "update_Web_server_ip").strip()
-            if "0% packet loss" in log.popen(f'ping -c 1 {server_ip}'):
-                log.n_p("WebServerClientOk!")
+            now_ver = int(log.json_get("Version", "natt_version", filename='natt', web='no-log').strip().replace(".", ""))
+            server_ip = log.json_get("Version", "update_Web_server_ip", filename='natt', web='no-log').strip()
+            if "0% packet loss" in log.os_popen(f'ping -c 1 {server_ip}'):
+                log._pr("WebServerClientOk!")
             else:
-                log.n_p("WebServerClientError!")
+                log._pr("WebServerClientError!")
                 break
-            log.n_p(f'Now_Natt.ver : {now_ver}')
-            update_ver = int(log.popen(f"curl http://{server_ip}/natt/new_version.txt").replace(".",""))
+            log._pr(f'Now_Natt.ver : {now_ver}')
+            update_ver = int(log.os_popen(f"curl http://{server_ip}/natt/new_version.txt").replace(".",""))
             if now_ver == update_ver:
-                log.n_p("natt检查为最新版本，无需更新")
-                log.n_p("NATT check to the latest version, no update required")
+                log._pr("natt检查为最新版本，无需更新")
+                log._pr("NATT check to the latest version, no update required")
             elif now_ver < update_ver:
-                log.n_p("natt检查为旧版本，是否更新？")
-                log.n_p("NATT check shows old version, do you want to update it?")
-                if log.u_in("Update ? [ y / n ] : ") == "y":
-                    new_ver = log.popen(f"curl http://{server_ip}/natt/new_version.txt").strip()
+                log._pr("natt检查为旧版本，是否更新？")
+                log._pr("NATT check shows old version, do you want to update it?")
+                if log._in("Update ? [ y / n ] : ") == "y":
+                    new_ver = log.os_popen(f"curl http://{server_ip}/natt/new_version.txt").strip()
                     command = f"echo 'sleep 3 && cd && wget http://{server_ip}/natt/natt-v{new_ver}-Release.tar && tar -xvf natt-v{new_ver}-Release.tar && cd natt-v{new_ver}-Release && python3 natt_install.py && cd && natt -h && rm -rf /opt/run.sh' >> /opt/run.sh"
-                    log.run(command)
-                    log.run("chmod 777 /opt/run.sh")
-                    log.run("sh /opt/run.sh &")
-                    log.n_p("==================")
+                    log.os_run(command)
+                    log.os_run("chmod 777 /opt/run.sh")
+                    log.os_run("sh /opt/run.sh &")
+                    log._pr("==================")
                     print(f'''
 |===================================================================|
 |    ██     ██              ██             ██   ██                  |
@@ -288,21 +301,21 @@ if __name__ == '__main__':
 |   Now.ver : {now_ver}                Update.ver : {new_ver} |
 |===================================================================|
                     ''')
-                    log.n_p("==================")
+                    log._pr("==================")
                     time.sleep(60)
                     print("Updating Success!")
                     exit()
             elif now_ver > update_ver:
-                log.n_p("natt检查为超前版本,太厉害了！")
-                log.n_p("Natt checked as an advanced version, it's amazing!")
-                log.n_p("请联系作者email:fanxiaodong@ttyinfo.com")
-                log.n_p("Please contact the author via email: fanxiaodong@ttyinfo.com")
-                log.exitt("Natt.Ver.Err")
+                log._pr("natt检查为超前版本,太厉害了！")
+                log._pr("Natt checked as an advanced version, it's amazing!")
+                log._pr("请联系作者email:fanxiaodong@ttyinfo.com")
+                log._pr("Please contact the author via email: fanxiaodong@ttyinfo.com")
+                log._exitt("Natt.Ver.Err")
             else:
                 continue
         elif user_input == 'start':
             # 快速测试模块 基于 1.1.1版本进行开发，于 1.1.3版本删除
-            # result = log.popen('cat /opt/natt/.qk_flag.txt')
+            # result = log.os_popen('cat /opt/natt/.qk_flag.txt')
             # if 'False' in result:
             #     log.n_p("检测到快速测试结果失败,请调试后在进行性能测试!")
             #     log.n_p("Quick test result failure detected, please debug before conducting performance testing!")
@@ -319,7 +332,8 @@ if __name__ == '__main__':
             tips()
             mode_list()
             # 用户选择测试模型和测试硬盘类型
-            cho_num = log.u_in(" Please select the testing model (Echo_numg:1) : ")
+            cho_num = log._in(" Please select the testing model (Echo_numg:1) : ")
+            log.json_set("Test_tmp","Running_flag","8")
             if cho_num == "25":
                 smart_health_check()
             elif cho_num == "26":
@@ -327,10 +341,10 @@ if __name__ == '__main__':
             elif cho_num == "27":
                 mount_main()
             elif cho_num == "25":
-                log.n_p(" Please look natt-v1.1.2-Release.doc")
+                log._pr(" Please look natt-v1.1.4-Release.doc")
             else:
                 str_null(cho_num, 1)
-                dis_typ = log.u_in(" Now Currently only supported (nvme/sata/all) : ")
+                dis_typ = log._in(" Now Currently only supported (nvme/sata/all) : ")
                 user_chose(cho_num, dis_typ)
                 break
         elif user_input == 'info':
@@ -339,7 +353,7 @@ if __name__ == '__main__':
             print('|      sata     sata disk info                 |')
             print('|      nvme     nvme  disk info                |')
             print('|==============================================|')
-            disk_info_type = log.u_in(" Enter Disk info : ")
+            disk_info_type = log._in(" Enter Disk info : ")
             if disk_info_type == 'all':
                 nvme_disk_info('')
                 sata_disk_info('')
@@ -362,29 +376,29 @@ if __name__ == '__main__':
             print('|      sata     format sata                    |')
             print('|      nvme     format nvme                    |')
             print('|==============================================|')
-            format_disk_type = log.u_in(" Enter Format Disk type : ")
+            format_disk_type = log._in(" Enter Format Disk type : ")
             if format_disk_type == 'all':
                 if warning_tips():
                     disk_info = nvme_disk_info('')
-                    log.n_p("NVME hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
+                    log._pr("NVME hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
                     print("[----[Nvme Format Type]----]")
                     print("[    1.mkfs.ext4           ]")
                     print("[    2.nvme format         ]")
                     print("[--------------------------]")
-                    nvme_format_type = log.u_in(" chose : ")
+                    nvme_format_type = log._in(" chose : ")
                     wait(10)
                     for i in range(0, len(disk_info), 3):
                         nvme_format(disk_info[i], nvme_format_type)
-                    mount_type = log.u_in("Mount? [y/n]: ")
+                    mount_type = log._in("Mount? [y/n]: ")
                     if mount_type == "y":
                         for i in range(0, len(disk_info), 3):
                             mount_disk(disk_info[i])
                     disk_info = sata_disk_info('')
-                    log.n_p("SATA hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
+                    log._pr("SATA hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
                     wait(10)
                     for i in range(0, len(disk_info), 3):
                         sata_format(disk_info[i])
-                    mount_type = log.u_in("Mount? [y/n]: ")
+                    mount_type = log._in("Mount? [y/n]: ")
                     if mount_type == "y":
                         for i in range(0, len(disk_info), 3):
                             mount_disk(disk_info[i])
@@ -393,11 +407,11 @@ if __name__ == '__main__':
             elif format_disk_type == 'sata':
                 if warning_tips():
                     disk_info = sata_disk_info('')
-                    log.n_p("SATA hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
+                    log._pr("SATA hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
                     wait(10)
                     for i in range(0, len(disk_info), 3):
                         sata_format(disk_info[i])
-                    mount_type = log.u_in("Mount? [y/n]: ")
+                    mount_type = log._in("Mount? [y/n]: ")
                     if mount_type == "y":
                         for i in range(0, len(disk_info), 3):
                             mount_disk(disk_info[i])
@@ -406,30 +420,34 @@ if __name__ == '__main__':
             elif format_disk_type == 'nvme':
                 if warning_tips():
                     disk_info = nvme_disk_info('')
-                    log.n_p("NVME hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
+                    log._pr("NVME hard disk formatting operation is about to proceed, timeout 10s,Problem with ctrl+C")
                     print("[----[Nvme Format Type]----]")
                     print("[    1.mkfs.ext4           ]")
                     print("[    2.nvme format         ]")
                     print("[--------------------------]")
-                    nvme_format_type = log.u_in(" chose : ")
+                    nvme_format_type = log._in(" chose : ")
                     wait(10)
                     for i in range(0, len(disk_info), 3):
                         nvme_format(disk_info[i], nvme_format_type)
-                    mount_type = log.u_in("Mount? [y/n]: ")
+                    mount_type = log._in("Mount? [y/n]: ")
                     if mount_type == "y":
                         for i in range(0, len(disk_info), 3):
                             mount_disk(disk_info[i])
                 else:
                     break
-                mount_type = log.u_in("Mount? [y/n]: ")
+                mount_type = log._in("Mount? [y/n]: ")
             else:
-                log.n_p('unknown format disk type!')
+                log._pr('unknown format disk type!')
         elif user_input == 'bug':
             bug()
         elif user_input == 'exit':
+            log.json_set("Test_tmp","Running_flag","9")
             break
         elif user_input == "q":
+            log.json_set("Test_tmp","Running_flag","9")
             break
         else:
             continue
-    log.run('natt -k')
+    
+    log.json_set("Test_tmp","Running_flag","9")
+    log.os_run('natt -k')

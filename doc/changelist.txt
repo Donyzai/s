@@ -1,8 +1,8 @@
 ----------------------------------------------------------------------------------
-sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/xx
+sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2026/01/20  ReleaseTime:2026/01/20
 ----------------------------------------------------------------------------------
 1. 已适配KylinV11系统。
-2. 增加update提示功能。
+2. 增加在线update提示功能，包含建议更新/强制更新/建议降级/强制降级四种update类型。
 3. 优化sensor Handle处理
 4. 增加iBMC SEL日志检查PSU在位情况(与ac/dc/reset判断逻辑保持一致)
 5. SEL快速生成日志限制最大生成数量10000条
@@ -16,7 +16,7 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
 13. 优化所有in/pr位置提示语4. 增加用户选择BMC类测试后，将选择的IPMILAN->Test_tmp
 15. 增加bmc reset warm / cold KCS通道测试
 16. 修复看板无法实现aclost运行测试  [x]
-    修复方法 看板执行时修改command执行方式，看板收到信息后，创建aclost.sh文件，command修改为sh aclost.sh    [x]
+    修复方法 看板执行时修改command执行方式，看板收到信息后，创建aclost.sh文件，command修改为sh aclost.sh
 17. 增加稳定性类型判断，如果HisiBMC选择BMC热重启退出测试。
 18. IPMI sensor检查FAN信息是否有读值为0的情况。
     18.1 检查sensor中'0x0','0x00','0x01','na'变化情况
@@ -37,7 +37,9 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2025/xx/xx  ReleaseTime:2025/xx/x
     (1) sost -i switch查看switch信息
     (2) sost -i pcieinfo查看switch信息
 32. dmesgCheck增加IPMI SI信息检查。
-33. 合并natt-v1.1.3版本                 [x]  
+33. 合并natt-v1.1.4版本
+34. 增加日志备份功能，用户ctrl_c后向SWC服务器下发post请求download当前稳定性测试日志
+
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------
