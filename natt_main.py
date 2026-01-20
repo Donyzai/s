@@ -207,8 +207,11 @@ def home_page(test_type, dis_typ, cho_num):
     elif dis_typ == "all":
         if disk_info == []:disk_info = ''
         nvme_info = nvme_disk_info(disk_info)
+        log._dp("all nvme info : ", str(nvme_info))
         sata_info = sata_disk_info(disk_info)
+        log._dp("all sata info : ", str(sata_info))
         all_info = nvme_info+sata_info
+        log._dp("all disk info : ", str(all_info))
         log.os_run(f"mv /tmp/natt_all_info.log {log_name}")
         run_start(all_info, cho_num, log_name)
     else:

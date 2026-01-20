@@ -414,6 +414,7 @@ def Bound_nucleus(disk_name, node, numa):
     # 优先使用配置文件中的node和numa
     if json_node != "":
         node = json_numa
+        
     if json_numa != "":
         numa = json_node
     
@@ -825,7 +826,12 @@ def nvme_disk_info(disk_arr):
 
     # 增加无硬盘退出不报错
     else:
-        nvme_list = disk_arr
+        nvme_list = []
+        for disk_name in disk_arr:
+            if 'sd' in disk_name:
+                continue
+            else:
+                nvme_list.append(disk_name)
         if nvme_list[0] == "":
             log._pr("Not Found Nvme Disk!")
             exit()
@@ -833,7 +839,7 @@ def nvme_disk_info(disk_arr):
     nvme_test_arr = []
     disk_num = 0
     for nvme_name in nvme_list:
-        if nvme_name not in log.os_popen("ls /syds/block"):
+        if nvme_name not in log.os_popen("ls /sys/block"):
             log._pr(f"{nvme_name} Not Found ! ")
             continue
         nvme_SN = log.os_popen(f"nvme list | grep -i {nvme_name} | awk '{{print $2}}'").strip()
@@ -930,7 +936,7 @@ def nvme_disk_info(disk_arr):
         log._pr("NVMe Test Info : " + str(test_info))
         
         return test_info
-
+    log._dp("nvme_disk_info return nvme_test_arr : " + str(nvme_test_arr))
     return nvme_test_arr
 
 # 获取sata硬盘信息
@@ -987,7 +993,12 @@ def sata_disk_info(disk_arr):
                 continue
         log._dp(contrast_result)
     else:
-        contrast_result = disk_arr
+        contrast_result = []
+        for disk_name in disk_arr:
+            if 'nvme' in disk_name:
+                continue
+            else:
+                contrast_result.append(disk_name)
         lsblk_info = log.os_popen("ls /sys/block")
         for disk_name in disk_arr:
             if disk_name not in lsblk_info:

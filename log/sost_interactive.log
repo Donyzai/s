@@ -1,24 +1,6 @@
-< sost_20260119-151754_print    > : SWC Service Connectivity Success!
-< sost_20260119-151754_print    > : ════════════════════════════════════════════════════════════════════════════
-|                                             ░██                          |
-|                    ██████  ██████   ██████ ██████                        |
-|                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
-|                  ░░█████ ░██   ░██░░█████   ░██                          |
-|                   ░░░░░██░██   ░██ ░░░░░██  ░██                          |
-|                   ██████ ░░██████  ██████   ░░██                         |
-|                  ░░░░░░   ░░░░░░  ░░░░░░     ░░     Auther:Fan Xiaodong  |
-|═══════════════════════════════════════════════════════════════════════════
-|    ReTime:2025-11-06 13:56:48     Ver.[32m1.1.1  [0m BMC_Chip:[33mASPEED-2600       [0m|
-|══════════════════════════════════════════════════════════════════════════|
-|   1 . reboot         |    5 . BMC Reset warm     |   9. Test Tools       |
-|   2 . power cycle    |    6 . BMC Reset cold     |  10. other  Test      |
-|   3 . power reset    |    7 . xxxxxxxxxxxx       |  11. Timed operation  |
-|   4 . AClost         |    8 . xxxxxxxxxxxx       |  12. Mulit Test       |
-|══════════════════════════════════════════════════════════════════════════|
-|  13 . BMC Remote Power reset     |  17 . BMC Remote raw 0x06 0x02        |
-|  14 . BMC Remote Power cycle     |  18 . BMC Power On/Off                | 
-|  15 . BMC Remote bmc reset warm  |  19 . NA                              |
-|  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
-════════════════════════════════════════════════════════════════════════════
-< sost Your choice : > : q
-[31m< sost_20260119-151756_error    > : User.Input.Error[0m
+< sost_20260119-165245_print    > : swc_web is Running! Running-Time -> 20260119 16:52:45 (swc_web.py)
+< sost_20260119-165245_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260120-154354_print    > : swc_web is Running! Running-Time -> 20260120 15:43:54 (swc_web.py)
+< sost_20260120-154354_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260120-154357_print    > : swc_web is Running! Running-Time -> 20260120 15:43:57 (swc_web.py)
+< sost_20260120-154357_print    > : swc_web -> swc_cinfo Running! (swc_web.py)

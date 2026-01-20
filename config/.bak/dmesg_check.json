@@ -24,6 +24,7 @@
         "failed with error":"0",
         "spe-v1 failed with error":"0",
         "Exit sas_scsi_recover_host":"0",
-        "mac speed/duplex config cmd failed":"0"
+        "mac speed/duplex config cmd failed":"0",
+        "timeout in RD_WAIT":"1"
     }
 }
