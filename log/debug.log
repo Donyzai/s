@@ -1,0 +1,257 @@
+< sost_20260120-161402_dlev_0   > : 
+< sost_20260120-161402_dlev_0   > : sda
+< sost_20260120-161402_dlev_0   > : ['sdd']
+< sost_20260120-161402_dlev_0   > : ['sdd']
+< sost_20260120-161402_dlev_0   > : 0
+< sost_20260120-161402_dlev_0   > : sys_disk_name : sda
+< sost_20260120-161402_dlev_0   > : ['sdd']
+< sost_20260120-161402_dlev_0   > : ['sdd', 'Board_disk', 'Board_disk']
+< sost_20260120-161403_dlev_0   > : sdd
+< sost_20260120-161403_dlev_0   > : ['3.5', '29', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-161403_dlev_0   > : sdd
+< sost_20260120-161403_dlev_0   > : ['3.5', '29', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-161403_dlev_0   > : Sata Test Disk : /dev/sdd:
+< sost_20260120-161403_dlev_0   > : Sata Test Info : ['/dev/sdd:', 'Board_disk', 'Board_disk']
+< sost_20260120-161430_dlev_0   > : 
+< sost_20260120-161430_dlev_0   > : sda
+< sost_20260120-161430_dlev_0   > : ['sdd']
+< sost_20260120-161430_dlev_0   > : ['sdd']
+< sost_20260120-161430_dlev_0   > : 0
+< sost_20260120-161430_dlev_0   > : sys_disk_name : sda
+< sost_20260120-161430_dlev_0   > : ['sdd']
+< sost_20260120-161430_dlev_0   > : ['sdd', 'Board_disk', 'Board_disk']
+< sost_20260120-161431_dlev_0   > : sdd
+< sost_20260120-161431_dlev_0   > : ['3.5', '29', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-161431_dlev_0   > : sdd
+< sost_20260120-161431_dlev_0   > : ['3.5', '29', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-161433_dlev_0   > : sdd
+< sost_20260120-161433_dlev_0   > : 1
+< sost_20260120-161433_dlev_0   > : 32
+< sost_20260120-161433_dlev_0   > : 3600
+< sost_20260120-161433_dlev_0   > : 512k
+< sost_20260120-161437_dlev_0   > : sdd
+< sost_20260120-161437_dlev_0   > : 1
+< sost_20260120-161437_dlev_0   > : 32
+< sost_20260120-161437_dlev_0   > : 3600
+< sost_20260120-161437_dlev_0   > : 512k
+< sost_20260120-161438_dlev_0   > : monitor_start disk_name : sdd
+< sost_20260120-161438_dlev_0   > : monitor_start log_name : /root/natt_log_16-14-30
+< sost_20260120-161438_dlev_0   > : monitor_start file_name : iostat-sata-sequence-read-512k.log
+< sost_20260120-161438_dlev_0   > : monitor_start runtime : 3600
+< sost_20260120-161438_dlev_0   > : iostat command : iostat -g all -xm 1 3600 >> /root/natt_log_16-14-30/sata-iostat-sata-sequence-read-512k.log & 
+< sost_20260120-161438_dlev_0   > : monitor_start iostat data : 
+< sost_20260120-161438_dlev_0   > : Test iostat pkill !
+< sost_20260120-161438_dlev_0   > : iostat_flags : 1
+< sost_20260120-161438_dlev_0   > : iostat num : 1
+< sost_20260120-172042_dlev_0   > : 
+< sost_20260120-172042_dlev_0   > : sda
+< sost_20260120-172042_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-172042_dlev_0   > : sda
+< sost_20260120-172042_dlev_0   > : sdb
+< sost_20260120-172042_dlev_0   > : sdc
+< sost_20260120-172042_dlev_0   > : sdd
+< sost_20260120-172042_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-172042_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-172042_dlev_0   > : 0
+< sost_20260120-172042_dlev_0   > : sys_disk_name : sda
+< sost_20260120-172042_dlev_0   > : sys_disk_name : sda
+< sost_20260120-172042_dlev_0   > : sys_disk_name : sda
+< sost_20260120-172042_dlev_0   > : sys_disk_name : sda
+< sost_20260120-172042_dlev_0   > : ['sdb', 'sdc', 'sdd']
+< sost_20260120-172042_dlev_0   > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost_20260120-172043_dlev_0   > : sda
+< sost_20260120-172043_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172043_dlev_0   > : sda
+< sost_20260120-172043_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172043_dlev_0   > : sdb
+< sost_20260120-172043_dlev_0   > : ['3.5', '29', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172043_dlev_0   > : sdb
+< sost_20260120-172043_dlev_0   > : ['3.5', '29', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172047_dlev_0   > : sdc
+< sost_20260120-172047_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172047_dlev_0   > : sdc
+< sost_20260120-172047_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172047_dlev_0   > : sdd
+< sost_20260120-172047_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172047_dlev_0   > : sdd
+< sost_20260120-172047_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-172049_dlev_0   > : sdb
+< sost_20260120-172049_dlev_0   > : 1
+< sost_20260120-172049_dlev_0   > : 32
+< sost_20260120-172049_dlev_0   > : 3600
+< sost_20260120-172049_dlev_0   > : 512k
+< sost_20260120-172049_dlev_0   > : sdc
+< sost_20260120-172049_dlev_0   > : 1
+< sost_20260120-172049_dlev_0   > : 32
+< sost_20260120-172049_dlev_0   > : 3600
+< sost_20260120-172049_dlev_0   > : 512k
+< sost_20260120-172050_dlev_0   > : sdd
+< sost_20260120-172050_dlev_0   > : 1
+< sost_20260120-172050_dlev_0   > : 32
+< sost_20260120-172050_dlev_0   > : 3600
+< sost_20260120-172050_dlev_0   > : 512k
+< sost_20260120-172054_dlev_0   > : sdb
+< sost_20260120-172054_dlev_0   > : 1
+< sost_20260120-172054_dlev_0   > : 32
+< sost_20260120-172054_dlev_0   > : 3600
+< sost_20260120-172054_dlev_0   > : 512k
+< sost_20260120-172057_dlev_0   > : sdc
+< sost_20260120-172057_dlev_0   > : 1
+< sost_20260120-172057_dlev_0   > : 32
+< sost_20260120-172057_dlev_0   > : 3600
+< sost_20260120-172057_dlev_0   > : 512k
+< sost_20260120-172100_dlev_0   > : sdd
+< sost_20260120-172100_dlev_0   > : 1
+< sost_20260120-172100_dlev_0   > : 32
+< sost_20260120-172100_dlev_0   > : 3600
+< sost_20260120-172100_dlev_0   > : 512k
+< sost_20260120-172100_dlev_0   > : monitor_start disk_name : sdb
+< sost_20260120-172100_dlev_0   > : monitor_start log_name : /root/natt_log_17-20-42
+< sost_20260120-172100_dlev_0   > : monitor_start file_name : iostat-sata-sequence-read-512k.log
+< sost_20260120-172100_dlev_0   > : monitor_start runtime : 3600
+< sost_20260120-172101_dlev_0   > : iostat command : iostat -g all -xm 1 3600 >> /root/natt_log_17-20-42/sata-iostat-sata-sequence-read-512k.log & 
+< sost_20260120-172101_dlev_0   > : monitor_start iostat data : 
+< sost_20260120-172101_dlev_0   > : Test iostat pkill !
+< sost_20260120-172101_dlev_0   > : iostat_flags : 1
+< sost_20260120-172101_dlev_0   > : iostat num : 3
+< sost_20260120-182307_dlev_0   > : 
+< sost_20260120-182307_dlev_0   > : sda
+< sost_20260120-182307_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182307_dlev_0   > : sda
+< sost_20260120-182307_dlev_0   > : sdb
+< sost_20260120-182307_dlev_0   > : sdc
+< sost_20260120-182307_dlev_0   > : sdd
+< sost_20260120-182307_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182307_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182307_dlev_0   > : 0
+< sost_20260120-182307_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182307_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182307_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182307_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182307_dlev_0   > : ['sdb', 'sdc', 'sdd']
+< sost_20260120-182307_dlev_0   > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost_20260120-182308_dlev_0   > : sda
+< sost_20260120-182308_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182308_dlev_0   > : sda
+< sost_20260120-182308_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182309_dlev_0   > : sdb
+< sost_20260120-182309_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182309_dlev_0   > : sdb
+< sost_20260120-182309_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182312_dlev_0   > : sdc
+< sost_20260120-182312_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182312_dlev_0   > : sdc
+< sost_20260120-182312_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182312_dlev_0   > : sdd
+< sost_20260120-182312_dlev_0   > : ['3.5', '31', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182312_dlev_0   > : sdd
+< sost_20260120-182312_dlev_0   > : ['3.5', '31', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182334_dlev_0   > : 
+< sost_20260120-182334_dlev_0   > : sda
+< sost_20260120-182335_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182335_dlev_0   > : sda
+< sost_20260120-182335_dlev_0   > : sdb
+< sost_20260120-182335_dlev_0   > : sdc
+< sost_20260120-182335_dlev_0   > : sdd
+< sost_20260120-182335_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182335_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182335_dlev_0   > : 0
+< sost_20260120-182335_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182335_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182335_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182335_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182335_dlev_0   > : ['sdb', 'sdc', 'sdd']
+< sost_20260120-182335_dlev_0   > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost_20260120-182336_dlev_0   > : sda
+< sost_20260120-182336_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182336_dlev_0   > : sda
+< sost_20260120-182336_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182336_dlev_0   > : sdb
+< sost_20260120-182336_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182336_dlev_0   > : sdb
+< sost_20260120-182336_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182340_dlev_0   > : sdc
+< sost_20260120-182340_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182340_dlev_0   > : sdc
+< sost_20260120-182340_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182341_dlev_0   > : sdd
+< sost_20260120-182341_dlev_0   > : ['3.5', '31', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182341_dlev_0   > : sdd
+< sost_20260120-182341_dlev_0   > : ['3.5', '31', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182706_dlev_0   > : 
+< sost_20260120-182706_dlev_0   > : sda
+< sost_20260120-182707_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182707_dlev_0   > : sda
+< sost_20260120-182707_dlev_0   > : sdb
+< sost_20260120-182707_dlev_0   > : sdc
+< sost_20260120-182707_dlev_0   > : sdd
+< sost_20260120-182707_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182707_dlev_0   > : ['sda', 'sdb', 'sdc', 'sdd']
+< sost_20260120-182707_dlev_0   > : 0
+< sost_20260120-182707_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182707_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182707_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182707_dlev_0   > : sys_disk_name : sda
+< sost_20260120-182707_dlev_0   > : ['sdb', 'sdc', 'sdd']
+< sost_20260120-182707_dlev_0   > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost_20260120-182708_dlev_0   > : sda
+< sost_20260120-182708_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182708_dlev_0   > : sda
+< sost_20260120-182708_dlev_0   > : ['3.5', '28', 'ST16000NM000J-2TW103', 'ZR70LWLX', '16.0 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182708_dlev_0   > : sdb
+< sost_20260120-182708_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182708_dlev_0   > : sdb
+< sost_20260120-182708_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1VSVZ', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182712_dlev_0   > : sdc
+< sost_20260120-182712_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182712_dlev_0   > : sdc
+< sost_20260120-182712_dlev_0   > : ['3.5', 'NA', 'HGST HUH721212ALE600', '5PK0N2BB', '12.0 TB', '7200', 'LEBDT6B0', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182712_dlev_0   > : sdd
+< sost_20260120-182712_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182712_dlev_0   > : sdd
+< sost_20260120-182712_dlev_0   > : ['3.5', '30', 'ST8000NM000A-2KE101', 'WSD1TPL4', '8.00 TB', '7200', 'SN02', 'SATA', '6.0 Gb/s', '3.0']
+< sost_20260120-182713_dlev_0   > : sdb
+< sost_20260120-182713_dlev_0   > : 8
+< sost_20260120-182713_dlev_0   > : 32
+< sost_20260120-182713_dlev_0   > : 3600
+< sost_20260120-182713_dlev_0   > : 128k
+< sost_20260120-182713_dlev_0   > : 70
+< sost_20260120-182714_dlev_0   > : sdc
+< sost_20260120-182714_dlev_0   > : 8
+< sost_20260120-182714_dlev_0   > : 32
+< sost_20260120-182714_dlev_0   > : 3600
+< sost_20260120-182714_dlev_0   > : 128k
+< sost_20260120-182714_dlev_0   > : 70
+< sost_20260120-182714_dlev_0   > : sdd
+< sost_20260120-182714_dlev_0   > : 8
+< sost_20260120-182714_dlev_0   > : 32
+< sost_20260120-182714_dlev_0   > : 3600
+< sost_20260120-182714_dlev_0   > : 128k
+< sost_20260120-182714_dlev_0   > : 70
+< sost_20260120-182718_dlev_0   > : sdb
+< sost_20260120-182718_dlev_0   > : 8
+< sost_20260120-182718_dlev_0   > : 32
+< sost_20260120-182718_dlev_0   > : 3600
+< sost_20260120-182718_dlev_0   > : 128k
+< sost_20260120-182718_dlev_0   > : 70
+< sost_20260120-182721_dlev_0   > : sdc
+< sost_20260120-182721_dlev_0   > : 8
+< sost_20260120-182721_dlev_0   > : 32
+< sost_20260120-182721_dlev_0   > : 3600
+< sost_20260120-182721_dlev_0   > : 128k
+< sost_20260120-182721_dlev_0   > : 70
+< sost_20260120-182725_dlev_0   > : sdd
+< sost_20260120-182725_dlev_0   > : 8
+< sost_20260120-182725_dlev_0   > : 32
+< sost_20260120-182725_dlev_0   > : 3600
+< sost_20260120-182725_dlev_0   > : 128k
+< sost_20260120-182725_dlev_0   > : 70
+< sost_20260120-182725_dlev_0   > : monitor_start disk_name : sdb
+< sost_20260120-182725_dlev_0   > : monitor_start log_name : /root/natt_log_18-27-06
+< sost_20260120-182725_dlev_0   > : monitor_start file_name : iostat-sata-sequence-rw-128k-128k.log
+< sost_20260120-182725_dlev_0   > : monitor_start runtime : 3600
+< sost_20260120-182725_dlev_0   > : iostat command : iostat -g all -xm 1 3600 >> /root/natt_log_18-27-06/sata-iostat-sata-sequence-rw-128k-128k.log & 
+< sost_20260120-182725_dlev_0   > : monitor_start iostat data : 
+< sost_20260120-182726_dlev_0   > : Test iostat pkill !
+< sost_20260120-182726_dlev_0   > : iostat_flags : 1
+< sost_20260120-182726_dlev_0   > : iostat num : 1

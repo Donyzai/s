@@ -1,0 +1,1393 @@
+< sost_20260120-161359_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-161359_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-161359_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-161359_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+
+< sost_20260120-161400_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-161401_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-161401_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-161401_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+63060
+64128
+31686
+64098
+63923
+63942
+64175
+62827
+
+< sost_20260120-161401_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-161401_popen_com> : ls /root -> Result
+anaconda-ks.cfg
+count.txt
+debug
+Desktop
+Documents
+Downloads
+dtester
+initial-setup-ks.cfg
+iostat.log
+Music
+natt_log_14-59-55
+natt_old
+Pictures
+powercycle
+Public
+reboot
+sostbmc_sensor
+sost_mulit_result
+sost_old_folder
+sost_start_time.txt
+system_info
+Templates
+test.py
+Videos
+
+< sost_20260120-161402_popen_com> : mount | grep nvme.* | grep -v cgr | sed 's/\/dev\///g' | sed '2,$d' | awk '{print $1}' -> Result
+
+< sost_20260120-161402_popen_com> : mount | grep sd.* | grep -v cgr | sed 's/\/dev\///g'| sed '2,$d' | awk '{print $1}' | cut -b 1-4 -> Result
+sda2
+
+< sost_20260120-161402_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-161402_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-161402_popen_com> : smartctl -i /dev/sdd | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-161402_popen_com> : smartctl -a /dev/sdd | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+29
+
+< sost_20260120-161402_popen_com> : smartctl -i /dev/sdd | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-161402_popen_com> : smartctl -i /dev/sdd | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1TPL4
+
+< sost_20260120-161402_popen_com> : smartctl -i /dev/sdd | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-161402_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-161402_popen_com> : smartctl -i /dev/sdd | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-161403_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-161403_popen_com> :  smartctl -i /dev/sdd| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-161406_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-161406_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-161406_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-161406_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+
+< sost_20260120-161407_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-161407_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-161407_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-161409_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+63062
+64133
+31688
+64089
+63931
+63939
+64177
+62804
+
+< sost_20260120-161409_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-161426_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-161426_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-161426_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-161426_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+
+< sost_20260120-161427_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-161427_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-161427_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-161428_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+63032
+64142
+31690
+64096
+63925
+63951
+64177
+62803
+
+< sost_20260120-161428_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-161429_popen_com> : ls /root -> Result
+anaconda-ks.cfg
+count.txt
+debug
+Desktop
+Documents
+Downloads
+dtester
+initial-setup-ks.cfg
+iostat.log
+Music
+natt_log_16-14-01
+natt_old
+Pictures
+powercycle
+Public
+reboot
+sostbmc_sensor
+sost_mulit_result
+sost_old_folder
+sost_start_time.txt
+system_info
+Templates
+test.py
+Videos
+
+< sost_20260120-161430_popen_com> : mount | grep nvme.* | grep -v cgr | sed 's/\/dev\///g' | sed '2,$d' | awk '{print $1}' -> Result
+
+< sost_20260120-161430_popen_com> : mount | grep sd.* | grep -v cgr | sed 's/\/dev\///g'| sed '2,$d' | awk '{print $1}' | cut -b 1-4 -> Result
+sda2
+
+< sost_20260120-161430_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-161430_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-161430_popen_com> : smartctl -i /dev/sdd | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-161430_popen_com> : smartctl -a /dev/sdd | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+29
+
+< sost_20260120-161430_popen_com> : smartctl -i /dev/sdd | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-161430_popen_com> : smartctl -i /dev/sdd | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1TPL4
+
+< sost_20260120-161430_popen_com> : smartctl -i /dev/sdd | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-161430_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-161430_popen_com> : smartctl -i /dev/sdd | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-161431_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-161431_popen_com> :  smartctl -i /dev/sdd| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-161432_popen_com> : fio -v -> Result
+fio-3.34
+
+< sost_20260120-161432_popen_com> : iostat -V -> Result
+sysstat version 12.7.5
+(C) Sebastien Godard (sysstat <at> orange.fr)
+
+< sost_20260120-161432_popen_com> : cat /etc/os-release -> Result
+NAME="Kylin Linux Advanced Server"
+VERSION="V11 (Swan25)"
+ID="kylin"
+VERSION_ID="V11"
+PRETTY_NAME="Kylin Linux Advanced Server V11 (Swan25)"
+ANSI_COLOR="0;31"
+
+
+< sost_20260120-161432_popen_com> : uname -a -> Result
+Linux localhost.localdomain 6.6.0-32.7.v2505.ky11.aarch64 #1 SMP PREEMPT_DYNAMIC Fri Jul  4 14:46:19 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+
+< sost_20260120-161432_popen_com> : cat /proc/cmdline -> Result
+BOOT_IMAGE=/vmlinuz-6.6.0-32.7.v2505.ky11.aarch64 root=/dev/mapper/klas-root ro rd.lvm.lv=klas/root rd.lvm.lv=klas/swap cgroup_disable=files apparmor=0 crashkernel=1024M,high smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 smmu.bypassdev=0xffe1:0xd200 audit=0 video=efifb:off
+
+< sost_20260120-161433_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-161437_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-161438_popen_com> : ps -aux | grep 'iostat -g all -xm 1' | grep -v grep | wc -l -> Result
+0
+
+< sost_20260120-161438_popen_com> : iostat -g all -xm 1 3600 >> /root/natt_log_16-14-30/sata-iostat-sata-sequence-read-512k.log &  -> Result
+
+< sost_20260120-161438_popen_com> : ps -aux | grep -iE 'fio|iostat' | grep -v grep -> Result
+root      101832 3950  0.0 210156 17568 pts/1    Rl+  16:14   0:10 fio --filename=/dev/sdd --description=sost_disktest_seqread --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio --runtime=3600 --time_based --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_16-14-30/sequence_read_512k_sdd.log
+root      101858  0.0  0.0  20944  1980 pts/1    S+   16:14   0:00 iostat -g all -xm 1 3600
+
+< sost_20260120-171508_popen_com> : cat /root/natt_log_16-14-30/sequence_read_512k_sdd.log | grep -i util | awk '{print $1}' -> Result
+sdd:
+
+< sost_20260120-171508_popen_com> : cat /root/natt_log_16-14-30/sequence_read_512k_sdd.log | grep -i myjob | grep -i rw | awk '{print $3}' -> Result
+rw=read,
+
+< sost_20260120-171508_popen_com> : cat /root/natt_log_16-14-30/sequence_read_512k_sdd.log| grep IOPS= | awk '{print $2}' -> Result
+IOPS=505,
+
+< sost_20260120-171508_popen_com> : cat /root/natt_log_16-14-30/sequence_read_512k_sdd.log | grep IOPS= | awk '{print $3,$4}' -> Result
+BW=253MiB/s (265MB/s)(888GiB/3600063msec)
+
+< sost_20260120-171508_popen_com> : cat /root/natt_log_16-14-30/sequence_read_512k_sdd.log | grep -i run= | awk '{print $8}' -> Result
+run=3600063-3600063msec
+
+< sost_20260120-171508_popen_com> : cat /root/natt_log_16-14-30/result.log -> Result
+sdd            read           505            253MiB/s (265MB/s)(888GiB/3600063msec)                                3600063-3600063msec
+
+< sost_20260120-171509_popen_com> : cat /root/natt_log_16-14-30/result.log | awk '{print $1}'  -> Result
+sdd
+
+< sost_20260120-172035_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-172035_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-172035_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-172035_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+328
+
+< sost_20260120-172036_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-172036_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-172036_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-172036_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+62982
+64129
+31755
+64080
+64006
+64061
+64063
+62805
+
+< sost_20260120-172036_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-172039_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-172039_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-172039_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-172039_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+328
+
+< sost_20260120-172040_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-172041_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-172041_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-172041_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+62990
+64115
+31768
+64075
+64001
+64040
+64069
+62805
+
+< sost_20260120-172041_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-172041_popen_com> : ls /root -> Result
+anaconda-ks.cfg
+count.txt
+debug
+Desktop
+Documents
+Downloads
+dtester
+initial-setup-ks.cfg
+iostat.log
+Music
+natt_log_16-14-30
+natt_old
+Pictures
+powercycle
+Public
+reboot
+sostbmc_sensor
+sost_mulit_result
+sost_old_folder
+sost_start_time.txt
+system_info
+Templates
+test.py
+Videos
+
+< sost_20260120-172042_popen_com> : mount | grep nvme.* | grep -v cgr | sed 's/\/dev\///g' | sed '2,$d' | awk '{print $1}' -> Result
+
+< sost_20260120-172042_popen_com> : mount | grep sd.* | grep -v cgr | sed 's/\/dev\///g'| sed '2,$d' | awk '{print $1}' | cut -b 1-4 -> Result
+sda2
+
+< sost_20260120-172042_popen_com> : smartctl -i /dev/sda | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-172042_popen_com> : smartctl -i /dev/sdb | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-172042_popen_com> : smartctl -i /dev/sdc | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-172042_popen_com> : smartctl -i /dev/sdd | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-172042_popen_com> : smartctl -i /dev/sde | grep -i 'unknown usb' | wc -l -> Result
+1
+
+< sost_20260120-172042_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-172042_popen_com> : smartctl -i /dev/sda | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-172043_popen_com> : smartctl -a /dev/sda | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+28
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sda | grep -i 'device model'  -> Result
+Device Model:     ST16000NM000J-2TW103
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sda | grep -i 'Serial Number' | awk '{print $3}' -> Result
+ZR70LWLX
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sda | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+16.0 TB
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sda | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sda | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-172043_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-172043_popen_com> :  smartctl -i /dev/sda| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-172043_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sdb | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-172043_popen_com> : smartctl -a /dev/sdb | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+29
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sdb | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sdb | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1VSVZ
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sdb | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sdb | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sdb | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-172043_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-172043_popen_com> :  smartctl -i /dev/sdb| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-172043_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-172043_popen_com> : smartctl -i /dev/sdc | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-172044_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+
+< sost_20260120-172045_popen_com> : smartctl -a /dev/sdc | grep -i 'Current Drive Temperature:' | awk '{print $4}'  -> Result
+
+< sost_20260120-172046_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | awk '{print $10}' -> Result
+
+< sost_20260120-172047_popen_com> : smartctl -a /dev/sdc | grep -i 'current drive temperature' | awk '{print $4}' -> Result
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdc | grep -i 'device model'  -> Result
+Device Model:     HGST HUH721212ALE600
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdc | grep -i 'Serial Number' | awk '{print $3}' -> Result
+5PK0N2BB
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdc | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+12.0 TB
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdc | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdc | grep -i 'firmware version' | awk '{print $3}' -> Result
+LEBDT6B0
+
+< sost_20260120-172047_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-172047_popen_com> :  smartctl -i /dev/sdc| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-172047_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdd | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-172047_popen_com> : smartctl -a /dev/sdd | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+30
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdd | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdd | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1TPL4
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdd | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172047_popen_com> : smartctl -i /dev/sdd | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-172047_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-172047_popen_com> :  smartctl -i /dev/sdd| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-172048_popen_com> : fio -v -> Result
+fio-3.34
+
+< sost_20260120-172048_popen_com> : iostat -V -> Result
+sysstat version 12.7.5
+(C) Sebastien Godard (sysstat <at> orange.fr)
+
+< sost_20260120-172048_popen_com> : cat /etc/os-release -> Result
+NAME="Kylin Linux Advanced Server"
+VERSION="V11 (Swan25)"
+ID="kylin"
+VERSION_ID="V11"
+PRETTY_NAME="Kylin Linux Advanced Server V11 (Swan25)"
+ANSI_COLOR="0;31"
+
+
+< sost_20260120-172048_popen_com> : uname -a -> Result
+Linux localhost.localdomain 6.6.0-32.7.v2505.ky11.aarch64 #1 SMP PREEMPT_DYNAMIC Fri Jul  4 14:46:19 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+
+< sost_20260120-172048_popen_com> : cat /proc/cmdline -> Result
+BOOT_IMAGE=/vmlinuz-6.6.0-32.7.v2505.ky11.aarch64 root=/dev/mapper/klas-root ro rd.lvm.lv=klas/root rd.lvm.lv=klas/swap cgroup_disable=files apparmor=0 crashkernel=1024M,high smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 smmu.bypassdev=0xffe1:0xd200 audit=0 video=efifb:off
+
+< sost_20260120-172049_popen_com> : smartctl -i /dev/sdb | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172049_popen_com> : smartctl -i /dev/sdc | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172050_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172054_popen_com> : smartctl -i /dev/sdb | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172057_popen_com> : smartctl -i /dev/sdc | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172100_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-172101_popen_com> : ps -aux | grep 'iostat -g all -xm 1' | grep -v grep | wc -l -> Result
+0
+
+< sost_20260120-172101_popen_com> : iostat -g all -xm 1 3600 >> /root/natt_log_17-20-42/sata-iostat-sata-sequence-read-512k.log &  -> Result
+
+< sost_20260120-172101_popen_com> : ps -aux | grep -iE 'fio|iostat' | grep -v grep -> Result
+root      676423  227  0.0 226592 33148 pts/1    Sl+  17:20   0:15 fio --filename=/dev/sdb --description=sost_disktest_seqread --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio --runtime=3600 --time_based --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_17-20-42/sequence_read_512k_sdb.log
+root      676918  298  0.0 226588 34780 pts/1    Sl+  17:20   0:10 fio --filename=/dev/sdc --description=sost_disktest_seqread --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio --runtime=3600 --time_based --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_17-20-42/sequence_read_512k_sdc.log
+root      677170  0.0  0.0  20944  1984 pts/2    S+   17:20   0:00 iostat -m 1
+root      677348 4109  0.0 210164 16172 pts/1    Sl+  17:21   0:13 fio --filename=/dev/sdd --description=sost_disktest_seqread --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio --runtime=3600 --time_based --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_17-20-42/sequence_read_512k_sdd.log
+root      677355  0.0  0.0  20944  1980 pts/1    S+   17:21   0:00 iostat -g all -xm 1 3600
+root      677491  6.6  0.0  20944  1980 pts/0    S+   17:21   0:00 iostat -dxm 1 2
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdb.log | grep -i util | awk '{print $1}' -> Result
+sdb:
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdb.log | grep -i myjob | grep -i rw | awk '{print $3}' -> Result
+rw=read,
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdb.log| grep IOPS= | awk '{print $2}' -> Result
+IOPS=436,
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdb.log | grep IOPS= | awk '{print $3,$4}' -> Result
+BW=218MiB/s (229MB/s)(767GiB/3600071msec)
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdb.log | grep -i run= | awk '{print $8}' -> Result
+run=3600071-3600071msec
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdc.log | grep -i util | awk '{print $1}' -> Result
+sdc:
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdc.log | grep -i myjob | grep -i rw | awk '{print $3}' -> Result
+rw=read,
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdc.log| grep IOPS= | awk '{print $2}' -> Result
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdc.log | grep IOPS= | awk '{print $3,$4}' -> Result
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdc.log | grep -i run= | awk '{print $8}' -> Result
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdd.log | grep -i util | awk '{print $1}' -> Result
+sdd:
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdd.log | grep -i myjob | grep -i rw | awk '{print $3}' -> Result
+rw=read,
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdd.log| grep IOPS= | awk '{print $2}' -> Result
+IOPS=411,
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdd.log | grep IOPS= | awk '{print $3,$4}' -> Result
+BW=206MiB/s (216MB/s)(723GiB/3600067msec)
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/sequence_read_512k_sdd.log | grep -i run= | awk '{print $8}' -> Result
+run=3600067-3600067msec
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/result.log -> Result
+sdb            read           436            218MiB/s (229MB/s)(767GiB/3600071msec)                                3600071-3600071msec
+sdc            read                                                                                                               
+sdd            read           411            206MiB/s (216MB/s)(723GiB/3600067msec)                                3600067-3600067msec
+
+< sost_20260120-182132_popen_com> : cat /root/natt_log_17-20-42/result.log | awk '{print $1}'  -> Result
+sdb
+sdc
+sdd
+
+< sost_20260120-182258_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-182258_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-182258_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-182258_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+1312
+
+< sost_20260120-182300_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-182301_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-182301_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-182302_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+62592
+63976
+31723
+63915
+63912
+64087
+63932
+62345
+
+< sost_20260120-182303_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-182307_popen_com> : ls /root -> Result
+anaconda-ks.cfg
+count.txt
+debug
+Desktop
+Documents
+Downloads
+dtester
+initial-setup-ks.cfg
+iostat.log
+Music
+natt_log_17-20-42
+natt_old
+Pictures
+powercycle
+Public
+reboot
+sostbmc_sensor
+sost_mulit_result
+sost_old_folder
+sost_start_time.txt
+system_info
+Templates
+test.py
+Videos
+
+< sost_20260120-182307_popen_com> : mount | grep nvme.* | grep -v cgr | sed 's/\/dev\///g' | sed '2,$d' | awk '{print $1}' -> Result
+
+< sost_20260120-182307_popen_com> : mount | grep sd.* | grep -v cgr | sed 's/\/dev\///g'| sed '2,$d' | awk '{print $1}' | cut -b 1-4 -> Result
+sda2
+
+< sost_20260120-182307_popen_com> : smartctl -i /dev/sda | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182307_popen_com> : smartctl -i /dev/sdb | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182307_popen_com> : smartctl -i /dev/sdc | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182307_popen_com> : smartctl -i /dev/sdd | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182307_popen_com> : smartctl -i /dev/sde | grep -i 'unknown usb' | wc -l -> Result
+1
+
+< sost_20260120-182307_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sda | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182308_popen_com> : smartctl -a /dev/sda | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+28
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sda | grep -i 'device model'  -> Result
+Device Model:     ST16000NM000J-2TW103
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sda | grep -i 'Serial Number' | awk '{print $3}' -> Result
+ZR70LWLX
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sda | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+16.0 TB
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sda | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sda | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182308_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182308_popen_com> :  smartctl -i /dev/sda| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182308_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sdb | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182308_popen_com> : smartctl -a /dev/sdb | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+30
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sdb | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sdb | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1VSVZ
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sdb | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sdb | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182308_popen_com> : smartctl -i /dev/sdb | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182309_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182309_popen_com> :  smartctl -i /dev/sdb| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182309_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182309_popen_com> : smartctl -i /dev/sdc | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182309_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+
+< sost_20260120-182310_popen_com> : smartctl -a /dev/sdc | grep -i 'Current Drive Temperature:' | awk '{print $4}'  -> Result
+
+< sost_20260120-182311_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | awk '{print $10}' -> Result
+
+< sost_20260120-182312_popen_com> : smartctl -a /dev/sdc | grep -i 'current drive temperature' | awk '{print $4}' -> Result
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdc | grep -i 'device model'  -> Result
+Device Model:     HGST HUH721212ALE600
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdc | grep -i 'Serial Number' | awk '{print $3}' -> Result
+5PK0N2BB
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdc | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+12.0 TB
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdc | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdc | grep -i 'firmware version' | awk '{print $3}' -> Result
+LEBDT6B0
+
+< sost_20260120-182312_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182312_popen_com> :  smartctl -i /dev/sdc| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182312_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdd | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182312_popen_com> : smartctl -a /dev/sdd | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+31
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdd | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdd | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1TPL4
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdd | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182312_popen_com> : smartctl -i /dev/sdd | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182312_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182312_popen_com> :  smartctl -i /dev/sdd| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182327_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-182327_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-182327_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-182327_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+1312
+
+< sost_20260120-182328_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-182328_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-182328_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-182330_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+62641
+64009
+31710
+63944
+63915
+64072
+63940
+62338
+
+< sost_20260120-182330_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-182334_popen_com> : ls /root -> Result
+anaconda-ks.cfg
+count.txt
+debug
+Desktop
+Documents
+Downloads
+dtester
+initial-setup-ks.cfg
+iostat.log
+Music
+natt_log_18-23-07
+natt_old
+Pictures
+powercycle
+Public
+reboot
+sostbmc_sensor
+sost_mulit_result
+sost_old_folder
+sost_start_time.txt
+system_info
+Templates
+test.py
+Videos
+
+< sost_20260120-182334_popen_com> : mount | grep nvme.* | grep -v cgr | sed 's/\/dev\///g' | sed '2,$d' | awk '{print $1}' -> Result
+
+< sost_20260120-182334_popen_com> : mount | grep sd.* | grep -v cgr | sed 's/\/dev\///g'| sed '2,$d' | awk '{print $1}' | cut -b 1-4 -> Result
+sda2
+
+< sost_20260120-182334_popen_com> : smartctl -i /dev/sda | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182334_popen_com> : smartctl -i /dev/sdb | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182335_popen_com> : smartctl -i /dev/sdc | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182335_popen_com> : smartctl -i /dev/sdd | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182335_popen_com> : smartctl -i /dev/sde | grep -i 'unknown usb' | wc -l -> Result
+1
+
+< sost_20260120-182335_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182335_popen_com> : smartctl -i /dev/sda | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182336_popen_com> : smartctl -a /dev/sda | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+28
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sda | grep -i 'device model'  -> Result
+Device Model:     ST16000NM000J-2TW103
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sda | grep -i 'Serial Number' | awk '{print $3}' -> Result
+ZR70LWLX
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sda | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+16.0 TB
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sda | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sda | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182336_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182336_popen_com> :  smartctl -i /dev/sda| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182336_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sdb | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182336_popen_com> : smartctl -a /dev/sdb | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+30
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sdb | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sdb | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1VSVZ
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sdb | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sdb | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sdb | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182336_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182336_popen_com> :  smartctl -i /dev/sdb| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182336_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182336_popen_com> : smartctl -i /dev/sdc | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182337_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+
+< sost_20260120-182338_popen_com> : smartctl -a /dev/sdc | grep -i 'Current Drive Temperature:' | awk '{print $4}'  -> Result
+
+< sost_20260120-182339_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | awk '{print $10}' -> Result
+
+< sost_20260120-182340_popen_com> : smartctl -a /dev/sdc | grep -i 'current drive temperature' | awk '{print $4}' -> Result
+
+< sost_20260120-182340_popen_com> : smartctl -i /dev/sdc | grep -i 'device model'  -> Result
+Device Model:     HGST HUH721212ALE600
+
+< sost_20260120-182340_popen_com> : smartctl -i /dev/sdc | grep -i 'Serial Number' | awk '{print $3}' -> Result
+5PK0N2BB
+
+< sost_20260120-182340_popen_com> : smartctl -i /dev/sdc | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+12.0 TB
+
+< sost_20260120-182340_popen_com> : smartctl -i /dev/sdc | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182340_popen_com> : smartctl -i /dev/sdc | grep -i 'firmware version' | awk '{print $3}' -> Result
+LEBDT6B0
+
+< sost_20260120-182340_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182340_popen_com> :  smartctl -i /dev/sdc| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182340_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182341_popen_com> : smartctl -i /dev/sdd | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182341_popen_com> : smartctl -a /dev/sdd | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+31
+
+< sost_20260120-182341_popen_com> : smartctl -i /dev/sdd | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-182341_popen_com> : smartctl -i /dev/sdd | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1TPL4
+
+< sost_20260120-182341_popen_com> : smartctl -i /dev/sdd | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-182341_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182341_popen_com> : smartctl -i /dev/sdd | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182341_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182341_popen_com> :  smartctl -i /dev/sdd| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182342_popen_com> : fio -v -> Result
+fio-3.34
+
+< sost_20260120-182342_popen_com> : iostat -V -> Result
+sysstat version 12.7.5
+(C) Sebastien Godard (sysstat <at> orange.fr)
+
+< sost_20260120-182342_popen_com> : cat /etc/os-release -> Result
+NAME="Kylin Linux Advanced Server"
+VERSION="V11 (Swan25)"
+ID="kylin"
+VERSION_ID="V11"
+PRETTY_NAME="Kylin Linux Advanced Server V11 (Swan25)"
+ANSI_COLOR="0;31"
+
+
+< sost_20260120-182342_popen_com> : uname -a -> Result
+Linux localhost.localdomain 6.6.0-32.7.v2505.ky11.aarch64 #1 SMP PREEMPT_DYNAMIC Fri Jul  4 14:46:19 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+
+< sost_20260120-182342_popen_com> : cat /proc/cmdline -> Result
+BOOT_IMAGE=/vmlinuz-6.6.0-32.7.v2505.ky11.aarch64 root=/dev/mapper/klas-root ro rd.lvm.lv=klas/root rd.lvm.lv=klas/swap cgroup_disable=files apparmor=0 crashkernel=1024M,high smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 smmu.bypassdev=0xffe1:0xd200 audit=0 video=efifb:off
+
+< sost_20260120-182700_popen_com> : ps -aux | grep -iE "fio|iostat" | grep -v grep | grep filename | wc -l -> Result
+0
+
+< sost_20260120-182700_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-182700_popen_com> : ls /tmp/ | grep natt | wc -l -> Result
+0
+
+< sost_20260120-182700_popen_com> : ls -al /opt/sost/log/natt_cmd.log 2>/dev/null | awk '{{print $5}}' -> Result
+1312
+
+< sost_20260120-182701_popen_com> : cat /etc/system-release -> Result
+Kylin Linux Advanced Server release V11 (Swan25)
+
+< sost_20260120-182701_popen_com> : ipmitool lan print | grep -i 'ip address' | grep -vi source | awk '{{print $4}}' -> Result
+192.168.60.148
+
+< sost_20260120-182701_popen_com> : hostname -I -> Result
+192.168.60.67 192.168.122.1 2001:db8:1:0:1a9b:a5ff:fe82:5572 
+
+< sost_20260120-182702_popen_com> : numactl -H | grep free | awk '{{print $4}}' -> Result
+62819
+64045
+31755
+64025
+63925
+64097
+63911
+62336
+
+< sost_20260120-182702_popen_com> : nvme list-subsys | grep +- | awk '{print $2,$4}' -> Result
+
+< sost_20260120-182706_popen_com> : ls /root -> Result
+anaconda-ks.cfg
+count.txt
+debug
+Desktop
+Documents
+Downloads
+dtester
+initial-setup-ks.cfg
+iostat.log
+Music
+natt_log_18-23-34
+natt_old
+Pictures
+powercycle
+Public
+reboot
+sostbmc_sensor
+sost_mulit_result
+sost_old_folder
+sost_start_time.txt
+system_info
+Templates
+test.py
+Videos
+
+< sost_20260120-182706_popen_com> : mount | grep nvme.* | grep -v cgr | sed 's/\/dev\///g' | sed '2,$d' | awk '{print $1}' -> Result
+
+< sost_20260120-182706_popen_com> : mount | grep sd.* | grep -v cgr | sed 's/\/dev\///g'| sed '2,$d' | awk '{print $1}' | cut -b 1-4 -> Result
+sda2
+
+< sost_20260120-182706_popen_com> : smartctl -i /dev/sda | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182707_popen_com> : smartctl -i /dev/sdb | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182707_popen_com> : smartctl -i /dev/sdc | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182707_popen_com> : smartctl -i /dev/sdd | grep -i 'unknown usb' | wc -l -> Result
+0
+
+< sost_20260120-182707_popen_com> : smartctl -i /dev/sde | grep -i 'unknown usb' | wc -l -> Result
+1
+
+< sost_20260120-182707_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182707_popen_com> : smartctl -i /dev/sda | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182707_popen_com> : smartctl -a /dev/sda | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+28
+
+< sost_20260120-182707_popen_com> : smartctl -i /dev/sda | grep -i 'device model'  -> Result
+Device Model:     ST16000NM000J-2TW103
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sda | grep -i 'Serial Number' | awk '{print $3}' -> Result
+ZR70LWLX
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sda | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+16.0 TB
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sda | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sda | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182708_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182708_popen_com> :  smartctl -i /dev/sda| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182708_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sdb | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182708_popen_com> : smartctl -a /dev/sdb | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+30
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sdb | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sdb | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1VSVZ
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sdb | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sdb | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sdb | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182708_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182708_popen_com> :  smartctl -i /dev/sdb| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182708_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182708_popen_com> : smartctl -i /dev/sdc | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182709_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+
+< sost_20260120-182710_popen_com> : smartctl -a /dev/sdc | grep -i 'Current Drive Temperature:' | awk '{print $4}'  -> Result
+
+< sost_20260120-182711_popen_com> : smartctl -a /dev/sdc | grep -i Temperature_Celsius | awk '{print $10}' -> Result
+
+< sost_20260120-182711_popen_com> : smartctl -a /dev/sdc | grep -i 'current drive temperature' | awk '{print $4}' -> Result
+
+< sost_20260120-182711_popen_com> : smartctl -i /dev/sdc | grep -i 'device model'  -> Result
+Device Model:     HGST HUH721212ALE600
+
+< sost_20260120-182711_popen_com> : smartctl -i /dev/sdc | grep -i 'Serial Number' | awk '{print $3}' -> Result
+5PK0N2BB
+
+< sost_20260120-182711_popen_com> : smartctl -i /dev/sdc | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+12.0 TB
+
+< sost_20260120-182711_popen_com> : smartctl -i /dev/sdc | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182711_popen_com> : smartctl -i /dev/sdc | grep -i 'firmware version' | awk '{print $3}' -> Result
+LEBDT6B0
+
+< sost_20260120-182712_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182712_popen_com> :  smartctl -i /dev/sdc| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182712_popen_com> : ls /sys/block -> Result
+dm-0
+dm-1
+sda
+sdb
+sdc
+sdd
+sde
+
+< sost_20260120-182712_popen_com> : smartctl -i /dev/sdd | grep -i 'inches'  -> Result
+Form Factor:      3.5 inches
+
+< sost_20260120-182712_popen_com> : smartctl -a /dev/sdd | grep -i Temperature_Celsius | grep Old_age | awk '{print $10}' -> Result
+30
+
+< sost_20260120-182712_popen_com> : smartctl -i /dev/sdd | grep -i 'device model'  -> Result
+Device Model:     ST8000NM000A-2KE101
+
+< sost_20260120-182712_popen_com> : smartctl -i /dev/sdd | grep -i 'Serial Number' | awk '{print $3}' -> Result
+WSD1TPL4
+
+< sost_20260120-182712_popen_com> : smartctl -i /dev/sdd | grep -i 'User Capacity' | grep -oP '\[\K[^]]+' -> Result
+8.00 TB
+
+< sost_20260120-182712_popen_com> : smartctl -i /dev/sdd | grep -i 'Rotation Rate' | awk '{print $3}' -> Result
+7200
+
+< sost_20260120-182712_popen_com> : smartctl -i /dev/sdd | grep -i 'firmware version' | awk '{print $3}' -> Result
+SN02
+
+< sost_20260120-182712_popen_com> :  smartctl -i /dev/sda | grep -i 'Transport protocol:' | awk '{print $3}'  -> Result
+
+< sost_20260120-182712_popen_com> :  smartctl -i /dev/sdd| grep -i 'sata version is:' | awk '{print $6,$7}'  -> Result
+6.0 Gb/s
+
+< sost_20260120-182713_popen_com> : fio -v -> Result
+fio-3.34
+
+< sost_20260120-182713_popen_com> : iostat -V -> Result
+sysstat version 12.7.5
+(C) Sebastien Godard (sysstat <at> orange.fr)
+
+< sost_20260120-182713_popen_com> : cat /etc/os-release -> Result
+NAME="Kylin Linux Advanced Server"
+VERSION="V11 (Swan25)"
+ID="kylin"
+VERSION_ID="V11"
+PRETTY_NAME="Kylin Linux Advanced Server V11 (Swan25)"
+ANSI_COLOR="0;31"
+
+
+< sost_20260120-182713_popen_com> : uname -a -> Result
+Linux localhost.localdomain 6.6.0-32.7.v2505.ky11.aarch64 #1 SMP PREEMPT_DYNAMIC Fri Jul  4 14:46:19 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+
+< sost_20260120-182713_popen_com> : cat /proc/cmdline -> Result
+BOOT_IMAGE=/vmlinuz-6.6.0-32.7.v2505.ky11.aarch64 root=/dev/mapper/klas-root ro rd.lvm.lv=klas/root rd.lvm.lv=klas/swap cgroup_disable=files apparmor=0 crashkernel=1024M,high smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 smmu.bypassdev=0xffe1:0xd200 audit=0 video=efifb:off
+
+< sost_20260120-182725_popen_com> : ps -aux | grep 'iostat -g all -xm 1' | grep -v grep | wc -l -> Result
+0
+
+< sost_20260120-182725_popen_com> : iostat -g all -xm 1 3600 >> /root/natt_log_18-27-06/sata-iostat-sata-sequence-rw-128k-128k.log &  -> Result
+
+< sost_20260120-182726_popen_com> : ps -aux | grep -iE 'fio|iostat' | grep -v grep -> Result
+root     1259798  138  0.0 284620 46452 pts/1    Sl+  18:27   0:10 fio --filename=/dev/sdb --description=sost_disktest_seq_rw --thread --direct=1 --name=myjob --rw=rw --bs=128k -rwmixread=70 --ioengine=libaio --runtime=3600 --time_based --iodepth=32 --numjobs=8 --ramp_time=30 --group_reporting --output=/root/natt_log_18-27-06/sequence_rw_all-sdb.log
+root     1260296  292  0.0 284620 49460 pts/1    Sl+  18:27   0:13 fio --filename=/dev/sdc --description=sost_disktest_seq_rw --thread --direct=1 --name=myjob --rw=rw --bs=128k -rwmixread=70 --ioengine=libaio --runtime=3600 --time_based --iodepth=32 --numjobs=8 --ramp_time=30 --group_reporting --output=/root/natt_log_18-27-06/sequence_rw_all-sdc.log
+root     1260707 4925  0.0 251500 18520 pts/1    Sl+  18:27   0:17 fio --filename=/dev/sdd --description=sost_disktest_seq_rw --thread --direct=1 --name=myjob --rw=rw --bs=128k -rwmixread=70 --ioengine=libaio --runtime=3600 --time_based --iodepth=32 --numjobs=8 --ramp_time=30 --group_reporting --output=/root/natt_log_18-27-06/sequence_rw_all-sdd.log
+root     1260714  0.0  0.0  20944  1976 pts/1    S+   18:27   0:00 iostat -g all -xm 1 3600
+

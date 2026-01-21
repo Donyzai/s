@@ -1,0 +1,14 @@
+[2026-01-20 16:14:33]
+nohup  fio  --filename=/dev/sdd --description='sost_disktest_seqread' --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio  --runtime=3600 --time_based  --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_16-14-30/sequence_read_512k_sdd.log &
+[2026-01-20 17:20:49]
+nohup  fio  --filename=/dev/sdb --description='sost_disktest_seqread' --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio  --runtime=3600 --time_based  --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_17-20-42/sequence_read_512k_sdb.log &
+[2026-01-20 17:20:49]
+nohup  fio  --filename=/dev/sdc --description='sost_disktest_seqread' --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio  --runtime=3600 --time_based  --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_17-20-42/sequence_read_512k_sdc.log &
+[2026-01-20 17:20:50]
+nohup  fio  --filename=/dev/sdd --description='sost_disktest_seqread' --randrepeat=0 --thread --direct=1 --name=myjob --bs=512k --ioengine=libaio  --runtime=3600 --time_based  --rw=read --iodepth=32 --ramp_time=30 --numjobs=1 --group_reporting --output=/root/natt_log_17-20-42/sequence_read_512k_sdd.log &
+[2026-01-20 18:27:13]
+nohup  fio  --filename=/dev/sdb --description='sost_disktest_seq_rw' --thread --direct=1 --name=myjob --rw=rw --bs=128k -rwmixread=70 --ioengine=libaio  --runtime=3600 --time_based --iodepth=32 --numjobs=8 --ramp_time=30 --group_reporting --output=/root/natt_log_18-27-06/sequence_rw_all-sdb.log &
+[2026-01-20 18:27:14]
+nohup  fio  --filename=/dev/sdc --description='sost_disktest_seq_rw' --thread --direct=1 --name=myjob --rw=rw --bs=128k -rwmixread=70 --ioengine=libaio  --runtime=3600 --time_based --iodepth=32 --numjobs=8 --ramp_time=30 --group_reporting --output=/root/natt_log_18-27-06/sequence_rw_all-sdc.log &
+[2026-01-20 18:27:14]
+nohup  fio  --filename=/dev/sdd --description='sost_disktest_seq_rw' --thread --direct=1 --name=myjob --rw=rw --bs=128k -rwmixread=70 --ioengine=libaio  --runtime=3600 --time_based --iodepth=32 --numjobs=8 --ramp_time=30 --group_reporting --output=/root/natt_log_18-27-06/sequence_rw_all-sdd.log &

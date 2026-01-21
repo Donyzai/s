@@ -4,3 +4,183 @@
 < sost_20260120-154354_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
 < sost_20260120-154357_print    > : swc_web is Running! Running-Time -> 20260120 15:43:57 (swc_web.py)
 < sost_20260120-154357_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260120-155703_print    > : swc_web is Running! Running-Time -> 20260120 15:57:03 (swc_web.py)
+< sost_20260120-155703_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260120-161359_print    > : Config json File check Success!
+< sost_20260120-161401_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-161401_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-161401_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-161401_print    > : System architecture    : aarch64
+< sost_20260120-161401_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-161401_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-161401_print    > : =========================================================
+< sost  > : start
+< sost_20260120-161401_print    > : Check Nvme disk memory Success!
+< sost Please select the testing model (Echo_numg:1) : > : 1
+< sost Now Currently only supported (nvme/sata/all) : > : sata
+< sost_20260120-161402_print    > : <Dong> The server did not find the Raid card!
+< sost_20260120-161402_print    > : disk_name : sdd
+< sost_20260120-161402_print    > : Board_disk : ['sdd']
+< sost_20260120-161403_print    > : ['sdd', 'Board_disk', 'Board_disk']
+< sost Do you still want to continue [y/n] : > : n
+< sost_20260120-161406_print    > : Config json File check Success!
+< sost_20260120-161407_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-161407_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-161407_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-161407_print    > : System architecture    : aarch64
+< sost_20260120-161407_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-161407_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-161407_print    > : =========================================================
+< sost  > : start
+< sost_20260120-161409_print    > : Check Nvme disk memory Success!
+[31m< sost_20260120-161410_error    > : User.Exit()[0m
+< sost_20260120-161426_print    > : Config json File check Success!
+< sost_20260120-161427_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-161427_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-161427_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-161428_print    > : System architecture    : aarch64
+< sost_20260120-161428_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-161428_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-161428_print    > : =========================================================
+< sost  > : start
+< sost_20260120-161428_print    > : Check Nvme disk memory Success!
+< sost Please select the testing model (Echo_numg:1) : > : 1
+< sost Now Currently only supported (nvme/sata/all) : > : sata
+< sost_20260120-161430_print    > : <Dong> The server did not find the Raid card!
+< sost_20260120-161430_print    > : disk_name : sdd
+< sost_20260120-161430_print    > : Board_disk : ['sdd']
+< sost_20260120-161431_print    > : ['sdd', 'Board_disk', 'Board_disk']
+< sost Do you want to format Disk? [y/n] : > : n
+< sost_20260120-161432_print    > :  You have chosen not to perform formatting operations!
+< sost Do you still want to continue [y/n] : > : y
+< sost_20260120-161433_print    > : [+] SATA_sequence_read! waiting 30s runstart! [Ctrl + C] Exit!
+< sost_20260120-161433_print    > : [+] Print the execution command below [Ctrl +C] Exit!
+< sost_20260120-161433_print    > : Command Show : 
+< sost_20260120-161438_print    > : Running FIO/IOSTAT Process : 
+< sost_20260120-161438_print    > : 持续监控fio和iostat进程，不要操作，等待进程结束!
+< sost_20260120-161438_print    > : Continuously monitor the fio and iostat processes, do not operate, wait for the process to end!
+< sost_20260120-161438_print    > : Time:
+< sost_20260120-171508_print    > : 检测到Fio / Iostat进程结束!
+< sost_20260120-171508_print    > : Fio/Iostat process end detected!
+< sost_20260120-171509_print    > : Processing data.....
+< sost_20260120-171509_print    > : Processing data Success! Result Folder : /root/natt_log_16-14-30/data_files/
+< sost_20260120-172034_print    > : Config json File check Success!
+< sost_20260120-172036_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-172036_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-172036_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-172036_print    > : System architecture    : aarch64
+< sost_20260120-172036_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-172036_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-172036_print    > : =========================================================
+< sost  > : start
+< sost_20260120-172036_print    > : Check Nvme disk memory Success!
+< sost Please select the testing model (Echo_numg:1) : > : sata
+< sost_20260120-172037_print    > : Input Error!
+< sost_20260120-172039_print    > : Config json File check Success!
+< sost_20260120-172041_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-172041_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-172041_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-172041_print    > : System architecture    : aarch64
+< sost_20260120-172041_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-172041_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-172041_print    > : =========================================================
+< sost  > : start
+< sost_20260120-172041_print    > : Check Nvme disk memory Success!
+< sost Please select the testing model (Echo_numg:1) : > : 1
+< sost Now Currently only supported (nvme/sata/all) : > : sata
+< sost_20260120-172042_print    > : <Dong> The server did not find the Raid card!
+< sost_20260120-172042_print    > : disk_name : sda
+< sost_20260120-172042_print    > : disk_name : sdb
+< sost_20260120-172042_print    > : disk_name : sdc
+< sost_20260120-172042_print    > : disk_name : sdd
+< sost_20260120-172042_print    > : Board_disk : ['sdb', 'sdc', 'sdd']
+< sost_20260120-172047_print    > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost Do you want to format Disk? [y/n] : > : n
+< sost_20260120-172047_print    > :  You have chosen not to perform formatting operations!
+< sost Do you still want to continue [y/n] : > : y
+< sost_20260120-172049_print    > : [+] SATA_sequence_read! waiting 30s runstart! [Ctrl + C] Exit!
+< sost_20260120-172049_print    > : [+] Print the execution command below [Ctrl +C] Exit!
+< sost_20260120-172049_print    > : Command Show : 
+< sost_20260120-172101_print    > : Running FIO/IOSTAT Process : 
+< sost_20260120-172101_print    > : 持续监控fio和iostat进程，不要操作，等待进程结束!
+< sost_20260120-172101_print    > : Continuously monitor the fio and iostat processes, do not operate, wait for the process to end!
+< sost_20260120-172101_print    > : Time:
+< sost_20260120-182131_print    > : 检测到Fio / Iostat进程结束!
+< sost_20260120-182132_print    > : Fio/Iostat process end detected!
+< sost_20260120-182132_print    > : Processing data.....
+< sost_20260120-182132_print    > : Processing data Success! Result Folder : /root/natt_log_17-20-42/data_files/
+< sost_20260120-182258_print    > : Config json File check Success!
+< sost_20260120-182301_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-182301_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-182301_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-182301_print    > : System architecture    : aarch64
+< sost_20260120-182302_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-182302_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-182302_print    > : =========================================================
+< sost  > : start
+< sost_20260120-182303_print    > : Check Nvme disk memory Success!
+< sost Please select the testing model (Echo_numg:1) : > : 7
+< sost Now Currently only supported (nvme/sata/all) : > : sata
+< sost_20260120-182307_print    > : <Dong> The server did not find the Raid card!
+< sost_20260120-182307_print    > : disk_name : sda
+< sost_20260120-182307_print    > : disk_name : sdb
+< sost_20260120-182307_print    > : disk_name : sdc
+< sost_20260120-182307_print    > : disk_name : sdd
+< sost_20260120-182307_print    > : Board_disk : ['sdb', 'sdc', 'sdd']
+< sost_20260120-182312_print    > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost Do you want to format Disk? [y/n] : > : n
+< sost_20260120-182315_print    > :  You have chosen not to perform formatting operations!
+[31m< sost_20260120-182318_error    > : User.Exit()[0m
+< sost_20260120-182327_print    > : Config json File check Success!
+< sost_20260120-182328_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-182328_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-182328_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-182328_print    > : System architecture    : aarch64
+< sost_20260120-182328_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-182329_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-182329_print    > : =========================================================
+< sost  > : start
+< sost_20260120-182330_print    > : Check Nvme disk memory Success!
+< sost Please select the testing model (Echo_numg:1) : > : 8
+< sost Now Currently only supported (nvme/sata/all) : > : sata
+< sost_20260120-182335_print    > : <Dong> The server did not find the Raid card!
+< sost_20260120-182335_print    > : disk_name : sda
+< sost_20260120-182335_print    > : disk_name : sdb
+< sost_20260120-182335_print    > : disk_name : sdc
+< sost_20260120-182335_print    > : disk_name : sdd
+< sost_20260120-182335_print    > : Board_disk : ['sdb', 'sdc', 'sdd']
+< sost_20260120-182341_print    > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost Do you want to format Disk? [y/n] : > : n
+< sost_20260120-182341_print    > :  You have chosen not to perform formatting operations!
+< sost Do you still want to continue [y/n] : > : y
+< sost_20260120-182342_print    > : 请选择你想要进行的顺序预写方式 : 0.按照loops圈数进行预写 1.按照runtime时间进行预写
+[31m< sost_20260120-182658_error    > : User.Exit()[0m
+< sost_20260120-182700_print    > : Config json File check Success!
+< sost_20260120-182701_print    > : System name            : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-182702_print    > : System version         : Kylin Linux Advanced Server release V11 (Swan25)
+< sost_20260120-182702_print    > : System release         : Linux-6.6.0-32.7.v2505.ky11.aarch64-aarch64-with-glibc2.38
+< sost_20260120-182702_print    > : System architecture    : aarch64
+< sost_20260120-182702_print    > : BMC IP                 : 192.168.60.148
+< sost_20260120-182702_print    > : SYS IP                 : 192.168.60.67
+< sost_20260120-182702_print    > : =========================================================
+< sost  > : start
+< sost_20260120-182702_print    > : Check Nvme disk memory Success!
+< sost Please select the testing model (Echo_numg:1) : > : 7
+< sost Now Currently only supported (nvme/sata/all) : > : sata
+< sost_20260120-182707_print    > : <Dong> The server did not find the Raid card!
+< sost_20260120-182707_print    > : disk_name : sda
+< sost_20260120-182707_print    > : disk_name : sdb
+< sost_20260120-182707_print    > : disk_name : sdc
+< sost_20260120-182707_print    > : disk_name : sdd
+< sost_20260120-182707_print    > : Board_disk : ['sdb', 'sdc', 'sdd']
+< sost_20260120-182712_print    > : ['sdb', 'Board_disk', 'Board_disk', 'sdc', 'Board_disk', 'Board_disk', 'sdd', 'Board_disk', 'Board_disk']
+< sost Do you want to format Disk? [y/n] : > : n
+< sost_20260120-182712_print    > :  You have chosen not to perform formatting operations!
+< sost Do you still want to continue [y/n] : > : y
+< sost_20260120-182713_print    > : [+] SATA_Sequence_rw waiting 30s runstart! [Ctrl + C] Exit!
+< sost_20260120-182713_print    > : [+] Print the execution command below [Ctrl +C] Exit!
+< sost_20260120-182713_print    > : Command Show : 
+< sost_20260120-182725_print    > : Running FIO/IOSTAT Process : 
+< sost_20260120-182726_print    > : 持续监控fio和iostat进程，不要操作，等待进程结束!
+< sost_20260120-182726_print    > : Continuously monitor the fio and iostat processes, do not operate, wait for the process to end!
+< sost_20260120-182726_print    > : Time:

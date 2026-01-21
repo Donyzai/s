@@ -235,7 +235,7 @@ def return_get_data():
             'Test-result': 'xmx_shell'
         })
 
-    if os.popen('ps -aux  | grep -i lds_shell | grep -vi grep').read().strip()!='':
+    if os.popen('ps -aux  | grep -i lds_shell | grep -vi grep | grep -vi refresh').read().strip()!='':
         base_data.update({
             'Test-status': 'Running',
             'Test-type': 'lds_shell',

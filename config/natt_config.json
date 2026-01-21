@@ -44,7 +44,7 @@
         "ramp_time": "",
         "seq_sata_bs": "",
         "seq_ssd_bs": "",
-        "fio_mode": "1"
+        "fio_mode": "0"
     },
     "Bound_nucleus": {
         "nvme": "0",

@@ -61,8 +61,7 @@ def fio_file_result(log_name, disk_list):
             rw_mode = ""
             for disk_name in disk_info:
                 if disk_name in file_name:
-                    if 'prewriting' in file_name:
-                        continue
+                    if 'prewriting' in file_name:continue
                     disk_name = log.os_popen(f"cat {log_name}/{file_name} | grep -i util | awk '{{print $1}}'").replace(":", "")
                     rw_mode = log.os_popen(f"cat {log_name}/{file_name} | grep -i myjob | grep -i rw | awk '{{print $3}}'").strip().replace(",", "").replace("rw=", "")
                     IOPS = log.os_popen(f"cat {log_name}/{file_name}| grep IOPS= | awk '{{print $2}}'").strip().replace(",","").replace("IOPS=", "")
@@ -217,7 +216,8 @@ def result_handle(log_name):
                     files_name.append(file_names)
                     if "sequence" in test_type:
                         if disk_name != "all":
-                            if "read" in file_names:log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $3}}'>> {files_namee}")
+                            if "read" in file_names:
+                                log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $3}}'>> {files_namee}")
                             else:
                                 log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $9}}'>> {files_namee}")
                         else:
@@ -227,9 +227,16 @@ def result_handle(log_name):
                                 log.os_run(f"cat {log_name}/{file_names} | grep 'all' | awk '{{print $9}}'>> {files_namee}")
                     elif "random" in test_type:
                         if disk_name != "all":
+                            if 'read' in file_names:
+                                log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $3}}' >> {files_namee}")
+                            else:
+                                log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $8}}' >> {files_namee}")
                             log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $2}}' >> {files_namee}")
                         else:
-                            log.os_run(f"cat {log_name}/{file_names} | grep 'all' | awk '{{print $2}}' >> {files_namee}")
+                            if 'read' in file_names:
+                                log.os_run(f"cat {log_name}/{file_names} | grep 'all' | awk '{{print $3}}' >> {files_namee}")
+                            else:
+                                log.os_run(f"cat {log_name}/{file_names} | grep 'all' | awk '{{print $8}}' >> {files_namee}")
                 log.os_run(f"paste {result_folder}/* >> {result_folder}/{test_type}.csv")
             else:
                 continue
