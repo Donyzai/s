@@ -1036,7 +1036,7 @@ def pcieinfo(flags, folder_path, count):
     #bak data
     tmp = 0
     pci_arry = log.os_popen("lspci 2>/dev/null| grep -ivE 'Bridge|Encryption controller|Non-Essential|iommu|System peripheral' |awk '{print $1}'").strip().split()
-    print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[Lnk_Sta]".ljust(45)+"[Subsystem]")
+    print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text="[Order]".ljust(10)+"[Bus_Addr]".ljust(15)+"[Node]".ljust(10)+"[Lnk_Sta]".ljust(45)+"[Kernal_modules]".ljust(45)+"[Subsystem]")
     for bus_addr in pci_arry:
         log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null")
         node = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i numa | cut -d ':' -f 2").strip()
@@ -1047,7 +1047,8 @@ def pcieinfo(flags, folder_path, count):
         if Subsystem=="":
             Subsystem = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3").strip()
             if Subsystem=="":Subsystem="-"
-        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(tmp).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+lnk_sta.ljust(45)+Subsystem)
+        kernal_model = log.os_popen(f"lspci -vvvs {bus_addr.strip()} 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2").strip()
+        print_save_text(flags=flags, folder_path=folder_path, type="pcieinfo", count=count,text=str(tmp).ljust(10)+bus_addr.ljust(15)+node.ljust(10)+lnk_sta.ljust(45)+kernal_model.ljust(45)+Subsystem)
         tmp+=1
 
     if flags == "1" : 

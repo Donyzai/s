@@ -184,3 +184,30 @@
 < sost_20260120-182726_print    > : 持续监控fio和iostat进程，不要操作，等待进程结束!
 < sost_20260120-182726_print    > : Continuously monitor the fio and iostat processes, do not operate, wait for the process to end!
 < sost_20260120-182726_print    > : Time:
+[Order]   [Bus_Addr]     [Node]    [Lnk_Sta]                                    [Kernal_modules]                             [Subsystem]
+0         0000:06:00.0   0         -                                            ast                                          ASPEED Technology
+1         0000:07:00.0   0         Speed 5GT/s, Width x1                                                                     -
+2         0000:08:00.0   0         Speed 5GT/s, Width x1                                                                     Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller
+3         0000:09:00.0   0         Speed 5GT/s, Width x1                                                                     -
+4         0002:01:00.0   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+5         0002:01:00.1   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+6         0002:01:00.2   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+7         0002:01:00.3   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+[Order]   [Bus_Addr]     [Node]    [Lnk_Sta]                                    [Kernal_modules]                             [Subsystem]
+0         0000:06:00.0   0         -                                            ast                                          ASPEED Technology
+1         0000:07:00.0   0         Speed 5GT/s, Width x1                                                                     -
+2         0000:08:00.0   0         Speed 5GT/s, Width x1                                                                     Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller
+3         0000:09:00.0   0         Speed 5GT/s, Width x1                                                                     -
+4         0002:01:00.0   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+5         0002:01:00.1   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+6         0002:01:00.2   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+7         0002:01:00.3   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+[Order]   [Bus_Addr]     [Node]    [Lnk_Sta]                                    [Kernal_modules]                             [Subsystem]
+0         0000:06:00.0   0         -                                            ast                                          ASPEED Technology
+1         0000:07:00.0   0         Speed 5GT/s, Width x1                                                                     -
+2         0000:08:00.0   0         Speed 5GT/s, Width x1                                                                     Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller
+3         0000:09:00.0   0         Speed 5GT/s, Width x1                                                                     -
+4         0002:01:00.0   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+5         0002:01:00.1   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+6         0002:01:00.2   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.
+7         0002:01:00.3   2         Speed 5GT/s, Width x4                        ngbe                                         Beijing Wangxun Technology Co.

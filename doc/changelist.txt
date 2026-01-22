@@ -39,6 +39,10 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2026/01/20  ReleaseTime:2026/01/2
 32. dmesgCheck增加IPMI SI信息检查。
 33. 合并natt-v1.1.4版本
 34. 增加日志备份功能，用户ctrl_c后向SWC服务器下发post请求download当前稳定性测试日志
+35. 解决disktest random_write csv文件读值为0问题。
+36. 修改disktest config fio_mode默认值为0。
+37. pcieinfo 增加 kernel modules信息显示。
+38. 
 
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
