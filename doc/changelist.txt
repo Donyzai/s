@@ -42,8 +42,7 @@ sost-v1.1.1 ChangeList DevlopTime : 2025/08/12-2026/01/20  ReleaseTime:2026/01/2
 35. 解决disktest random_write csv文件读值为0问题。
 36. 修改disktest config fio_mode默认值为0。
 37. pcieinfo 增加 kernel modules信息显示。
-38. 
-
+38. 增加ibmc fru&dmi 检查 sost -t ibmcfd
 ----------------------------------------------------------------------------------
 sost-v1.1.0 ChangeList DevlopTime : 2025/05/26-2025/08/12  ReleaseTime:2025/08/12
 ----------------------------------------------------------------------------------

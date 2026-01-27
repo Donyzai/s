@@ -125,6 +125,7 @@ def parser_test():
     parser.add_argument("-f", "--fix", action="store_true", help="Repair sost environment")
     parser.add_argument("-k", "--killall", action="store_true", help="Kill all sost processes")
     parser.add_argument("-m", "--testmode", action="store_true", help="Enable test mode")
+    parser.add_argument("-t", "--testtools", action="store_true", help="Other test tools")
     parser.add_argument("-o", "--output", action="store_true", help="Generate stability test report")
     parser.add_argument("-s", "--start", action="store_true", help="Start sost tool execution")
     parser.add_argument("-u", "--uninstall", action="store_true", help="Uninstall sost tools")
@@ -151,6 +152,14 @@ def parser_test():
     parser.add_argument(f"-i3", f"--in3",action="store",help=argparse.SUPPRESS)
 
     args = parser.parse_args()
+
+    if args.testtools:
+        print("====================[Other Test Tools]====================")
+        print(" 1. sost -t ibmcfd       Query iBMC FRU and DMI Information")
+        print("==========================================================")
+
+        if len(sys.argv) >= 3 and sys.argv[2] == "ibmcfd":
+            os.system("cd /opt/sost && python3 /opt/sost/others/ibmc_fru_dmi_test.py")
 
     if args.debug:
         print("<sost> Debug mode enabled - detailed logs will be output")

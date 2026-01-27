@@ -147,6 +147,7 @@ def return_get_data():
 
     count = simple_json_get("Test_tmp","test_count") or "NA"
     typee = simple_json_get("Test_tmp","test_type") or "NA"
+    
     pressure_check = get_running_test_type()
     
     if pressure_check !="NA":

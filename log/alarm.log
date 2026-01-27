@@ -1,3 +1,2 @@
-[31m< sost_20260120-161410_error    > : User.Exit()[0m
-[31m< sost_20260120-182318_error    > : User.Exit()[0m
-[31m< sost_20260120-182658_error    > : User.Exit()[0m
+[31m< sost_20260126-151338_error    > : os_popen command : ipmitool lan print 1 2>/dev/null error![0m
+[31m< sost_20260126-151340_error    > : User.Exit.Test![0m

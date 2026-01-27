@@ -65,9 +65,16 @@ def update_show(update_flag,tips,remote_sha256,local_sha256):
     log._pr(f"local_sha256   : {local_sha256}")
 
     update_sost(update_flag)
+
    
 def update_check():
+    
+    # Debug Mode Check 
+    if log.json_get("debug","noSendCommand",filename="debug") == "1" or log.json_get("debug","SkipUpdate",filename="debug").strip() == '1':
+        log._pr("DebugMode Enabled noSendCommand = 1 , Skip SOST Update Check!")
+        return 0
 
+    # get sost_server_i
     sost_server_ip = log.json_get("sost","update_Web_server_ip",filename='version').strip()
 
     if not swc_service_connectivity():
@@ -1394,6 +1401,7 @@ def save_to_history(count):
     log.os_run(f' touch /opt/sost/history && echo "{json_data}" >> /opt/sost/history')
 
 def post_info_to_swcServer():
+    
     hw_mac = log.os_popen("sost -i hwmac").strip().replace(":", "")
     bmc_ver = log.json_get("Test_tmp","test_bmc_ver").strip()
     bios_ver = log.json_get("Test_tmp","test_bios_ver").strip()
@@ -1403,9 +1411,10 @@ def post_info_to_swcServer():
     test_result = log.json_get("Test_tmp","test_status").strip()
     EndTime = log.json_get("Test_tmp","endT_time").strip()
     json_data = f'{{"hw_mac": "{hw_mac}", "bmc_ver": "{bmc_ver}", "bios_ver": "{bios_ver}", "test_sha256": "{test_sha256}", "test_type": "{test_type}", "test_count": {test_count}, "test_result": "{test_result}", "EndTime": "{EndTime}"}}'
+    log._dp(f"Post Data to swcServer Json : {json_data}")
     swc_server_ip = log.json_get("swc","swc_server_ip",filename='swc').strip()
     swc_server_port = log.json_get("swc","swc_server_port",filename='swc').strip()
-    log.os_run(f" nohup curl -X POST -H 'Content-Type: application/json' -d '{json_data}' http://{swc_server_ip}:{swc_server_port}/api/upload_test_info &")
+    log.os_popen(f" curl -X POST -H 'Content-Type: application/json' -d '{json_data}' http://{swc_server_ip}:{swc_server_port}/api/upload_test_info ")
     log._dp(f"Post test info to swcServer: {json_data}")
 
 # init environment to default
