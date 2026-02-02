@@ -33,7 +33,7 @@
         "bmc_chip": "ASPEED-2600",
         "switch": "",
         "BMC_Username": "admin",
-        "BMC_Password": "admin"
+        "BMC_Password": "ttytty`12"
     },
     "smtp": {
         "Fail_send_email": "",
@@ -44,20 +44,20 @@
         "pop3_password": ""
     },
     "Test_tmp": {
-        "test_type": "Bmc_Remote_Cycle",
+        "test_type": "Bmc_Remote_Reset",
         "test_count": "0",
-        "test_status": "NA",
+        "test_status": "Pass",
         "test_bmc_lan": "3",
-        "test_folder_path": "/root/Bmc_Remote_Cycle",
-        "test_sha256": "c4d6d6ac4753924e1791bf8243f9ff920ad36b44584e5cecab696091b46234b7",
+        "test_folder_path": "/root/Bmc_Remote_Reset",
+        "test_sha256": "adfccea78be76d4c57b70799a83c99f5e4fd8f5e47ede7dc21a081f335083aec",
         "test_bmc_ver": "1.05.00.04.00.00",
         "test_bios_ver": "KL42A._RS_.T2DMFT.049R.251225",
-        "run_command": "curl http://192.168.60.138:13251/remote_powercycle?bmc_ip=192.168.60.148",
-        "startT_time": "2026-02-02-11-25-32",
-        "endT_time": "2026-02-02-11-25-50",
+        "run_command": "curl 'http://192.168.60.138:13251/remote_powerreset?bmc_ip=192.168.60.148&bmc_username=admin&bmc_password=ttytty`12'",
+        "startT_time": "2026-02-02-14-11-47",
+        "endT_time": "2026-02-02-14-17-46",
         "Running_flag": "4",
-        "running_time_last": "979",
-        "running_time_now": "1170",
+        "running_time_last": "",
+        "running_time_now": "288",
         "running_time_first": "",
         "swc_flags": "0"
     }

@@ -1771,75 +1771,78 @@ def end_test_logo():
 
 # save time
 def runTime(flags,se_flag=''):
-    count = log.json_get("Test_tmp", "test_count")
-    path = log.json_get("Test_tmp", "test_folder_path")
-    start_time_file_path = path+"/debug/start_time.txt"
-    end_time_file_path = path+"/debug/end_time.txt"
-    running_time_file_path = path+"/running_time.txt"
-    sost_running_time_file_path = path+"/debug/sost_running_time.log"
-    func_testconfig_RunningTime = path+"/debug/functestconfigRunningTime.log"
-    # save start_time   
-    if flags == "0" or flags == "1":
-        if flags == '0':
-            filename = start_time_file_path
-        else:
-            filename = end_time_file_path
-        with open(filename,"w") as f:
-            f.write(str(int(time.time())))
-            f.flush()
-            os.fsync(f.fileno())
-        time.sleep(1)
-        
-    # Power off -> Os Run Time
-    elif flags == "3":
-        restart_time = str(abs(int(log.os_popen(f"cat {end_time_file_path}")) - int(log.os_popen(f"cat {start_time_file_path}"))))
-        last_running_time = log.json_get("Test_tmp","running_time_now")
-        log.json_set("Test_tmp","running_time_last",str(last_running_time))
-        log.json_set("Test_tmp","running_time_now",str(restart_time))
-        with open(running_time_file_path, "a") as f:
-            if str(count)=="0":
-                restart_time="FirstRun!"
-            f.write("=" * 40 + "\n" + f"< sost > Last restart time : {restart_time} s\n< sost >  Nowcount\t\t : {count} times\n< sost >  NowTime \t\t : {now_time()}\n< sost >  TestType\t\t : {log.json_get('Test_tmp','test_type')}\n" + "=" * 40 + "\n")
-            f.flush()
-            os.fsync(f.fileno())
-        
-        log._dp(f"Last restart time : {restart_time} s")
-    # sost running time
-    elif flags == "4":
-        start_time = open(end_time_file_path, "r").read()
-        with open(sost_running_time_file_path, "a") as f:
-            f.write("=" * 40 + "\n")
-            f.write(f"< sost > sost Running time : {str(abs(int(time.time()) - int(start_time)))} s\n< sost > sost NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n")
-            f.write("=" * 40 + "\n")
-            os.fsync(f.fileno())
-
-    # sost test_config func running time
-    elif flags == "5":
-        tmp_file_path = "/tmp/sost_tmp/functestconfigRunningTime.log"
-        if se_flag == '' : log._error("runTime.Exit.no.se_flag")
-        if se_flag == 'start':
-            func_testconfig_start_time = str(int(time.time()))
-            with open(tmp_file_path,"w") as f:
-                f.write(func_testconfig_start_time)
+    try:
+        count = log.json_get("Test_tmp", "test_count")
+        path = log.json_get("Test_tmp", "test_folder_path")
+        start_time_file_path = path+"/debug/start_time.txt"
+        end_time_file_path = path+"/debug/end_time.txt"
+        running_time_file_path = path+"/running_time.txt"
+        sost_running_time_file_path = path+"/debug/sost_running_time.log"
+        func_testconfig_RunningTime = path+"/debug/functestconfigRunningTime.log"
+        # save start_time   
+        if flags == "0" or flags == "1":
+            if flags == '0':
+                filename = start_time_file_path
+            else:
+                filename = end_time_file_path
+            with open(filename,"w") as f:
+                f.write(str(int(time.time())))
                 f.flush()
                 os.fsync(f.fileno())
-            log._dp(f"functestconfig Running time : {str(func_testconfig_start_time)} s")
-        elif se_flag == 'end':
-            func_testconfig_end_time = int(time.time())
-            func_testconfig_start_time = int(open(tmp_file_path,"r").read().strip())
-            func_testconfig_running_time = func_testconfig_end_time - func_testconfig_start_time
-            with open(func_testconfig_RunningTime,"a") as f:
+            time.sleep(1)
+            
+        # Power off -> Os Run Time
+        elif flags == "3":
+            restart_time = str(abs(int(log.os_popen(f"cat {end_time_file_path}")) - int(log.os_popen(f"cat {start_time_file_path}"))))
+            last_running_time = log.json_get("Test_tmp","running_time_now")
+            log.json_set("Test_tmp","running_time_last",str(last_running_time))
+            log.json_set("Test_tmp","running_time_now",str(restart_time))
+            with open(running_time_file_path, "a") as f:
+                if str(count)=="0":
+                    restart_time="FirstRun!"
+                f.write("=" * 40 + "\n" + f"< sost > Last restart time : {restart_time} s\n< sost >  Nowcount\t\t : {count} times\n< sost >  NowTime \t\t : {now_time()}\n< sost >  TestType\t\t : {log.json_get('Test_tmp','test_type')}\n" + "=" * 40 + "\n")
+                f.flush()
+                os.fsync(f.fileno())
+            
+            log._dp(f"Last restart time : {restart_time} s")
+        # sost running time
+        elif flags == "4":
+            start_time = open(end_time_file_path, "r").read()
+            with open(sost_running_time_file_path, "a") as f:
                 f.write("=" * 40 + "\n")
-                f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t\t : {now_time()}"+"\n")
+                f.write(f"< sost > sost Running time : {str(abs(int(time.time()) - int(start_time)))} s\n< sost > sost NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n")
                 f.write("=" * 40 + "\n")
                 os.fsync(f.fileno())
-    
-    else:
-        
-        log._error("runTime.Exit.flags")
-    
-    log.os_run("sync -f && sync",flags='no-log')
 
+        # sost test_config func running time
+        elif flags == "5":
+            tmp_file_path = "/tmp/sost_tmp/functestconfigRunningTime.log"
+            if se_flag == '' : log._error("runTime.Exit.no.se_flag")
+            if se_flag == 'start':
+                func_testconfig_start_time = str(int(time.time()))
+                with open(tmp_file_path,"w") as f:
+                    f.write(func_testconfig_start_time)
+                    f.flush()
+                    os.fsync(f.fileno())
+                log._dp(f"functestconfig Running time : {str(func_testconfig_start_time)} s")
+            elif se_flag == 'end':
+                func_testconfig_end_time = int(time.time())
+                func_testconfig_start_time = int(open(tmp_file_path,"r").read().strip())
+                func_testconfig_running_time = func_testconfig_end_time - func_testconfig_start_time
+                with open(func_testconfig_RunningTime,"a") as f:
+                    f.write("=" * 40 + "\n")
+                    f.write(f"< sost > functestconfig Running time : {str(func_testconfig_running_time)} s\n< sost > functestconfig NowCount     : {str(count)} times\n< sost > NowTime \t\t\t : {now_time()}"+"\n")
+                    f.write("=" * 40 + "\n")
+                    os.fsync(f.fileno())
+        
+        else:
+            
+            log._error("runTime.Exit.flags")
+        
+        log.os_run("sync -f && sync",flags='no-log')
+    except Exception as e:
+        log._error(f"runTime.Exit.Err : {str(e)}")
+        defalt_path()
 
 # echo dmesg error | fail | unknown | info
 def dmesg_show():

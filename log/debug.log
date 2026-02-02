@@ -1,8 +1,10 @@
-< sost_20260202-112519_dlev_0   > : Storcli64 Not install!
-< sost_20260202-112519_dlev_0   > : Sost Stability Tools check Success!
-< sost_20260202-112531_dlev_0   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin
-< sost_20260202-112532_dlev_0   > : BMC_User : admin
-< sost_20260202-112532_dlev_0   > : BMC_Pass : admin
-< sost_20260202-112535_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260202-112552_dlev_0   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "c4d6d6ac4753924e1791bf8243f9ff920ad36b44584e5cecab696091b46234b7", "test_type": "Bmc_Remote_Cycle", "test_count": 0, "test_result": "NA", "EndTime": "2026-02-02-11-25-50"}
-< sost_20260202-112552_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "c4d6d6ac4753924e1791bf8243f9ff920ad36b44584e5cecab696091b46234b7", "test_type": "Bmc_Remote_Cycle", "test_count": 0, "test_result": "NA", "EndTime": "2026-02-02-11-25-50"}
+< sost_20260202-141136_dlev_0   > : Storcli64 Not install!
+< sost_20260202-141136_dlev_0   > : Sost Stability Tools check Success!
+< sost_20260202-141145_dlev_0   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin
+< sost_20260202-141147_dlev_0   > : BMC_User : admin
+< sost_20260202-141147_dlev_0   > : BMC_Pass : ttytty`12
+< sost_20260202-141150_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
+< sost_20260202-141740_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
+< sost_20260202-141745_dlev_0   > : Last restart time : FirstRun! s
+< sost_20260202-141750_dlev_0   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "adfccea78be76d4c57b70799a83c99f5e4fd8f5e47ede7dc21a081f335083aec", "test_type": "Bmc_Remote_Reset", "test_count": 0, "test_result": "Pass", "EndTime": "2026-02-02-14-17-46"}
+< sost_20260202-141751_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "adfccea78be76d4c57b70799a83c99f5e4fd8f5e47ede7dc21a081f335083aec", "test_type": "Bmc_Remote_Reset", "test_count": 0, "test_result": "Pass", "EndTime": "2026-02-02-14-17-46"}

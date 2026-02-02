@@ -1,5 +1,5 @@
-< sost_20260202-112519_print    > : DebugMode Enabled noSendCommand = 1 , Skip SOST Update Check!
-< sost_20260202-112519_print    > : ════════════════════════════════════════════════════════════════════════════
+< sost_20260202-141135_print    > : DebugMode Enabled noSendCommand = 1 , Skip SOST Update Check!
+< sost_20260202-141135_print    > : ════════════════════════════════════════════════════════════════════════════
 |                                             ░██                          |
 |                    ██████  ██████   ██████ ██████                        |
 |                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
@@ -20,12 +20,12 @@
 |  15 . BMC Remote bmc reset warm  |  19 . NA                              |
 |  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
 ════════════════════════════════════════════════════════════════════════════
-< sost Your choice : > : 14
-< sost_20260202-112522_print    > : BMC Status Checking Status......
-< sost_20260202-112522_tips     > : <------ BMC status check ----->
-< sost_20260202-112523_print    > : [+] Bmc Status check Success!
-< sost_20260202-112524_print    > : Checking whether bmcip / swc_server_ip can ping, Waiting.......
-< sost_20260202-112527_print    > : ════════════════════════════════════════════════════════════════════════
+< sost Your choice : > : 13
+< sost_20260202-141139_print    > : BMC Status Checking Status......
+< sost_20260202-141139_tips     > : <------ BMC status check ----->
+< sost_20260202-141139_print    > : [+] Bmc Status check Success!
+< sost_20260202-141141_print    > : Checking whether bmcip / swc_server_ip can ping, Waiting.......
+< sost_20260202-141144_print    > : ════════════════════════════════════════════════════════════════════════
 |     ___   __  __    ___             ___    _  _      ___    ___      |
 |    | _ ) |  \/  |  / __|           |_ _|  | \| |    | __|  / _ \     |
 |    | _ \ | |\/| | | (__     ___     | |   | .` |    | _|  | (_) |    |
@@ -41,10 +41,10 @@
 ════════════════════════════════════════════════════════════════════════
 < sost Chose Your Test lan  [ 1 / 2 / 3 ] Enter -> 1 > : 3
 < sost Input Bmc_Username [ Enter -> admin               ]: > : 
-< sost Input Bmc_Password [ Enter -> admin               ]: > : 
-< sost_20260202-112532_tips     > : Checking BMC User/Passwd, Waiting.......
-< sost_20260202-112532_tips     > : [+] Bmc User/Passwd check Success!
-< sost_20260202-112535_print    > : ══════════════════════════════════════════════════════
+< sost Input Bmc_Password [ Enter -> ttytty`12           ]: > : 
+< sost_20260202-141147_tips     > : Checking BMC User/Passwd, Waiting.......
+< sost_20260202-141147_tips     > : [+] Bmc User/Passwd check Success!
+< sost_20260202-141150_print    > : ══════════════════════════════════════════════════════
 ||                                     ██           ||
 ||                                    ░██           ||
 ||           ██████  ██████   ██████ ██████         ||
@@ -56,7 +56,7 @@
 ══════════════════════════════════════════════════════
 || sost : 1.1.1            || State : NA            || 
 ||--------------------------------------------------||
-|| Type : Bmc_Remote_Cycle || Count : 0             ||
+|| Type : Bmc_Remote_Reset || Count : 0             ||
 ══════════════════════════════════════════════════════
 [NIC_NAME]               [NIC_IPv4]               [NIC_MAC]           [NIC_MTU]      [NIC_Speed]    [NIC_State]    [NIC_duplex]   [NIC_BDF]      [NIC_Node]
 enP2s32f0                192.168.60.67            18:9b:a5:82:55:72   1500           1000           up             full           0002:01:00.0   2
@@ -175,192 +175,187 @@ Sys_disk_arry : sdasdbsdcsdd
    3     enP2s32f3           0002:01:00.3   Speed5GT/s,Widthx4                 ngbe           1.2.6-kylin                        0x00010019
 USB Device num : 8
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 001 Device 006: ID 046b:ff01 American Megatrends, Inc. Virtual Hub
-Bus 001 Device 007: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
-Bus 001 Device 008: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
-Bus 001 Device 009: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 001 Device 002: ID 046b:ff01 American Megatrends, Inc. Virtual Hub
+Bus 001 Device 003: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 001 Device 004: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
+Bus 001 Device 005: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
 Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Storcli64 not Found!
-16.980s dev-disk-by\x2ddiskseq-3.device
-16.980s dev-disk-by\x2did-ata\x2dHGST_HUH721212ALE600_5PK0N2BB.device
-16.980s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata3-host2-target2:0:0-2:0:0:0-block-sdc.device
-16.980s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d3.device
-16.980s dev-sdc.device
-16.980s dev-disk-by\x2did-wwn\x2d0x5000cca291ea91e0.device
-16.980s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d3.0.device
-16.481s dev-disk-by\x2dpartuuid-193d7426\x2d70e5\x2d4049\x2d93c8\x2da5d902395252.device
-16.481s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart3.device
-16.481s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart3.device
-16.481s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda3.device
-16.481s dev-sda3.device
-16.481s dev-disk-by\x2ddiskseq-1\x2dpart3.device
-16.481s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart3.device
-16.481s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart3.device
-15.930s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart2.device
-15.930s dev-disk-by\x2ddiskseq-1\x2dpart2.device
-15.930s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart2.device
-15.929s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart2.device
-15.929s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device
-15.929s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart2.device
-15.929s dev-disk-by\x2dpartuuid-0f1612b3\x2d8075\x2d4a8b\x2d80a6\x2d24c3fcb5b182.device
-15.929s dev-sda2.device
-15.929s dev-disk-by\x2duuid-32896280\x2dca31\x2d478c\x2d8b2f\x2d288181675e32.device
-15.910s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device
-15.908s dev-disk-by\x2duuid-655D\x2d6732.device
-15.908s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart1.device
-15.908s dev-sda1.device
-15.908s dev-disk-by\x2ddiskseq-1\x2dpart1.device
-15.907s dev-disk-by\x2dpartlabel-EFI\x5cx20System\x5cx20Partition.device
-15.907s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart1.device
-15.907s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart1.device
-15.906s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart1.device
-15.906s dev-disk-by\x2dpartuuid-1351e390\x2d7e75\x2d43f3\x2dae62\x2dcb40cb54b270.device
-15.679s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d2.0.device
-15.679s dev-disk-by\x2did-ata\x2dST8000NM000A\x2d2KE101_WSD1VSVZ.device
-15.679s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata2-host1-target1:0:0-1:0:0:0-block-sdb.device
-15.678s dev-sdb.device
-15.678s dev-disk-by\x2ddiskseq-2.device
-15.678s dev-disk-by\x2did-wwn\x2d0x5000c500d5ee833c.device
-15.678s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d2.device
-15.669s dev-disk-by\x2did-ata\x2dST8000NM000A\x2d2KE101_WSD1TPL4.device
-15.669s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata4-host3-target3:0:0-3:0:0:0-block-sdd.device
-15.669s dev-disk-by\x2ddiskseq-4.device
-15.669s dev-sdd.device
-15.669s dev-disk-by\x2did-wwn\x2d0x5000c500d5f247da.device
-15.669s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d4.0.device
-15.668s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d4.device
-15.667s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db.device
-15.667s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0.device
-15.667s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.device
-15.667s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX.device
-15.667s dev-disk-by\x2ddiskseq-1.device
-15.666s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda.device
-15.666s dev-sda.device
-15.378s sys-module-configfs.device
-15.077s sys-devices-platform-serial8250-tty-ttyS3.device
-15.077s dev-ttyS3.device
-15.074s dev-ttyS1.device
-15.074s sys-devices-platform-serial8250-tty-ttyS1.device
-15.060s sys-devices-platform-serial8250-tty-ttyS2.device
-15.060s dev-ttyS2.device
-15.053s dev-ttyS0.device
-15.053s sys-devices-platform-serial8250-tty-ttyS0.device
-15.044s dev-ttyAMA0.device
-15.044s sys-devices-platform-ARMH0011:00-tty-ttyAMA0.device
-14.494s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.1-net-enP2s32f1.device
-14.494s sys-subsystem-net-devices-enP2s32f1.device
-14.302s sys-subsystem-net-devices-enP2s32f2.device
-14.302s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.2-net-enP2s32f2.device
-14.280s sys-subsystem-net-devices-enP2s32f0.device
-14.280s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.0-net-enP2s32f0.device
-14.261s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.3-net-enP2s32f3.device
-14.260s sys-subsystem-net-devices-enP2s32f3.device
- 9.765s plymouth-quit-wait.service
+17.732s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda3.device
+17.732s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart3.device
+17.732s dev-disk-by\x2dpartuuid-193d7426\x2d70e5\x2d4049\x2d93c8\x2da5d902395252.device
+17.732s dev-sda3.device
+17.732s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart3.device
+17.732s dev-disk-by\x2ddiskseq-1\x2dpart3.device
+17.732s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart3.device
+17.731s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart3.device
+17.573s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d3.device
+17.573s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata3-host2-target2:0:0-2:0:0:0-block-sdc.device
+17.573s dev-disk-by\x2did-wwn\x2d0x5000cca291ea91e0.device
+17.573s dev-disk-by\x2did-ata\x2dHGST_HUH721212ALE600_5PK0N2BB.device
+17.573s dev-sdc.device
+17.573s dev-disk-by\x2ddiskseq-3.device
+17.573s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d3.0.device
+17.517s dev-disk-by\x2dpartuuid-1351e390\x2d7e75\x2d43f3\x2dae62\x2dcb40cb54b270.device
+17.517s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device
+17.517s dev-disk-by\x2duuid-655D\x2d6732.device
+17.517s dev-disk-by\x2dpartlabel-EFI\x5cx20System\x5cx20Partition.device
+17.517s dev-sda1.device
+17.517s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart1.device
+17.517s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart1.device
+17.517s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart1.device
+17.517s dev-disk-by\x2ddiskseq-1\x2dpart1.device
+17.517s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart1.device
+17.512s dev-sda2.device
+17.512s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart2.device
+17.512s dev-disk-by\x2dpartuuid-0f1612b3\x2d8075\x2d4a8b\x2d80a6\x2d24c3fcb5b182.device
+17.512s dev-disk-by\x2duuid-32896280\x2dca31\x2d478c\x2d8b2f\x2d288181675e32.device
+17.512s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device
+17.512s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart2.device
+17.512s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart2.device
+17.512s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart2.device
+17.512s dev-disk-by\x2ddiskseq-1\x2dpart2.device
+17.229s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata4-host3-target3:0:0-3:0:0:0-block-sdd.device
+17.229s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d4.0.device
+17.229s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d4.device
+17.229s dev-sdd.device
+17.229s dev-disk-by\x2did-wwn\x2d0x5000c500d5f247da.device
+17.229s dev-disk-by\x2ddiskseq-4.device
+17.229s dev-disk-by\x2did-ata\x2dST8000NM000A\x2d2KE101_WSD1TPL4.device
+17.190s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata2-host1-target1:0:0-1:0:0:0-block-sdb.device
+17.190s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d2.device
+17.190s dev-disk-by\x2ddiskseq-2.device
+17.190s dev-disk-by\x2did-wwn\x2d0x5000c500d5ee833c.device
+17.190s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d2.0.device
+17.190s dev-disk-by\x2did-ata\x2dST8000NM000A\x2d2KE101_WSD1VSVZ.device
+17.189s dev-sdb.device
+17.163s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX.device
+17.163s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db.device
+17.163s dev-disk-by\x2ddiskseq-1.device
+17.163s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0.device
+17.163s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda.device
+17.163s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.device
+17.163s dev-sda.device
+16.513s sys-module-configfs.device
+16.145s sys-devices-platform-ARMH0011:00-tty-ttyAMA0.device
+16.145s dev-ttyAMA0.device
+15.917s dev-ttyS0.device
+15.916s sys-devices-platform-serial8250-tty-ttyS0.device
+15.911s dev-ttyS3.device
+15.911s sys-devices-platform-serial8250-tty-ttyS3.device
+15.908s dev-ttyS2.device
+15.908s sys-devices-platform-serial8250-tty-ttyS2.device
+15.898s dev-ttyS1.device
+15.898s sys-devices-platform-serial8250-tty-ttyS1.device
+15.356s sys-subsystem-net-devices-enP2s32f2.device
+15.356s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.2-net-enP2s32f2.device
+15.330s sys-subsystem-net-devices-enP2s32f3.device
+15.330s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.3-net-enP2s32f3.device
+15.324s sys-subsystem-net-devices-enP2s32f1.device
+15.324s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.1-net-enP2s32f1.device
+15.316s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.0-net-enP2s32f0.device
+15.316s sys-subsystem-net-devices-enP2s32f0.device
  9.490s accounts-daemon.service
- 7.555s kdump.service
- 5.994s NetworkManager-wait-online.service
- 5.569s udisks2.service
- 5.225s polkit.service
- 5.041s upower.service
- 4.855s dbus.service
- 4.814s conf2-update-db.service
- 4.808s kysdk-conf2.service
- 4.754s pmcd.service
- 4.552s libvirtd.service
- 4.543s rtkit-daemon.service
- 4.452s systemd-machined.service
- 3.797s kylin-activation-onboot.service
- 3.640s systemd-tmpfiles-setup.service
- 3.397s initrd-switch-root.service
- 3.337s pmlogger.service
- 3.186s tuned.service
- 3.109s smartd.service
- 3.090s ModemManager.service
- 2.800s dracut-pre-pivot.service
- 2.538s systemd-udevd.service
- 2.523s lvm2-monitor.service
- 2.138s dnf-makecache.service
- 2.055s dracut-initqueue.service
- 2.017s pmie.service
- 1.927s firewalld.service
- 1.729s lightdm.service
- 1.703s systemtap.service
- 1.678s cups.service
- 1.630s systemd-tmpfiles-setup-dev-early.service
- 1.492s NetworkManager.service
- 1.436s kysec-sync-early.service
- 1.402s chronyd.service
- 1.305s rasdaemon.service
- 1.298s dracut-shutdown.service
- 1.232s hwclock-save.service
- 1.202s gssproxy.service
- 1.184s irqbalance.service
- 1.181s kybima.service
- 1.098s lm_sensors.service
- 1.076s systemd-udev-trigger.service
-  982ms ksaf-label-manager.service
-  922ms systemd-journald.service
-  891ms systemd-modules-load.service
-  689ms systemd-logind.service
-  666ms netcf-transaction.service
-  568ms systemd-vconsole-setup.service
-  502ms sysstat.service
-  475ms rsyslog.service
-  462ms ksc-defender-init.service
-  446ms systemd-random-seed.service
-  444ms user@0.service
-  397ms systemd-sysctl.service
-  320ms dev-mapper-klas\x2dswap.swap
-  319ms dev-hugepages.mount
-  316ms dev-mqueue.mount
-  313ms sys-kernel-debug.mount
-  310ms sys-kernel-tracing.mount
-  295ms plymouth-start.service
-  293ms dracut-cmdline.service
-  287ms kmod-static-nodes.service
-  278ms systemd-remount-fs.service
-  272ms plymouth-read-write.service
-  271ms modprobe@fuse.service
-  217ms systemd-tmpfiles-clean.service
-  207ms sysstat-summary.service
-  203ms kysdk-systime.service
-  169ms systemd-update-utmp.service
-  150ms systemd-journal-flush.service
-  144ms iscsi.service
-  127ms activation.service
-  126ms systemd-network-generator.service
-  118ms var-lib-nfs-rpc_pipefs.mount
-  112ms systemd-fsck@dev-disk-by\x2duuid-655D\x2d6732.service
-  108ms initrd-cleanup.service
-   94ms systemd-hostnamed.service
-   91ms systemd-user-sessions.service
-   84ms dbus-com.kylin.secriskbox.system.service
-   82ms dracut-pre-udev.service
-   66ms initrd-parse-etc.service
-   57ms systemd-tmpfiles-setup-dev.service
-   55ms sys-fs-fuse-connections.mount
-   53ms rpc-statd-notify.service
-   49ms plymouth-switch-root.service
-   45ms tmp.mount
-   41ms systemd-fsck-root.service
-   40ms initrd-udevadm-cleanup-db.service
-   30ms sysstat-rotate.service
-   29ms modprobe@configfs.service
-   29ms pmlogger_farm.service
-   28ms user-runtime-dir@0.service
+ 8.617s plymouth-quit-wait.service
+ 7.658s udisks2.service
+ 6.895s kdump.service
+ 5.995s NetworkManager-wait-online.service
+ 5.757s upower.service
+ 5.587s conf2-update-db.service
+ 5.558s kysdk-conf2.service
+ 5.519s dbus.service
+ 5.095s rtkit-daemon.service
+ 4.784s systemd-machined.service
+ 4.744s pmcd.service
+ 4.664s kylin-activation-onboot.service
+ 4.329s systemd-tmpfiles-setup.service
+ 3.934s libvirtd.service
+ 3.583s initrd-switch-root.service
+ 3.546s smartd.service
+ 2.979s tuned.service
+ 2.933s pmlogger.service
+ 2.892s dracut-pre-pivot.service
+ 2.558s systemd-udevd.service
+ 2.441s ModemManager.service
+ 2.343s lvm2-monitor.service
+ 2.054s dracut-initqueue.service
+ 2.052s pmie.service
+ 1.938s NetworkManager.service
+ 1.898s systemd-tmpfiles-setup-dev-early.service
+ 1.768s chronyd.service
+ 1.757s kysec-sync-early.service
+ 1.611s systemtap.service
+ 1.579s cups.service
+ 1.489s lightdm.service
+ 1.249s rasdaemon.service
+ 1.101s firewalld.service
+ 1.043s lm_sensors.service
+  924ms gssproxy.service
+  886ms dracut-shutdown.service
+  884ms hwclock-save.service
+  841ms systemd-udev-trigger.service
+  835ms irqbalance.service
+  833ms kybima.service
+  766ms rsyslog.service
+  659ms systemd-journald.service
+  641ms ksaf-label-manager.service
+  634ms systemd-modules-load.service
+  556ms user@0.service
+  548ms systemd-vconsole-setup.service
+  498ms systemd-sysctl.service
+  486ms ksc-defender-init.service
+  474ms polkit.service
+  460ms netcf-transaction.service
+  448ms systemd-logind.service
+  421ms systemd-journal-flush.service
+  351ms systemd-update-utmp.service
+  346ms systemd-random-seed.service
+  290ms systemd-tmpfiles-clean.service
+  284ms dev-hugepages.mount
+  279ms dev-mapper-klas\x2dswap.swap
+  277ms dracut-cmdline.service
+  275ms dev-mqueue.mount
+  266ms sys-kernel-debug.mount
+  262ms sysstat.service
+  258ms sys-kernel-tracing.mount
+  241ms systemd-fsck@dev-disk-by\x2duuid-655D\x2d6732.service
+  220ms modprobe@configfs.service
+  218ms kmod-static-nodes.service
+  206ms var-lib-nfs-rpc_pipefs.mount
+  187ms activation.service
+  178ms modprobe@fuse.service
+  153ms systemd-hostnamed.service
+  153ms iscsi.service
+  145ms plymouth-read-write.service
+  129ms rpc-statd-notify.service
+  119ms plymouth-start.service
+  118ms kysdk-systime.service
+  101ms sys-fs-fuse-connections.mount
+   98ms tmp.mount
+   95ms systemd-user-sessions.service
+   83ms dracut-pre-udev.service
+   74ms dbus-com.kylin.secriskbox.system.service
+   74ms pmie_farm.service
+   67ms systemd-network-generator.service
+   56ms systemd-remount-fs.service
+   56ms initrd-parse-etc.service
+   46ms systemd-tmpfiles-setup-dev.service
+   45ms initrd-cleanup.service
+   39ms systemd-fsck-root.service
+   36ms initrd-udevadm-cleanup-db.service
+   34ms plymouth-switch-root.service
    27ms systemd-update-utmp-runlevel.service
-   26ms dracut-pre-mount.service
+   25ms user-runtime-dir@0.service
+   25ms dracut-pre-mount.service
+   20ms sshd.service
    19ms modprobe@drm.service
-   19ms sshd.service
-   16ms sysstat-collect.service
-   16ms NetworkManager-dispatcher.service
-   15ms pmie_farm.service
-    7ms pmlogger_daily.service
-    3ms pmie_daily.service
+   17ms sysstat-collect.service
+   15ms NetworkManager-dispatcher.service
+    5ms pmlogger_farm.service
+    3ms pmie_check.service
     3ms pmlogger_check.service
-    2ms pmie_check.service
     2ms pmie_farm_check.service
     1ms pmlogger_farm_check.service
 InterfaceType      BMC_IP            BMC_MAC
@@ -418,15 +413,84 @@ BIOS.ver : KL42A._RS_.T2DMFT.049R.251225
 Bios-ReleaseTime: 12/25/2025 16:15:55
 Bios-Revisione: 4.0
 BP_fw    :BP1 Version: REV 1.04(04-02-2024)
-< sost_20260202-112547_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
-[31m< sost_20260202-112550_error    > : os_popen command : lspci -vvvs 0002:00:00.0 2>/dev/null| grep -i node | cut -d ':' -f 2 error![0m
-< sost_20260202-112550_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20260202-112550_print    > : ===============================================================
-< sost_20260202-112550_print    > : Test type        : Bmc_Remote_Cycle
-< sost_20260202-112551_print    > : Test Count       : 0
-< sost_20260202-112551_print    > : Test Folder      : /root/Bmc_Remote_Cycle
-< sost_20260202-112551_print    > : Test Status      : NA
-< sost_20260202-112551_print    > : Test Start Time  : 2026-02-02-11-25-32
-< sost_20260202-112551_print    > : Test End   Time  : 2026-02-02-11-25-50
-< sost_20260202-112551_print    > : ===============================================================
-[31m< sost_20260202-112552_error    > : User.Exit.Test![0m
+< sost_20260202-141202_print    > : Collect To testconfig.log               [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141214_print    > : OS IP Info                              [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141215_print    > : OS Memory                               [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141217_print    > : OS Pcie                                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141218_print    > : OS DMI Slot Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141218_print    > : OS PSU Dmi Info                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141218_print    > : OS CPU Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141219_print    > : OS HDD Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141220_print    > : OS net info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141220_print    > : OS USB Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141220_print    > : OS dmesg Info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141220_print    > : OS Storcli64 Not Found!                 [33m[Warn][0m   [33m[Warn][0m
+< sost_20260202-141222_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141223_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141223_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141227_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141228_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141231_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141236_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141240_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141242_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141242_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141242_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141243_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141243_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260202-141243_print    > : ════════════════════════════════════════
+|               End Test               |
+════════════════════════════════════════
+< sost_20260202-141243_print    > : Test_Type         : Bmc_Remote_Reset
+< sost_20260202-141243_print    > : Test_Count        : 0
+< sost_20260202-141243_print    > : Test_Status       : Pass
+< sost_20260202-141243_print    > : Waiting for restart........
+< sost_20260202-141244_print    > : The self startup file is normal!
+< sost > Please Wait Times `Ctrl + c` exit() : 09s
+< sost > Please Wait Times `Ctrl + c` exit() : 08s
+< sost > Please Wait Times `Ctrl + c` exit() : 07s
+< sost > Please Wait Times `Ctrl + c` exit() : 06s
+< sost > Please Wait Times `Ctrl + c` exit() : 05s
+< sost > Please Wait Times `Ctrl + c` exit() : 04s
+< sost > Please Wait Times `Ctrl + c` exit() : 03s
+< sost > Please Wait Times `Ctrl + c` exit() : 02s
+< sost > Please Wait Times `Ctrl + c` exit() : 01s
+< sost > Please Wait Times `Ctrl + c` exit() : 00s
+< sost_20260202-141703_print    > : swc_web is Running! Running-Time -> 20260202 14:17:03 (swc_web.py)
+< sost_20260202-141703_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
+< sost_20260202-141746_print    > : 
+════════════════════════════════════════
+||      ████████               ██     ||
+||     ░██░░░░░               ░██     ||
+||     ░██        ███████      ██     ||
+||     ░███████ ░░██░░░██  ██████     ||
+||     ░██░░░░   ░██  ░██ ██░░░██     ||
+||     ░██       ░██  ░██░██  ░██     ||
+||     ░████████ ███  ░██░░██████     ||
+||     ░░░░░░░░ ░░░   ░░  ░░░░░░      ||
+════════════════════════════════════════   
+|| The maximum number of tests set by ||
+||    he user has been reached! exit! ||
+════════════════════════════════════════
+Max_Count : 1   
+Now_Count : 0   
+< sost_20260202-141747_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20260202-141747_print    > : [32m
+    ════════════════════════════════════════════════════════
+    ||         ███████                                    ||
+    ||        ░██░░░░██                                   || 
+    ||        ░██   ░██  ██████    ██████  ██████         ||
+    ||        ░███████  ░░░░░░██  ██░░░░  ██░░░░          ||
+    ||        ░██░░░░    ███████ ░░█████ ░░█████          ||
+    ||        ░██       ██░░░░██  ░░░░░██ ░░░░░██         ||
+    ||        ░██      ░░████████ ██████  ██████          ||
+    ||        ░░        ░░░░░░░░ ░░░░░░  ░░░░░░           ||
+    ════════════════════════════════════════════════════════[0m
+< sost_20260202-141747_print    > : ===============================================================
+< sost_20260202-141747_print    > : Test type        : Bmc_Remote_Reset
+< sost_20260202-141747_print    > : Test Count       : 0
+< sost_20260202-141748_print    > : Test Folder      : /root/Bmc_Remote_Reset
+< sost_20260202-141748_print    > : Test Status      : Pass
+< sost_20260202-141748_print    > : Test Start Time  : 2026-02-02-14-11-47
+< sost_20260202-141748_print    > : Test End   Time  : 2026-02-02-14-17-46
+< sost_20260202-141748_print    > : ===============================================================

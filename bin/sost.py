@@ -61,6 +61,8 @@ def debug_info():
                     print('sost debug 0x01 -> debug flags = 1')
                     print('sost debug 0x02 -> debug flags = 2')
                     print('sost debug 0x03 -> debug flags = 3')
+                    print('sost debug 0x04 -> restore env')
+                    print('sost debug 0x05 -> restore sost.json Test_tmp ')
                     print('-' * 40)
 
                 elif sys.argv[2] == "0x00":
@@ -79,11 +81,28 @@ def debug_info():
                     print("<sost> Debug flags setting : 3")
                     json_set("debug", "debug_flags", "3")
                     exit()
+                elif sys.argv[2] == "0x04":
+                    os.system("cd /opt/sost && python3 -c 'from lib.sost_public_lib import defalt_path;defalt_path(show_flags=False)'")
+                elif sys.argv[2] == "0x05":
+                    json_set("Test_tmp","test_type","")
+                    json_set("Test_tmp","test_count","")
+                    json_set("Test_tmp","test_status","")
+                    json_set("Test_tmp","test_bmc_lan","")
+                    json_set("Test_tmp","test_folder_path","")
+                    json_set("Test_tmp","test_sha256","")
+                    json_set("Test_tmp","test_bmc_ver","")
+                    json_set("Test_tmp","test_bios_ver","")
+                    json_set("Test_tmp","run_command","")
+                    json_set("Test_tmp","startT_time","")
+                    json_set("Test_tmp","endT_time","")
+                    json_set("Test_tmp","Running_flag","")
+                    json_set("Test_tmp","running_time_last","")
+                    json_set("Test_tmp","running_time_now","")
+                    json_set("Test_tmp","running_time_first","")
                 else:
                     return 0
             except:
                 return 0
-
         if sys.argv[1] == "update":
             try:
                 print("<sost> Update sost tool !")
