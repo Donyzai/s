@@ -129,7 +129,7 @@ def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
     log.os_run('rm -rf /usr/bin/power_on_off')
     log.os_run('rm -rf /usr/local/bin/power_on_off')
     log.os_run('touch /usr/local/bin/power_on_off && chmod 777 /usr/local/bin/power_on_off')
-    log.os_run(f"echo 'curl -G http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[0]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}' > /usr/local/bin/power_on_off")
+    log.os_run(f'''echo "curl 'http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[0]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}'" > /usr/local/bin/power_on_off''')
     log.os_run("echo 'ipmitool power off' >> /usr/local/bin/power_on_off")
     if log.os_popen("whereis power_on_off | cut -d ':' -f 2 | tr -d ' '").strip() == '':
         log._error("Please Check /usr/local/bin/power_on_off file!")

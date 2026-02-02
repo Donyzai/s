@@ -203,8 +203,10 @@ else:
         test_type = "Bmc_Remote_Reset"
         check_bmc_status()
         bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
-        if bmc_information[0] == log.json_get("swc","swc_server_ip",filename="swc"):
-            run_command = f"curl http://{bmc_information[0]}:{swc_server_port}/remote_powerreset?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}"
+        swc_server_ip = log.json_get("swc","swc_server_ip",filename="swc")
+        swc_server_port = log.json_get("swc","swc_server_port",filename="swc")
+        if bmc_information[0] == swc_server_ip:
+            run_command = f"curl 'http://{bmc_information[0]}:{swc_server_port}/remote_powerreset?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}'"
         else:
             run_command = f"ipmitool -C 17 -I lanplus -H {bmc_information[0]} -U {bmc_information[1]} -P '{bmc_information[2]}' power reset"
     elif chose == "14":
@@ -213,8 +215,8 @@ else:
         bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
         swc_server_ip = log.json_get("swc","swc_server_ip",filename="swc")
         swc_server_port = log.json_get("swc","swc_server_port",filename="swc")
-        if bmc_information[0] == log.json_get("swc","swc_server_ip",filename="swc"):
-            run_command = f"curl http://{bmc_information[0]}:{swc_server_port}/remote_powercycle?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}"
+        if bmc_information[0] == swc_server_ip:
+            run_command = f"curl 'http://{bmc_information[0]}:{swc_server_port}/remote_powercycle?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}'"
         else:
             run_command = f"ipmitool -C 17 -I lanplus -H {bmc_information[0]} -U {bmc_information[1]} -P '{bmc_information[2]}' power cycle"
     
