@@ -1,55 +1,2553 @@
-< sost_20260126-152718_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
+< sost_20260202-112519_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20260202-112519_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260202-112519_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260202-112519_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:06:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 58 00 00 00 59 01 50 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20260202-112519_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20260202-112519_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20260202-112519_popen_com> : whereis nvme | awk '{print $2}' -> Result
+/usr/sbin/nvme
+
+< sost_20260202-112519_popen_com> : whereis ipmitool | awk '{print $2}' -> Result
+/usr/bin/ipmitool
+
+< sost_20260202-112519_popen_com> : whereis numactl | awk '{print $2}' -> Result
+/usr/bin/numactl
+
+< sost_20260202-112522_popen_com> : ipmitool mc info 2>/dev/null| grep -i Product | wc -l -> Result
+2
+
+< sost_20260202-112522_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{print $4}' 2>/dev/null -> Result
+192.168.60.148
+
+< sost_20260202-112523_popen_com> : ipmitool lan print 8 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{print $4}' -> Result
+192.168.60.69
+
+< sost_20260202-112523_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'subnet mask' | awk '{print $4}'  -> Result
+255.255.254.0
+
+< sost_20260202-112523_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'Default Gateway IP' | awk '{print $5}'  -> Result
+192.168.60.254
+
+< sost_20260202-112523_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'MAC Address' | awk '{print $4}'  -> Result
+18:9b:a5:82:dd:42
+
+< sost_20260202-112524_popen_com> : ipmitool lan print 8 2>/dev/null | grep -vi source | grep -i 'subnet mask' | awk '{print $4}'  -> Result
+255.255.254.0
+
+< sost_20260202-112524_popen_com> : ipmitool lan print 8 2>/dev/null  | grep -vi source | grep -i 'Default Gateway IP' | awk '{print $5}'  -> Result
+192.168.60.254
+
+< sost_20260202-112524_popen_com> : ipmitool lan print 8 2>/dev/null  | grep -vi source | grep -i 'MAC Address' | awk '{print $4}'  -> Result
+18:9b:a5:82:dd:43
+
+< sost_20260202-112524_popen_com> : ping -c 1 192.168.60.148 2>/dev/null -> Result
+PING 192.168.60.148 (192.168.60.148) 56(84) bytes of data.
+64 bytes from 192.168.60.148: icmp_seq=1 ttl=64 time=0.281 ms
+
+--- 192.168.60.148 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.281/0.281/0.281/0.000 ms
+
+< sost_20260202-112527_popen_com> : ping -c 1 192.168.60.69 2>/dev/null -> Result
+PING 192.168.60.69 (192.168.60.69) 56(84) bytes of data.
+From 192.168.60.67 icmp_seq=1 Destination Host Unreachable
+
+--- 192.168.60.69 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+
+< sost_20260202-112527_popen_com> : ping -c 1 192.168.60.138 2>/dev/null -> Result
+PING 192.168.60.138 (192.168.60.138) 56(84) bytes of data.
+64 bytes from 192.168.60.138: icmp_seq=1 ttl=64 time=0.176 ms
+
+--- 192.168.60.138 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.176/0.176/0.176/0.000 ms
+
+< sost_20260202-112531_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20260202-112531_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260202-112531_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260202-112531_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:06:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 58 00 00 00 59 01 50 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20260202-112531_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20260202-112531_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20260202-112533_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20260202-112533_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260202-112533_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260202-112533_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:06:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 58 00 00 00 59 01 50 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20260202-112533_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20260202-112533_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
+
+< sost_20260202-112533_popen_com> : ipmitool sel clear -> Result
+Clearing SEL.  Please allow a few seconds to erase.
+
+< sost_20260202-112535_popen_com> : cat /root/.bash_profile | grep -i sost -> Result
+
+< sost_20260202-112535_popen_com> : cat /etc/os-release |grep 'PRETTY_NAME' -> Result
 PRETTY_NAME="Kylin Linux Advanced Server V11 (Swan25)"
 
-< sost_20260126-152718_popen_com> : cat /etc/lightdm/lightdm.conf | tail -n 4 -> Result
+< sost_20260202-112535_popen_com> : cat /etc/lightdm/lightdm.conf | tail -n 4 -> Result
 [Seat:*]
 autologin-guest=false
 autologin-user=root
 autologin-user-timeout=0
 
-< sost_20260126-152719_popen_com> : cat /etc/passwd | grep -i 'root::0:0' | wc -l -> Result
+< sost_20260202-112535_popen_com> : cat /etc/passwd | grep -i 'root::0:0' | wc -l -> Result
 0
 
-< sost_20260126-152719_popen_com> : systemctl get-default -> Result
+< sost_20260202-112535_popen_com> : systemctl get-default -> Result
 graphical.target
 
-< sost_20260126-152719_popen_com> : uname -r | grep -i ky11 | wc -l -> Result
+< sost_20260202-112535_popen_com> : uname -r | grep -i ky11 | wc -l -> Result
 1
 
-< sost_20260126-152719_popen_com> : cat /etc/ssh/sshd_config | grep -i '#PermitEmptyPasswords' -> Result
+< sost_20260202-112535_popen_com> : cat /etc/ssh/sshd_config | grep -i '#PermitEmptyPasswords' -> Result
 #PermitEmptyPasswords no
 
-< sost_20260126-152720_popen_com> : cat /root/reboot/debug/end_time.txt -> Result
-1769412439
-< sost_20260126-152720_popen_com> : cat /root/reboot/debug/start_time.txt -> Result
-1769411269
-< sost_20260126-152721_popen_com> : cat /etc/os-release | grep -i ubuntu | wc -l -> Result
+< sost_20260202-112536_popen_com> :  echo "$(ipmitool mc info 2>/dev/null | grep 'Firmware Revision' | awk '{ print $4 }').$(ipmitool mc info 2>/dev/null | grep -A4 'Aux Firmware Rev Info' | grep -vi 'Firmware' | head -n 4 | awk '{ print $1 }' | sed 's/0x//g' | paste -sd.)"  -> Result
+1.05.00.04.00.00
+
+< sost_20260202-112536_popen_com> : dmidecode -t bios | grep -i version | grep -v '#' | awk '{print $2}' 2>/dev/null -> Result
+KL42A._RS_.T2DMFT.049R.251225
+
+< sost_20260202-112536_popen_com> : ls /sys/class/net/ | grep -vi lo | grep -v vir | grep -v veth | grep -vi docker  -> Result
+enP2s32f0
+enP2s32f1
+enP2s32f2
+enP2s32f3
+enp7s0u3u5c2
+
+< sost_20260202-112536_popen_com> : ifconfig enP2s32f0 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+192.168.60.67
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f0/address 2>/dev/null -> Result
+18:9b:a5:82:55:72
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f0/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f0/speed 2>/dev/null -> Result
+1000
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f0/operstate 2>/dev/null -> Result
+up
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f0/duplex 2>/dev/null -> Result
+full
+
+< sost_20260202-112536_popen_com> : ethtool -i enP2s32f0 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.0
+
+< sost_20260202-112536_popen_com> : lspci -vvvs 0002:01:00.0  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112536_popen_com> : ifconfig enP2s32f1 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+
+< sost_20260202-112536_popen_com> : ifconfig enP2s32f1 2>/dev/null | grep -i 'inet ' | awk '{print $2}'  -> Result
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f1/address 2>/dev/null -> Result
+18:9b:a5:82:55:73
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f1/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f1/speed 2>/dev/null -> Result
+-1
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f1/operstate 2>/dev/null -> Result
+down
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f1/duplex 2>/dev/null -> Result
+unknown
+
+< sost_20260202-112536_popen_com> : ethtool -i enP2s32f1 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.1
+
+< sost_20260202-112536_popen_com> : lspci -vvvs 0002:01:00.1  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112536_popen_com> : ifconfig enP2s32f2 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+
+< sost_20260202-112536_popen_com> : ifconfig enP2s32f2 2>/dev/null | grep -i 'inet ' | awk '{print $2}'  -> Result
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f2/address 2>/dev/null -> Result
+18:9b:a5:82:55:74
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f2/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f2/speed 2>/dev/null -> Result
+-1
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f2/operstate 2>/dev/null -> Result
+down
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f2/duplex 2>/dev/null -> Result
+unknown
+
+< sost_20260202-112536_popen_com> : ethtool -i enP2s32f2 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.2
+
+< sost_20260202-112536_popen_com> : lspci -vvvs 0002:01:00.2  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112536_popen_com> : ifconfig enP2s32f3 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+
+< sost_20260202-112536_popen_com> : ifconfig enP2s32f3 2>/dev/null | grep -i 'inet ' | awk '{print $2}'  -> Result
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f3/address 2>/dev/null -> Result
+18:9b:a5:82:55:75
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f3/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f3/speed 2>/dev/null -> Result
+-1
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f3/operstate 2>/dev/null -> Result
+down
+
+< sost_20260202-112536_popen_com> : cat /sys/class/net/enP2s32f3/duplex 2>/dev/null -> Result
+unknown
+
+< sost_20260202-112536_popen_com> : ethtool -i enP2s32f3 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.3
+
+< sost_20260202-112536_popen_com> : lspci -vvvs 0002:01:00.3  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112537_popen_com> : lspci 2>/dev/null| grep -ivE 'Bridge|Encryption controller|Non-Essential|iommu|System peripheral' |awk '{print $1}' -> Result
+0000:06:00.0
+0000:07:00.0
+0000:08:00.0
+0000:09:00.0
+0002:01:00.0
+0002:01:00.1
+0002:01:00.2
+0002:01:00.3
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null -> Result
+0000:06:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52) (prog-if 00 [VGA controller])
+	Subsystem: ASPEED Technology, Inc. ASPEED Graphics Family
+	Control: I/O+ Mem+ BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=medium >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Interrupt: pin A routed to IRQ 232
+	NUMA node: 0
+	Region 0: Memory at 58000000 (32-bit, non-prefetchable) [size=16M]
+	Region 1: Memory at 59000000 (32-bit, non-prefetchable) [size=256K]
+	Region 2: I/O ports at 5000 [size=128]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA PME(D0+,D1+,D2+,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/4 Maskable- 64bit+
+		Address: 0000000000000000  Data: 0000
+	Kernel driver in use: ast
+	Kernel modules: ast
+
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: ASPEED Technology, Inc. ASPEED Graphics Family
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ast
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null -> Result
+0000:07:00.0 USB controller: Renesas Technology Corp. uPD720201 USB 3.0 Host Controller (rev 03) (prog-if 30 [XHCI])
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 64 bytes
+	Interrupt: pin A routed to IRQ 232
+	NUMA node: 0
+	Region 0: Memory at 5a000000 (64-bit, non-prefetchable) [size=8K]
+	Capabilities: [50] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [70] MSI: Enable- Count=1/8 Maskable- 64bit+
+		Address: 0000000000000000  Data: 0000
+	Capabilities: [90] MSI-X: Enable+ Count=8 Masked-
+		Vector table: BAR=0 offset=00001000
+		PBA: BAR=0 offset=00001080
+	Capabilities: [a0] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd- ExtTag- PhantFunc- AuxPwr- NoSnoop+
+			MaxPayload 128 bytes, MaxReadReq 512 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <4us, L1 unlimited
+			ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp-
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x1
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [100 v1] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC- UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap- ECRCGenEn- ECRCChkCap- ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [150 v1] Latency Tolerance Reporting
+		Max snoop latency: 0ns
+		Max no snoop latency: 0ns
+	Kernel driver in use: xhci_hcd
+
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x1
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3 -> Result
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112537_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null -> Result
+0000:08:00.0 SATA controller: Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller (rev 11) (prog-if 01 [AHCI 1.0])
+	Subsystem: Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin A routed to IRQ 241
+	NUMA node: 0
+	Region 0: I/O ports at 6020 [size=8]
+	Region 1: I/O ports at 6030 [size=4]
+	Region 2: I/O ports at 6028 [size=8]
+	Region 3: I/O ports at 6034 [size=4]
+	Region 4: I/O ports at 6000 [size=32]
+	Region 5: Memory at 5a140000 (32-bit, non-prefetchable) [size=2K]
+	Expansion ROM at 5a100000 [disabled] [size=256K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0-,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable+ Count=1/1 Maskable- 64bit-
+		Address: 220b0040  Data: 0000
+	Capabilities: [70] Express (v2) Legacy Endpoint, MSI 00
+		DevCap:	MaxPayload 512 bytes, PhantFunc 0, Latency L0s <1us, L1 <8us
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset-
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop-
+			MaxPayload 256 bytes, MaxReadReq 512 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <512ns, L1 <64us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp-
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x1
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [e0] SATA HBA v0.0 BAR4 Offset=00000004
+	Capabilities: [100 v1] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap- ECRCGenEn- ECRCChkCap- ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Kernel driver in use: ahci
+
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x1
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null -> Result
+0000:09:00.0 USB controller: Renesas Technology Corp. uPD720201 USB 3.0 Host Controller (rev 03) (prog-if 30 [XHCI])
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 64 bytes
+	Interrupt: pin A routed to IRQ 232
+	NUMA node: 0
+	Region 0: Memory at 5a200000 (64-bit, non-prefetchable) [size=8K]
+	Capabilities: [50] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [70] MSI: Enable- Count=1/8 Maskable- 64bit+
+		Address: 0000000000000000  Data: 0000
+	Capabilities: [90] MSI-X: Enable+ Count=8 Masked-
+		Vector table: BAR=0 offset=00001000
+		PBA: BAR=0 offset=00001080
+	Capabilities: [a0] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd- ExtTag- PhantFunc- AuxPwr- NoSnoop+
+			MaxPayload 128 bytes, MaxReadReq 512 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <4us, L1 unlimited
+			ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp-
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x1
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [100 v1] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC- UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap- ECRCGenEn- ECRCChkCap- ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [150 v1] Latency Tolerance Reporting
+		Max snoop latency: 0ns
+		Max no snoop latency: 0ns
+	Kernel driver in use: xhci_hcd
+
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x1
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3 -> Result
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null -> Result
+0002:01:00.0 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin A routed to IRQ 234
+	NUMA node: 2
+	IOMMU group: 0
+	Region 0: Memory at 200058200000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 200058280000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058000000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5-5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 1
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy+ 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 00
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 0000000058284000 (64-bit, non-prefetchable)
+		Region 4: Memory at 00000000582a4000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null -> Result
+0002:01:00.1 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin B routed to IRQ 269
+	NUMA node: 2
+	IOMMU group: 1
+	Region 0: Memory at 200058220000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 2000582c4000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058080000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 2
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy- 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 01
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 00000000582c8000 (64-bit, non-prefetchable)
+		Region 4: Memory at 00000000582e8000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null -> Result
+0002:01:00.2 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin C routed to IRQ 279
+	NUMA node: 2
+	IOMMU group: 2
+	Region 0: Memory at 200058240000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 200058308000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058100000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 3
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy- 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 02
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 000000005830c000 (64-bit, non-prefetchable)
+		Region 4: Memory at 000000005832c000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null -> Result
+0002:01:00.3 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin D routed to IRQ 289
+	NUMA node: 2
+	IOMMU group: 3
+	Region 0: Memory at 200058260000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 20005834c000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058180000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy- 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 03
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 0000000058350000 (64-bit, non-prefetchable)
+		Region 4: Memory at 0000000058370000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112538_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112538_popen_com> : lspci 2>/dev/null| grep -i 'Broadcom / LSI PCIe Switch management endpoint'| grep -vi scsi | wc -l -> Result
 0
 
-< sost_20260126-152721_popen_com> : ps aux | grep -i auto_test | grep -v grep | grep -v sd | wc -l -> Result
-1
+< sost_20260202-112538_popen_com> : lspci 2>/dev/null| grep -i 'PCI bridge: Broadcom' | grep -vi scsi | wc -l -> Result
+0
 
-< sost_20260126-152721_popen_com> : cat /opt/sost/config/sost.json | grep -i 'swc_flags' | cut -d ':' -f 2 -> Result
- "0"
+< sost_20260202-112538_popen_com> : dmidecode -t slot -> Result
+# dmidecode 3.5
+Getting SMBIOS data from sysfs.
+SMBIOS 3.3.0 present.
 
-< sost_20260126-152727_popen_com> : cat /root/reboot/sost_start_time.txt -> Result
-2026-01-26-15-00-17
+Handle 0x005D, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X16 SLOT 2
+	Type: x16 PCI Express 5 x16
+	Current Usage: Available
+	Length: Long
+	ID: 2
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0001:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
 
-< sost_20260126-152727_popen_com> : cat /root/reboot/system_info/fwinfo/fwinfo_0.txt | grep -i bios.ver | cut -d ':' -f 2 && cat /root/reboot/system_info/fwinfo/fwinfo_0.txt  | grep -i Bios-ReleaseTime | cut -d ':' -f 2  -> Result
- KL42A._RS_.T2DMFT.049R.251225
- 12/25/2025 16
+Handle 0x005E, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X16 SLOT 0
+	Type: x16 PCI Express 5 x16
+	Current Usage: In Use
+	Length: Long
+	ID: 0
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0002:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
 
-< sost_20260126-152727_popen_com> : cat /root/reboot/system_info/fwinfo/fwinfo_0.txt  | grep -i bmc.ver | cut -d ':' -f 2 -> Result
- 1.05.00.04.00.00
+Handle 0x005F, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X8 SLOT 6
+	Type: x8 PCI Express 5 x8
+	Current Usage: Available
+	Length: Short
+	ID: 6
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0005:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
 
-< sost_20260126-152728_popen_com> : sost -i hwmac -> Result
+Handle 0x0060, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X8 SLOT 5
+	Type: x8 PCI Express 5 x8
+	Current Usage: Available
+	Length: Short
+	ID: 5
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0005:00:01.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
+
+Handle 0x0061, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X16 SLOT 4
+	Type: x16 PCI Express 5 x16
+	Current Usage: Available
+	Length: Long
+	ID: 4
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0007:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
+
+
+< sost_20260202-112538_popen_com> : dmidecode -t slot | grep -i Handle | cut -d ' ' -f 2 -> Result
+0x005D,
+0x005E,
+0x005F,
+0x0060,
+0x0061,
+
+< sost_20260202-112538_popen_com> : dmidecode -H 0x005D| grep -i Designation | cut -d ':' -f 2 -> Result
+ PCI Express X16 SLOT 2
+
+< sost_20260202-112538_popen_com> : dmidecode -H 0x005D | grep -i type: | cut -d ':' -f 2 -> Result
+ x16 PCI Express 5 x16
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005D | grep -i 'Current Usage' | cut -d ':' -f 2 -> Result
+ Available
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005D | grep -i 'Bus Address: ' -> Result
+	Bus Address: 0001:00:00.0
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005D | grep -i 'Length: ' -> Result
+	Length: Long
+
+< sost_20260202-112539_popen_com> : lspci -vvvs 0001:00:00.0 2>/dev/null| grep -i node | cut -d ':' -f 2 -> Result
+ 1
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005E| grep -i Designation | cut -d ':' -f 2 -> Result
+ PCI Express X16 SLOT 0
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005E | grep -i type: | cut -d ':' -f 2 -> Result
+ x16 PCI Express 5 x16
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005E | grep -i 'Current Usage' | cut -d ':' -f 2 -> Result
+ In Use
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005E | grep -i 'Bus Address: ' -> Result
+	Bus Address: 0002:00:00.0
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005E | grep -i 'Length: ' -> Result
+	Length: Long
+
+< sost_20260202-112539_popen_com> : lspci -vvvs 0002:00:00.0 2>/dev/null| grep -i node | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005F| grep -i Designation | cut -d ':' -f 2 -> Result
+ PCI Express X8 SLOT 6
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005F | grep -i type: | cut -d ':' -f 2 -> Result
+ x8 PCI Express 5 x8
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005F | grep -i 'Current Usage' | cut -d ':' -f 2 -> Result
+ Available
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005F | grep -i 'Bus Address: ' -> Result
+	Bus Address: 0005:00:00.0
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x005F | grep -i 'Length: ' -> Result
+	Length: Short
+
+< sost_20260202-112539_popen_com> : lspci -vvvs 0005:00:00.0 2>/dev/null| grep -i node | cut -d ':' -f 2 -> Result
+ 5
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0060| grep -i Designation | cut -d ':' -f 2 -> Result
+ PCI Express X8 SLOT 5
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0060 | grep -i type: | cut -d ':' -f 2 -> Result
+ x8 PCI Express 5 x8
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0060 | grep -i 'Current Usage' | cut -d ':' -f 2 -> Result
+ Available
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0060 | grep -i 'Bus Address: ' -> Result
+	Bus Address: 0005:00:01.0
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0060 | grep -i 'Length: ' -> Result
+	Length: Short
+
+< sost_20260202-112539_popen_com> : lspci -vvvs 0005:00:01.0 2>/dev/null| grep -i node | cut -d ':' -f 2 -> Result
+ 5
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0061| grep -i Designation | cut -d ':' -f 2 -> Result
+ PCI Express X16 SLOT 4
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0061 | grep -i type: | cut -d ':' -f 2 -> Result
+ x16 PCI Express 5 x16
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0061 | grep -i 'Current Usage' | cut -d ':' -f 2 -> Result
+ Available
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0061 | grep -i 'Bus Address: ' -> Result
+	Bus Address: 0007:00:00.0
+
+< sost_20260202-112539_popen_com> : dmidecode -H 0x0061 | grep -i 'Length: ' -> Result
+	Length: Long
+
+< sost_20260202-112539_popen_com> : lspci -vvvs 0007:00:00.0 2>/dev/null| grep -i node | cut -d ':' -f 2 -> Result
+ 7
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 > /tmp/sost_tmp/sost_tmp -> Result
+
+< sost_20260202-112539_popen_com> : cat /tmp/sost_tmp/sost_tmp -> Result
+# dmidecode 3.5
+Getting SMBIOS data from sysfs.
+SMBIOS 3.3.0 present.
+
+Handle 0x005B, DMI type 39, 22 bytes
+System Power Supply
+	Power Unit Group: 1
+	Location: PSU0
+	Name: CRPS1300D
+	Manufacturer: Acbel
+	Serial Number: PSU24010004917EAGGFSM032
+	Asset Tag: Not Specified
+	Model Part Number: N/A
+	Revision: A01
+	Max Power Capacity: 1300 W
+	Status: Present, OK
+	Type: Switching
+	Input Voltage Range Switching: Auto-switch
+	Plugged: Yes
+	Hot Replaceable: Yes
+	Input Voltage Probe Handle: 0x0000
+	Cooling Device Handle: 0x0000
+	Input Current Probe Handle: 0x0000
+
+Handle 0x005C, DMI type 39, 22 bytes
+System Power Supply
+	Power Unit Group: 1
+	Location: PSU1
+	Name: CRPS1300D
+	Manufacturer: Acbel
+	Serial Number: PSU24010005007EAGGFSM032
+	Asset Tag: Not Specified
+	Model Part Number: N/A
+	Revision: A01
+	Max Power Capacity: 1300 W
+	Status: Present, OK
+	Type: Switching
+	Input Voltage Range Switching: Auto-switch
+	Plugged: Yes
+	Hot Replaceable: Yes
+	Input Voltage Probe Handle: 0x0000
+	Cooling Device Handle: 0x0000
+	Input Current Probe Handle: 0x0000
+
+
+< sost_20260202-112539_popen_com> : cat /tmp/sost_tmp/sost_tmp | grep -i Location: | cut -d ':' -f 2 -> Result
+ PSU0
+ PSU1
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i Name: | cut -d':' -f 2 -> Result
+ CRPS1300D
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i Manufacturer:  | cut -d':' -f 2 -> Result
+ Acbel
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i 'Serial Number:'  | cut -d':' -f 2 -> Result
+ PSU24010004917EAGGFSM032
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i 'Model Part Number:'  | cut -d':' -f 2 -> Result
+ N/A
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i Revision:  | cut -d':' -f 2 -> Result
+ A01
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i 'Max Power Capacity:' | cut -d':' -f 2 -> Result
+ 1300 W
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i Status  | cut -d':' -f 2 | cut -d ' ' -f 3 -> Result
+OK
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i Type: | cut -d':' -f 2 -> Result
+ Switching
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU0 | grep -i 'Hot Replaceable: ' | cut -d':' -f 2 -> Result
+ Yes
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i Name: | cut -d':' -f 2 -> Result
+ CRPS1300D
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i Manufacturer:  | cut -d':' -f 2 -> Result
+ Acbel
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i 'Serial Number:'  | cut -d':' -f 2 -> Result
+ PSU24010005007EAGGFSM032
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i 'Model Part Number:'  | cut -d':' -f 2 -> Result
+ N/A
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i Revision:  | cut -d':' -f 2 -> Result
+ A01
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i 'Max Power Capacity:' | cut -d':' -f 2 -> Result
+ 1300 W
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i Status  | cut -d':' -f 2 | cut -d ' ' -f 3 -> Result
+OK
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i Type: | cut -d':' -f 2 -> Result
+ Switching
+
+< sost_20260202-112539_popen_com> : dmidecode -t 39 | grep -A16 PSU1 | grep -i 'Hot Replaceable: ' | cut -d':' -f 2 -> Result
+ Yes
+
+< sost_20260202-112539_popen_com> : rm -rf /tmp/sost_tmp/sost_tmp -> Result
+
+< sost_20260202-112539_popen_com> : cat /proc/cpuinfo  | grep -i 'model name' | uniq -c -> Result
+    128 model name	: S5000C/64
+
+< sost_20260202-112539_popen_com> : cat /proc/cpuinfo | grep -i vendor_id | uniq -c -> Result
+
+< sost_20260202-112539_popen_com> : ls /sys/block/ | grep -v dm | grep -vi loop | grep -vi md | wc -l  -> Result
+4
+
+< sost_20260202-112539_popen_com> : ls /sys/block/ | grep -v dm | grep -vi loop | grep -vi md | grep -vi md  -> Result
+sda
+sdb
+sdc
+sdd
+
+< sost_20260202-112540_popen_com> : ls /sys/block/ | grep -i nvme -> Result
+
+< sost_20260202-112540_popen_com> : lsblk -o NAME,TYPE,MODEL,SERIAL,REV,SIZE,TRAN | grep -i sd | grep -viE 'nvme|loop|sr'  -> Result
+sda           disk ST16000NM000J-2TW103 ZR70LWLX     SN02 14.6T sata
+├─sda1        part                                         600M 
+├─sda2        part                                           1G 
+└─sda3        part                                        14.6T 
+sdb           disk ST8000NM000A-2KE101  WSD1VSVZ     SN02  7.3T sata
+sdc           disk HGST HUH721212ALE600 5PK0N2BB LEBDT6B0 10.9T sata
+sdd           disk ST8000NM000A-2KE101  WSD1TPL4     SN02  7.3T sata
+
+< sost_20260202-112540_popen_com> : ls /sys/class/net | sort |egrep -v 'lo|br|bond|usb|docker' 2>/dev/null -> Result
+enP2s32f0
+enP2s32f1
+enP2s32f2
+enP2s32f3
+enp7s0u3u5c2
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f0 | grep bus-info | awk -F': ' '{print $2}' -> Result
+0002:01:00.0
+
+< sost_20260202-112540_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null | grep -i lnksta: | cut -d : -f 2 | tr -d ' '  -> Result
+	Speed5GT/s,Widthx4
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f0 | grep ^driver | awk '{print $2}' -> Result
+ngbe
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f0 | grep ^version | awk '{print $2}'|sed 's/ /_/g' -> Result
+1.2.6-kylin
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f0 | grep ^firmware-version | awk -F': ' '{print $2}'| sed 's/ /_/g' -> Result
+0x00010019
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f1 | grep bus-info | awk -F': ' '{print $2}' -> Result
+0002:01:00.1
+
+< sost_20260202-112540_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null | grep -i lnksta: | cut -d : -f 2 | tr -d ' '  -> Result
+	Speed5GT/s,Widthx4
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f1 | grep ^driver | awk '{print $2}' -> Result
+ngbe
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f1 | grep ^version | awk '{print $2}'|sed 's/ /_/g' -> Result
+1.2.6-kylin
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f1 | grep ^firmware-version | awk -F': ' '{print $2}'| sed 's/ /_/g' -> Result
+0x00010019
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f2 | grep bus-info | awk -F': ' '{print $2}' -> Result
+0002:01:00.2
+
+< sost_20260202-112540_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null | grep -i lnksta: | cut -d : -f 2 | tr -d ' '  -> Result
+	Speed5GT/s,Widthx4
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f2 | grep ^driver | awk '{print $2}' -> Result
+ngbe
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f2 | grep ^version | awk '{print $2}'|sed 's/ /_/g' -> Result
+1.2.6-kylin
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f2 | grep ^firmware-version | awk -F': ' '{print $2}'| sed 's/ /_/g' -> Result
+0x00010019
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f3 | grep bus-info | awk -F': ' '{print $2}' -> Result
+0002:01:00.3
+
+< sost_20260202-112540_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null | grep -i lnksta: | cut -d : -f 2 | tr -d ' '  -> Result
+	Speed5GT/s,Widthx4
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f3 | grep ^driver | awk '{print $2}' -> Result
+ngbe
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f3 | grep ^version | awk '{print $2}'|sed 's/ /_/g' -> Result
+1.2.6-kylin
+
+< sost_20260202-112540_popen_com> : ethtool -i enP2s32f3 | grep ^firmware-version | awk -F': ' '{print $2}'| sed 's/ /_/g' -> Result
+0x00010019
+
+< sost_20260202-112540_popen_com> : ethtool -i enp7s0u3u5c2 | grep bus-info | awk -F': ' '{print $2}' -> Result
+usb-0000:07:00.0-3.5
+
+< sost_20260202-112540_popen_com> : lsusb -> Result
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 006: ID 046b:ff01 American Megatrends, Inc. Virtual Hub
+Bus 001 Device 007: ID 046b:ffb0 American Megatrends, Inc. Virtual Ethernet.
+Bus 001 Device 008: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 001 Device 009: ID 046b:ff10 American Megatrends, Inc. Virtual Keyboard and Mouse
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+
+< sost_20260202-112540_popen_com> : lsusb | wc -l -> Result
+8
+
+< sost_20260202-112541_popen_com> : lspci | grep -i sas | grep -v usb -> Result
+0000:07:00.0 USB controller: Renesas Technology Corp. uPD720201 USB 3.0 Host Controller (rev 03)
+0000:09:00.0 USB controller: Renesas Technology Corp. uPD720201 USB 3.0 Host Controller (rev 03)
+
+< sost_20260202-112541_popen_com> : systemd-analyze blame -> Result
+16.980s dev-disk-by\x2ddiskseq-3.device
+16.980s dev-disk-by\x2did-ata\x2dHGST_HUH721212ALE600_5PK0N2BB.device
+16.980s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata3-host2-target2:0:0-2:0:0:0-block-sdc.device
+16.980s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d3.device
+16.980s dev-sdc.device
+16.980s dev-disk-by\x2did-wwn\x2d0x5000cca291ea91e0.device
+16.980s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d3.0.device
+16.481s dev-disk-by\x2dpartuuid-193d7426\x2d70e5\x2d4049\x2d93c8\x2da5d902395252.device
+16.481s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart3.device
+16.481s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart3.device
+16.481s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda3.device
+16.481s dev-sda3.device
+16.481s dev-disk-by\x2ddiskseq-1\x2dpart3.device
+16.481s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart3.device
+16.481s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart3.device
+15.930s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart2.device
+15.930s dev-disk-by\x2ddiskseq-1\x2dpart2.device
+15.930s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart2.device
+15.929s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart2.device
+15.929s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device
+15.929s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart2.device
+15.929s dev-disk-by\x2dpartuuid-0f1612b3\x2d8075\x2d4a8b\x2d80a6\x2d24c3fcb5b182.device
+15.929s dev-sda2.device
+15.929s dev-disk-by\x2duuid-32896280\x2dca31\x2d478c\x2d8b2f\x2d288181675e32.device
+15.910s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device
+15.908s dev-disk-by\x2duuid-655D\x2d6732.device
+15.908s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1\x2dpart1.device
+15.908s dev-sda1.device
+15.908s dev-disk-by\x2ddiskseq-1\x2dpart1.device
+15.907s dev-disk-by\x2dpartlabel-EFI\x5cx20System\x5cx20Partition.device
+15.907s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db\x2dpart1.device
+15.907s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX\x2dpart1.device
+15.906s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0\x2dpart1.device
+15.906s dev-disk-by\x2dpartuuid-1351e390\x2d7e75\x2d43f3\x2dae62\x2dcb40cb54b270.device
+15.679s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d2.0.device
+15.679s dev-disk-by\x2did-ata\x2dST8000NM000A\x2d2KE101_WSD1VSVZ.device
+15.679s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata2-host1-target1:0:0-1:0:0:0-block-sdb.device
+15.678s dev-sdb.device
+15.678s dev-disk-by\x2ddiskseq-2.device
+15.678s dev-disk-by\x2did-wwn\x2d0x5000c500d5ee833c.device
+15.678s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d2.device
+15.669s dev-disk-by\x2did-ata\x2dST8000NM000A\x2d2KE101_WSD1TPL4.device
+15.669s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata4-host3-target3:0:0-3:0:0:0-block-sdd.device
+15.669s dev-disk-by\x2ddiskseq-4.device
+15.669s dev-sdd.device
+15.669s dev-disk-by\x2did-wwn\x2d0x5000c500d5f247da.device
+15.669s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d4.0.device
+15.668s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d4.device
+15.667s dev-disk-by\x2did-wwn\x2d0x5000c500e49793db.device
+15.667s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.0.device
+15.667s dev-disk-by\x2dpath-pci\x2d0000:08:00.0\x2data\x2d1.device
+15.667s dev-disk-by\x2did-ata\x2dST16000NM000J\x2d2TW103_ZR70LWLX.device
+15.667s dev-disk-by\x2ddiskseq-1.device
+15.666s sys-devices-pci0000:00-0000:00:06.0-0000:08:00.0-ata1-host0-target0:0:0-0:0:0:0-block-sda.device
+15.666s dev-sda.device
+15.378s sys-module-configfs.device
+15.077s sys-devices-platform-serial8250-tty-ttyS3.device
+15.077s dev-ttyS3.device
+15.074s dev-ttyS1.device
+15.074s sys-devices-platform-serial8250-tty-ttyS1.device
+15.060s sys-devices-platform-serial8250-tty-ttyS2.device
+15.060s dev-ttyS2.device
+15.053s dev-ttyS0.device
+15.053s sys-devices-platform-serial8250-tty-ttyS0.device
+15.044s dev-ttyAMA0.device
+15.044s sys-devices-platform-ARMH0011:00-tty-ttyAMA0.device
+14.494s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.1-net-enP2s32f1.device
+14.494s sys-subsystem-net-devices-enP2s32f1.device
+14.302s sys-subsystem-net-devices-enP2s32f2.device
+14.302s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.2-net-enP2s32f2.device
+14.280s sys-subsystem-net-devices-enP2s32f0.device
+14.280s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.0-net-enP2s32f0.device
+14.261s sys-devices-pci0002:00-0002:00:00.0-0002:01:00.3-net-enP2s32f3.device
+14.260s sys-subsystem-net-devices-enP2s32f3.device
+ 9.765s plymouth-quit-wait.service
+ 9.490s accounts-daemon.service
+ 7.555s kdump.service
+ 5.994s NetworkManager-wait-online.service
+ 5.569s udisks2.service
+ 5.225s polkit.service
+ 5.041s upower.service
+ 4.855s dbus.service
+ 4.814s conf2-update-db.service
+ 4.808s kysdk-conf2.service
+ 4.754s pmcd.service
+ 4.552s libvirtd.service
+ 4.543s rtkit-daemon.service
+ 4.452s systemd-machined.service
+ 3.797s kylin-activation-onboot.service
+ 3.640s systemd-tmpfiles-setup.service
+ 3.397s initrd-switch-root.service
+ 3.337s pmlogger.service
+ 3.186s tuned.service
+ 3.109s smartd.service
+ 3.090s ModemManager.service
+ 2.800s dracut-pre-pivot.service
+ 2.538s systemd-udevd.service
+ 2.523s lvm2-monitor.service
+ 2.138s dnf-makecache.service
+ 2.055s dracut-initqueue.service
+ 2.017s pmie.service
+ 1.927s firewalld.service
+ 1.729s lightdm.service
+ 1.703s systemtap.service
+ 1.678s cups.service
+ 1.630s systemd-tmpfiles-setup-dev-early.service
+ 1.492s NetworkManager.service
+ 1.436s kysec-sync-early.service
+ 1.402s chronyd.service
+ 1.305s rasdaemon.service
+ 1.298s dracut-shutdown.service
+ 1.232s hwclock-save.service
+ 1.202s gssproxy.service
+ 1.184s irqbalance.service
+ 1.181s kybima.service
+ 1.098s lm_sensors.service
+ 1.076s systemd-udev-trigger.service
+  982ms ksaf-label-manager.service
+  922ms systemd-journald.service
+  891ms systemd-modules-load.service
+  689ms systemd-logind.service
+  666ms netcf-transaction.service
+  568ms systemd-vconsole-setup.service
+  502ms sysstat.service
+  475ms rsyslog.service
+  462ms ksc-defender-init.service
+  446ms systemd-random-seed.service
+  444ms user@0.service
+  397ms systemd-sysctl.service
+  320ms dev-mapper-klas\x2dswap.swap
+  319ms dev-hugepages.mount
+  316ms dev-mqueue.mount
+  313ms sys-kernel-debug.mount
+  310ms sys-kernel-tracing.mount
+  295ms plymouth-start.service
+  293ms dracut-cmdline.service
+  287ms kmod-static-nodes.service
+  278ms systemd-remount-fs.service
+  272ms plymouth-read-write.service
+  271ms modprobe@fuse.service
+  217ms systemd-tmpfiles-clean.service
+  207ms sysstat-summary.service
+  203ms kysdk-systime.service
+  169ms systemd-update-utmp.service
+  150ms systemd-journal-flush.service
+  144ms iscsi.service
+  127ms activation.service
+  126ms systemd-network-generator.service
+  118ms var-lib-nfs-rpc_pipefs.mount
+  112ms systemd-fsck@dev-disk-by\x2duuid-655D\x2d6732.service
+  108ms initrd-cleanup.service
+   94ms systemd-hostnamed.service
+   91ms systemd-user-sessions.service
+   84ms dbus-com.kylin.secriskbox.system.service
+   82ms dracut-pre-udev.service
+   66ms initrd-parse-etc.service
+   57ms systemd-tmpfiles-setup-dev.service
+   55ms sys-fs-fuse-connections.mount
+   53ms rpc-statd-notify.service
+   49ms plymouth-switch-root.service
+   45ms tmp.mount
+   41ms systemd-fsck-root.service
+   40ms initrd-udevadm-cleanup-db.service
+   30ms sysstat-rotate.service
+   29ms modprobe@configfs.service
+   29ms pmlogger_farm.service
+   28ms user-runtime-dir@0.service
+   27ms systemd-update-utmp-runlevel.service
+   26ms dracut-pre-mount.service
+   19ms modprobe@drm.service
+   19ms sshd.service
+   16ms sysstat-collect.service
+   16ms NetworkManager-dispatcher.service
+   15ms pmie_farm.service
+    7ms pmlogger_daily.service
+    3ms pmie_daily.service
+    3ms pmlogger_check.service
+    2ms pmie_check.service
+    2ms pmie_farm_check.service
+    1ms pmlogger_farm_check.service
+
+< sost_20260202-112542_popen_com> : ipmitool lan print 1 2>/dev/null -> Result
+Set in Progress         : Set Complete
+Auth Type Support       : 
+Auth Type Enable        : Callback : 
+                        : User     : 
+                        : Operator : 
+                        : Admin    : 
+                        : OEM      : 
+IP Address Source       : DHCP Address
+IP Address              : 192.168.60.148
+Subnet Mask             : 255.255.254.0
+MAC Address             : 18:9b:a5:82:dd:42
+SNMP Community String   : AMI
+IP Header               : TTL=0x40 Flags=0x40 Precedence=0x00 TOS=0x10
+BMC ARP Control         : ARP Responses Enabled, Gratuitous ARP Disabled
+Gratituous ARP Intrvl   : 1.0 seconds
+Default Gateway IP      : 192.168.60.254
+Default Gateway MAC     : b8:45:f4:ba:74:2e
+Backup Gateway IP       : 0.0.0.0
+Backup Gateway MAC      : 00:00:00:00:00:00
+802.1q VLAN ID          : Disabled
+802.1q VLAN Priority    : 0
+RMCP+ Cipher Suites     : 3,17
+Cipher Suite Priv Max   : XXXaXXXXXXXaXXX
+                        :     X=Cipher Suite Unused
+                        :     c=CALLBACK
+                        :     u=USER
+                        :     o=OPERATOR
+                        :     a=ADMIN
+                        :     O=OEM
+Bad Password Threshold  : 0
+Invalid password disable: no
+Attempt Count Reset Int.: 0
+User Lockout Interval   : 0
+
+< sost_20260202-112542_popen_com> : ipmitool lan print 8 2>/dev/null -> Result
+Set in Progress         : Set Complete
+Auth Type Support       : 
+Auth Type Enable        : Callback : 
+                        : User     : 
+                        : Operator : 
+                        : Admin    : 
+                        : OEM      : 
+IP Address Source       : DHCP Address
+IP Address              : 192.168.60.69
+Subnet Mask             : 255.255.254.0
+MAC Address             : 18:9b:a5:82:dd:43
+SNMP Community String   : AMI
+IP Header               : TTL=0x40 Flags=0x40 Precedence=0x00 TOS=0x10
+BMC ARP Control         : ARP Responses Enabled, Gratuitous ARP Disabled
+Gratituous ARP Intrvl   : 1.0 seconds
+Default Gateway IP      : 192.168.60.254
+Default Gateway MAC     : b8:45:f4:ba:74:2e
+Backup Gateway IP       : 0.0.0.0
+Backup Gateway MAC      : 00:00:00:00:00:00
+802.1q VLAN ID          : Disabled
+802.1q VLAN Priority    : 0
+RMCP+ Cipher Suites     : 3,17
+Cipher Suite Priv Max   : XXXaXXXXXXXaXXX
+                        :     X=Cipher Suite Unused
+                        :     c=CALLBACK
+                        :     u=USER
+                        :     o=OPERATOR
+                        :     a=ADMIN
+                        :     O=OEM
+Bad Password Threshold  : 0
+Invalid password disable: no
+Attempt Count Reset Int.: 0
+User Lockout Interval   : 0
+
+< sost_20260202-112542_popen_com> :  ipmitool lan print 1 2>/dev/null | grep 'IP Address' | grep -vi source | awk '{print $4}'  -> Result
+192.168.60.148
+
+< sost_20260202-112542_popen_com> : ipmitool lan print 1 2>/dev/null | grep -i 'mac address' | awk '{print $4}'  -> Result
 18:9b:a5:82:dd:42
 
-< sost_20260126-152728_popen_com> :  curl -X POST -H 'Content-Type: application/json' -d '{"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-27-26"}' http://192.168.60.138:13251/api/upload_test_info  -> Result
+< sost_20260202-112542_popen_com> : ipmitool lan print 1 2>/dev/null | grep -i 'ip address source' | awk '{print $5}'  -> Result
+DHCP
+
+< sost_20260202-112543_popen_com> :  ipmitool lan print 8 2>/dev/null | grep 'IP Address' | grep -vi source | awk '{print $4}'  -> Result
+192.168.60.69
+
+< sost_20260202-112543_popen_com> : ipmitool lan print 8 2>/dev/null | grep -i 'mac address' | awk '{print $4}'  -> Result
+18:9b:a5:82:dd:43
+
+< sost_20260202-112543_popen_com> : ipmitool lan print 8 2>/dev/null | grep -i 'ip address source' | awk '{print $5}'  -> Result
+DHCP
+
+< sost_20260202-112543_popen_com> : ipmitool mc guid | grep 'System GUID' | head -n 1 -> Result
+System GUID  : cedb0786-3363-01e8-e111-0b342a4cb3b3
+
+< sost_20260202-112543_popen_com> : ipmitool mc selftest -> Result
+Selftest: passed
+
+< sost_20260202-112545_popen_com> : cat /tmp/sost_tmp/sost_tmp 2>/dev/null| grep 'FRU Device Description :' | grep BP | wc -l -> Result
+6
+
+< sost_20260202-112545_popen_com> : cat /tmp/sost_tmp/sost_tmp | grep 'FRU Device Description :' | grep BP | cut -d ':' -f 2 | cut -d ' ' -f 2 | wc -l  -> Result
+6
+
+< sost_20260202-112545_popen_com> : ipmitool chassis status | grep -vi 'last power event'  -> Result
+System Power         : on
+Power Overload       : false
+Power Interlock      : inactive
+Main Power Fault     : false
+Power Control Fault  : false
+Power Restore Policy : previous
+Chassis Intrusion    : inactive
+Front-Panel Lockout  : inactive
+Drive Fault          : false
+Cooling/Fan Fault    : false
+Sleep Button Disable : allowed
+Diag Button Disable  : allowed
+Reset Button Disable : allowed
+Power Button Disable : allowed
+Sleep Button Disabled: false
+Diag Button Disabled : false
+Reset Button Disabled: false
+Power Button Disabled: false
+
+< sost_20260202-112545_popen_com> : ipmitool mc info -> Result
+Device ID                 : 32
+Device Revision           : 1
+Firmware Revision         : 1.05
+IPMI Version              : 2.0
+Manufacturer ID           : 0
+Manufacturer Name         : Unknown
+Product ID                : 514 (0x0202)
+Product Name              : Unknown (0x202)
+Device Available          : yes
+Provides Device SDRs      : yes
+Additional Device Support :
+    Sensor Device
+    SDR Repository Device
+    SEL Device
+    FRU Inventory Device
+    IPMB Event Receiver
+    IPMB Event Generator
+    Chassis Device
+Aux Firmware Rev Info     : 
+    0x00
+    0x04
+    0x00
+    0x00
+
+< sost_20260202-112546_popen_com> : ipmitool mc info 2>/dev/null | grep -i 'device id' | awk '{{print $4}}' -> Result
+32
+
+< sost_20260202-112546_popen_com> : ipmitool raw 0x0e 0x6f 2>/dev/null -> Result
+ 52 45 56 20 30 2e 30 36 28 30 37 2d 30 33 2d 32
+ 30 32 34 29 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 52 45 56 20 31 2e
+ 30 34 28 30 34 2d 30 32 2d 32 30 32 34 29 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+< sost_20260202-112546_popen_com> :  echo "$(ipmitool mc info 2>/dev/null | grep 'Firmware Revision' | awk '{ print $4 }').$(ipmitool mc info 2>/dev/null | grep -A4 'Aux Firmware Rev Info' | grep -vi 'Firmware' | head -n 4 | awk '{ print $1 }' | sed 's/0x//g' | paste -sd.)"  -> Result
+1.05.00.04.00.00
+
+< sost_20260202-112546_popen_com> : dmidecode -s bios-version 2>/dev/null -> Result
+KL42A._RS_.T2DMFT.049R.251225
+
+< sost_20260202-112546_popen_com> : dmidecode -s bios-release-date 2>/dev/null -> Result
+12/25/2025 16:15:55
+
+< sost_20260202-112546_popen_com> : dmidecode -s bios-revision 2>/dev/null -> Result
+4.0
+
+< sost_20260202-112547_popen_com> : ls /sys/class/net/ | grep -vi lo | grep -v vir | grep -v veth | grep -vi docker  -> Result
+enP2s32f0
+enP2s32f1
+enP2s32f2
+enP2s32f3
+enp7s0u3u5c2
+
+< sost_20260202-112547_popen_com> : ifconfig enP2s32f0 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+192.168.60.67
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f0/address 2>/dev/null -> Result
+18:9b:a5:82:55:72
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f0/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f0/speed 2>/dev/null -> Result
+1000
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f0/operstate 2>/dev/null -> Result
+up
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f0/duplex 2>/dev/null -> Result
+full
+
+< sost_20260202-112547_popen_com> : ethtool -i enP2s32f0 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.0
+
+< sost_20260202-112547_popen_com> : lspci -vvvs 0002:01:00.0  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112547_popen_com> : ifconfig enP2s32f1 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+
+< sost_20260202-112547_popen_com> : ifconfig enP2s32f1 2>/dev/null | grep -i 'inet ' | awk '{print $2}'  -> Result
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f1/address 2>/dev/null -> Result
+18:9b:a5:82:55:73
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f1/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f1/speed 2>/dev/null -> Result
+-1
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f1/operstate 2>/dev/null -> Result
+down
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f1/duplex 2>/dev/null -> Result
+unknown
+
+< sost_20260202-112547_popen_com> : ethtool -i enP2s32f1 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.1
+
+< sost_20260202-112547_popen_com> : lspci -vvvs 0002:01:00.1  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112547_popen_com> : ifconfig enP2s32f2 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+
+< sost_20260202-112547_popen_com> : ifconfig enP2s32f2 2>/dev/null | grep -i 'inet ' | awk '{print $2}'  -> Result
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f2/address 2>/dev/null -> Result
+18:9b:a5:82:55:74
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f2/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f2/speed 2>/dev/null -> Result
+-1
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f2/operstate 2>/dev/null -> Result
+down
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f2/duplex 2>/dev/null -> Result
+unknown
+
+< sost_20260202-112547_popen_com> : ethtool -i enP2s32f2 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.2
+
+< sost_20260202-112547_popen_com> : lspci -vvvs 0002:01:00.2  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112547_popen_com> : ifconfig enP2s32f3 2>/dev/null | grep -i 'inet ' | cut -d ' ' -f 10 -> Result
+
+< sost_20260202-112547_popen_com> : ifconfig enP2s32f3 2>/dev/null | grep -i 'inet ' | awk '{print $2}'  -> Result
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f3/address 2>/dev/null -> Result
+18:9b:a5:82:55:75
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f3/mtu 2>/dev/null -> Result
+1500
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f3/speed 2>/dev/null -> Result
+-1
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f3/operstate 2>/dev/null -> Result
+down
+
+< sost_20260202-112547_popen_com> : cat /sys/class/net/enP2s32f3/duplex 2>/dev/null -> Result
+unknown
+
+< sost_20260202-112547_popen_com> : ethtool -i enP2s32f3 2>/dev/null| grep bus-info | awk -F': ' '{print $2}'  -> Result
+0002:01:00.3
+
+< sost_20260202-112547_popen_com> : lspci -vvvs 0002:01:00.3  2>/dev/null |grep -i node | cut -d ':' -f 2 | tr -d ' ' -> Result
+2
+
+< sost_20260202-112548_popen_com> : lspci 2>/dev/null| grep -ivE 'Bridge|Encryption controller|Non-Essential|iommu|System peripheral' |awk '{print $1}' -> Result
+0000:06:00.0
+0000:07:00.0
+0000:08:00.0
+0000:09:00.0
+0002:01:00.0
+0002:01:00.1
+0002:01:00.2
+0002:01:00.3
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null -> Result
+0000:06:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52) (prog-if 00 [VGA controller])
+	Subsystem: ASPEED Technology, Inc. ASPEED Graphics Family
+	Control: I/O+ Mem+ BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=medium >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Interrupt: pin A routed to IRQ 232
+	NUMA node: 0
+	Region 0: Memory at 58000000 (32-bit, non-prefetchable) [size=16M]
+	Region 1: Memory at 59000000 (32-bit, non-prefetchable) [size=256K]
+	Region 2: I/O ports at 5000 [size=128]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA PME(D0+,D1+,D2+,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/4 Maskable- 64bit+
+		Address: 0000000000000000  Data: 0000
+	Kernel driver in use: ast
+	Kernel modules: ast
+
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: ASPEED Technology, Inc. ASPEED Graphics Family
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:06:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ast
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null -> Result
+0000:07:00.0 USB controller: Renesas Technology Corp. uPD720201 USB 3.0 Host Controller (rev 03) (prog-if 30 [XHCI])
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 64 bytes
+	Interrupt: pin A routed to IRQ 232
+	NUMA node: 0
+	Region 0: Memory at 5a000000 (64-bit, non-prefetchable) [size=8K]
+	Capabilities: [50] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [70] MSI: Enable- Count=1/8 Maskable- 64bit+
+		Address: 0000000000000000  Data: 0000
+	Capabilities: [90] MSI-X: Enable+ Count=8 Masked-
+		Vector table: BAR=0 offset=00001000
+		PBA: BAR=0 offset=00001080
+	Capabilities: [a0] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd- ExtTag- PhantFunc- AuxPwr- NoSnoop+
+			MaxPayload 128 bytes, MaxReadReq 512 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend+
+		LnkCap:	Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <4us, L1 unlimited
+			ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp-
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x1
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [100 v1] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC- UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap- ECRCGenEn- ECRCChkCap- ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [150 v1] Latency Tolerance Reporting
+		Max snoop latency: 0ns
+		Max no snoop latency: 0ns
+	Kernel driver in use: xhci_hcd
+
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x1
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3 -> Result
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:07:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null -> Result
+0000:08:00.0 SATA controller: Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller (rev 11) (prog-if 01 [AHCI 1.0])
+	Subsystem: Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller
+	Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin A routed to IRQ 241
+	NUMA node: 0
+	Region 0: I/O ports at 6020 [size=8]
+	Region 1: I/O ports at 6030 [size=4]
+	Region 2: I/O ports at 6028 [size=8]
+	Region 3: I/O ports at 6034 [size=4]
+	Region 4: I/O ports at 6000 [size=32]
+	Region 5: Memory at 5a140000 (32-bit, non-prefetchable) [size=2K]
+	Expansion ROM at 5a100000 [disabled] [size=256K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0-,D1-,D2-,D3hot+,D3cold-)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable+ Count=1/1 Maskable- 64bit-
+		Address: 220b0040  Data: 0000
+	Capabilities: [70] Express (v2) Legacy Endpoint, MSI 00
+		DevCap:	MaxPayload 512 bytes, PhantFunc 0, Latency L0s <1us, L1 <8us
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset-
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop-
+			MaxPayload 256 bytes, MaxReadReq 512 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <512ns, L1 <64us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp-
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x1
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [e0] SATA HBA v0.0 BAR4 Offset=00000004
+	Capabilities: [100 v1] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap- ECRCGenEn- ECRCChkCap- ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Kernel driver in use: ahci
+
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x1
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Marvell Technology Group Ltd. 88SE9215 PCIe 2.0 x1 4-port SATA 6 Gb/s Controller
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:08:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112548_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null -> Result
+0000:09:00.0 USB controller: Renesas Technology Corp. uPD720201 USB 3.0 Host Controller (rev 03) (prog-if 30 [XHCI])
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0, Cache Line Size: 64 bytes
+	Interrupt: pin A routed to IRQ 232
+	NUMA node: 0
+	Region 0: Memory at 5a200000 (64-bit, non-prefetchable) [size=8K]
+	Capabilities: [50] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [70] MSI: Enable- Count=1/8 Maskable- 64bit+
+		Address: 0000000000000000  Data: 0000
+	Capabilities: [90] MSI-X: Enable+ Count=8 Masked-
+		Vector table: BAR=0 offset=00001000
+		PBA: BAR=0 offset=00001080
+	Capabilities: [a0] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd- ExtTag- PhantFunc- AuxPwr- NoSnoop+
+			MaxPayload 128 bytes, MaxReadReq 512 bytes
+		DevSta:	CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <4us, L1 unlimited
+			ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp-
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x1
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR+
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp- ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [100 v1] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC- UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap- ECRCGenEn- ECRCChkCap- ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [150 v1] Latency Tolerance Reporting
+		Max snoop latency: 0ns
+		Max no snoop latency: 0ns
+	Kernel driver in use: xhci_hcd
+
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 0
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x1
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null| grep -i 'Ethernet controller:' | cut -d ':' -f 3 -> Result
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0000:09:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null -> Result
+0002:01:00.0 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin A routed to IRQ 234
+	NUMA node: 2
+	IOMMU group: 0
+	Region 0: Memory at 200058200000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 200058280000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058000000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkCap2: Supported Link Speeds: 2.5-5GT/s, Crosslink- Retimer- 2Retimers- DRS-
+		LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+			 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+			 Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 1
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy+ 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 00
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 0000000058284000 (64-bit, non-prefetchable)
+		Region 4: Memory at 00000000582a4000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.0 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null -> Result
+0002:01:00.1 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin B routed to IRQ 269
+	NUMA node: 2
+	IOMMU group: 1
+	Region 0: Memory at 200058220000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 2000582c4000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058080000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 2
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy- 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 01
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 00000000582c8000 (64-bit, non-prefetchable)
+		Region 4: Memory at 00000000582e8000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.1 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null -> Result
+0002:01:00.2 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin C routed to IRQ 279
+	NUMA node: 2
+	IOMMU group: 2
+	Region 0: Memory at 200058240000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 200058308000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058100000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 3
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy- 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 02
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 000000005830c000 (64-bit, non-prefetchable)
+		Region 4: Memory at 000000005832c000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.2 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null -> Result
+0002:01:00.3 Ethernet controller: Beijing Wangxun Technology Co., Ltd. WX1860A4 Gigabit Ethernet Controller (rev 01)
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+	Physical Slot: 32
+	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+	Latency: 0
+	Interrupt: pin D routed to IRQ 289
+	NUMA node: 2
+	IOMMU group: 3
+	Region 0: Memory at 200058260000 (64-bit, non-prefetchable) [size=128K]
+	Region 4: Memory at 20005834c000 (64-bit, non-prefetchable) [size=16K]
+	Expansion ROM at 200058180000 [disabled] [size=512K]
+	Capabilities: [40] Power Management version 3
+		Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+		Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
+	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+		Address: 0000000000000000  Data: 0000
+		Masking: 00000000  Pending: 00000000
+	Capabilities: [70] Express (v2) Endpoint, MSI 00
+		DevCap:	MaxPayload 128 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
+			ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+		DevCtl:	CorrErr- NonFatalErr- FatalErr- UnsupReq-
+			RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+			MaxPayload 128 bytes, MaxReadReq 256 bytes
+		DevSta:	CorrErr+ NonFatalErr- FatalErr- UnsupReq+ AuxPwr+ TransPend-
+		LnkCap:	Port #0, Speed 5GT/s, Width x4, ASPM L0s L1, Exit Latency L0s <1us, L1 <2us
+			ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+		LnkCtl:	ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+			ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+		LnkSta:	Speed 5GT/s, Width x4
+			TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+		DevCap2: Completion Timeout: Not Supported, TimeoutDis+ NROPrPrP- LTR-
+			 10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+			 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+			 FRS- TPHComp+ ExtTPHComp-
+			 AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+		DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis+ LTR- 10BitTagReq- OBFF Disabled,
+			 AtomicOpsCtl: ReqEn-
+		LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete- EqualizationPhase1-
+			 EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+			 Retimer- 2Retimers- CrosslinkRes: unsupported
+	Capabilities: [b0] MSI-X: Enable+ Count=9 Masked-
+		Vector table: BAR=4 offset=00000000
+		PBA: BAR=4 offset=00002000
+	Capabilities: [d0] Vital Product Data
+		Product Name: WX GbE Family Controller
+		Read-only fields:
+			[PN] Part number: WX1860A4-B
+			[SN] Serial number: 000000000000000000
+			[RV] Reserved: checksum good, 4 byte(s) reserved
+		End
+	Capabilities: [100 v2] Advanced Error Reporting
+		UESta:	DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+		UEMsk:	DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt+ UnxCmplt+ RxOF- MalfTLP- ECRC+ UnsupReq+ ACSViol-
+		UESvrt:	DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+		CESta:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		CEMsk:	RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+		AERCap:	First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+			MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+		HeaderLog: 00000000 00000000 00000000 00000000
+	Capabilities: [148 v1] Alternative Routing-ID Interpretation (ARI)
+		ARICap:	MFVC- ACS-, Next Function: 0
+		ARICtl:	MFVC- ACS-, Function Group: 0
+	Capabilities: [158 v1] Single Root I/O Virtualization (SR-IOV)
+		IOVCap:	Migration- 10BitTagReq- Interrupt Message Number: 000
+		IOVCtl:	Enable- Migration- Interrupt- MSE- ARIHierarchy- 10BitTagReq-
+		IOVSta:	Migration-
+		Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function Dependency Link: 03
+		VF offset: 128, stride: 4, Device ID: 0113
+		Supported Page Size: 00000553, System Page Size: 00000001
+		Region 0: Memory at 0000000058350000 (64-bit, non-prefetchable)
+		Region 4: Memory at 0000000058370000 (64-bit, non-prefetchable)
+		VF Migration: offset: 00000000, BIR: 0
+	Capabilities: [198 v1] Transaction Processing Hints
+		Device specific mode supported
+		No steering table available
+	Capabilities: [224 v1] Vendor Specific Information: ID=0001 Rev=1 Len=038 <?>
+	Kernel driver in use: ngbe
+	Kernel modules: ngbe
+
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null| grep -i numa | cut -d ':' -f 2 -> Result
+ 2
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null| grep -i LnkSta: | cut -d ':' -f 2 -> Result
+	Speed 5GT/s, Width x4
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null|grep -ie 'Subsystem:' | grep -vi 'Capabilities' -> Result
+	Subsystem: Beijing Wangxun Technology Co., Ltd. Device c401
+
+< sost_20260202-112549_popen_com> : lspci -vvvs 0002:01:00.3 2>/dev/null | grep -i 'kernel modules' | cut -d ':' -f 2 -> Result
+ ngbe
+
+< sost_20260202-112549_popen_com> : lspci 2>/dev/null| grep -i 'Broadcom / LSI PCIe Switch management endpoint'| grep -vi scsi | wc -l -> Result
+0
+
+< sost_20260202-112549_popen_com> : lspci 2>/dev/null| grep -i 'PCI bridge: Broadcom' | grep -vi scsi | wc -l -> Result
+0
+
+< sost_20260202-112549_popen_com> : dmidecode -t slot -> Result
+# dmidecode 3.5
+Getting SMBIOS data from sysfs.
+SMBIOS 3.3.0 present.
+
+Handle 0x005D, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X16 SLOT 2
+	Type: x16 PCI Express 5 x16
+	Current Usage: Available
+	Length: Long
+	ID: 2
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0001:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
+
+Handle 0x005E, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X16 SLOT 0
+	Type: x16 PCI Express 5 x16
+	Current Usage: In Use
+	Length: Long
+	ID: 0
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0002:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
+
+Handle 0x005F, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X8 SLOT 6
+	Type: x8 PCI Express 5 x8
+	Current Usage: Available
+	Length: Short
+	ID: 6
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0005:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
+
+Handle 0x0060, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X8 SLOT 5
+	Type: x8 PCI Express 5 x8
+	Current Usage: Available
+	Length: Short
+	ID: 5
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0005:00:01.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
+
+Handle 0x0061, DMI type 9, 29 bytes
+System Slot Information
+	Designation: PCI Express X16 SLOT 4
+	Type: x16 PCI Express 5 x16
+	Current Usage: Available
+	Length: Long
+	ID: 4
+	Characteristics:
+		Modem ring resume is supported
+	Bus Address: 0007:00:00.0
+	Data Bus Width: 0
+	Peer Devices: 0
+	Height: Not applicable
+
+
+< sost_20260202-112549_popen_com> : dmidecode -t slot | grep -i Handle | cut -d ' ' -f 2 -> Result
+0x005D,
+0x005E,
+0x005F,
+0x0060,
+0x0061,
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005D| grep -i Designation | cut -d ':' -f 2 -> Result
+ PCI Express X16 SLOT 2
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005D | grep -i type: | cut -d ':' -f 2 -> Result
+ x16 PCI Express 5 x16
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005D | grep -i 'Current Usage' | cut -d ':' -f 2 -> Result
+ Available
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005D | grep -i 'Bus Address: ' -> Result
+	Bus Address: 0001:00:00.0
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005D | grep -i 'Length: ' -> Result
+	Length: Long
+
+< sost_20260202-112550_popen_com> : lspci -vvvs 0001:00:00.0 2>/dev/null| grep -i node | cut -d ':' -f 2 -> Result
+ 1
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005E| grep -i Designation | cut -d ':' -f 2 -> Result
+ PCI Express X16 SLOT 0
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005E | grep -i type: | cut -d ':' -f 2 -> Result
+ x16 PCI Express 5 x16
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005E | grep -i 'Current Usage' | cut -d ':' -f 2 -> Result
+ In Use
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005E | grep -i 'Bus Address: ' -> Result
+	Bus Address: 0002:00:00.0
+
+< sost_20260202-112550_popen_com> : dmidecode -H 0x005E | grep -i 'Length: ' -> Result
+	Length: Long
+
+< sost_20260202-112551_popen_com> : sost -i hwmac -> Result
+18:9b:a5:82:dd:42
+
+< sost_20260202-112552_popen_com> :  curl -X POST -H 'Content-Type: application/json' -d '{"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "c4d6d6ac4753924e1791bf8243f9ff920ad36b44584e5cecab696091b46234b7", "test_type": "Bmc_Remote_Cycle", "test_count": 0, "test_result": "NA", "EndTime": "2026-02-02-11-25-50"}' http://192.168.60.138:13251/api/upload_test_info  -> Result
 {
   "data": {
     "hw_mac": "189ba582dd42",
-    "tar_file_path": "/home/project_dony/sost_swc_server/devices_info/devices/189ba582dd42/history_test_data/26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8.tar"
+    "tar_file_path": "/home/project_dony/sost_swc_server/test_log/c4d6d6ac4753924e1791bf8243f9ff920ad36b44584e5cecab696091b46234b7.tar"
   },
   "message": "\u6d4b\u8bd5\u4fe1\u606f\u4e0a\u4f20\u6210\u529f",
   "success": true

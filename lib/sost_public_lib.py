@@ -129,7 +129,7 @@ def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
     log.os_run('rm -rf /usr/bin/power_on_off')
     log.os_run('rm -rf /usr/local/bin/power_on_off')
     log.os_run('touch /usr/local/bin/power_on_off && chmod 777 /usr/local/bin/power_on_off')
-    log.os_run(f"echo 'curl -G http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[0]}' > /usr/local/bin/power_on_off")
+    log.os_run(f"echo 'curl -G http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[0]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}' > /usr/local/bin/power_on_off")
     log.os_run("echo 'ipmitool power off' >> /usr/local/bin/power_on_off")
     if log.os_popen("whereis power_on_off | cut -d ':' -f 2 | tr -d ' '").strip() == '':
         log._error("Please Check /usr/local/bin/power_on_off file!")
@@ -1214,7 +1214,8 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 
     Dedicated_ip = log.os_popen(f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}' 2>/dev/null").strip()
     share_ip = log.os_popen(f"ipmitool lan print {Share_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}'").strip()
-    if Dedicated_ip.strip() == "0.0.0.0" and share_ip.strip() == "0.0.0.0" or Dedicated_ip == "" and share_ip == "":
+    swc_server_ip = log.json_get("swc", "swc_server_ip",filename='swc').strip()
+    if Dedicated_ip.strip() == "0.0.0.0" and share_ip.strip() == "0.0.0.0" or Dedicated_ip == "" and share_ip == "" and swc_server_ip == "":
         log._pr('''\033[31m
 ═════════════════════════════════════════
 ||   ████████     ██     ██ ██         ||
@@ -1256,8 +1257,9 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 
     Dedicated_alive="NA"
     share_alive = "NA"
+    swc_server_alive = "NA"
 
-    log._pr("Checking whether bmcip can ping, Waiting.......")
+    log._pr("Checking whether bmcip / swc_server_ip can ping, Waiting.......")
 
     if " 0% packet loss" in log.os_popen(f"ping -c 1 {Dedicated_ip.strip()} 2>/dev/null"):
         Dedicated_alive = "\033[42m √ \033[0m"
@@ -1268,6 +1270,11 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
         share_alive = "\033[42m √ \033[0m"
     else:
         share_alive = "\033[41m x \033[0m"
+    
+    if " 0% packet loss" in log.os_popen(f"ping -c 1 {swc_server_ip.strip()} 2>/dev/null"):
+        swc_server_alive = "\033[42m √ \033[0m"
+    else:
+        swc_server_alive = "\033[41m x \033[0m"
 
     log._pr(fr'''════════════════════════════════════════════════════════════════════════
 |     ___   __  __    ___             ___    _  _      ___    ___      |
@@ -1281,14 +1288,16 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 ════════════════════════════════════════════════════════════════════════
 |    1 . Dedicated ip : {Dedicated_ip.ljust(20)}  Status : [{Dedicated_alive}]           |
 |    2 . Shared    ip : {share_ip.ljust(20)}  Status : [{share_alive}]           |
+|    3 . SwcServer ip : {swc_server_ip.ljust(20)}  Status : [{swc_server_alive}]           |
 ════════════════════════════════════════════════════════════════════════''',pr_flag='1')
 
     if u_chos =='':
-        u_chos = log._in("Chose Your Test lan  [ 1 / 2 ] Enter -> 1 ").strip()
+        u_chos = log._in("Chose Your Test lan  [ 1 / 2 / 3 ] Enter -> 1 ").strip()
         if u_chos=='':
             u_chos = '1'
 
-    if u_chos != "1" and u_chos !="2":log._error("User.Input.Err")
+    if u_chos != "1" and u_chos !="2" and u_chos != "3":
+        log._error("User.Input.Err")
     
     # Save BMC Lan Info To test_tmp.json File
     log.json_set("Test_tmp","test_bmc_lan",u_chos)
@@ -1370,22 +1379,37 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 
     # check iBMC User/Passwd
     log._tips("Checking BMC User/Passwd, Waiting.......")
-    test_info = log.os_popen(f"ipmitool -I lanplus -C 17 -H {Dedicated_ip} -U {BMC_User} -P '{BMC_Pass}' chassis status 2>/dev/null").strip()
-    if test_info == "":
-        log._error("[-] Bmc User or Passwd Error!")
+    if u_chos != "3":
+        test_info = log.os_popen(f"ipmitool -I lanplus -C 17 -H {Dedicated_ip} -U {BMC_User} -P '{BMC_Pass}' chassis status 2>/dev/null").strip()
+        if test_info == "":
+            log._error("[-] Bmc User or Passwd Error!")
     # Save BMC Info To sost.json File
     log._tips("[+] Bmc User/Passwd check Success!")
     log.json_set("BMC_Survival_Config","BMC_Username",BMC_User)
     log.json_set("BMC_Survival_Config","BMC_Password",BMC_Pass)
 
     if u_chos == "1":
+        # ↑ Dedicated_arry.append(Dedicated_ip)
         Dedicated_arry.append(BMC_User)
         Dedicated_arry.append(BMC_Pass)
         return Dedicated_arry
     elif u_chos == "2":
+        # ↑ Share_arry.append(share_ip)
         Share_arry.append(BMC_User)
         Share_arry.append(BMC_Pass)
         return Share_arry
+    elif u_chos == "3":
+        swc_arry = []
+        swc_arry.append(swc_server_ip)
+        swc_arry.append(BMC_User)
+        swc_arry.append(BMC_Pass)
+        if share_ip == "" and Dedicated_ip == "":
+            log._error("Both Dedicated_ip and share_ip are Null, Cannot use swc_server_ip to test!")
+        elif Dedicated_ip != "":
+            swc_arry.append(Dedicated_ip)
+        else:
+            swc_arry.append(share_ip)
+        return swc_arry
     else:
         log._error("User.Input.Err")
 

@@ -1,55 +1,8 @@
-< sost_20260126-150017_dlev_0   > : Storcli64 Not install!
-< sost_20260126-150017_dlev_0   > : Sost Stability Tools check Success!
-< sost_20260126-150020_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260126-150625_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260126-150629_dlev_0   > : Last restart time : FirstRun! s
-< sost_20260126-150701_dlev_0   > : functestconfig Running time : 1769411221 s
-< sost_20260126-150708_dlev_0   > : dmesg error type : I/O error , errstrings : [   31.591667] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   31.600440] Buffer I/O error on dev sdc, logical block 0, async page read
-[   32.562085] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   32.570856] Buffer I/O error on dev sdc, logical block 0, async page read
-[   36.413451] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2
-[   38.372015] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   38.380800] Buffer I/O error on dev sdc, logical block 0, async page read
-[   48.522618] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 2 prio class 2
-[   52.040909] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2
-[   53.797175] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   53.797179] Buffer I/O error on dev sdc, logical block 0, async page read
-[   73.116021] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 2 prio class 2
-< sost_20260126-150708_dlev_0   > : ['[   31.591667] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   31.600440] Buffer I/O error on dev sdc, logical block 0, async page read\n[   32.562085] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   32.570856] Buffer I/O error on dev sdc, logical block 0, async page read\n[   36.413451] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2\n[   38.372015] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   38.380800] Buffer I/O error on dev sdc, logical block 0, async page read\n[   48.522618] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 2 prio class 2\n[   52.040909] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2\n[   53.797175] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   53.797179] Buffer I/O error on dev sdc, logical block 0, async page read\n[   73.116021] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 2 prio class 2']
-< sost_20260126-150721_dlev_0   > : normal_diff() -> ipmi_sensor_blacklist is empty , not check blacklist item!
-< sost_20260126-150726_dlev_0   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device', 'FAN', 'CMOS', 'ac', 'dc']
-< sost_20260126-150726_dlev_0   > : bmclog diff result : 
-< sost_20260126-151248_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260126-151253_dlev_0   > : Last restart time : 301 s
-< sost_20260126-151324_dlev_0   > : functestconfig Running time : 1769411604 s
-< sost_20260126-151332_dlev_0   > : dmesg error type : I/O error , errstrings : [   31.508288] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   31.517059] Buffer I/O error on dev sdc, logical block 0, async page read
-[   32.478733] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   32.487504] Buffer I/O error on dev sdc, logical block 0, async page read
-[   36.389786] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2
-[   38.048956] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   38.057740] Buffer I/O error on dev sdc, logical block 0, async page read
-[   48.648826] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 15 prio class 2
-[   52.003610] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2
-[   53.763714] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   53.763720] Buffer I/O error on dev sdc, logical block 0, async page read
-[   73.249334] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 24 prio class 2
-< sost_20260126-151332_dlev_0   > : ['[   31.508288] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   31.517059] Buffer I/O error on dev sdc, logical block 0, async page read\n[   32.478733] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   32.487504] Buffer I/O error on dev sdc, logical block 0, async page read\n[   36.389786] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2\n[   38.048956] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   38.057740] Buffer I/O error on dev sdc, logical block 0, async page read\n[   48.648826] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 15 prio class 2\n[   52.003610] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2\n[   53.763714] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2\n[   53.763720] Buffer I/O error on dev sdc, logical block 0, async page read\n[   73.249334] I/O error, dev sdc, sector 0 op 0x0:(READ) flags 0x800 phys_seg 24 prio class 2']
-< sost_20260126-151340_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-13-38"}
-< sost_20260126-151647_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260126-151649_dlev_0   > : Last restart time : 539 s
-< sost_20260126-151653_dlev_0   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-16-51"}
-< sost_20260126-151654_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-16-51"}
-< sost_20260126-151832_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260126-151834_dlev_0   > : Last restart time : 644 s
-< sost_20260126-151843_dlev_0   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-18-41"}
-< sost_20260126-151843_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-18-41"}
-< sost_20260126-152407_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260126-152409_dlev_0   > : Last restart time : 979 s
-< sost_20260126-152436_dlev_0   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-24-34"}
-< sost_20260126-152437_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-24-34"}
-< sost_20260126-152719_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
-< sost_20260126-152721_dlev_0   > : Last restart time : 1170 s
-< sost_20260126-152728_dlev_0   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-27-26"}
-< sost_20260126-152728_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8", "test_type": "reboot", "test_count": 2, "test_result": "FAILc", "EndTime": "2026-01-26-15-27-26"}
+< sost_20260202-112519_dlev_0   > : Storcli64 Not install!
+< sost_20260202-112519_dlev_0   > : Sost Stability Tools check Success!
+< sost_20260202-112531_dlev_0   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin
+< sost_20260202-112532_dlev_0   > : BMC_User : admin
+< sost_20260202-112532_dlev_0   > : BMC_Pass : admin
+< sost_20260202-112535_dlev_0   > : kylin_Gui_Run() kylin_ver : ky11
+< sost_20260202-112552_dlev_0   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "c4d6d6ac4753924e1791bf8243f9ff920ad36b44584e5cecab696091b46234b7", "test_type": "Bmc_Remote_Cycle", "test_count": 0, "test_result": "NA", "EndTime": "2026-02-02-11-25-50"}
+< sost_20260202-112552_dlev_0   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "c4d6d6ac4753924e1791bf8243f9ff920ad36b44584e5cecab696091b46234b7", "test_type": "Bmc_Remote_Cycle", "test_count": 0, "test_result": "NA", "EndTime": "2026-02-02-11-25-50"}
