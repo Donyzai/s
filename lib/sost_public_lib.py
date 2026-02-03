@@ -3,7 +3,10 @@
 # Version:1.0
 # by:FanXiaodong
 # ══════════════════════════════════
+from math import e
 import threading
+
+from flask.cli import run_command
 # from .sost_logging import *
 from .sost_logging import dong_log
 from .sost_system_info_lib import test_config
@@ -126,11 +129,21 @@ def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
     bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
     sost_poweronoff_serverIP = log.json_get('power_on_off','server_ip').strip()
     sost_poweronoff_serverPort = log.json_get('power_on_off','server_port').strip()
+    
     log.os_run('rm -rf /usr/bin/power_on_off')
     log.os_run('rm -rf /usr/local/bin/power_on_off')
     log.os_run('touch /usr/local/bin/power_on_off && chmod 777 /usr/local/bin/power_on_off')
-    log.os_run(f'''echo "curl 'http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[0]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}'" > /usr/local/bin/power_on_off''')
-    log.os_run("echo 'ipmitool power off' >> /usr/local/bin/power_on_off")
+    
+    with open("/usr/local/bin/power_on_off","w") as f:
+        
+        if bmc_information[0] != sost_poweronoff_serverIP:
+            
+            f.write(f'''curl 'http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[0]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}' ''')
+        else:
+            f.write(f'''curl 'http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}' ''')
+
+        f.write('\nipmitool power off\n')
+        f.flush()
     if log.os_popen("whereis power_on_off | cut -d ':' -f 2 | tr -d ' '").strip() == '':
         log._error("Please Check /usr/local/bin/power_on_off file!")
     return
@@ -599,25 +612,56 @@ def bmc_stability(typee='',folder_path=''):
         if typee == 'bmc_warm_kcs' or typee == 'bmc_warm_lan':
             log._error('iBMC unsupport warm reset!')
 
+    run_command_type = 'local'
+    
+    swc_server_ip = log.json_get("swc","swc_server_ip",filename='swc').strip()
+    swc_server_port = log.json_get("swc","swc_server_port",filename='swc').strip()
+    
     if typee == 'bmc_warm_kcs' or typee == 'bmc_cold_kcs':
         bmc_ip,bmc_user,bmc_pass = '','',''
     else:
-        bmc_ip,bmc_user,bmc_pass = get_bmc_info()
+        data = get_bmc_info()
+        if data[0] == swc_server_ip:
+            server_ip = data[0]
+            bmc_user = data[1]
+            bmc_pass = data[2]
+            bmc_ip = data[3]
+            # 补充bmc swc_server接口
+            run_command_type = 'swc'
+        else:
+            bmc_ip = data[0]
+            bmc_user = data[1]
+            bmc_pass = data[2]
+    
+    #切换到bmc采集模式
     log.os_run("sost -m bmc")
     
     # warm
     if typee == "bmc_warm_lan":
-        command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset warm")
+        if run_command_type == 'local':
+            command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset warm")
+        elif run_command_type == 'swc':
+            command = (f"curl 'http://{server_ip}:{swc_server_port}/remote_bmcresetwarm?bmc_ip={bmc_ip}&bmc_username={bmc_user}&bmc_password={bmc_pass}'")
+        else:
+            log._error("bmc_stability() -> swc warm command Not Implemented!")
     elif typee == "bmc_warm_kcs":
         command = ("ipmitool bmc reset warm")
     # cold
     elif typee == "bmc_cold_lan":
-        command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset cold")
+        if run_command_type == 'local':
+            command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} bmc reset cold")
+        elif run_command_type == 'swc':
+            command = (f"curl 'http://{server_ip}:{swc_server_port}/remote_bmcresetcold?bmc_ip={bmc_ip}&bmc_username={bmc_user}&bmc_password={bmc_pass}'")
+        else:
+            log._error("bmc_stability() -> swc cold command Not Implemented!")
     elif typee == "bmc_cold_kcs":
         command = ("ipmitool bmc reset cold")
     # raw
     elif typee == "bmc_raw_lan":
-        command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} raw 0x06 0x02")
+        if run_command_type == 'local':
+            command = (f"ipmitool -C 17 -I lanplus -U {bmc_user} -P '{bmc_pass}' -H {bmc_ip} raw 0x06 0x02")
+        else:
+            log._error("bmc_stability() -> swc raw command Not Implemented!")
     else:
         log._error(f"bmc_stability() -> typee : {typee}")
 
