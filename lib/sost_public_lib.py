@@ -38,7 +38,7 @@ def clear_log():
 def swc_service_connectivity():
     swc_ip =  log.json_get("swc","swc_server_ip",filename='swc')
     swc_port = log.json_get("swc","swc_server_port",filename='swc')
-    if '200' in log.os_popen(f"curl http://{swc_ip}:{swc_port}/ -I GET 2>/dev/null | head -n 2 | grep -i http") :
+    if '200' in log.os_popen(f"curl http://{swc_ip}:{swc_port}/ -I 2>/dev/null | head -n 2 | grep -i http") :
         log._pr("SWC Service Connectivity Success!")
         return True
     return False
@@ -694,8 +694,9 @@ def bmc_stability(typee='',folder_path=''):
         #save count -> folder_path>count.txt
         log.os_popen(f"echo {str(int(count)+1)} > {folder_path}/count.txt")
         #waiting for
-        if count!="0":runTime("3")
-        runTime("4")
+        if count!="0":
+            runTime("3")
+            runTime("4")
         runTime("1")
         # v1.1.1 -> wait bmc restart 300s -> 360s
         wait_time_ctrl_C(360,'\033[33m!Waiting for BMC restart, prohibit closing SOST process!\033[0m')
@@ -1851,10 +1852,10 @@ def runTime(flags,se_flag=''):
             log._dp(f"Last restart time : {restart_time} s")
         # sost running time
         elif flags == "4":
-            start_time = open(end_time_file_path, "r").read()
+            end_time = open(end_time_file_path, "r").read()
             with open(sost_running_time_file_path, "a") as f:
                 f.write("=" * 40 + "\n")
-                f.write(f"< sost > sost Running time : {str(abs(int(time.time()) - int(start_time)))} s\n< sost > sost NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n")
+                f.write(f"< sost > sost Running time : {str(abs(int(time.time()) - int(end_time)))} s\n< sost > sost NowCount     : {str(count)} times\n< sost > NowTime \t\t : {now_time()}\n")
                 f.write("=" * 40 + "\n")
                 os.fsync(f.fileno())
 
