@@ -587,8 +587,14 @@ def count_down(seconds=0,text=''):
         print("\r< sost > {} {}s Waitings => {} s".format(text,seconds,remain_time), end="", flush=True)
 
 # 对BMC进行存活性检查
-def bmc_alive(bmc_ip,bmc_user,bmc_pass):
+def bmc_alive(bmc_ip,bmc_user,bmc_pass,run_command_type):
+    
     max_try_time = 1800
+    
+    if run_command_type == 'swc':
+        count_down(90,"Wait for 90 seconds to retrieve BMC status again")
+        return True
+    
     while True:
         if log.os_popen(f"ping -c 1 {bmc_ip} | grep -i ttl").strip() != "":
             log._dp("Bmc IP Ping is Alive!")
@@ -681,7 +687,7 @@ def bmc_stability(typee='',folder_path=''):
         if typee == 'bmc_warm_kcs' or typee == 'bmc_cold_kcs':
             log._dp("Now Test is : kcs , Not checking BMC survival!")
         else:
-            if not bmc_alive(bmc_ip,bmc_user,bmc_pass):
+            if not bmc_alive(bmc_ip,bmc_user,bmc_pass,run_command_type):
                 log._error('BMC UnAlive! Please Check BMC Status!')
         # Collect SystemInformation
         test_config("1",count,folder_path)
