@@ -680,6 +680,7 @@ def bmc_stability(typee='',folder_path=''):
         bmc_stability_logo(bmc_ip)
         swc_EndTest()
         count = log.json_get("Test_tmp","test_count")
+        log.json_set("Test_tmp","test_status","Pass")
         wait_time_ctrl_C(log.json_get("Test_Config","start_wait_time"),flags='start')
         runTime("0")
         print("\n")

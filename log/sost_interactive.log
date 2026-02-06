@@ -1,5 +1,5 @@
-< sost_20260203-100236_print    > : DebugMode Enabled noSendCommand = 1 , Skip SOST Update Check!
-< sost_20260203-100236_print    > : ════════════════════════════════════════════════════════════════════════════
+< sost_20260206-140457_print    > : DebugMode Enabled noSendCommand = 1 , Skip SOST Update Check!
+< sost_20260206-140458_print    > : ════════════════════════════════════════════════════════════════════════════
 |                                             ░██                          |
 |                    ██████  ██████   ██████ ██████                        |
 |                   ██░░░░  ██░░░░██ ██░░░░ ░░░██░                         |
@@ -20,15 +20,12 @@
 |  15 . BMC Remote bmc reset warm  |  19 . NA                              |
 |  16 . BMC Remote bmc reset cold  |  20 . update sost  (OTA)              |
 ════════════════════════════════════════════════════════════════════════════
-< sost_20260203-100236_print    > : Now Test Mode 【 bmc 】
-< sost_20260203-100237_print    > : Restore default values Command : sost -m default 
-< sost Continue ? [y / n]: > : y
-< sost Your choice : > : 15
-< sost_20260203-100244_print    > : BMC Status Checking Status......
-< sost_20260203-100247_tips     > : <------ BMC status check ----->
-< sost_20260203-100248_print    > : [+] Bmc Status check Success!
-< sost_20260203-100249_print    > : Checking whether bmcip / swc_server_ip can ping, Waiting.......
-< sost_20260203-100252_print    > : ════════════════════════════════════════════════════════════════════════
+< sost Your choice : > : 16
+< sost_20260206-140504_print    > : BMC Status Checking Status......
+< sost_20260206-140507_tips     > : <------ BMC status check ----->
+< sost_20260206-140507_print    > : [+] Bmc Status check Success!
+< sost_20260206-140509_print    > : Checking whether bmcip / swc_server_ip can ping, Waiting.......
+< sost_20260206-140512_print    > : ════════════════════════════════════════════════════════════════════════
 |     ___   __  __    ___             ___    _  _      ___    ___      |
 |    | _ ) |  \/  |  / __|           |_ _|  | \| |    | __|  / _ \     |
 |    | _ \ | |\/| | | (__     ___     | |   | .` |    | _|  | (_) |    |
@@ -42,11 +39,11 @@
 |    2 . Shared    ip : 192.168.60.69         Status : [[41m x [0m]           |
 |    3 . SwcServer ip : 192.168.60.138        Status : [[42m √ [0m]           |
 ════════════════════════════════════════════════════════════════════════
-< sost Chose Your Test lan  [ 1 / 2 / 3 ] Enter -> 1 > : 
+< sost Chose Your Test lan  [ 1 / 2 / 3 ] Enter -> 1 > : 3
 < sost Input Bmc_Username [ Enter -> admin               ]: > : 
 < sost Input Bmc_Password [ Enter -> ttytty`12           ]: > : 
-< sost_20260203-100255_tips     > : Checking BMC User/Passwd, Waiting.......
-< sost_20260203-100255_tips     > : [+] Bmc User/Passwd check Success!
+< sost_20260206-140515_tips     > : Checking BMC User/Passwd, Waiting.......
+< sost_20260206-140515_tips     > : [+] Bmc User/Passwd check Success!
 < sost > Please Wait Times `Ctrl + c` exit() : 29s
 < sost > Please Wait Times `Ctrl + c` exit() : 28s
 < sost > Please Wait Times `Ctrl + c` exit() : 27s
@@ -77,19 +74,19 @@
 < sost > Please Wait Times `Ctrl + c` exit() : 02s
 < sost > Please Wait Times `Ctrl + c` exit() : 01s
 < sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost_20260203-100329_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100329_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100329_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100334_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100335_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100338_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100343_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100347_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100348_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100349_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100349_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100350_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-100350_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140719_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140720_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140720_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140725_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140726_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140729_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140733_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140737_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140739_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140739_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140739_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140740_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-140740_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
 < sost > Please Wait Times `Ctrl + c` exit() : 359s
 < sost > Please Wait Times `Ctrl + c` exit() : 358s
 < sost > Please Wait Times `Ctrl + c` exit() : 357s
@@ -480,1223 +477,26 @@
 < sost > Please Wait Times `Ctrl + c` exit() : 02s
 < sost > Please Wait Times `Ctrl + c` exit() : 01s
 < sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost_20260203-101029_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101029_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101029_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101034_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101035_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101038_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101043_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101047_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101049_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101049_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101049_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101050_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101050_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101051_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
-< sost > Please Wait Times `Ctrl + c` exit() : 359s
-< sost > Please Wait Times `Ctrl + c` exit() : 358s
-< sost > Please Wait Times `Ctrl + c` exit() : 357s
-< sost > Please Wait Times `Ctrl + c` exit() : 356s
-< sost > Please Wait Times `Ctrl + c` exit() : 355s
-< sost > Please Wait Times `Ctrl + c` exit() : 354s
-< sost > Please Wait Times `Ctrl + c` exit() : 353s
-< sost > Please Wait Times `Ctrl + c` exit() : 352s
-< sost > Please Wait Times `Ctrl + c` exit() : 351s
-< sost > Please Wait Times `Ctrl + c` exit() : 350s
-< sost > Please Wait Times `Ctrl + c` exit() : 349s
-< sost > Please Wait Times `Ctrl + c` exit() : 348s
-< sost > Please Wait Times `Ctrl + c` exit() : 347s
-< sost > Please Wait Times `Ctrl + c` exit() : 346s
-< sost > Please Wait Times `Ctrl + c` exit() : 345s
-< sost > Please Wait Times `Ctrl + c` exit() : 344s
-< sost > Please Wait Times `Ctrl + c` exit() : 343s
-< sost > Please Wait Times `Ctrl + c` exit() : 342s
-< sost > Please Wait Times `Ctrl + c` exit() : 341s
-< sost > Please Wait Times `Ctrl + c` exit() : 340s
-< sost > Please Wait Times `Ctrl + c` exit() : 339s
-< sost > Please Wait Times `Ctrl + c` exit() : 338s
-< sost > Please Wait Times `Ctrl + c` exit() : 337s
-< sost > Please Wait Times `Ctrl + c` exit() : 336s
-< sost > Please Wait Times `Ctrl + c` exit() : 335s
-< sost > Please Wait Times `Ctrl + c` exit() : 334s
-< sost > Please Wait Times `Ctrl + c` exit() : 333s
-< sost > Please Wait Times `Ctrl + c` exit() : 332s
-< sost > Please Wait Times `Ctrl + c` exit() : 331s
-< sost > Please Wait Times `Ctrl + c` exit() : 330s
-< sost > Please Wait Times `Ctrl + c` exit() : 329s
-< sost > Please Wait Times `Ctrl + c` exit() : 328s
-< sost > Please Wait Times `Ctrl + c` exit() : 327s
-< sost > Please Wait Times `Ctrl + c` exit() : 326s
-< sost > Please Wait Times `Ctrl + c` exit() : 325s
-< sost > Please Wait Times `Ctrl + c` exit() : 324s
-< sost > Please Wait Times `Ctrl + c` exit() : 323s
-< sost > Please Wait Times `Ctrl + c` exit() : 322s
-< sost > Please Wait Times `Ctrl + c` exit() : 321s
-< sost > Please Wait Times `Ctrl + c` exit() : 320s
-< sost > Please Wait Times `Ctrl + c` exit() : 319s
-< sost > Please Wait Times `Ctrl + c` exit() : 318s
-< sost > Please Wait Times `Ctrl + c` exit() : 317s
-< sost > Please Wait Times `Ctrl + c` exit() : 316s
-< sost > Please Wait Times `Ctrl + c` exit() : 315s
-< sost > Please Wait Times `Ctrl + c` exit() : 314s
-< sost > Please Wait Times `Ctrl + c` exit() : 313s
-< sost > Please Wait Times `Ctrl + c` exit() : 312s
-< sost > Please Wait Times `Ctrl + c` exit() : 311s
-< sost > Please Wait Times `Ctrl + c` exit() : 310s
-< sost > Please Wait Times `Ctrl + c` exit() : 309s
-< sost > Please Wait Times `Ctrl + c` exit() : 308s
-< sost > Please Wait Times `Ctrl + c` exit() : 307s
-< sost > Please Wait Times `Ctrl + c` exit() : 306s
-< sost > Please Wait Times `Ctrl + c` exit() : 305s
-< sost > Please Wait Times `Ctrl + c` exit() : 304s
-< sost > Please Wait Times `Ctrl + c` exit() : 303s
-< sost > Please Wait Times `Ctrl + c` exit() : 302s
-< sost > Please Wait Times `Ctrl + c` exit() : 301s
-< sost > Please Wait Times `Ctrl + c` exit() : 300s
-< sost > Please Wait Times `Ctrl + c` exit() : 299s
-< sost > Please Wait Times `Ctrl + c` exit() : 298s
-< sost > Please Wait Times `Ctrl + c` exit() : 297s
-< sost > Please Wait Times `Ctrl + c` exit() : 296s
-< sost > Please Wait Times `Ctrl + c` exit() : 295s
-< sost > Please Wait Times `Ctrl + c` exit() : 294s
-< sost > Please Wait Times `Ctrl + c` exit() : 293s
-< sost > Please Wait Times `Ctrl + c` exit() : 292s
-< sost > Please Wait Times `Ctrl + c` exit() : 291s
-< sost > Please Wait Times `Ctrl + c` exit() : 290s
-< sost > Please Wait Times `Ctrl + c` exit() : 289s
-< sost > Please Wait Times `Ctrl + c` exit() : 288s
-< sost > Please Wait Times `Ctrl + c` exit() : 287s
-< sost > Please Wait Times `Ctrl + c` exit() : 286s
-< sost > Please Wait Times `Ctrl + c` exit() : 285s
-< sost > Please Wait Times `Ctrl + c` exit() : 284s
-< sost > Please Wait Times `Ctrl + c` exit() : 283s
-< sost > Please Wait Times `Ctrl + c` exit() : 282s
-< sost > Please Wait Times `Ctrl + c` exit() : 281s
-< sost > Please Wait Times `Ctrl + c` exit() : 280s
-< sost > Please Wait Times `Ctrl + c` exit() : 279s
-< sost > Please Wait Times `Ctrl + c` exit() : 278s
-< sost > Please Wait Times `Ctrl + c` exit() : 277s
-< sost > Please Wait Times `Ctrl + c` exit() : 276s
-< sost > Please Wait Times `Ctrl + c` exit() : 275s
-< sost > Please Wait Times `Ctrl + c` exit() : 274s
-< sost > Please Wait Times `Ctrl + c` exit() : 273s
-< sost > Please Wait Times `Ctrl + c` exit() : 272s
-< sost > Please Wait Times `Ctrl + c` exit() : 271s
-< sost > Please Wait Times `Ctrl + c` exit() : 270s
-< sost > Please Wait Times `Ctrl + c` exit() : 269s
-< sost > Please Wait Times `Ctrl + c` exit() : 268s
-< sost > Please Wait Times `Ctrl + c` exit() : 267s
-< sost > Please Wait Times `Ctrl + c` exit() : 266s
-< sost > Please Wait Times `Ctrl + c` exit() : 265s
-< sost > Please Wait Times `Ctrl + c` exit() : 264s
-< sost > Please Wait Times `Ctrl + c` exit() : 263s
-< sost > Please Wait Times `Ctrl + c` exit() : 262s
-< sost > Please Wait Times `Ctrl + c` exit() : 261s
-< sost > Please Wait Times `Ctrl + c` exit() : 260s
-< sost > Please Wait Times `Ctrl + c` exit() : 259s
-< sost > Please Wait Times `Ctrl + c` exit() : 258s
-< sost > Please Wait Times `Ctrl + c` exit() : 257s
-< sost > Please Wait Times `Ctrl + c` exit() : 256s
-< sost > Please Wait Times `Ctrl + c` exit() : 255s
-< sost > Please Wait Times `Ctrl + c` exit() : 254s
-< sost > Please Wait Times `Ctrl + c` exit() : 253s
-< sost > Please Wait Times `Ctrl + c` exit() : 252s
-< sost > Please Wait Times `Ctrl + c` exit() : 251s
-< sost > Please Wait Times `Ctrl + c` exit() : 250s
-< sost > Please Wait Times `Ctrl + c` exit() : 249s
-< sost > Please Wait Times `Ctrl + c` exit() : 248s
-< sost > Please Wait Times `Ctrl + c` exit() : 247s
-< sost > Please Wait Times `Ctrl + c` exit() : 246s
-< sost > Please Wait Times `Ctrl + c` exit() : 245s
-< sost > Please Wait Times `Ctrl + c` exit() : 244s
-< sost > Please Wait Times `Ctrl + c` exit() : 243s
-< sost > Please Wait Times `Ctrl + c` exit() : 242s
-< sost > Please Wait Times `Ctrl + c` exit() : 241s
-< sost > Please Wait Times `Ctrl + c` exit() : 240s
-< sost > Please Wait Times `Ctrl + c` exit() : 239s
-< sost > Please Wait Times `Ctrl + c` exit() : 238s
-< sost > Please Wait Times `Ctrl + c` exit() : 237s
-< sost > Please Wait Times `Ctrl + c` exit() : 236s
-< sost > Please Wait Times `Ctrl + c` exit() : 235s
-< sost > Please Wait Times `Ctrl + c` exit() : 234s
-< sost > Please Wait Times `Ctrl + c` exit() : 233s
-< sost > Please Wait Times `Ctrl + c` exit() : 232s
-< sost > Please Wait Times `Ctrl + c` exit() : 231s
-< sost > Please Wait Times `Ctrl + c` exit() : 230s
-< sost > Please Wait Times `Ctrl + c` exit() : 229s
-< sost > Please Wait Times `Ctrl + c` exit() : 228s
-< sost > Please Wait Times `Ctrl + c` exit() : 227s
-< sost > Please Wait Times `Ctrl + c` exit() : 226s
-< sost > Please Wait Times `Ctrl + c` exit() : 225s
-< sost > Please Wait Times `Ctrl + c` exit() : 224s
-< sost > Please Wait Times `Ctrl + c` exit() : 223s
-< sost > Please Wait Times `Ctrl + c` exit() : 222s
-< sost > Please Wait Times `Ctrl + c` exit() : 221s
-< sost > Please Wait Times `Ctrl + c` exit() : 220s
-< sost > Please Wait Times `Ctrl + c` exit() : 219s
-< sost > Please Wait Times `Ctrl + c` exit() : 218s
-< sost > Please Wait Times `Ctrl + c` exit() : 217s
-< sost > Please Wait Times `Ctrl + c` exit() : 216s
-< sost > Please Wait Times `Ctrl + c` exit() : 215s
-< sost > Please Wait Times `Ctrl + c` exit() : 214s
-< sost > Please Wait Times `Ctrl + c` exit() : 213s
-< sost > Please Wait Times `Ctrl + c` exit() : 212s
-< sost > Please Wait Times `Ctrl + c` exit() : 211s
-< sost > Please Wait Times `Ctrl + c` exit() : 210s
-< sost > Please Wait Times `Ctrl + c` exit() : 209s
-< sost > Please Wait Times `Ctrl + c` exit() : 208s
-< sost > Please Wait Times `Ctrl + c` exit() : 207s
-< sost > Please Wait Times `Ctrl + c` exit() : 206s
-< sost > Please Wait Times `Ctrl + c` exit() : 205s
-< sost > Please Wait Times `Ctrl + c` exit() : 204s
-< sost > Please Wait Times `Ctrl + c` exit() : 203s
-< sost > Please Wait Times `Ctrl + c` exit() : 202s
-< sost > Please Wait Times `Ctrl + c` exit() : 201s
-< sost > Please Wait Times `Ctrl + c` exit() : 200s
-< sost > Please Wait Times `Ctrl + c` exit() : 199s
-< sost > Please Wait Times `Ctrl + c` exit() : 198s
-< sost > Please Wait Times `Ctrl + c` exit() : 197s
-< sost > Please Wait Times `Ctrl + c` exit() : 196s
-< sost > Please Wait Times `Ctrl + c` exit() : 195s
-< sost > Please Wait Times `Ctrl + c` exit() : 194s
-< sost > Please Wait Times `Ctrl + c` exit() : 193s
-< sost > Please Wait Times `Ctrl + c` exit() : 192s
-< sost > Please Wait Times `Ctrl + c` exit() : 191s
-< sost > Please Wait Times `Ctrl + c` exit() : 190s
-< sost > Please Wait Times `Ctrl + c` exit() : 189s
-< sost > Please Wait Times `Ctrl + c` exit() : 188s
-< sost > Please Wait Times `Ctrl + c` exit() : 187s
-< sost > Please Wait Times `Ctrl + c` exit() : 186s
-< sost > Please Wait Times `Ctrl + c` exit() : 185s
-< sost > Please Wait Times `Ctrl + c` exit() : 184s
-< sost > Please Wait Times `Ctrl + c` exit() : 183s
-< sost > Please Wait Times `Ctrl + c` exit() : 182s
-< sost > Please Wait Times `Ctrl + c` exit() : 181s
-< sost > Please Wait Times `Ctrl + c` exit() : 180s
-< sost > Please Wait Times `Ctrl + c` exit() : 179s
-< sost > Please Wait Times `Ctrl + c` exit() : 178s
-< sost > Please Wait Times `Ctrl + c` exit() : 177s
-< sost > Please Wait Times `Ctrl + c` exit() : 176s
-< sost > Please Wait Times `Ctrl + c` exit() : 175s
-< sost > Please Wait Times `Ctrl + c` exit() : 174s
-< sost > Please Wait Times `Ctrl + c` exit() : 173s
-< sost > Please Wait Times `Ctrl + c` exit() : 172s
-< sost > Please Wait Times `Ctrl + c` exit() : 171s
-< sost > Please Wait Times `Ctrl + c` exit() : 170s
-< sost > Please Wait Times `Ctrl + c` exit() : 169s
-< sost > Please Wait Times `Ctrl + c` exit() : 168s
-< sost > Please Wait Times `Ctrl + c` exit() : 167s
-< sost > Please Wait Times `Ctrl + c` exit() : 166s
-< sost > Please Wait Times `Ctrl + c` exit() : 165s
-< sost > Please Wait Times `Ctrl + c` exit() : 164s
-< sost > Please Wait Times `Ctrl + c` exit() : 163s
-< sost > Please Wait Times `Ctrl + c` exit() : 162s
-< sost > Please Wait Times `Ctrl + c` exit() : 161s
-< sost > Please Wait Times `Ctrl + c` exit() : 160s
-< sost > Please Wait Times `Ctrl + c` exit() : 159s
-< sost > Please Wait Times `Ctrl + c` exit() : 158s
-< sost > Please Wait Times `Ctrl + c` exit() : 157s
-< sost > Please Wait Times `Ctrl + c` exit() : 156s
-< sost > Please Wait Times `Ctrl + c` exit() : 155s
-< sost > Please Wait Times `Ctrl + c` exit() : 154s
-< sost > Please Wait Times `Ctrl + c` exit() : 153s
-< sost > Please Wait Times `Ctrl + c` exit() : 152s
-< sost > Please Wait Times `Ctrl + c` exit() : 151s
-< sost > Please Wait Times `Ctrl + c` exit() : 150s
-< sost > Please Wait Times `Ctrl + c` exit() : 149s
-< sost > Please Wait Times `Ctrl + c` exit() : 148s
-< sost > Please Wait Times `Ctrl + c` exit() : 147s
-< sost > Please Wait Times `Ctrl + c` exit() : 146s
-< sost > Please Wait Times `Ctrl + c` exit() : 145s
-< sost > Please Wait Times `Ctrl + c` exit() : 144s
-< sost > Please Wait Times `Ctrl + c` exit() : 143s
-< sost > Please Wait Times `Ctrl + c` exit() : 142s
-< sost > Please Wait Times `Ctrl + c` exit() : 141s
-< sost > Please Wait Times `Ctrl + c` exit() : 140s
-< sost > Please Wait Times `Ctrl + c` exit() : 139s
-< sost > Please Wait Times `Ctrl + c` exit() : 138s
-< sost > Please Wait Times `Ctrl + c` exit() : 137s
-< sost > Please Wait Times `Ctrl + c` exit() : 136s
-< sost > Please Wait Times `Ctrl + c` exit() : 135s
-< sost > Please Wait Times `Ctrl + c` exit() : 134s
-< sost > Please Wait Times `Ctrl + c` exit() : 133s
-< sost > Please Wait Times `Ctrl + c` exit() : 132s
-< sost > Please Wait Times `Ctrl + c` exit() : 131s
-< sost > Please Wait Times `Ctrl + c` exit() : 130s
-< sost > Please Wait Times `Ctrl + c` exit() : 129s
-< sost > Please Wait Times `Ctrl + c` exit() : 128s
-< sost > Please Wait Times `Ctrl + c` exit() : 127s
-< sost > Please Wait Times `Ctrl + c` exit() : 126s
-< sost > Please Wait Times `Ctrl + c` exit() : 125s
-< sost > Please Wait Times `Ctrl + c` exit() : 124s
-< sost > Please Wait Times `Ctrl + c` exit() : 123s
-< sost > Please Wait Times `Ctrl + c` exit() : 122s
-< sost > Please Wait Times `Ctrl + c` exit() : 121s
-< sost > Please Wait Times `Ctrl + c` exit() : 120s
-< sost > Please Wait Times `Ctrl + c` exit() : 119s
-< sost > Please Wait Times `Ctrl + c` exit() : 118s
-< sost > Please Wait Times `Ctrl + c` exit() : 117s
-< sost > Please Wait Times `Ctrl + c` exit() : 116s
-< sost > Please Wait Times `Ctrl + c` exit() : 115s
-< sost > Please Wait Times `Ctrl + c` exit() : 114s
-< sost > Please Wait Times `Ctrl + c` exit() : 113s
-< sost > Please Wait Times `Ctrl + c` exit() : 112s
-< sost > Please Wait Times `Ctrl + c` exit() : 111s
-< sost > Please Wait Times `Ctrl + c` exit() : 110s
-< sost > Please Wait Times `Ctrl + c` exit() : 109s
-< sost > Please Wait Times `Ctrl + c` exit() : 108s
-< sost > Please Wait Times `Ctrl + c` exit() : 107s
-< sost > Please Wait Times `Ctrl + c` exit() : 106s
-< sost > Please Wait Times `Ctrl + c` exit() : 105s
-< sost > Please Wait Times `Ctrl + c` exit() : 104s
-< sost > Please Wait Times `Ctrl + c` exit() : 103s
-< sost > Please Wait Times `Ctrl + c` exit() : 102s
-< sost > Please Wait Times `Ctrl + c` exit() : 101s
-< sost > Please Wait Times `Ctrl + c` exit() : 100s
-< sost > Please Wait Times `Ctrl + c` exit() : 99s
-< sost > Please Wait Times `Ctrl + c` exit() : 98s
-< sost > Please Wait Times `Ctrl + c` exit() : 97s
-< sost > Please Wait Times `Ctrl + c` exit() : 96s
-< sost > Please Wait Times `Ctrl + c` exit() : 95s
-< sost > Please Wait Times `Ctrl + c` exit() : 94s
-< sost > Please Wait Times `Ctrl + c` exit() : 93s
-< sost > Please Wait Times `Ctrl + c` exit() : 92s
-< sost > Please Wait Times `Ctrl + c` exit() : 91s
-< sost > Please Wait Times `Ctrl + c` exit() : 90s
-< sost > Please Wait Times `Ctrl + c` exit() : 89s
-< sost > Please Wait Times `Ctrl + c` exit() : 88s
-< sost > Please Wait Times `Ctrl + c` exit() : 87s
-< sost > Please Wait Times `Ctrl + c` exit() : 86s
-< sost > Please Wait Times `Ctrl + c` exit() : 85s
-< sost > Please Wait Times `Ctrl + c` exit() : 84s
-< sost > Please Wait Times `Ctrl + c` exit() : 83s
-< sost > Please Wait Times `Ctrl + c` exit() : 82s
-< sost > Please Wait Times `Ctrl + c` exit() : 81s
-< sost > Please Wait Times `Ctrl + c` exit() : 80s
-< sost > Please Wait Times `Ctrl + c` exit() : 79s
-< sost > Please Wait Times `Ctrl + c` exit() : 78s
-< sost > Please Wait Times `Ctrl + c` exit() : 77s
-< sost > Please Wait Times `Ctrl + c` exit() : 76s
-< sost > Please Wait Times `Ctrl + c` exit() : 75s
-< sost > Please Wait Times `Ctrl + c` exit() : 74s
-< sost > Please Wait Times `Ctrl + c` exit() : 73s
-< sost > Please Wait Times `Ctrl + c` exit() : 72s
-< sost > Please Wait Times `Ctrl + c` exit() : 71s
-< sost > Please Wait Times `Ctrl + c` exit() : 70s
-< sost > Please Wait Times `Ctrl + c` exit() : 69s
-< sost > Please Wait Times `Ctrl + c` exit() : 68s
-< sost > Please Wait Times `Ctrl + c` exit() : 67s
-< sost > Please Wait Times `Ctrl + c` exit() : 66s
-< sost > Please Wait Times `Ctrl + c` exit() : 65s
-< sost > Please Wait Times `Ctrl + c` exit() : 64s
-< sost > Please Wait Times `Ctrl + c` exit() : 63s
-< sost > Please Wait Times `Ctrl + c` exit() : 62s
-< sost > Please Wait Times `Ctrl + c` exit() : 61s
-< sost > Please Wait Times `Ctrl + c` exit() : 60s
-< sost > Please Wait Times `Ctrl + c` exit() : 59s
-< sost > Please Wait Times `Ctrl + c` exit() : 58s
-< sost > Please Wait Times `Ctrl + c` exit() : 57s
-< sost > Please Wait Times `Ctrl + c` exit() : 56s
-< sost > Please Wait Times `Ctrl + c` exit() : 55s
-< sost > Please Wait Times `Ctrl + c` exit() : 54s
-< sost > Please Wait Times `Ctrl + c` exit() : 53s
-< sost > Please Wait Times `Ctrl + c` exit() : 52s
-< sost > Please Wait Times `Ctrl + c` exit() : 51s
-< sost > Please Wait Times `Ctrl + c` exit() : 50s
-< sost > Please Wait Times `Ctrl + c` exit() : 49s
-< sost > Please Wait Times `Ctrl + c` exit() : 48s
-< sost > Please Wait Times `Ctrl + c` exit() : 47s
-< sost > Please Wait Times `Ctrl + c` exit() : 46s
-< sost > Please Wait Times `Ctrl + c` exit() : 45s
-< sost > Please Wait Times `Ctrl + c` exit() : 44s
-< sost > Please Wait Times `Ctrl + c` exit() : 43s
-< sost > Please Wait Times `Ctrl + c` exit() : 42s
-< sost > Please Wait Times `Ctrl + c` exit() : 41s
-< sost > Please Wait Times `Ctrl + c` exit() : 40s
-< sost > Please Wait Times `Ctrl + c` exit() : 39s
-< sost > Please Wait Times `Ctrl + c` exit() : 38s
-< sost > Please Wait Times `Ctrl + c` exit() : 37s
-< sost > Please Wait Times `Ctrl + c` exit() : 36s
-< sost > Please Wait Times `Ctrl + c` exit() : 35s
-< sost > Please Wait Times `Ctrl + c` exit() : 34s
-< sost > Please Wait Times `Ctrl + c` exit() : 33s
-< sost > Please Wait Times `Ctrl + c` exit() : 32s
-< sost > Please Wait Times `Ctrl + c` exit() : 31s
-< sost > Please Wait Times `Ctrl + c` exit() : 30s
-< sost > Please Wait Times `Ctrl + c` exit() : 29s
-< sost > Please Wait Times `Ctrl + c` exit() : 28s
-< sost > Please Wait Times `Ctrl + c` exit() : 27s
-< sost > Please Wait Times `Ctrl + c` exit() : 26s
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost > Please Wait Times `Ctrl + c` exit() : 22s
-< sost > Please Wait Times `Ctrl + c` exit() : 21s
-< sost > Please Wait Times `Ctrl + c` exit() : 20s
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost > Please Wait Times `Ctrl + c` exit() : 29s
-< sost > Please Wait Times `Ctrl + c` exit() : 28s
-< sost > Please Wait Times `Ctrl + c` exit() : 27s
-< sost > Please Wait Times `Ctrl + c` exit() : 26s
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost > Please Wait Times `Ctrl + c` exit() : 22s
-< sost > Please Wait Times `Ctrl + c` exit() : 21s
-< sost > Please Wait Times `Ctrl + c` exit() : 20s
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost_20260203-101729_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101730_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101730_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101735_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101735_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101739_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101743_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101747_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101749_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101749_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101750_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101751_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101751_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-101751_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
-< sost > Please Wait Times `Ctrl + c` exit() : 359s
-< sost > Please Wait Times `Ctrl + c` exit() : 358s
-< sost > Please Wait Times `Ctrl + c` exit() : 357s
-< sost > Please Wait Times `Ctrl + c` exit() : 356s
-< sost > Please Wait Times `Ctrl + c` exit() : 355s
-< sost > Please Wait Times `Ctrl + c` exit() : 354s
-< sost > Please Wait Times `Ctrl + c` exit() : 353s
-< sost > Please Wait Times `Ctrl + c` exit() : 352s
-< sost > Please Wait Times `Ctrl + c` exit() : 351s
-< sost > Please Wait Times `Ctrl + c` exit() : 350s
-< sost > Please Wait Times `Ctrl + c` exit() : 349s
-< sost > Please Wait Times `Ctrl + c` exit() : 348s
-< sost > Please Wait Times `Ctrl + c` exit() : 347s
-< sost > Please Wait Times `Ctrl + c` exit() : 346s
-< sost > Please Wait Times `Ctrl + c` exit() : 345s
-< sost > Please Wait Times `Ctrl + c` exit() : 344s
-< sost > Please Wait Times `Ctrl + c` exit() : 343s
-< sost > Please Wait Times `Ctrl + c` exit() : 342s
-< sost > Please Wait Times `Ctrl + c` exit() : 341s
-< sost > Please Wait Times `Ctrl + c` exit() : 340s
-< sost > Please Wait Times `Ctrl + c` exit() : 339s
-< sost > Please Wait Times `Ctrl + c` exit() : 338s
-< sost > Please Wait Times `Ctrl + c` exit() : 337s
-< sost > Please Wait Times `Ctrl + c` exit() : 336s
-< sost > Please Wait Times `Ctrl + c` exit() : 335s
-< sost > Please Wait Times `Ctrl + c` exit() : 334s
-< sost > Please Wait Times `Ctrl + c` exit() : 333s
-< sost > Please Wait Times `Ctrl + c` exit() : 332s
-< sost > Please Wait Times `Ctrl + c` exit() : 331s
-< sost > Please Wait Times `Ctrl + c` exit() : 330s
-< sost > Please Wait Times `Ctrl + c` exit() : 329s
-< sost > Please Wait Times `Ctrl + c` exit() : 328s
-< sost > Please Wait Times `Ctrl + c` exit() : 327s
-< sost > Please Wait Times `Ctrl + c` exit() : 326s
-< sost > Please Wait Times `Ctrl + c` exit() : 325s
-< sost > Please Wait Times `Ctrl + c` exit() : 324s
-< sost > Please Wait Times `Ctrl + c` exit() : 323s
-< sost > Please Wait Times `Ctrl + c` exit() : 322s
-< sost > Please Wait Times `Ctrl + c` exit() : 321s
-< sost > Please Wait Times `Ctrl + c` exit() : 320s
-< sost > Please Wait Times `Ctrl + c` exit() : 319s
-< sost > Please Wait Times `Ctrl + c` exit() : 318s
-< sost > Please Wait Times `Ctrl + c` exit() : 317s
-< sost > Please Wait Times `Ctrl + c` exit() : 316s
-< sost > Please Wait Times `Ctrl + c` exit() : 315s
-< sost > Please Wait Times `Ctrl + c` exit() : 314s
-< sost > Please Wait Times `Ctrl + c` exit() : 313s
-< sost > Please Wait Times `Ctrl + c` exit() : 312s
-< sost > Please Wait Times `Ctrl + c` exit() : 311s
-< sost > Please Wait Times `Ctrl + c` exit() : 310s
-< sost > Please Wait Times `Ctrl + c` exit() : 309s
-< sost > Please Wait Times `Ctrl + c` exit() : 308s
-< sost > Please Wait Times `Ctrl + c` exit() : 307s
-< sost > Please Wait Times `Ctrl + c` exit() : 306s
-< sost > Please Wait Times `Ctrl + c` exit() : 305s
-< sost > Please Wait Times `Ctrl + c` exit() : 304s
-< sost > Please Wait Times `Ctrl + c` exit() : 303s
-< sost > Please Wait Times `Ctrl + c` exit() : 302s
-< sost > Please Wait Times `Ctrl + c` exit() : 301s
-< sost > Please Wait Times `Ctrl + c` exit() : 300s
-< sost > Please Wait Times `Ctrl + c` exit() : 299s
-< sost > Please Wait Times `Ctrl + c` exit() : 298s
-< sost > Please Wait Times `Ctrl + c` exit() : 297s
-< sost > Please Wait Times `Ctrl + c` exit() : 296s
-< sost > Please Wait Times `Ctrl + c` exit() : 295s
-< sost > Please Wait Times `Ctrl + c` exit() : 294s
-< sost > Please Wait Times `Ctrl + c` exit() : 293s
-< sost > Please Wait Times `Ctrl + c` exit() : 292s
-< sost > Please Wait Times `Ctrl + c` exit() : 291s
-< sost > Please Wait Times `Ctrl + c` exit() : 290s
-< sost > Please Wait Times `Ctrl + c` exit() : 289s
-< sost > Please Wait Times `Ctrl + c` exit() : 288s
-< sost > Please Wait Times `Ctrl + c` exit() : 287s
-< sost > Please Wait Times `Ctrl + c` exit() : 286s
-< sost > Please Wait Times `Ctrl + c` exit() : 285s
-< sost > Please Wait Times `Ctrl + c` exit() : 284s
-< sost > Please Wait Times `Ctrl + c` exit() : 283s
-< sost > Please Wait Times `Ctrl + c` exit() : 282s
-< sost > Please Wait Times `Ctrl + c` exit() : 281s
-< sost > Please Wait Times `Ctrl + c` exit() : 280s
-< sost > Please Wait Times `Ctrl + c` exit() : 279s
-< sost > Please Wait Times `Ctrl + c` exit() : 278s
-< sost > Please Wait Times `Ctrl + c` exit() : 277s
-< sost > Please Wait Times `Ctrl + c` exit() : 276s
-< sost > Please Wait Times `Ctrl + c` exit() : 275s
-< sost > Please Wait Times `Ctrl + c` exit() : 274s
-< sost > Please Wait Times `Ctrl + c` exit() : 273s
-< sost > Please Wait Times `Ctrl + c` exit() : 272s
-< sost > Please Wait Times `Ctrl + c` exit() : 271s
-< sost > Please Wait Times `Ctrl + c` exit() : 270s
-< sost > Please Wait Times `Ctrl + c` exit() : 269s
-< sost > Please Wait Times `Ctrl + c` exit() : 268s
-< sost > Please Wait Times `Ctrl + c` exit() : 267s
-< sost > Please Wait Times `Ctrl + c` exit() : 266s
-< sost > Please Wait Times `Ctrl + c` exit() : 265s
-< sost > Please Wait Times `Ctrl + c` exit() : 264s
-< sost > Please Wait Times `Ctrl + c` exit() : 263s
-< sost > Please Wait Times `Ctrl + c` exit() : 262s
-< sost > Please Wait Times `Ctrl + c` exit() : 261s
-< sost > Please Wait Times `Ctrl + c` exit() : 260s
-< sost > Please Wait Times `Ctrl + c` exit() : 259s
-< sost > Please Wait Times `Ctrl + c` exit() : 258s
-< sost > Please Wait Times `Ctrl + c` exit() : 257s
-< sost > Please Wait Times `Ctrl + c` exit() : 256s
-< sost > Please Wait Times `Ctrl + c` exit() : 255s
-< sost > Please Wait Times `Ctrl + c` exit() : 254s
-< sost > Please Wait Times `Ctrl + c` exit() : 253s
-< sost > Please Wait Times `Ctrl + c` exit() : 252s
-< sost > Please Wait Times `Ctrl + c` exit() : 251s
-< sost > Please Wait Times `Ctrl + c` exit() : 250s
-< sost > Please Wait Times `Ctrl + c` exit() : 249s
-< sost > Please Wait Times `Ctrl + c` exit() : 248s
-< sost > Please Wait Times `Ctrl + c` exit() : 247s
-< sost > Please Wait Times `Ctrl + c` exit() : 246s
-< sost > Please Wait Times `Ctrl + c` exit() : 245s
-< sost > Please Wait Times `Ctrl + c` exit() : 244s
-< sost > Please Wait Times `Ctrl + c` exit() : 243s
-< sost > Please Wait Times `Ctrl + c` exit() : 242s
-< sost > Please Wait Times `Ctrl + c` exit() : 241s
-< sost > Please Wait Times `Ctrl + c` exit() : 240s
-< sost > Please Wait Times `Ctrl + c` exit() : 239s
-< sost > Please Wait Times `Ctrl + c` exit() : 238s
-< sost > Please Wait Times `Ctrl + c` exit() : 237s
-< sost > Please Wait Times `Ctrl + c` exit() : 236s
-< sost > Please Wait Times `Ctrl + c` exit() : 235s
-< sost > Please Wait Times `Ctrl + c` exit() : 234s
-< sost > Please Wait Times `Ctrl + c` exit() : 233s
-< sost > Please Wait Times `Ctrl + c` exit() : 232s
-< sost > Please Wait Times `Ctrl + c` exit() : 231s
-< sost > Please Wait Times `Ctrl + c` exit() : 230s
-< sost > Please Wait Times `Ctrl + c` exit() : 229s
-< sost > Please Wait Times `Ctrl + c` exit() : 228s
-< sost > Please Wait Times `Ctrl + c` exit() : 227s
-< sost > Please Wait Times `Ctrl + c` exit() : 226s
-< sost > Please Wait Times `Ctrl + c` exit() : 225s
-< sost > Please Wait Times `Ctrl + c` exit() : 224s
-< sost > Please Wait Times `Ctrl + c` exit() : 223s
-< sost > Please Wait Times `Ctrl + c` exit() : 222s
-< sost > Please Wait Times `Ctrl + c` exit() : 221s
-< sost > Please Wait Times `Ctrl + c` exit() : 220s
-< sost > Please Wait Times `Ctrl + c` exit() : 219s
-< sost > Please Wait Times `Ctrl + c` exit() : 218s
-< sost > Please Wait Times `Ctrl + c` exit() : 217s
-< sost > Please Wait Times `Ctrl + c` exit() : 216s
-< sost > Please Wait Times `Ctrl + c` exit() : 215s
-< sost > Please Wait Times `Ctrl + c` exit() : 214s
-< sost > Please Wait Times `Ctrl + c` exit() : 213s
-< sost > Please Wait Times `Ctrl + c` exit() : 212s
-< sost > Please Wait Times `Ctrl + c` exit() : 211s
-< sost > Please Wait Times `Ctrl + c` exit() : 210s
-< sost > Please Wait Times `Ctrl + c` exit() : 209s
-< sost > Please Wait Times `Ctrl + c` exit() : 208s
-< sost > Please Wait Times `Ctrl + c` exit() : 207s
-< sost > Please Wait Times `Ctrl + c` exit() : 206s
-< sost > Please Wait Times `Ctrl + c` exit() : 205s
-< sost > Please Wait Times `Ctrl + c` exit() : 204s
-< sost > Please Wait Times `Ctrl + c` exit() : 203s
-< sost > Please Wait Times `Ctrl + c` exit() : 202s
-< sost > Please Wait Times `Ctrl + c` exit() : 201s
-< sost > Please Wait Times `Ctrl + c` exit() : 200s
-< sost > Please Wait Times `Ctrl + c` exit() : 199s
-< sost > Please Wait Times `Ctrl + c` exit() : 198s
-< sost > Please Wait Times `Ctrl + c` exit() : 197s
-< sost > Please Wait Times `Ctrl + c` exit() : 196s
-< sost > Please Wait Times `Ctrl + c` exit() : 195s
-< sost > Please Wait Times `Ctrl + c` exit() : 194s
-< sost > Please Wait Times `Ctrl + c` exit() : 193s
-< sost > Please Wait Times `Ctrl + c` exit() : 192s
-< sost > Please Wait Times `Ctrl + c` exit() : 191s
-< sost > Please Wait Times `Ctrl + c` exit() : 190s
-< sost > Please Wait Times `Ctrl + c` exit() : 189s
-< sost > Please Wait Times `Ctrl + c` exit() : 188s
-< sost > Please Wait Times `Ctrl + c` exit() : 187s
-< sost > Please Wait Times `Ctrl + c` exit() : 186s
-< sost > Please Wait Times `Ctrl + c` exit() : 185s
-< sost > Please Wait Times `Ctrl + c` exit() : 184s
-< sost > Please Wait Times `Ctrl + c` exit() : 183s
-< sost > Please Wait Times `Ctrl + c` exit() : 182s
-< sost > Please Wait Times `Ctrl + c` exit() : 181s
-< sost > Please Wait Times `Ctrl + c` exit() : 180s
-< sost > Please Wait Times `Ctrl + c` exit() : 179s
-< sost > Please Wait Times `Ctrl + c` exit() : 178s
-< sost > Please Wait Times `Ctrl + c` exit() : 177s
-< sost > Please Wait Times `Ctrl + c` exit() : 176s
-< sost > Please Wait Times `Ctrl + c` exit() : 175s
-< sost > Please Wait Times `Ctrl + c` exit() : 174s
-< sost > Please Wait Times `Ctrl + c` exit() : 173s
-< sost > Please Wait Times `Ctrl + c` exit() : 172s
-< sost > Please Wait Times `Ctrl + c` exit() : 171s
-< sost > Please Wait Times `Ctrl + c` exit() : 170s
-< sost > Please Wait Times `Ctrl + c` exit() : 169s
-< sost > Please Wait Times `Ctrl + c` exit() : 168s
-< sost > Please Wait Times `Ctrl + c` exit() : 167s
-< sost > Please Wait Times `Ctrl + c` exit() : 166s
-< sost > Please Wait Times `Ctrl + c` exit() : 165s
-< sost > Please Wait Times `Ctrl + c` exit() : 164s
-< sost > Please Wait Times `Ctrl + c` exit() : 163s
-< sost > Please Wait Times `Ctrl + c` exit() : 162s
-< sost > Please Wait Times `Ctrl + c` exit() : 161s
-< sost > Please Wait Times `Ctrl + c` exit() : 160s
-< sost > Please Wait Times `Ctrl + c` exit() : 159s
-< sost > Please Wait Times `Ctrl + c` exit() : 158s
-< sost > Please Wait Times `Ctrl + c` exit() : 157s
-< sost > Please Wait Times `Ctrl + c` exit() : 156s
-< sost > Please Wait Times `Ctrl + c` exit() : 155s
-< sost > Please Wait Times `Ctrl + c` exit() : 154s
-< sost > Please Wait Times `Ctrl + c` exit() : 153s
-< sost > Please Wait Times `Ctrl + c` exit() : 152s
-< sost > Please Wait Times `Ctrl + c` exit() : 151s
-< sost > Please Wait Times `Ctrl + c` exit() : 150s
-< sost > Please Wait Times `Ctrl + c` exit() : 149s
-< sost > Please Wait Times `Ctrl + c` exit() : 148s
-< sost > Please Wait Times `Ctrl + c` exit() : 147s
-< sost > Please Wait Times `Ctrl + c` exit() : 146s
-< sost > Please Wait Times `Ctrl + c` exit() : 145s
-< sost > Please Wait Times `Ctrl + c` exit() : 144s
-< sost > Please Wait Times `Ctrl + c` exit() : 143s
-< sost > Please Wait Times `Ctrl + c` exit() : 142s
-< sost > Please Wait Times `Ctrl + c` exit() : 141s
-< sost > Please Wait Times `Ctrl + c` exit() : 140s
-< sost > Please Wait Times `Ctrl + c` exit() : 139s
-< sost > Please Wait Times `Ctrl + c` exit() : 138s
-< sost > Please Wait Times `Ctrl + c` exit() : 137s
-< sost > Please Wait Times `Ctrl + c` exit() : 136s
-< sost > Please Wait Times `Ctrl + c` exit() : 135s
-< sost > Please Wait Times `Ctrl + c` exit() : 134s
-< sost > Please Wait Times `Ctrl + c` exit() : 133s
-< sost > Please Wait Times `Ctrl + c` exit() : 132s
-< sost > Please Wait Times `Ctrl + c` exit() : 131s
-< sost > Please Wait Times `Ctrl + c` exit() : 130s
-< sost > Please Wait Times `Ctrl + c` exit() : 129s
-< sost > Please Wait Times `Ctrl + c` exit() : 128s
-< sost > Please Wait Times `Ctrl + c` exit() : 127s
-< sost > Please Wait Times `Ctrl + c` exit() : 126s
-< sost > Please Wait Times `Ctrl + c` exit() : 125s
-< sost > Please Wait Times `Ctrl + c` exit() : 124s
-< sost > Please Wait Times `Ctrl + c` exit() : 123s
-< sost > Please Wait Times `Ctrl + c` exit() : 122s
-< sost > Please Wait Times `Ctrl + c` exit() : 121s
-< sost > Please Wait Times `Ctrl + c` exit() : 120s
-< sost > Please Wait Times `Ctrl + c` exit() : 119s
-< sost > Please Wait Times `Ctrl + c` exit() : 118s
-< sost > Please Wait Times `Ctrl + c` exit() : 117s
-< sost > Please Wait Times `Ctrl + c` exit() : 116s
-< sost > Please Wait Times `Ctrl + c` exit() : 115s
-< sost > Please Wait Times `Ctrl + c` exit() : 114s
-< sost > Please Wait Times `Ctrl + c` exit() : 113s
-< sost > Please Wait Times `Ctrl + c` exit() : 112s
-< sost > Please Wait Times `Ctrl + c` exit() : 111s
-< sost > Please Wait Times `Ctrl + c` exit() : 110s
-< sost > Please Wait Times `Ctrl + c` exit() : 109s
-< sost > Please Wait Times `Ctrl + c` exit() : 108s
-< sost > Please Wait Times `Ctrl + c` exit() : 107s
-< sost > Please Wait Times `Ctrl + c` exit() : 106s
-< sost > Please Wait Times `Ctrl + c` exit() : 105s
-< sost > Please Wait Times `Ctrl + c` exit() : 104s
-< sost > Please Wait Times `Ctrl + c` exit() : 103s
-< sost > Please Wait Times `Ctrl + c` exit() : 102s
-< sost > Please Wait Times `Ctrl + c` exit() : 101s
-< sost > Please Wait Times `Ctrl + c` exit() : 100s
-< sost > Please Wait Times `Ctrl + c` exit() : 99s
-< sost > Please Wait Times `Ctrl + c` exit() : 98s
-< sost > Please Wait Times `Ctrl + c` exit() : 97s
-< sost > Please Wait Times `Ctrl + c` exit() : 96s
-< sost > Please Wait Times `Ctrl + c` exit() : 95s
-< sost > Please Wait Times `Ctrl + c` exit() : 94s
-< sost > Please Wait Times `Ctrl + c` exit() : 93s
-< sost > Please Wait Times `Ctrl + c` exit() : 92s
-< sost > Please Wait Times `Ctrl + c` exit() : 91s
-< sost > Please Wait Times `Ctrl + c` exit() : 90s
-< sost > Please Wait Times `Ctrl + c` exit() : 89s
-< sost > Please Wait Times `Ctrl + c` exit() : 88s
-< sost > Please Wait Times `Ctrl + c` exit() : 87s
-< sost > Please Wait Times `Ctrl + c` exit() : 86s
-< sost > Please Wait Times `Ctrl + c` exit() : 85s
-< sost > Please Wait Times `Ctrl + c` exit() : 84s
-< sost > Please Wait Times `Ctrl + c` exit() : 83s
-< sost > Please Wait Times `Ctrl + c` exit() : 82s
-< sost > Please Wait Times `Ctrl + c` exit() : 81s
-< sost > Please Wait Times `Ctrl + c` exit() : 80s
-< sost > Please Wait Times `Ctrl + c` exit() : 79s
-< sost > Please Wait Times `Ctrl + c` exit() : 78s
-< sost > Please Wait Times `Ctrl + c` exit() : 77s
-< sost > Please Wait Times `Ctrl + c` exit() : 76s
-< sost > Please Wait Times `Ctrl + c` exit() : 75s
-< sost > Please Wait Times `Ctrl + c` exit() : 74s
-< sost > Please Wait Times `Ctrl + c` exit() : 73s
-< sost > Please Wait Times `Ctrl + c` exit() : 72s
-< sost > Please Wait Times `Ctrl + c` exit() : 71s
-< sost > Please Wait Times `Ctrl + c` exit() : 70s
-< sost > Please Wait Times `Ctrl + c` exit() : 69s
-< sost > Please Wait Times `Ctrl + c` exit() : 68s
-< sost > Please Wait Times `Ctrl + c` exit() : 67s
-< sost > Please Wait Times `Ctrl + c` exit() : 66s
-< sost > Please Wait Times `Ctrl + c` exit() : 65s
-< sost > Please Wait Times `Ctrl + c` exit() : 64s
-< sost > Please Wait Times `Ctrl + c` exit() : 63s
-< sost > Please Wait Times `Ctrl + c` exit() : 62s
-< sost > Please Wait Times `Ctrl + c` exit() : 61s
-< sost > Please Wait Times `Ctrl + c` exit() : 60s
-< sost > Please Wait Times `Ctrl + c` exit() : 59s
-< sost > Please Wait Times `Ctrl + c` exit() : 58s
-< sost > Please Wait Times `Ctrl + c` exit() : 57s
-< sost > Please Wait Times `Ctrl + c` exit() : 56s
-< sost > Please Wait Times `Ctrl + c` exit() : 55s
-< sost > Please Wait Times `Ctrl + c` exit() : 54s
-< sost > Please Wait Times `Ctrl + c` exit() : 53s
-< sost > Please Wait Times `Ctrl + c` exit() : 52s
-< sost > Please Wait Times `Ctrl + c` exit() : 51s
-< sost > Please Wait Times `Ctrl + c` exit() : 50s
-< sost > Please Wait Times `Ctrl + c` exit() : 49s
-< sost > Please Wait Times `Ctrl + c` exit() : 48s
-< sost > Please Wait Times `Ctrl + c` exit() : 47s
-< sost > Please Wait Times `Ctrl + c` exit() : 46s
-< sost > Please Wait Times `Ctrl + c` exit() : 45s
-< sost > Please Wait Times `Ctrl + c` exit() : 44s
-< sost > Please Wait Times `Ctrl + c` exit() : 43s
-< sost > Please Wait Times `Ctrl + c` exit() : 42s
-< sost > Please Wait Times `Ctrl + c` exit() : 41s
-< sost > Please Wait Times `Ctrl + c` exit() : 40s
-< sost > Please Wait Times `Ctrl + c` exit() : 39s
-< sost > Please Wait Times `Ctrl + c` exit() : 38s
-< sost > Please Wait Times `Ctrl + c` exit() : 37s
-< sost > Please Wait Times `Ctrl + c` exit() : 36s
-< sost > Please Wait Times `Ctrl + c` exit() : 35s
-< sost > Please Wait Times `Ctrl + c` exit() : 34s
-< sost > Please Wait Times `Ctrl + c` exit() : 33s
-< sost > Please Wait Times `Ctrl + c` exit() : 32s
-< sost > Please Wait Times `Ctrl + c` exit() : 31s
-< sost > Please Wait Times `Ctrl + c` exit() : 30s
-< sost > Please Wait Times `Ctrl + c` exit() : 29s
-< sost > Please Wait Times `Ctrl + c` exit() : 28s
-< sost > Please Wait Times `Ctrl + c` exit() : 27s
-< sost > Please Wait Times `Ctrl + c` exit() : 26s
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost > Please Wait Times `Ctrl + c` exit() : 22s
-< sost > Please Wait Times `Ctrl + c` exit() : 21s
-< sost > Please Wait Times `Ctrl + c` exit() : 20s
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost > Please Wait Times `Ctrl + c` exit() : 29s
-< sost > Please Wait Times `Ctrl + c` exit() : 28s
-< sost > Please Wait Times `Ctrl + c` exit() : 27s
-< sost > Please Wait Times `Ctrl + c` exit() : 26s
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost > Please Wait Times `Ctrl + c` exit() : 22s
-< sost > Please Wait Times `Ctrl + c` exit() : 21s
-< sost > Please Wait Times `Ctrl + c` exit() : 20s
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost_20260203-102430_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102430_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102430_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102436_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102437_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102441_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102445_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102450_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102451_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102451_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102452_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102453_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102453_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
-< sost_20260203-102453_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
-< sost > Please Wait Times `Ctrl + c` exit() : 359s
-< sost > Please Wait Times `Ctrl + c` exit() : 358s
-< sost > Please Wait Times `Ctrl + c` exit() : 357s
-< sost > Please Wait Times `Ctrl + c` exit() : 356s
-< sost > Please Wait Times `Ctrl + c` exit() : 355s
-< sost > Please Wait Times `Ctrl + c` exit() : 354s
-< sost > Please Wait Times `Ctrl + c` exit() : 353s
-< sost > Please Wait Times `Ctrl + c` exit() : 352s
-< sost > Please Wait Times `Ctrl + c` exit() : 351s
-< sost > Please Wait Times `Ctrl + c` exit() : 350s
-< sost > Please Wait Times `Ctrl + c` exit() : 349s
-< sost > Please Wait Times `Ctrl + c` exit() : 348s
-< sost > Please Wait Times `Ctrl + c` exit() : 347s
-< sost > Please Wait Times `Ctrl + c` exit() : 346s
-< sost > Please Wait Times `Ctrl + c` exit() : 345s
-< sost > Please Wait Times `Ctrl + c` exit() : 344s
-< sost > Please Wait Times `Ctrl + c` exit() : 343s
-< sost > Please Wait Times `Ctrl + c` exit() : 342s
-< sost > Please Wait Times `Ctrl + c` exit() : 341s
-< sost > Please Wait Times `Ctrl + c` exit() : 340s
-< sost > Please Wait Times `Ctrl + c` exit() : 339s
-< sost > Please Wait Times `Ctrl + c` exit() : 338s
-< sost > Please Wait Times `Ctrl + c` exit() : 337s
-< sost > Please Wait Times `Ctrl + c` exit() : 336s
-< sost > Please Wait Times `Ctrl + c` exit() : 335s
-< sost > Please Wait Times `Ctrl + c` exit() : 334s
-< sost > Please Wait Times `Ctrl + c` exit() : 333s
-< sost > Please Wait Times `Ctrl + c` exit() : 332s
-< sost > Please Wait Times `Ctrl + c` exit() : 331s
-< sost > Please Wait Times `Ctrl + c` exit() : 330s
-< sost > Please Wait Times `Ctrl + c` exit() : 329s
-< sost > Please Wait Times `Ctrl + c` exit() : 328s
-< sost > Please Wait Times `Ctrl + c` exit() : 327s
-< sost > Please Wait Times `Ctrl + c` exit() : 326s
-< sost > Please Wait Times `Ctrl + c` exit() : 325s
-< sost > Please Wait Times `Ctrl + c` exit() : 324s
-< sost > Please Wait Times `Ctrl + c` exit() : 323s
-< sost > Please Wait Times `Ctrl + c` exit() : 322s
-< sost > Please Wait Times `Ctrl + c` exit() : 321s
-< sost > Please Wait Times `Ctrl + c` exit() : 320s
-< sost > Please Wait Times `Ctrl + c` exit() : 319s
-< sost > Please Wait Times `Ctrl + c` exit() : 318s
-< sost > Please Wait Times `Ctrl + c` exit() : 317s
-< sost > Please Wait Times `Ctrl + c` exit() : 316s
-< sost > Please Wait Times `Ctrl + c` exit() : 315s
-< sost > Please Wait Times `Ctrl + c` exit() : 314s
-< sost > Please Wait Times `Ctrl + c` exit() : 313s
-< sost > Please Wait Times `Ctrl + c` exit() : 312s
-< sost > Please Wait Times `Ctrl + c` exit() : 311s
-< sost > Please Wait Times `Ctrl + c` exit() : 310s
-< sost > Please Wait Times `Ctrl + c` exit() : 309s
-< sost > Please Wait Times `Ctrl + c` exit() : 308s
-< sost > Please Wait Times `Ctrl + c` exit() : 307s
-< sost > Please Wait Times `Ctrl + c` exit() : 306s
-< sost > Please Wait Times `Ctrl + c` exit() : 305s
-< sost > Please Wait Times `Ctrl + c` exit() : 304s
-< sost > Please Wait Times `Ctrl + c` exit() : 303s
-< sost > Please Wait Times `Ctrl + c` exit() : 302s
-< sost > Please Wait Times `Ctrl + c` exit() : 301s
-< sost > Please Wait Times `Ctrl + c` exit() : 300s
-< sost > Please Wait Times `Ctrl + c` exit() : 299s
-< sost > Please Wait Times `Ctrl + c` exit() : 298s
-< sost > Please Wait Times `Ctrl + c` exit() : 297s
-< sost > Please Wait Times `Ctrl + c` exit() : 296s
-< sost > Please Wait Times `Ctrl + c` exit() : 295s
-< sost > Please Wait Times `Ctrl + c` exit() : 294s
-< sost > Please Wait Times `Ctrl + c` exit() : 293s
-< sost > Please Wait Times `Ctrl + c` exit() : 292s
-< sost > Please Wait Times `Ctrl + c` exit() : 291s
-< sost > Please Wait Times `Ctrl + c` exit() : 290s
-< sost > Please Wait Times `Ctrl + c` exit() : 289s
-< sost > Please Wait Times `Ctrl + c` exit() : 288s
-< sost > Please Wait Times `Ctrl + c` exit() : 287s
-< sost > Please Wait Times `Ctrl + c` exit() : 286s
-< sost > Please Wait Times `Ctrl + c` exit() : 285s
-< sost > Please Wait Times `Ctrl + c` exit() : 284s
-< sost > Please Wait Times `Ctrl + c` exit() : 283s
-< sost > Please Wait Times `Ctrl + c` exit() : 282s
-< sost > Please Wait Times `Ctrl + c` exit() : 281s
-< sost > Please Wait Times `Ctrl + c` exit() : 280s
-< sost > Please Wait Times `Ctrl + c` exit() : 279s
-< sost > Please Wait Times `Ctrl + c` exit() : 278s
-< sost > Please Wait Times `Ctrl + c` exit() : 277s
-< sost > Please Wait Times `Ctrl + c` exit() : 276s
-< sost > Please Wait Times `Ctrl + c` exit() : 275s
-< sost > Please Wait Times `Ctrl + c` exit() : 274s
-< sost > Please Wait Times `Ctrl + c` exit() : 273s
-< sost > Please Wait Times `Ctrl + c` exit() : 272s
-< sost > Please Wait Times `Ctrl + c` exit() : 271s
-< sost > Please Wait Times `Ctrl + c` exit() : 270s
-< sost > Please Wait Times `Ctrl + c` exit() : 269s
-< sost > Please Wait Times `Ctrl + c` exit() : 268s
-< sost > Please Wait Times `Ctrl + c` exit() : 267s
-< sost > Please Wait Times `Ctrl + c` exit() : 266s
-< sost > Please Wait Times `Ctrl + c` exit() : 265s
-< sost > Please Wait Times `Ctrl + c` exit() : 264s
-< sost > Please Wait Times `Ctrl + c` exit() : 263s
-< sost > Please Wait Times `Ctrl + c` exit() : 262s
-< sost > Please Wait Times `Ctrl + c` exit() : 261s
-< sost > Please Wait Times `Ctrl + c` exit() : 260s
-< sost > Please Wait Times `Ctrl + c` exit() : 259s
-< sost > Please Wait Times `Ctrl + c` exit() : 258s
-< sost > Please Wait Times `Ctrl + c` exit() : 257s
-< sost > Please Wait Times `Ctrl + c` exit() : 256s
-< sost > Please Wait Times `Ctrl + c` exit() : 255s
-< sost > Please Wait Times `Ctrl + c` exit() : 254s
-< sost > Please Wait Times `Ctrl + c` exit() : 253s
-< sost > Please Wait Times `Ctrl + c` exit() : 252s
-< sost > Please Wait Times `Ctrl + c` exit() : 251s
-< sost > Please Wait Times `Ctrl + c` exit() : 250s
-< sost > Please Wait Times `Ctrl + c` exit() : 249s
-< sost > Please Wait Times `Ctrl + c` exit() : 248s
-< sost > Please Wait Times `Ctrl + c` exit() : 247s
-< sost > Please Wait Times `Ctrl + c` exit() : 246s
-< sost > Please Wait Times `Ctrl + c` exit() : 245s
-< sost > Please Wait Times `Ctrl + c` exit() : 244s
-< sost > Please Wait Times `Ctrl + c` exit() : 243s
-< sost > Please Wait Times `Ctrl + c` exit() : 242s
-< sost > Please Wait Times `Ctrl + c` exit() : 241s
-< sost > Please Wait Times `Ctrl + c` exit() : 240s
-< sost > Please Wait Times `Ctrl + c` exit() : 239s
-< sost > Please Wait Times `Ctrl + c` exit() : 238s
-< sost > Please Wait Times `Ctrl + c` exit() : 237s
-< sost > Please Wait Times `Ctrl + c` exit() : 236s
-< sost > Please Wait Times `Ctrl + c` exit() : 235s
-< sost > Please Wait Times `Ctrl + c` exit() : 234s
-< sost > Please Wait Times `Ctrl + c` exit() : 233s
-< sost > Please Wait Times `Ctrl + c` exit() : 232s
-< sost > Please Wait Times `Ctrl + c` exit() : 231s
-< sost > Please Wait Times `Ctrl + c` exit() : 230s
-< sost > Please Wait Times `Ctrl + c` exit() : 229s
-< sost > Please Wait Times `Ctrl + c` exit() : 228s
-< sost > Please Wait Times `Ctrl + c` exit() : 227s
-< sost > Please Wait Times `Ctrl + c` exit() : 226s
-< sost > Please Wait Times `Ctrl + c` exit() : 225s
-< sost > Please Wait Times `Ctrl + c` exit() : 224s
-< sost > Please Wait Times `Ctrl + c` exit() : 223s
-< sost > Please Wait Times `Ctrl + c` exit() : 222s
-< sost > Please Wait Times `Ctrl + c` exit() : 221s
-< sost > Please Wait Times `Ctrl + c` exit() : 220s
-< sost > Please Wait Times `Ctrl + c` exit() : 219s
-< sost > Please Wait Times `Ctrl + c` exit() : 218s
-< sost > Please Wait Times `Ctrl + c` exit() : 217s
-< sost > Please Wait Times `Ctrl + c` exit() : 216s
-< sost > Please Wait Times `Ctrl + c` exit() : 215s
-< sost > Please Wait Times `Ctrl + c` exit() : 214s
-< sost > Please Wait Times `Ctrl + c` exit() : 213s
-< sost > Please Wait Times `Ctrl + c` exit() : 212s
-< sost > Please Wait Times `Ctrl + c` exit() : 211s
-< sost > Please Wait Times `Ctrl + c` exit() : 210s
-< sost > Please Wait Times `Ctrl + c` exit() : 209s
-< sost > Please Wait Times `Ctrl + c` exit() : 208s
-< sost > Please Wait Times `Ctrl + c` exit() : 207s
-< sost > Please Wait Times `Ctrl + c` exit() : 206s
-< sost > Please Wait Times `Ctrl + c` exit() : 205s
-< sost > Please Wait Times `Ctrl + c` exit() : 204s
-< sost > Please Wait Times `Ctrl + c` exit() : 203s
-< sost > Please Wait Times `Ctrl + c` exit() : 202s
-< sost > Please Wait Times `Ctrl + c` exit() : 201s
-< sost > Please Wait Times `Ctrl + c` exit() : 200s
-< sost > Please Wait Times `Ctrl + c` exit() : 199s
-< sost > Please Wait Times `Ctrl + c` exit() : 198s
-< sost > Please Wait Times `Ctrl + c` exit() : 197s
-< sost > Please Wait Times `Ctrl + c` exit() : 196s
-< sost > Please Wait Times `Ctrl + c` exit() : 195s
-< sost > Please Wait Times `Ctrl + c` exit() : 194s
-< sost > Please Wait Times `Ctrl + c` exit() : 193s
-< sost > Please Wait Times `Ctrl + c` exit() : 192s
-< sost > Please Wait Times `Ctrl + c` exit() : 191s
-< sost > Please Wait Times `Ctrl + c` exit() : 190s
-< sost > Please Wait Times `Ctrl + c` exit() : 189s
-< sost > Please Wait Times `Ctrl + c` exit() : 188s
-< sost > Please Wait Times `Ctrl + c` exit() : 187s
-< sost > Please Wait Times `Ctrl + c` exit() : 186s
-< sost > Please Wait Times `Ctrl + c` exit() : 185s
-< sost > Please Wait Times `Ctrl + c` exit() : 184s
-< sost > Please Wait Times `Ctrl + c` exit() : 183s
-< sost > Please Wait Times `Ctrl + c` exit() : 182s
-< sost > Please Wait Times `Ctrl + c` exit() : 181s
-< sost > Please Wait Times `Ctrl + c` exit() : 180s
-< sost > Please Wait Times `Ctrl + c` exit() : 179s
-< sost > Please Wait Times `Ctrl + c` exit() : 178s
-< sost > Please Wait Times `Ctrl + c` exit() : 177s
-< sost > Please Wait Times `Ctrl + c` exit() : 176s
-< sost > Please Wait Times `Ctrl + c` exit() : 175s
-< sost > Please Wait Times `Ctrl + c` exit() : 174s
-< sost > Please Wait Times `Ctrl + c` exit() : 173s
-< sost > Please Wait Times `Ctrl + c` exit() : 172s
-< sost > Please Wait Times `Ctrl + c` exit() : 171s
-< sost > Please Wait Times `Ctrl + c` exit() : 170s
-< sost > Please Wait Times `Ctrl + c` exit() : 169s
-< sost > Please Wait Times `Ctrl + c` exit() : 168s
-< sost > Please Wait Times `Ctrl + c` exit() : 167s
-< sost > Please Wait Times `Ctrl + c` exit() : 166s
-< sost > Please Wait Times `Ctrl + c` exit() : 165s
-< sost > Please Wait Times `Ctrl + c` exit() : 164s
-< sost > Please Wait Times `Ctrl + c` exit() : 163s
-< sost > Please Wait Times `Ctrl + c` exit() : 162s
-< sost > Please Wait Times `Ctrl + c` exit() : 161s
-< sost > Please Wait Times `Ctrl + c` exit() : 160s
-< sost > Please Wait Times `Ctrl + c` exit() : 159s
-< sost > Please Wait Times `Ctrl + c` exit() : 158s
-< sost > Please Wait Times `Ctrl + c` exit() : 157s
-< sost > Please Wait Times `Ctrl + c` exit() : 156s
-< sost > Please Wait Times `Ctrl + c` exit() : 155s
-< sost > Please Wait Times `Ctrl + c` exit() : 154s
-< sost > Please Wait Times `Ctrl + c` exit() : 153s
-< sost > Please Wait Times `Ctrl + c` exit() : 152s
-< sost > Please Wait Times `Ctrl + c` exit() : 151s
-< sost > Please Wait Times `Ctrl + c` exit() : 150s
-< sost > Please Wait Times `Ctrl + c` exit() : 149s
-< sost > Please Wait Times `Ctrl + c` exit() : 148s
-< sost > Please Wait Times `Ctrl + c` exit() : 147s
-< sost > Please Wait Times `Ctrl + c` exit() : 146s
-< sost > Please Wait Times `Ctrl + c` exit() : 145s
-< sost > Please Wait Times `Ctrl + c` exit() : 144s
-< sost > Please Wait Times `Ctrl + c` exit() : 143s
-< sost > Please Wait Times `Ctrl + c` exit() : 142s
-< sost > Please Wait Times `Ctrl + c` exit() : 141s
-< sost > Please Wait Times `Ctrl + c` exit() : 140s
-< sost > Please Wait Times `Ctrl + c` exit() : 139s
-< sost > Please Wait Times `Ctrl + c` exit() : 138s
-< sost > Please Wait Times `Ctrl + c` exit() : 137s
-< sost > Please Wait Times `Ctrl + c` exit() : 136s
-< sost > Please Wait Times `Ctrl + c` exit() : 135s
-< sost > Please Wait Times `Ctrl + c` exit() : 134s
-< sost > Please Wait Times `Ctrl + c` exit() : 133s
-< sost > Please Wait Times `Ctrl + c` exit() : 132s
-< sost > Please Wait Times `Ctrl + c` exit() : 131s
-< sost > Please Wait Times `Ctrl + c` exit() : 130s
-< sost > Please Wait Times `Ctrl + c` exit() : 129s
-< sost > Please Wait Times `Ctrl + c` exit() : 128s
-< sost > Please Wait Times `Ctrl + c` exit() : 127s
-< sost > Please Wait Times `Ctrl + c` exit() : 126s
-< sost > Please Wait Times `Ctrl + c` exit() : 125s
-< sost > Please Wait Times `Ctrl + c` exit() : 124s
-< sost > Please Wait Times `Ctrl + c` exit() : 123s
-< sost > Please Wait Times `Ctrl + c` exit() : 122s
-< sost > Please Wait Times `Ctrl + c` exit() : 121s
-< sost > Please Wait Times `Ctrl + c` exit() : 120s
-< sost > Please Wait Times `Ctrl + c` exit() : 119s
-< sost > Please Wait Times `Ctrl + c` exit() : 118s
-< sost > Please Wait Times `Ctrl + c` exit() : 117s
-< sost > Please Wait Times `Ctrl + c` exit() : 116s
-< sost > Please Wait Times `Ctrl + c` exit() : 115s
-< sost > Please Wait Times `Ctrl + c` exit() : 114s
-< sost > Please Wait Times `Ctrl + c` exit() : 113s
-< sost > Please Wait Times `Ctrl + c` exit() : 112s
-< sost > Please Wait Times `Ctrl + c` exit() : 111s
-< sost > Please Wait Times `Ctrl + c` exit() : 110s
-< sost > Please Wait Times `Ctrl + c` exit() : 109s
-< sost > Please Wait Times `Ctrl + c` exit() : 108s
-< sost > Please Wait Times `Ctrl + c` exit() : 107s
-< sost > Please Wait Times `Ctrl + c` exit() : 106s
-< sost > Please Wait Times `Ctrl + c` exit() : 105s
-< sost > Please Wait Times `Ctrl + c` exit() : 104s
-< sost > Please Wait Times `Ctrl + c` exit() : 103s
-< sost > Please Wait Times `Ctrl + c` exit() : 102s
-< sost > Please Wait Times `Ctrl + c` exit() : 101s
-< sost > Please Wait Times `Ctrl + c` exit() : 100s
-< sost > Please Wait Times `Ctrl + c` exit() : 99s
-< sost > Please Wait Times `Ctrl + c` exit() : 98s
-< sost > Please Wait Times `Ctrl + c` exit() : 97s
-< sost > Please Wait Times `Ctrl + c` exit() : 96s
-< sost > Please Wait Times `Ctrl + c` exit() : 95s
-< sost > Please Wait Times `Ctrl + c` exit() : 94s
-< sost > Please Wait Times `Ctrl + c` exit() : 93s
-< sost > Please Wait Times `Ctrl + c` exit() : 92s
-< sost > Please Wait Times `Ctrl + c` exit() : 91s
-< sost > Please Wait Times `Ctrl + c` exit() : 90s
-< sost > Please Wait Times `Ctrl + c` exit() : 89s
-< sost > Please Wait Times `Ctrl + c` exit() : 88s
-< sost > Please Wait Times `Ctrl + c` exit() : 87s
-< sost > Please Wait Times `Ctrl + c` exit() : 86s
-< sost > Please Wait Times `Ctrl + c` exit() : 85s
-< sost > Please Wait Times `Ctrl + c` exit() : 84s
-< sost > Please Wait Times `Ctrl + c` exit() : 83s
-< sost > Please Wait Times `Ctrl + c` exit() : 82s
-< sost > Please Wait Times `Ctrl + c` exit() : 81s
-< sost > Please Wait Times `Ctrl + c` exit() : 80s
-< sost > Please Wait Times `Ctrl + c` exit() : 79s
-< sost > Please Wait Times `Ctrl + c` exit() : 78s
-< sost > Please Wait Times `Ctrl + c` exit() : 77s
-< sost > Please Wait Times `Ctrl + c` exit() : 76s
-< sost > Please Wait Times `Ctrl + c` exit() : 75s
-< sost > Please Wait Times `Ctrl + c` exit() : 74s
-< sost > Please Wait Times `Ctrl + c` exit() : 73s
-< sost > Please Wait Times `Ctrl + c` exit() : 72s
-< sost > Please Wait Times `Ctrl + c` exit() : 71s
-< sost > Please Wait Times `Ctrl + c` exit() : 70s
-< sost > Please Wait Times `Ctrl + c` exit() : 69s
-< sost > Please Wait Times `Ctrl + c` exit() : 68s
-< sost > Please Wait Times `Ctrl + c` exit() : 67s
-< sost > Please Wait Times `Ctrl + c` exit() : 66s
-< sost > Please Wait Times `Ctrl + c` exit() : 65s
-< sost > Please Wait Times `Ctrl + c` exit() : 64s
-< sost > Please Wait Times `Ctrl + c` exit() : 63s
-< sost > Please Wait Times `Ctrl + c` exit() : 62s
-< sost > Please Wait Times `Ctrl + c` exit() : 61s
-< sost > Please Wait Times `Ctrl + c` exit() : 60s
-< sost > Please Wait Times `Ctrl + c` exit() : 59s
-< sost > Please Wait Times `Ctrl + c` exit() : 58s
-< sost > Please Wait Times `Ctrl + c` exit() : 57s
-< sost > Please Wait Times `Ctrl + c` exit() : 56s
-< sost > Please Wait Times `Ctrl + c` exit() : 55s
-< sost > Please Wait Times `Ctrl + c` exit() : 54s
-< sost > Please Wait Times `Ctrl + c` exit() : 53s
-< sost > Please Wait Times `Ctrl + c` exit() : 52s
-< sost > Please Wait Times `Ctrl + c` exit() : 51s
-< sost > Please Wait Times `Ctrl + c` exit() : 50s
-< sost > Please Wait Times `Ctrl + c` exit() : 49s
-< sost > Please Wait Times `Ctrl + c` exit() : 48s
-< sost > Please Wait Times `Ctrl + c` exit() : 47s
-< sost > Please Wait Times `Ctrl + c` exit() : 46s
-< sost > Please Wait Times `Ctrl + c` exit() : 45s
-< sost > Please Wait Times `Ctrl + c` exit() : 44s
-< sost > Please Wait Times `Ctrl + c` exit() : 43s
-< sost > Please Wait Times `Ctrl + c` exit() : 42s
-< sost > Please Wait Times `Ctrl + c` exit() : 41s
-< sost > Please Wait Times `Ctrl + c` exit() : 40s
-< sost > Please Wait Times `Ctrl + c` exit() : 39s
-< sost > Please Wait Times `Ctrl + c` exit() : 38s
-< sost > Please Wait Times `Ctrl + c` exit() : 37s
-< sost > Please Wait Times `Ctrl + c` exit() : 36s
-< sost > Please Wait Times `Ctrl + c` exit() : 35s
-< sost > Please Wait Times `Ctrl + c` exit() : 34s
-< sost > Please Wait Times `Ctrl + c` exit() : 33s
-< sost > Please Wait Times `Ctrl + c` exit() : 32s
-< sost > Please Wait Times `Ctrl + c` exit() : 31s
-< sost > Please Wait Times `Ctrl + c` exit() : 30s
-< sost > Please Wait Times `Ctrl + c` exit() : 29s
-< sost > Please Wait Times `Ctrl + c` exit() : 28s
-< sost > Please Wait Times `Ctrl + c` exit() : 27s
-< sost > Please Wait Times `Ctrl + c` exit() : 26s
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost > Please Wait Times `Ctrl + c` exit() : 22s
-< sost > Please Wait Times `Ctrl + c` exit() : 21s
-< sost > Please Wait Times `Ctrl + c` exit() : 20s
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost > Please Wait Times `Ctrl + c` exit() : 10s
-< sost > Please Wait Times `Ctrl + c` exit() : 09s
-< sost > Please Wait Times `Ctrl + c` exit() : 08s
-< sost > Please Wait Times `Ctrl + c` exit() : 07s
-< sost > Please Wait Times `Ctrl + c` exit() : 06s
-< sost > Please Wait Times `Ctrl + c` exit() : 05s
-< sost > Please Wait Times `Ctrl + c` exit() : 04s
-< sost > Please Wait Times `Ctrl + c` exit() : 03s
-< sost > Please Wait Times `Ctrl + c` exit() : 02s
-< sost > Please Wait Times `Ctrl + c` exit() : 01s
-< sost > Please Wait Times `Ctrl + c` exit() : 00s
-< sost > Please Wait Times `Ctrl + c` exit() : 29s
-< sost > Please Wait Times `Ctrl + c` exit() : 28s
-< sost > Please Wait Times `Ctrl + c` exit() : 27s
-< sost > Please Wait Times `Ctrl + c` exit() : 26s
-< sost > Please Wait Times `Ctrl + c` exit() : 25s
-< sost > Please Wait Times `Ctrl + c` exit() : 24s
-< sost > Please Wait Times `Ctrl + c` exit() : 23s
-< sost > Please Wait Times `Ctrl + c` exit() : 22s
-< sost > Please Wait Times `Ctrl + c` exit() : 21s
-< sost > Please Wait Times `Ctrl + c` exit() : 20s
-< sost > Please Wait Times `Ctrl + c` exit() : 19s
-< sost > Please Wait Times `Ctrl + c` exit() : 18s
-< sost > Please Wait Times `Ctrl + c` exit() : 17s
-< sost > Please Wait Times `Ctrl + c` exit() : 16s
-< sost > Please Wait Times `Ctrl + c` exit() : 15s
-< sost > Please Wait Times `Ctrl + c` exit() : 14s
-< sost > Please Wait Times `Ctrl + c` exit() : 13s
-< sost > Please Wait Times `Ctrl + c` exit() : 12s
-< sost > Please Wait Times `Ctrl + c` exit() : 11s
-< sost_20260203-103119_print    > : !!!SOST process is closing......Waiting!!!
-< sost_20260203-103119_print    > : ===============================================================
-< sost_20260203-103119_print    > : Test type        : bmc_warm_lan
-< sost_20260203-103119_print    > : Test Count       : 4
-< sost_20260203-103119_print    > : Test Folder      : /root/bmc_warm_lan
-< sost_20260203-103119_print    > : Test Status      : NA
-< sost_20260203-103119_print    > : Test Start Time  : 2026-02-03-10-30-58
-< sost_20260203-103119_print    > : Test End   Time  : 2026-02-03-10-31-18
-< sost_20260203-103119_print    > : ===============================================================
-< sost_20260206-090904_print    > : Processing data.....
-< sost_20260206-090905_print    > : Processing data Success! Result Folder : /root/natt_log_22-16-25/data_files/
-< sost_20260206-090912_print    > : Processing data.....
-< sost_20260206-090913_print    > : Processing data Success! Result Folder : /root/natt_log_22-16-25/data_files/
-< sost_20260206-090937_print    > : Processing data.....
-< sost_20260206-090938_print    > : Processing data Success! Result Folder : /root/natt_log_22-16-25/data_files/
-< sost_20260206-091104_print    > : Processing data.....
-< sost_20260206-091105_print    > : Processing data Success! Result Folder : /root/natt_log_22-16-25/data_files/
-< sost_20260206-091254_print    > : Processing data.....
-< sost_20260206-091255_print    > : Processing data Success! Result Folder : /root/natt_log_22-16-25/data_files/
+< sost_20260206-141549_print    > : BMC IP Info                             [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141549_print    > : BMC IPMI GUID                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141550_print    > : BMC IPMI health                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141554_print    > : BMC IPMI Sensor                         [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141555_print    > : BMC IPMI Sensor Data                    [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141559_print    > : BMC IPMI SEL                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141603_print    > : BMC SDR info                            [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141607_print    > : BMC SDRe info                           [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141609_print    > : BMC Backboard Info                      [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141609_print    > : BMC Chassis Status Info                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141609_print    > : BMC IPMI MC Info                        [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141611_print    > : BMC_Bios_CPLD_FW_Info                   [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141611_print    > : IPMITool Get Info Check                 [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141611_print    > : Restart TimeTooLong                     [32m[Pass][0m   [32m[Pass][0m
+< sost_20260206-141617_print    > : !!!SOST process is closing......Waiting!!!
+< sost_20260206-141617_print    > : ===============================================================
+< sost_20260206-141617_print    > : Test type        : bmc_cold_lan
+< sost_20260206-141617_print    > : Test Count       : 2
+< sost_20260206-141617_print    > : Test Folder      : /root/bmc_cold_lan
+< sost_20260206-141617_print    > : Test Status      : NA
+< sost_20260206-141618_print    > : Test Start Time  : 2026-02-06-14-13-45
+< sost_20260206-141618_print    > : Test End   Time  : 2026-02-06-14-16-17
+< sost_20260206-141618_print    > : ===============================================================

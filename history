@@ -6,3 +6,4 @@
 {time: 2026-01-26-15-00-17, type: reboot, count: 2, result: FAILc , bios.ver : KL42A._RS_.T2DMFT.049R.251225 12/25/2025 16 , bmc.ver : 1.05.00.04.00.00 , sha256 : 26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8}
 {time: 2026-01-26-15-00-17, type: reboot, count: 2, result: FAILc , bios.ver : KL42A._RS_.T2DMFT.049R.251225 12/25/2025 16 , bmc.ver : 1.05.00.04.00.00 , sha256 : 26e8472d1c751610bf893aeca6ad6bfec3e44c1b05de9c9519e0644e691f55c8}
 {time: 2026-02-03-10-02-44, type: bmc_warm_lan, count: 4, result: NA , bios.ver : KL42A._RS_.T2DMFT.049R.251225 12/25/2025 16 , bmc.ver : 1.05.00.04.00.00 , sha256 : 0e81bfcc03638fb5af1d1048d0a40e08bf95710d174b204440f27394aa2019fa}
+{time: 2026-02-06-14-05-04, type: bmc_cold_lan, count: 2, result: NA , bios.ver : KL42A._RS_.T2DMFT.049R.251225 12/25/2025 16 , bmc.ver : 1.05.00.04.00.00 , sha256 : 0e81bfcc03638fb5af1d1048d0a40e08bf95710d174b204440f27394aa2019fa}
