@@ -55,7 +55,7 @@
         "run_command": "ipmitool -C 17 -I lanplus -U admin -P 'ttytty`12' -H 192.168.60.148 bmc reset warm",
         "startT_time": "2026-02-03-10-30-58",
         "endT_time": "2026-02-03-10-31-18",
-        "Running_flag": "4",
+        "Running_flag": "9",
         "running_time_last": "392",
         "running_time_now": "392",
         "running_time_first": "",

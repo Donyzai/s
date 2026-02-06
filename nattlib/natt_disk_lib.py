@@ -22,6 +22,22 @@ except:
     log.debug_flags = "0"
 log.error_exit = True
 #####################################################################################
+
+def clean_duplicates(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    
+    result = []
+    prev_line = ""
+    
+    for line in lines:
+        if line != prev_line:
+            result.append(line)
+            prev_line = line
+    
+    with open(filename, 'w') as f:
+        f.writelines(result)
+
 def fio_file_result(log_name, disk_list):
     clear_p()
     disk_info = []
@@ -75,6 +91,8 @@ def fio_file_result(log_name, disk_list):
 
     if int(Backboard_performance) > 0:
         print("Backboard_performance : " + str(Backboard_performance))
+    # 清理结果文件夹中重复内容
+    clean_duplicates(f"{log_name}/result.log")
     # 保存fio输出到nohup的信息
     log.os_run(f"mv /opt/sost/nohup.out {log_name}/nohup.log 2>/dev/null")
     log.os_run(f"cp /opt/sost/log/natt_cmd.log {log_name}/cmd.log 2>/dev/null")
@@ -206,6 +224,7 @@ def result_handle(log_name):
             if "iostat" in file_names:
                 if 'prewriting' in file_names:
                     continue
+                print(file_names)
                 test_type = str(file_names.split("-")[3] + '_' + file_names.split("-")[4])
                 log.os_run(f"mkdir -p {log_name}/data_files/{test_type}")
                 result_folder = f"{log_name}/data_files/{test_type}"
@@ -214,7 +233,7 @@ def result_handle(log_name):
                     files_namee = f"{result_folder}/iostat-{disk_name}-{test_type}.log"
                     log.os_run(f"echo {disk_name} >> {files_namee}")
                     files_name.append(file_names)
-                    if "sequence" in test_type:
+                    if "sequence" in test_type :
                         if disk_name != "all":
                             if "read" in file_names:
                                 log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $3}}'>> {files_namee}")
@@ -225,7 +244,7 @@ def result_handle(log_name):
                                 log.os_run(f"cat {log_name}/{file_names} | grep 'all' | awk '{{print $3}}'>> {files_namee}")
                             else:
                                 log.os_run(f"cat {log_name}/{file_names} | grep 'all' | awk '{{print $9}}'>> {files_namee}")
-                    elif "random" in test_type:
+                    elif "random" in test_type :
                         if disk_name != "all":
                             if 'read' in file_names:
                                 log.os_run(f"cat {log_name}/{file_names} | grep '^{disk_name}\\b' | awk '{{print $3}}' >> {files_namee}")

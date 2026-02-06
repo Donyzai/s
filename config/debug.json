@@ -3,6 +3,6 @@
         "noSendCommand": "0",
         "SkipUpdate": "1",
         "Failc_Waiting_Time": "3",
-        "debug_flags": "0"
+        "debug_flags": "3"
     }
 }

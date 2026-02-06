@@ -212,3 +212,8 @@
 < sost_20260203-103120_json_get > : type[swc] obj[swc] key[swc_server_ip] value[192.168.60.138]
 < sost_20260203-103121_json_get > : type[swc] obj[swc] key[swc_server_port] value[13251]
 < sost_20260203-103121_json_get > : type[sost] obj[Test_Config] key[result_html] value[0]
+< sost_20260206-090905_json_set > : type[sost] obj[Test_tmp] key[Running_flag] old[4] new[9]
+< sost_20260206-090913_json_set > : type[sost] obj[Test_tmp] key[Running_flag] old[9] new[9]
+< sost_20260206-090938_json_set > : type[sost] obj[Test_tmp] key[Running_flag] old[9] new[9]
+< sost_20260206-091105_json_set > : type[sost] obj[Test_tmp] key[Running_flag] old[9] new[9]
+< sost_20260206-091256_json_set > : type[sost] obj[Test_tmp] key[Running_flag] old[9] new[9]

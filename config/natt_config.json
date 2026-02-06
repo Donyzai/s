@@ -56,7 +56,7 @@
         "Bound_nucleus_type_3": ""
     },
     "debug": {
-        "debug_print": "0",
+        "debug_print": "3",
         "natt_Double_opening": "0",
         "fio_process_wait_time": "",
         "fio_print_wait_time": ""
