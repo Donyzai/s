@@ -1,4 +1,4 @@
-from lib.sost_public_lib import test_type_logo,dong_log,runTime,end_test_logo,wait_time_ctrl_C,max_count_logo,time,defalt_path,result_html,swc_EndTest,return_wait_time,debug_mode
+from lib.sost_public_lib import test_type_logo,dong_log,runTime,end_test_logo,wait_time_ctrl_C,max_count_logo,time,defalt_path,result_html,swc_EndTest,return_wait_time,debug_mode,autologin,Judging_autologin
 from lib.sost_system_info_lib import test_config,check_running_time
 
 # Record the time before testing -> end_time.log
