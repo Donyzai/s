@@ -1,14 +1,20 @@
-< sost_20260206-140458_dlev_3   > : Storcli64 Not install!
-< sost_20260206-140458_dlev_3   > : Sost Stability Tools check Success!
-< sost_20260206-140514_dlev_3   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin
-< sost_20260206-140515_dlev_3   > : BMC_User : admin
-< sost_20260206-140515_dlev_3   > : BMC_Pass : ttytty`12
-< sost_20260206-140717_dlev_3   > :  TestMode         : bmc
-< sost_20260206-141547_dlev_3   > :  TestMode         : bmc
-< sost_20260206-141554_dlev_3   > : normal_diff() -> ipmi_sensor_blacklist is empty , not check blacklist item!
-< sost_20260206-141559_dlev_3   > : TestType : Bmcreset -> not add bmclog_strings to error_arry
-< sost_20260206-141559_dlev_3   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device']
-< sost_20260206-141559_dlev_3   > : bmclog diff result : 
-< sost_20260206-141615_dlev_3   > : Last restart time : 391 s
-< sost_20260206-141619_dlev_3   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "0e81bfcc03638fb5af1d1048d0a40e08bf95710d174b204440f27394aa2019fa", "test_type": "bmc_cold_lan", "test_count": 2, "test_result": "NA", "EndTime": "2026-02-06-14-16-17"}
-< sost_20260206-141619_dlev_3   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "0e81bfcc03638fb5af1d1048d0a40e08bf95710d174b204440f27394aa2019fa", "test_type": "bmc_cold_lan", "test_count": 2, "test_result": "NA", "EndTime": "2026-02-06-14-16-17"}
+< sost_20260206-141810_dlev_3   > : Storcli64 Not install!
+< sost_20260206-141810_dlev_3   > : Sost Stability Tools check Success!
+< sost_20260206-141954_dlev_3   > : Detected ASPEED BMC Chip, Default User/Passwd is admin/admin
+< sost_20260206-141955_dlev_3   > : BMC_User : admin
+< sost_20260206-141955_dlev_3   > : BMC_Pass : ttytty`12
+< sost_20260206-142157_dlev_3   > :  TestMode         : bmc
+< sost_20260206-143026_dlev_3   > :  TestMode         : bmc
+< sost_20260206-143034_dlev_3   > : normal_diff() -> ipmi_sensor_blacklist is empty , not check blacklist item!
+< sost_20260206-143039_dlev_3   > : TestType : Bmcreset -> not add bmclog_strings to error_arry
+< sost_20260206-143039_dlev_3   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device']
+< sost_20260206-143039_dlev_3   > : bmclog diff result : 
+< sost_20260206-143055_dlev_3   > : Last restart time : 392 s
+< sost_20260206-143858_dlev_3   > :  TestMode         : bmc
+< sost_20260206-143906_dlev_3   > : normal_diff() -> ipmi_sensor_blacklist is empty , not check blacklist item!
+< sost_20260206-143910_dlev_3   > : TestType : Bmcreset -> not add bmclog_strings to error_arry
+< sost_20260206-143910_dlev_3   > : bmc sel check error arry : ['Correctable', 'Critical', 'low', 'upper', 'Fault', 'drive_slot', 'General Chassis intrusion', 'pci', 'error', 'err', 'going high', 'going low', 'ECC', 'ERR', 'IERR', 'Power Supply PSU1 Status', 'Power Supply PSU2 Status', 'Device Absent', 'Cooling Device']
+< sost_20260206-143910_dlev_3   > : bmclog diff result : 
+< sost_20260206-143926_dlev_3   > : Last restart time : 392 s
+< sost_20260206-144544_dlev_3   > : Post Data to swcServer Json : {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "0e81bfcc03638fb5af1d1048d0a40e08bf95710d174b204440f27394aa2019fa", "test_type": "bmc_cold_lan", "test_count": 3, "test_result": "Pass", "EndTime": "2026-02-06-14-45-42"}
+< sost_20260206-144545_dlev_3   > : Post test info to swcServer: {"hw_mac": "189ba582dd42", "bmc_ver": "1.05.00.04.00.00", "bios_ver": "KL42A._RS_.T2DMFT.049R.251225", "test_sha256": "0e81bfcc03638fb5af1d1048d0a40e08bf95710d174b204440f27394aa2019fa", "test_type": "bmc_cold_lan", "test_count": 3, "test_result": "Pass", "EndTime": "2026-02-06-14-45-42"}

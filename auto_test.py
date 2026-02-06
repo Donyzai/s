@@ -10,6 +10,10 @@ log = dong_log()
 log.debug_flags = str(log.json_get("debug","debug_flags",filename="debug"))
 log.os_run("mkdir -p /tmp/sost_tmp")
 
+# Judge autologin status
+autologin()
+Judging_autologin()
+
 # # check tty
 # if log.json_get("debug","noSendCommand",filename="debug")!="1":
 #     if "pts" in log.os_popen("tty"):
