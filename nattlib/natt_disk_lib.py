@@ -26,15 +26,12 @@ log.error_exit = True
 def clean_duplicates(filename):
     with open(filename, 'r') as f:
         lines = f.readlines()
-    
     result = []
     prev_line = ""
-    
     for line in lines:
         if line != prev_line:
             result.append(line)
             prev_line = line
-    
     with open(filename, 'w') as f:
         f.writelines(result)
 
