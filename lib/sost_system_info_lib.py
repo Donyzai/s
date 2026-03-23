@@ -722,7 +722,7 @@ def check_running_time(count):
 
     Phase_time = abs(int(running_time_now) - int(running_time_last))
 
-    if running_time_max == '' or '0':running_time_max = '60' 
+    if running_time_max == '' and running_time_max == '0':running_time_max = '90' 
 
     if Phase_time > int(running_time_max):
         log._pr("Running Time check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
@@ -739,6 +739,9 @@ def check_ipmitool(flags, path, count):
     if flags == '1':
         if log.os_popen("ipmitool mc guid | grep -i 'guid' | wc -l").strip() == "0":
             log._pr("IPMITool Get Info Check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
+            log._warning("[!] It has been detected that IPMI cannot use the collected lsmod information. Please wait for 30 seconds!")
+            log.os_popen("lsmod | grep -i ipmi | awk '{{print $1}}' | xargs modinfo")
+            time.sleep(60)
         else:
             log._pr("IPMITool Get Info Check ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
 
@@ -1672,7 +1675,7 @@ def os_net_info(flags, folder_path, count):
 
 
 def ipmi_mcinfo(flags, folder_path, count):
-    if log.json_get('collect_array',"mcinfo",web='no-log',filename='collect').strip() !='1':return 0
+    if log.json_get('collect_array',"`mcinfo`",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
 
     retry_get_ipmi_info('ipmitool mc info','BMC IPMI MC Info ')

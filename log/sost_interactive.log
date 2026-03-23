@@ -1288,3 +1288,5 @@
 < sost_20260206-144543_print    > : Test Start Time  : 2026-02-06-14-45-28
 < sost_20260206-144543_print    > : Test End   Time  : 2026-02-06-14-45-42
 < sost_20260206-144543_print    > : ===============================================================
+< sost_20260302-090953_print    > : swc_web is Running! Running-Time -> 20260302 09:09:53 (swc_web.py)
+< sost_20260302-090953_print    > : swc_web -> swc_cinfo Running! (swc_web.py)

@@ -13,3 +13,4 @@
 <   swc_20260206-144000_0   > : swc未采集到bmc_mac地址信息!读取旧信息替代!
 <   swc_20260206-144012_0   > : 未检测到bmcip地址!使用旧IP进行代替!
 <   swc_20260206-144018_0   > : swc未采集到bmc_mac地址信息!读取旧信息替代!
+<   swc_20260302-090955_0   > : Sost has enabled the server information collection service.(swc_cinfo.py)

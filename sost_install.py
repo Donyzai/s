@@ -282,8 +282,10 @@ EOF"''')
 def openEuler_yum_replace():
     
     repo_info = os.popen('cat /etc/yum.repos.d/openEuler.repo').read()
+    
     if 'huaweicloud' in repo_info:
         return 0
+    
     if 'aliyun' in repo_info:
         return 0
 
@@ -299,8 +301,17 @@ def openEuler_yum_replace():
     os.system("yum clean all")
     os.system("yum makecache")
 
+def backup_sost_config():
+    os.system("yes | cp -rf /opt/sost/config/sost.json /tmp/bak_sost.json 2>/dev/null")
+    
+    
+    
+    
+    
+    
+
 if __name__ == '__main__':
-    print('''
+    print(''')
         ==========================================================
         |         ████████                    ██                 |
         |        ██░░░░░░                    ░██                 |

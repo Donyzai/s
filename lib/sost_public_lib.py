@@ -1611,6 +1611,9 @@ def now_time():
     return str(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))
 
 def check_stability_tools():
+    if log.json_get("Test_Config","simple_test_flags") == "simple":
+        log._pr("Simple Stability Test No Need Check Tools!")
+        return
     tools = ["nvme","ipmitool","numactl"]
     no_install_arry = []
     for tool_name in tools:
