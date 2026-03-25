@@ -1148,7 +1148,10 @@ def pcieslot(flags, folder_path, count):
     log.os_popen("dmidecode -t slot")
     # Order
     order_num = 0
-    handle_num = log.os_popen("dmidecode -t slot | grep -i Handle | cut -d ' ' -f 2").strip().replace(",","").split()
+    handle_num = log.os_popen("dmidecode -t slot | grep -i Handle | cut -d ' ' -f 2 | tr -d ',' | sort").strip().split()
+    
+    log._dp("handle_num : " + str(handle_num))
+    
     print_save_text(flags=flags, folder_path=folder_path, type="pcieslot", count=count,text="[Order]".ljust(10)+"[BUS_Addr]".ljust(20)+"[Designation]".ljust(30)+"[Type]".ljust(40)+"[Current Usage]".ljust(20)+"[Length]".ljust(15)+"[Node]")
     for handle in handle_num:
         handle = str(handle).strip()
