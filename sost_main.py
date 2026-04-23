@@ -199,32 +199,32 @@ else:
 
     elif chose == "12":
         mulit_main()
+        
     elif chose == "13":
-        test_type = "Bmc_Remote_Reset"
         check_bmc_status()
-        bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
-        swc_server_ip = log.json_get("swc","swc_server_ip",filename="swc")
-        swc_server_port = log.json_get("swc","swc_server_port",filename="swc")
-        if bmc_information[0] == swc_server_ip:
-            run_command = f"curl 'http://{bmc_information[0]}:{swc_server_port}/remote_powerreset?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}'"
+        info = get_bmc_info(bmclan,BMC_User,BMC_Pass)
+        test_type = "Bmc_Remote_Reset_"+info[5]
+        if info[5] == "ProxySWC":
+            run_command = f"curl 'http://{info[3]}:{info[4]}/remote_powerreset?bmc_ip={info[0]}&bmc_username={info[1]}&bmc_password={info[2]}'"
         else:
-            run_command = f"ipmitool -C 17 -I lanplus -H {bmc_information[0]} -U {bmc_information[1]} -P '{bmc_information[2]}' power reset"
+            run_command = f"ipmitool -C 17 -I lanplus -H {info[0]} -U {info[1]} -P '{info[2]}' power reset"
+            
     elif chose == "14":
-        test_type = "Bmc_Remote_Cycle"
         check_bmc_status()
-        bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
+        info = get_bmc_info(bmclan,BMC_User,BMC_Pass)
+        test_type = "Bmc_Remote_Cycle_"+info[5]
         swc_server_ip = log.json_get("swc","swc_server_ip",filename="swc")
         swc_server_port = log.json_get("swc","swc_server_port",filename="swc")
-        if bmc_information[0] == swc_server_ip:
-            run_command = f"curl 'http://{bmc_information[0]}:{swc_server_port}/remote_powercycle?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}'"
+        if info[0] == swc_server_ip:
+            run_command = f"curl 'http://{info[3]}:{info[4]}/remote_powercycle?bmc_ip={info[0]}&bmc_username={info[1]}&bmc_password={info[2]}'"
         else:
-            run_command = f"ipmitool -C 17 -I lanplus -H {bmc_information[0]} -U {bmc_information[1]} -P '{bmc_information[2]}' power cycle"
+            run_command = f"ipmitool -C 17 -I lanplus -H {info[0]} -U {info[1]} -P '{info[2]}' power cycle"
     
     # ------------------------------------------------------------------------------------------
     elif chose == '18':
-        test_type = "bmc_power_on_off"
         check_bmc_status()
-        init_poweronoff_env(bmclan,BMC_User,BMC_Pass)
+        info = get_bmc_info(bmclan,BMC_User,BMC_Pass)
+        test_type = 'bmc_power_on_off_'+info[5]
         run_command = "power_on_off"
     elif chose == '19':
         log._error('User.Input.Error')

@@ -4,6 +4,7 @@
 # by:FanXiaodong
 # ══════════════════════════════════
 from math import e
+from re import S
 import threading
 
 from flask.cli import run_command
@@ -124,28 +125,20 @@ def update_check():
         return 0
     update_show(update_flag,tips,remote_sha256,local_sha256)
 
-def init_poweronoff_env(bmclan='',BMC_User='',BMC_Pass=''):
+def init_poweronoff_env(info):
 
-    bmc_information = get_bmc_info(bmclan,BMC_User,BMC_Pass)
-    sost_poweronoff_serverIP = log.json_get('power_on_off','server_ip').strip()
-    sost_poweronoff_serverPort = log.json_get('power_on_off','server_port').strip()
-    
     log.os_run('rm -rf /usr/bin/power_on_off')
     log.os_run('rm -rf /usr/local/bin/power_on_off')
     log.os_run('touch /usr/local/bin/power_on_off && chmod 777 /usr/local/bin/power_on_off')
     
     with open("/usr/local/bin/power_on_off","w") as f:
-        
-        if bmc_information[0] != sost_poweronoff_serverIP:
-            
-            f.write(f'''curl 'http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[0]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}' ''')
-        else:
-            f.write(f'''curl 'http://{sost_poweronoff_serverIP}:{sost_poweronoff_serverPort}/power_on?bmc_ip={bmc_information[3]}&bmc_username={bmc_information[1]}&bmc_password={bmc_information[2]}' ''')
-
+        f.write(f'''curl 'http://{info[3]}:{info[4]}/power_on?bmc_ip={info[0]}&bmc_username={info[1]}&bmc_password={info[2]}' ''')
         f.write('\nipmitool power off\n')
         f.flush()
+        
     if log.os_popen("whereis power_on_off | cut -d ':' -f 2 | tr -d ' '").strip() == '':
         log._error("Please Check /usr/local/bin/power_on_off file!")
+    
     return
 
 def debug_mode():
@@ -924,8 +917,8 @@ def def_Handling_sensors():
             sensor_command = 'ipmitool sdr'
         else:
             sensor_command = 'ipmitool sensor list'
-        sensor_title_arry = log.os_popen(fr"{sensor_command} 2>/dev/null | cut -d '|' -f 1 ").split('\n')
-        for sensor_title in sensor_title_arry:
+        sensor_title_array = log.os_popen(fr"{sensor_command} 2>/dev/null | cut -d '|' -f 1 ").split('\n')
+        for sensor_title in sensor_title_array:
             sensor_log_filename = sensor_title.replace(' ','')
             if filter_type != "":
                 if filter_type.lower() not in sensor_title.lower():continue
@@ -1257,17 +1250,13 @@ def update_sost(update_flag=''):
     # StartUpdateing Sost
     updating_sost(update_ver,server_ip)
 
+
 def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 
-    clp()
-    log._tips("<------ BMC status check ----->")
-    Dedicated_lan_num = log.json_get("Test_Config","Dedicated_lan_num")
-    Share_lan_num = log.json_get("Test_Config","Share_lan_num")
+    def check_ip_alive(ip):
+        return True if os.system(f'ping -c 1 {ip} > /dev/null 2>&1') == 0 else False
 
-    Dedicated_ip = log.os_popen(f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}' 2>/dev/null").strip()
-    share_ip = log.os_popen(f"ipmitool lan print {Share_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}'").strip()
-    swc_server_ip = log.json_get("swc", "swc_server_ip",filename='swc').strip()
-    if Dedicated_ip.strip() == "0.0.0.0" and share_ip.strip() == "0.0.0.0" or Dedicated_ip == "" and share_ip == "" and swc_server_ip == "":
+    def check_bmc_fail():
         log._pr('''\033[31m
 ═════════════════════════════════════════
 ||   ████████     ██     ██ ██         ||
@@ -1281,53 +1270,54 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 ═════════════════════════════════════════
 ||   Oh.My.God Stability Fail Please   ||
 ═════════════════════════════════════════\033[0m''',pr_flag='1')
-        log._pr("[-] Bmc Status check Error!")
-        log._pr("BMC状态丢失,请等待一段时间后重新开始进行稳定性测试。")
-        log._error("BMC status lost, please wait for a period of time before resuming stability testing.")
-        log._error("Dedicated_ip and share_ip is Null!")
-        return
-    log._pr("[+] Bmc Status check Success!")
-
-    #Collect dedicated ip info
-    Dedicated_arry = []
-    Dedicated_arry.append(Dedicated_ip)
-    Dedicated_subnet_mask = log.os_popen(f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null  | grep -vi source | grep -i 'subnet mask' | awk '{{print $4}}' ").strip()
-    if Dedicated_subnet_mask == "":Dedicated_subnet_mask = "xxx.xxx.xxx.xxx"
-    Dedicated_gatway_ip   = log.os_popen(f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null  | grep -vi source | grep -i 'Default Gateway IP' | awk '{{print $5}}' ").strip()
-    if Dedicated_gatway_ip == "":Dedicated_gatway_ip = "xxx.xxx.xxx.xxx"
-    Dedicatede_mac   = log.os_popen(f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null  | grep -vi source | grep -i 'MAC Address' | awk '{{print $4}}' ").strip()
-    if Dedicatede_mac == "":share_mac = "xx:xx:xx:xx:xx:xx"
-    #Collect shared ip info
-    Share_arry = []
-    Share_arry.append(share_ip)
-    share_subnet_mask = log.os_popen(f"ipmitool lan print {Share_lan_num} 2>/dev/null | grep -vi source | grep -i 'subnet mask' | awk '{{print $4}}' ").strip()
-    if share_subnet_mask == "":share_subnet_mask = "xxx.xxx.xxx.xxx"
-    share_gatway_ip   = log.os_popen(f"ipmitool lan print {Share_lan_num} 2>/dev/null  | grep -vi source | grep -i 'Default Gateway IP' | awk '{{print $5}}' ").strip()
-    if share_gatway_ip == "":share_gatway_ip = "xxx.xxx.xxx.xxx"
-    share_mac   = log.os_popen(f"ipmitool lan print {Share_lan_num} 2>/dev/null  | grep -vi source | grep -i 'MAC Address' | awk '{{print $4}}' ").strip()
-    if share_mac == "":share_mac = "xx:xx:xx:xx:xx:xx"
-
-    Dedicated_alive="NA"
-    share_alive = "NA"
-    swc_server_alive = "NA"
-
-    log._pr("Checking whether bmcip / swc_server_ip can ping, Waiting.......")
-
-    if " 0% packet loss" in log.os_popen(f"ping -c 1 {Dedicated_ip.strip()} 2>/dev/null"):
+        log._pr("BMC status lost, please wait for a period of time before resuming stability testing.")
+        log._error("Dedicated IP or Shared IP is Null or Unalive!")
+    
+    # array [0] = bmcip 
+    #       [1] = bmc_username
+    #       [2] = bmc_password
+    #       [3] = swc_server_ip
+    #			==> None
+    #       [4] = swc_server_port
+    #           ==> None
+    #       [5] = lan_flags
+    #           ==> Dedicated
+    #           ==> Share
+    #           ==> ProxySWC
+    
+    # GetDefaultConfig
+    swc_server_ip = log.json_get("swc", "swc_server_ip",filename='swc').strip()
+    swc_server_port = log.json_get("swc", "swc_server_port",filename='swc').strip()
+    Dedicated_lan_num = log.json_get("Test_Config","Dedicated_lan_num")
+    Share_lan_num = log.json_get("Test_Config","Share_lan_num")
+    # init array
+    Dedicated_array = ['bmcip','bmc_username','bmc_password',swc_server_ip,swc_server_port,'lan_flags']
+    Share_array = ['bmcip','bmc_username','bmc_password',swc_server_ip,swc_server_port,'lan_flags']
+    swc_array = ['bmcip','bmc_username','bmc_password',swc_server_ip,swc_server_port,'lan_flags']
+    
+    clp()
+    # Get BMC LAN IP / SWC Server IP
+    log._tips("[+] BMC status check , Start obtaining BMC LAN IP and SWC Server IP information, please wait......")
+    
+    Dedicated_ip = log.os_popen(f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}' 2>/dev/null").strip()
+    Dedicated_array[0] = Dedicated_ip
+    
+    share_ip = log.os_popen(f"ipmitool lan print {Share_lan_num} 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{{print $4}}'").strip()
+    Share_array[0] = share_ip
+    
+    # Judge BMC LAN IP is Null or not
+    if Dedicated_ip.strip() == "0.0.0.0" and share_ip.strip() == "0.0.0.0" or Dedicated_ip == "" and share_ip == "":
+        check_bmc_fail()
+    
+    # check ip alive status
+    Dedicated_alive = share_alive = swc_server_alive = "\033[41m x \033[0m"
+    if check_ip_alive(Dedicated_ip.strip()):
         Dedicated_alive = "\033[42m √ \033[0m"
-    else:
-        Dedicated_alive = "\033[41m x \033[0m"
-    
-    if " 0% packet loss" in log.os_popen(f"ping -c 1 {share_ip.strip()} 2>/dev/null"):
+    if check_ip_alive(share_ip.strip()):
         share_alive = "\033[42m √ \033[0m"
-    else:
-        share_alive = "\033[41m x \033[0m"
-    
-    if " 0% packet loss" in log.os_popen(f"ping -c 1 {swc_server_ip.strip()} 2>/dev/null"):
+    if check_ip_alive(swc_server_ip.strip()):
         swc_server_alive = "\033[42m √ \033[0m"
-    else:
-        swc_server_alive = "\033[41m x \033[0m"
-
+    
     log._pr(fr'''════════════════════════════════════════════════════════════════════════
 |     ___   __  __    ___             ___    _  _      ___    ___      |
 |    | _ ) |  \/  |  / __|           |_ _|  | \| |    | __|  / _ \     |
@@ -1343,13 +1333,22 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
 |    3 . SwcServer ip : {swc_server_ip.ljust(20)}  Status : [{swc_server_alive}]           |
 ════════════════════════════════════════════════════════════════════════''',pr_flag='1')
 
+    # check user input lan num
     if u_chos =='':
         u_chos = log._in("Chose Your Test lan  [ 1 / 2 / 3 ] Enter -> 1 ").strip()
         if u_chos=='':
             u_chos = '1'
-
-    if u_chos != "1" and u_chos !="2" and u_chos != "3":
-        log._error("User.Input.Err")
+            log._dp("User.Input.Empty uchos : " + str(u_chos))
+    if u_chos != "1" and u_chos !="2" and u_chos != "3":log._error("User.Input.Err")
+    
+    if u_chos == "1" and "√" not in Dedicated_alive:
+        log._error("Dedicated IP is Null or Unalive!")
+    elif u_chos == "2" and "√" not in share_alive:
+        log._error("Shared IP is Null or Unalive!")
+    elif u_chos == "3" and "√" not in swc_server_alive:
+        log._error("SWC Server IP is Null or Unalive!")
+    else:
+        log._dp("[+] BMC LAN IP and SWC Server IP check Success!")
     
     # Save BMC Lan Info To test_tmp.json File
     log.json_set("Test_tmp","test_bmc_lan",u_chos)
@@ -1358,7 +1357,7 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     sjson_user = log.json_get("BMC_Survival_Config","BMC_Username").strip()
     sjson_pass = log.json_get("BMC_Survival_Config","BMC_Password").strip()
 
-    # BMC chip 
+    # BMC chip
     bmc_chip = bmc_Chip()[0]
     
     # Input BMC User/Passwd
@@ -1405,6 +1404,7 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     else:
         iuser = 'admin'
         ipass = 'admin'
+        
     if BMC_User == '' and BMC_Pass == '':
         input_text_user =  log._in(f'Input Bmc_Username [ Enter -> {iuser.ljust(20)}]: ').strip()
         if input_text_user == 'q':log._error("User.Input.Quit")
@@ -1413,8 +1413,6 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
     else:
         input_text_user = BMC_User
         input_text_pass = BMC_Pass
-    log._dp("BMC_User : " + (input_text_user if input_text_user != '' else iuser))
-    log._dp("BMC_Pass : " + (input_text_pass if input_text_pass != '' else ipass))
 
     if input_text_user == '' and input_text_pass != '':
         BMC_User = iuser
@@ -1429,39 +1427,47 @@ def get_bmc_info(u_chos='',BMC_User='',BMC_Pass=''):
         BMC_User = input_text_user
         BMC_Pass = input_text_pass
 
-    # check iBMC User/Passwd
-    log._tips("Checking BMC User/Passwd, Waiting.......")
-    if u_chos != "3":
-        test_info = log.os_popen(f"ipmitool -I lanplus -C 17 -H {Dedicated_ip} -U {BMC_User} -P '{BMC_Pass}' chassis status 2>/dev/null").strip()
-        if test_info == "":
-            log._error("[-] Bmc User or Passwd Error!")
     # Save BMC Info To sost.json File
     log._tips("[+] Bmc User/Passwd check Success!")
     log.json_set("BMC_Survival_Config","BMC_Username",BMC_User)
     log.json_set("BMC_Survival_Config","BMC_Password",BMC_Pass)
 
     if u_chos == "1":
-        # ↑ Dedicated_arry.append(Dedicated_ip)
-        Dedicated_arry.append(BMC_User)
-        Dedicated_arry.append(BMC_Pass)
-        return Dedicated_arry
+        Dedicated_array[1],Dedicated_array[2],Dedicated_array[5] = BMC_User,BMC_Pass,'Dedicated'
+        log._dp('Dedicated_array : ' + str(Dedicated_array))
+        return Dedicated_array
+    
     elif u_chos == "2":
-        # ↑ Share_arry.append(share_ip)
-        Share_arry.append(BMC_User)
-        Share_arry.append(BMC_Pass)
-        return Share_arry
+        Share_array[1],Share_array[2],Share_array[5] = BMC_User,BMC_Pass,'Share'
+        log._dp('Share_array : ' + str(Share_array))
+        return Share_array
+    
     elif u_chos == "3":
-        swc_arry = []
-        swc_arry.append(swc_server_ip)
-        swc_arry.append(BMC_User)
-        swc_arry.append(BMC_Pass)
+        user_chose = log._in("Your chose ProxySWC mode, Select IPMI BMC IP source : [ 1 / 2 ]  Enter -> 1 :  ").strip().lower()
+        
+        if user_chose == "1":
+            swc_array[0] = Dedicated_ip
+        elif user_chose == "2":
+            swc_array[0] = share_ip
+        else:
+            swc_array[0] = Dedicated_ip
+            
+        swc_array[1],swc_array[2],swc_array[3],swc_array[4] = BMC_User,BMC_Pass,swc_server_ip,'ProxySWC'
         if share_ip == "" and Dedicated_ip == "":
             log._error("Both Dedicated_ip and share_ip are Null, Cannot use swc_server_ip to test!")
         elif Dedicated_ip != "":
-            swc_arry.append(Dedicated_ip)
+            swc_array[0] = Dedicated_ip
         else:
-            swc_arry.append(share_ip)
-        return swc_arry
+            swc_array[0] = share_ip
+        
+        
+        
+        # check BMC IP is alive or not
+        if log.os_popen(f"ipmitool -I lanplus -C 17 -H {swc_array[0]} -U {swc_array[1]} -P '{swc_array[2]}' chassis status 2>/dev/null").strip() == "":
+            log._error("[-] Bmc User or Passwd Error!")
+        log._dp('swc_array : ' + str(swc_array))
+        return swc_array
+    
     else:
         log._error("User.Input.Err")
 
@@ -1615,12 +1621,12 @@ def check_stability_tools():
         log._pr("Simple Stability Test No Need Check Tools!")
         return
     tools = ["nvme","ipmitool","numactl"]
-    no_install_arry = []
+    no_install_array = []
     for tool_name in tools:
         if log.os_popen(f"whereis {tool_name} | awk '{{print $2}}'").strip() == "":
-            no_install_arry.append(tools)
-    if len(no_install_arry) > 0:
-        log._pr("Please install : "+str(no_install_arry[::]))
+            no_install_array.append(tools)
+    if len(no_install_array) > 0:
+        log._pr("Please install : "+str(no_install_array[::]))
         log._error("Sost Tools Check Fail!")
 
     if not os.path.exists("/opt/MegaRAID/storcli"):
@@ -1958,8 +1964,8 @@ def init_stability_path(test_type):
     # create debug system_folder
     log.os_run(f"mkdir -p {result_folder_path}/system_info && mkdir -p {result_folder_path}/debug",flags='no-log')
 
-    touch_file_arry = ['count.txt','sost_start_time.txt','debug/start_time.txt','debug/end_time.txt']
-    for filename in touch_file_arry:
+    touch_file_array = ['count.txt','sost_start_time.txt','debug/start_time.txt','debug/end_time.txt']
+    for filename in touch_file_array:
         log.os_run(f"touch {result_folder_path}/{filename}",flags='no-log')
         if filename == 'count.txt':
             log.os_run(f"echo 0 > {result_folder_path}/count.txt",flags='no-log')

@@ -156,6 +156,8 @@ done''')
         if error_type in fail_exit_blacklist:
             log._pr(f"error_type : {error_type}")
             log._pr(f"blacklist  : {str(fail_exit_blacklist)}")
+            from .sost_public_lib import defalt_path,result_html
+            defalt_path(show_flags=False)
             log._error("Set error not to exit, trigger blacklist, exit test!")
 
 def bmclog_check(path,count):
@@ -701,8 +703,10 @@ def bmchealth(flags, path, count):
 
 # check bmc guid
 def bmcguid(flags, path, count):
+    
+    log.os_popen("ipmitool mc guid").strip()
     if log.json_get('collect_array',"bmcguid",web='no-log',filename='collect').strip() !='1':return 0
-    bmc_guid = log.os_popen("ipmitool mc guid | grep 'System GUID' | head -n 1").strip()
+    bmc_guid = log.os_popen("ipmitool raw 0x06 0x37").strip()
     print_save_text(flags=flags, folder_path=path, type="bmcguid", count=count,text=bmc_guid)
     if flags == "1" : 
         if diff_information(count,path,"bmcguid"):
@@ -841,24 +845,26 @@ def bmcip(flags, folder_path, count):
     echo_dev_info_sleep(flags,count)
     Dedicated_lan_num = log.json_get("Test_Config", "Dedicated_lan_num")
     Share_lan_num = log.json_get("Test_Config", "Share_lan_num")
-    log.os_popen(f"ipmitool lan print {str(Dedicated_lan_num).strip()} 2>/dev/null")
-    log.os_popen(f"ipmitool lan print {str(Share_lan_num).strip()} 2>/dev/null")
-    Dedicated_BMC_IP = log.os_popen(
-        f" ipmitool lan print {Dedicated_lan_num} 2>/dev/null | grep 'IP Address' | grep -vi source | awk '{{print $4}}' ").strip()
-    Dedicated_BMC_MAC = log.os_popen(
-        f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null | grep -i 'mac address' | awk '{{print $4}}' ").strip()
-    Dedicated_BMC_IP_Source = log.os_popen(
-        f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null | grep -i 'ip address source' | awk '{{print $5}}' ").strip()
-    if Dedicated_BMC_IP == "": Dedicated_BMC_IP = "None"
-    Share_BMC_IP = log.os_popen(
-        f" ipmitool lan print {Share_lan_num} 2>/dev/null | grep 'IP Address' | grep -vi source | awk '{{print $4}}' ").strip()
-    if Share_BMC_IP == "": Share_BMC_IP = "None"
-    Share_BMC_MAC = log.os_popen(
-        f"ipmitool lan print {Share_lan_num} 2>/dev/null | grep -i 'mac address' | awk '{{print $4}}' ").strip()
-    Share_BMC_IP_Source = log.os_popen(
-        f"ipmitool lan print {Share_lan_num} 2>/dev/null | grep -i 'ip address source' | awk '{{print $5}}' ").strip()
+    # log.os_popen(f"ipmitool lan print {str(Dedicated_lan_num).strip()} 2>/dev/null")
+    # log.os_popen(f"ipmitool lan print {str(Share_lan_num).strip()} 2>/dev/null")
+    # Dedicated_BMC_IP = log.os_popen(
+    #     f" ipmitool lan print {Dedicated_lan_num} 2>/dev/null | grep 'IP Address' | grep -vi source | awk '{{print $4}}' ").strip()
+    # Dedicated_BMC_MAC = log.os_popen(
+    #     f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null | grep -i 'mac address' | awk '{{print $4}}' ").strip()
+    # Dedicated_BMC_IP_Source = log.os_popen(
+    #     f"ipmitool lan print {Dedicated_lan_num} 2>/dev/null | grep -i 'ip address source' | awk '{{print $5}}' ").strip()
+    # if Dedicated_BMC_IP == "": Dedicated_BMC_IP = "None"
+    # Share_BMC_IP = log.os_popen(
+    #     f" ipmitool lan print {Share_lan_num} 2>/dev/null | grep 'IP Address' | grep -vi source | awk '{{print $4}}' ").strip()
+    # if Share_BMC_IP == "": Share_BMC_IP = "None"
+    # Share_BMC_MAC = log.os_popen(
+    #     f"ipmitool lan print {Share_lan_num} 2>/dev/null | grep -i 'mac address' | awk '{{print $4}}' ").strip()
+    # Share_BMC_IP_Source = log.os_popen(
+    #     f"ipmitool lan print {Share_lan_num} 2>/dev/null | grep -i 'ip address source' | awk '{{print $5}}' ").strip()
+    Dedicated_lan_info = log.os_popen(f"ipmitool lan print {str(Dedicated_lan_num).strip()} 2>/dev/null | grep -vi 'Default Gateway MAC' ")
+    Share_lan_info = log.os_popen(f"ipmitool lan print {str(Share_lan_num).strip()} 2>/dev/null | grep -vi 'Default Gateway MAC' ")
     
-    print_save_text(flags=flags, folder_path=folder_path, type="bmcip", count=count,text=f"InterfaceType      BMC_IP            BMC_MAC\nDedicated{Dedicated_BMC_IP_Source}\t{Dedicated_BMC_IP}\t{Dedicated_BMC_MAC}\nShare{Share_BMC_IP_Source}\t{Share_BMC_IP}\t{Share_BMC_MAC}")
+    print_save_text(flags=flags, folder_path=folder_path, type="bmcip", count=count,text=Dedicated_lan_info+'\n'+Share_lan_info)
     
     if flags == "1" : 
         if diff_information(count,folder_path,"bmcip"):
@@ -1059,6 +1065,7 @@ def pcieinfo(flags, folder_path, count):
             log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[32m[Pass]\033[0m")
         else:
             log._pr("OS Pcie ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
+            log.os_run(f"lspci -vvvv >> {folder_path}/pcieinfo_err_vvvv_{str(count)}.log")
     
 # show switch info
 def switch_info(flags, folder_path, count):
@@ -1153,6 +1160,7 @@ def pcieslot(flags, folder_path, count):
     log._dp("handle_num : " + str(handle_num))
     
     print_save_text(flags=flags, folder_path=folder_path, type="pcieslot", count=count,text="[Order]".ljust(10)+"[BUS_Addr]".ljust(20)+"[Designation]".ljust(30)+"[Type]".ljust(40)+"[Current Usage]".ljust(20)+"[Length]".ljust(15)+"[Node]")
+    
     for handle in handle_num:
         handle = str(handle).strip()
         Designation = log.os_popen(f"dmidecode -H {handle}| grep -i Designation | cut -d ':' -f 2").strip()
@@ -1273,6 +1281,7 @@ def psuinfo_dmidecode_39(flags, path, count):
             log._pr("OS PSU Dmi Info ".ljust(40) + "\033[32m[Pass]\033[0m   \033[31m[FAIL]\033[0m")
 
 def psuinfo(flags, path, count):
+    
     if log.json_get('collect_array',"psuinfo",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
     if str(log.os_popen("dmidecode -t 39 | grep -i 'Max Power Capacity' | wc -l",flags='no-log').strip()) == "0":
@@ -1678,7 +1687,7 @@ def os_net_info(flags, folder_path, count):
 
 
 def ipmi_mcinfo(flags, folder_path, count):
-    if log.json_get('collect_array',"`mcinfo`",web='no-log',filename='collect').strip() !='1':return 0
+    if log.json_get('collect_array',"mcinfo",web='no-log',filename='collect').strip() !='1':return 0
     echo_dev_info_sleep(flags,count)
 
     retry_get_ipmi_info('ipmitool mc info','BMC IPMI MC Info ')
