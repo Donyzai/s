@@ -1496,7 +1496,7 @@ def post_info_to_swcServer():
     log._dp(f"Post Data to swcServer Json : {json_data}")
     swc_server_ip = log.json_get("swc","swc_server_ip",filename='swc').strip()
     swc_server_port = log.json_get("swc","swc_server_port",filename='swc').strip()
-    log.os_popen(f" curl -X POST -H 'Content-Type: application/json' -d '{json_data}' http://{swc_server_ip}:{swc_server_port}/api/upload_test_info ")
+    log.os_popen(f" nohup curl -X POST -H 'Content-Type: application/json' -d '{json_data}' http://{swc_server_ip}:{swc_server_port}/api/upload_test_info &")
     log._dp(f"Post test info to swcServer: {json_data}")
 
 # init environment to default
