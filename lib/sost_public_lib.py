@@ -1483,7 +1483,7 @@ def save_to_history(count):
     log.os_run(f' touch /opt/sost/history && echo "{json_data}" >> /opt/sost/history')
 
 def post_info_to_swcServer():
-    
+
     hw_mac = log.os_popen("sost -i hwmac").strip().replace(":", "")
     bmc_ver = log.json_get("Test_tmp","test_bmc_ver").strip()
     bios_ver = log.json_get("Test_tmp","test_bios_ver").strip()

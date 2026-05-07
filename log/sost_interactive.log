@@ -88,3 +88,5 @@ Invalid password disable: no
 Attempt Count Reset Int.: 0
 User Lockout Interval   : 0
 
+< sost_20260506-093029_print    > : swc_web is Running! Running-Time -> 20260506 09:30:29 (swc_web.py)
+< sost_20260506-093030_print    > : swc_web -> swc_cinfo Running! (swc_web.py)
