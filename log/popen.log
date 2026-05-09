@@ -1,13 +1,13 @@
-< sost_20260409-101235_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+< sost_20260508-175447_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
 0
 
-< sost_20260409-101235_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+< sost_20260508-175447_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20260409-101235_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+< sost_20260508-175448_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
 1
 
-< sost_20260409-101235_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+< sost_20260508-175448_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
 0000:06:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
 00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
 10: 00 00 00 58 00 00 00 59 01 50 00 00 00 00 00 00
@@ -27,88 +27,62 @@ e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
 
-< sost_20260409-101235_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+< sost_20260508-175448_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
 52
 
-< sost_20260409-101235_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+< sost_20260508-175448_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
  "ASPEED-2600",
 
-< sost_20260409-101236_popen_com> : whereis nvme | awk '{print $2}' -> Result
+< sost_20260508-175448_popen_com> : whereis nvme | awk '{print $2}' -> Result
 /usr/sbin/nvme
 
-< sost_20260409-101236_popen_com> : whereis ipmitool | awk '{print $2}' -> Result
+< sost_20260508-175448_popen_com> : whereis ipmitool | awk '{print $2}' -> Result
 /usr/bin/ipmitool
 
-< sost_20260409-101236_popen_com> : whereis numactl | awk '{print $2}' -> Result
+< sost_20260508-175448_popen_com> : whereis numactl | awk '{print $2}' -> Result
 /usr/bin/numactl
 
-< sost_20260415-093926_popen_com> : ipmitool lan print 1 2>/dev/null -> Result
-Set in Progress         : Set Complete
-Auth Type Support       : 
-Auth Type Enable        : Callback : 
-                        : User     : 
-                        : Operator : 
-                        : Admin    : 
-                        : OEM      : 
-IP Address Source       : DHCP Address
-IP Address              : 192.168.60.148
-Subnet Mask             : 255.255.254.0
-MAC Address             : 18:9b:a5:82:dd:42
-SNMP Community String   : AMI
-IP Header               : TTL=0x40 Flags=0x40 Precedence=0x00 TOS=0x10
-BMC ARP Control         : ARP Responses Enabled, Gratuitous ARP Disabled
-Gratituous ARP Intrvl   : 1.0 seconds
-Default Gateway IP      : 192.168.60.254
-Default Gateway MAC     : b8:45:f4:ba:74:2e
-Backup Gateway IP       : 0.0.0.0
-Backup Gateway MAC      : 00:00:00:00:00:00
-802.1q VLAN ID          : Disabled
-802.1q VLAN Priority    : 0
-RMCP+ Cipher Suites     : 3,17
-Cipher Suite Priv Max   : XXXaXXXXXXXaXXX
-                        :     X=Cipher Suite Unused
-                        :     c=CALLBACK
-                        :     u=USER
-                        :     o=OPERATOR
-                        :     a=ADMIN
-                        :     O=OEM
-Bad Password Threshold  : 0
-Invalid password disable: no
-Attempt Count Reset Int.: 0
-User Lockout Interval   : 0
+< sost_20260508-175450_popen_com> : ipmitool mc info 2>/dev/null| grep -i Product | wc -l -> Result
+2
 
-< sost_20260415-093927_popen_com> : ipmitool lan print 8 2>/dev/null -> Result
-Set in Progress         : Set Complete
-Auth Type Support       : 
-Auth Type Enable        : Callback : 
-                        : User     : 
-                        : Operator : 
-                        : Admin    : 
-                        : OEM      : 
-IP Address Source       : DHCP Address
-IP Address              : 192.168.60.69
-Subnet Mask             : 255.255.254.0
-MAC Address             : 18:9b:a5:82:dd:43
-SNMP Community String   : AMI
-IP Header               : TTL=0x40 Flags=0x40 Precedence=0x00 TOS=0x10
-BMC ARP Control         : ARP Responses Enabled, Gratuitous ARP Disabled
-Gratituous ARP Intrvl   : 1.0 seconds
-Default Gateway IP      : 192.168.60.254
-Default Gateway MAC     : b8:45:f4:ba:74:2e
-Backup Gateway IP       : 0.0.0.0
-Backup Gateway MAC      : 00:00:00:00:00:00
-802.1q VLAN ID          : Disabled
-802.1q VLAN Priority    : 0
-RMCP+ Cipher Suites     : 3,17
-Cipher Suite Priv Max   : XXXaXXXXXXXaXXX
-                        :     X=Cipher Suite Unused
-                        :     c=CALLBACK
-                        :     u=USER
-                        :     o=OPERATOR
-                        :     a=ADMIN
-                        :     O=OEM
-Bad Password Threshold  : 0
-Invalid password disable: no
-Attempt Count Reset Int.: 0
-User Lockout Interval   : 0
+< sost_20260508-175450_popen_com> : ipmitool lan print 1 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{print $4}' 2>/dev/null -> Result
+192.168.60.148
+
+< sost_20260508-175451_popen_com> : ipmitool lan print 8 2>/dev/null  | grep -vi source | grep -i 'ip address' | awk '{print $4}' -> Result
+192.168.60.69
+
+< sost_20260508-175456_popen_com> : lspci | grep -i hi171x | grep -i vga | wc -l -> Result
+0
+
+< sost_20260508-175456_popen_com> : lspci | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260508-175456_popen_com> : lspci  | grep -i aspeed | grep -i vga | wc -l -> Result
+1
+
+< sost_20260508-175456_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs -> Result
+0000:06:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 52)
+00: 03 1a 00 20 03 00 10 02 52 00 00 03 00 00 00 00
+10: 00 00 00 58 00 00 00 59 01 50 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 03 1a 00 20
+30: 00 00 00 00 40 00 00 00 00 00 00 00 ff 01 00 00
+40: 01 50 c3 ff 00 00 00 00 00 00 00 00 00 00 00 00
+50: 05 00 84 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+< sost_20260508-175456_popen_com> : lspci  | grep -i aspeed | grep -i vga | awk '{print $1}' | xargs lspci -xxxs | grep -i 00: | grep -v 0000: | cut -d ' ' -f 10 -> Result
+52
+
+< sost_20260508-175456_popen_com> : cat /opt/sost/config/sost.json  | grep -A5 BMC_Survival_Config | grep -i bmc_chip | cut -d ':' -f 2 -> Result
+ "ASPEED-2600",
 
