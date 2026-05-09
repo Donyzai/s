@@ -1,0 +1,11 @@
+# Python bytecode
+*.pyc
+__pycache__/
+*.bin
+*.log
+*.ini
+*.done
+Dong_Folder/
+*.xlsx
+.gitignore
+*.txt
