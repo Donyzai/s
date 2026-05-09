@@ -1,2 +1,9 @@
 *.pyc
-*.log
+log/*.log
+test.py
+BUG
+history
+.vscode
+.idea
+.DS_Store
+__pycache__/
