@@ -1,9 +1,0 @@
-{
-    "sost": {
-        "Version": "1.1.1",
-        "Release_Time": "2026-03-25 09:00:00",
-        "update_Web_server_ip": "192.168.60.138",
-        "Web_Console": "1",
-        "debug_flags": "0"
-    }
-}
