@@ -1,0 +1,22 @@
+{
+    "Test-status": "Ending",
+    "Test-type": "bmc_power_on_off_lan_flags-E",
+    "Test-count": "0",
+    "Test-result": "Pass",
+    "Test-Start-Time": "2026-03-31-16-51-29",
+    "Test-End-Time": "2026-03-31-16-57-30",
+    "zLast_Time": "2026-05-09 13:36:07",
+    "fail_info": "",
+    "bmc_chip": "ASPEED-2600",
+    "start_wait_time": "30",
+    "aclost_wait_time": "120",
+    "BMC_LAN_1": "192.168.60.148",
+    "OS": "Kylin Linux Advanced Server V11 Swan25   6.6.0-32.7.v2505.ky11.aarch64",
+    "fail_exit_flags": "0",
+    "fail_exit_blacklist": "NA",
+    "BMC_ver": "1.05.00.04.00.00",
+    "Bios_ver": "KL42A._RS_.T2DMFT.049R.251225",
+    "sostVer": "1.1.1",
+    "hw_mac": "18:9b:a5:82:dd:42",
+    "SYS_IP": "192.168.60.67"
+}

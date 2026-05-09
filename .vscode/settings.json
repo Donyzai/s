@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "^b*[^:b#/]+.*$": true
+    },
+    "python.analysis.autoImportCompletions": true
+}

@@ -1,0 +1,90 @@
+{
+    "Testmode": {
+        "random_write_prewriting_numjobs": "",
+        "random_write_prewriting_iodepth": "",
+        "random_write_prewriting_runtime": "",
+        "random_write_prewriting_bs": "",
+        "sequen_write_prewriting_numjobs": "",
+        "sequen_write_prewriting_iodepth": "",
+        "sequen_write_prewriting_loops": "",
+        "sequen_write_prewriting_runtime": "",
+        "sequen_write_prewriting_bs": "",
+        "random_read_numjobs": "",
+        "random_read_iodepth": "",
+        "random_read_runtime": "",
+        "random_read_bs": "",
+        "random_write_numjobs": "",
+        "random_write_iodepth": "",
+        "random_write_runtime": "",
+        "random_write_bs": "",
+        "sequen_read_numjobs": "",
+        "sequen_read_iodepth": "",
+        "sequen_read_runtime": "",
+        "sequen_read_bs": "",
+        "sequen_write_numjobs": "",
+        "sequen_write_iodepth": "",
+        "sequen_write_runtime": "",
+        "sequen_write_bs": "",
+        "seq_rx_numjobs": "",
+        "seq_rx_iodepth": "",
+        "seq_rx_runtime": "",
+        "seq_rx_bs": "",
+        "seq_rx_rwmixread_percentage": "",
+        "random_rx_numjobs": "",
+        "random_rx_iodepth": "",
+        "random_rx_runtime": "",
+        "random_rx_bs": "",
+        "random_rx_rwmixread_percentage": "",
+        "description":"sost_disktest"
+    },
+    "DiskInfo": {
+        "nvme_info": "",
+        "sata_info": "",
+        "disk_black_list": "",
+        "ramp_time": "",
+        "seq_sata_bs": "",
+        "seq_ssd_bs": "",
+        "fio_mode": "1"
+    },
+    "Bound_nucleus": {
+        "nvme": "0",
+        "sata": "0",
+        "node": "",
+        "numa": "",
+        "Bound_nucleus_type_1": "",
+        "Bound_nucleus_type_2": "",
+        "Bound_nucleus_type_3": ""
+    },
+    "debug": {
+        "debug_print": "0",
+        "natt_Double_opening": "0",
+        "fio_process_wait_time": "",
+        "fio_print_wait_time": ""
+    },
+    "natt": {
+        "cmd_log_size_kb": "102400"
+    },
+    "Monitor": {
+        "scheduler":"0",
+        "numa_info": "0",
+        "sar_d": "0",
+        "vmstat_w": "0",
+        "mpstat_p_all": "0",
+        "pidstat_d": "0",
+        "dstat": "0",
+        "blktrace":"0"
+    },
+    "email": {
+        "enable": "0",
+        "smtp_server": "",
+        "smtp_port": "",
+        "sender_email": "",
+        "receiver_email": "",
+        "password": ""
+    },
+    "Version": {
+        "natt_version": "1.1.4",
+        "update_Web_server_ip": "192.168.60.138"
+    }
+}
+
